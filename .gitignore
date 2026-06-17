@@ -1,0 +1,8 @@
+dist/
+node_modules/
+.env
+.DS_Store
+*.local
+src/env.d.ts
+.astro/
+*.docx

@@ -1,0 +1,97 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const projects = [
+  {
+    title: "Cross-Lingual Toxicity Detection",
+    subtitle: "MSc Thesis",
+    description: "Transformer-based classifiers for detecting hateful and offensive content in short texts. Tackled cross-lingual classification using joint-learning and data translation approaches, outperforming existing multilingual models on zero-shot benchmarks.",
+    tags: ["NLP", "BERT", "Transformers", "Python"],
+    link: "http://cltd.bilat.xyz",
+    linkLabel: "Report"
+  },
+  {
+    title: "Denoising with Generative Models",
+    subtitle: "Research Project",
+    description: "Evaluated state-of-the-art techniques for audio denoising and super-resolution, then applied generative adversarial network methods from image processing to the audio domain.",
+    tags: ["GANs", "Deep Learning", "Audio Processing", "Python"],
+    link: "http://vita.bilat.xyz",
+    linkLabel: "Demo"
+  },
+  {
+    title: "Detecting Bias in Amazon Reviews",
+    subtitle: "Data Analysis",
+    description: "Data story exploring potential bias in Amazon user reviews and methods to correct it, working on 20 GB of comments using Pandas, PySpark, and Matplotlib.",
+    tags: ["Data Analysis", "PySpark", "Python"],
+    link: "https://ada-lyn.github.io/",
+    linkLabel: "Data Story"
+  },
+  {
+    title: "The Quest for The Holy Grail",
+    subtitle: "3D Game",
+    description: "3D maze game built in C with OpenGL, featuring world physics, lighting effects, rendering optimizations, a user interface, and sound effects.",
+    tags: ["C", "OpenGL", "Graphics"],
+    link: "https://github.com/Billotais/TSBK07_project",
+    linkLabel: "GitHub"
+  },
+  {
+    title: "Part-of-Speech Tagger &amp; Dependency Parser",
+    subtitle: "NLP / ML",
+    description: "Multi-class perceptron POS tagger (93%+ accuracy) and sentence dependency parser (76%+ accuracy) implemented from scratch in Python.",
+    tags: ["NLP", "Python", "Machine Learning"],
+    link: "https://github.com/Billotais/TDDE09_project",
+    linkLabel: "GitHub"
+  },
+  {
+    title: "Calcul Mental",
+    subtitle: "Android App",
+    description: "Android app for mental arithmetic practice with multiple modes including test mode, timed mode, and rush mode.",
+    tags: ["Android", "Java"],
+    link: "https://play.google.com/store/apps/details?id=com.lafloculation.billotais.livrets",
+    linkLabel: "Play Store"
+  },
+  {
+    title: "La Pipopipette",
+    subtitle: "iOS Game · Maturity Project",
+    description: "Multiplayer iOS implementation of Dots and Boxes supporting up to 4 local players, with an AI opponent. Written in Objective-C.",
+    tags: ["iOS", "Objective-C", "Game AI"],
+    link: "http://tm.bilat.xyz",
+    linkLabel: "Project"
+  }
+];
+---
+
+<Layout
+  title="Projects"
+  description="Academic and personal projects by Loïs Bilat — NLP, ML, data analysis, game development."
+  activeNav="projects"
+>
+  <main class="container page">
+    <div class="page-header">
+      <h1 class="page-title">Projects</h1>
+      <p class="page-subtitle">Academic and personal work from my studies and free time</p>
+    </div>
+
+    <div class="project-list">
+      {projects.map(p => (
+        <div class="project-card">
+          <div class="project-card-header">
+            <div>
+              <div class="project-card-title">{p.title}</div>
+              <div style="font-size:0.8rem;color:var(--color-text-muted);margin-top:2px;">{p.subtitle}</div>
+            </div>
+            {p.link && (
+              <a href={p.link} target="_blank" rel="noopener" class="project-card-link btn btn-outline" style="padding:5px 12px;">
+                {p.linkLabel} ↗
+              </a>
+            )}
+          </div>
+          <p class="project-card-desc" set:html={p.description}></p>
+          <div class="timeline-tags" style="margin-top:14px;">
+            {p.tags.map(t => <span class="tag">{t}</span>)}
+          </div>
+        </div>
+      ))}
+    </div>
+  </main>
+</Layout>

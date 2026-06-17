@@ -1,0 +1,56 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Loïs Bilat" activeNav="home">
+  <main class="container">
+    <section class="hero">
+      <h1 class="hero-name">Loïs Bilat</h1>
+      <p class="hero-title">Senior Data &amp; AI Engineer @ ELCA Informatique SA</p>
+      <p class="hero-bio">
+        I build intelligent systems at the intersection of machine learning, data engineering,
+        and cloud platforms. With a Master's in Computer Science from EPFL and several years
+        of production experience, I specialize in generative AI applications, NLP pipelines,
+        IoT data platforms, and intelligent search engines.
+        <br /><br />
+        Outside of work I enjoy board games, running, and watching TV shows.
+      </p>
+      <div class="hero-links">
+        <a href="/cv" class="btn btn-primary">View CV</a>
+        <a href="/projects" class="btn btn-outline">Projects</a>
+        <a href="https://linkedin.com/in/lois-bilat" target="_blank" rel="noopener" class="btn btn-outline">LinkedIn</a>
+        <a href="https://github.com/Billotais" target="_blank" rel="noopener" class="btn btn-outline">GitHub</a>
+      </div>
+    </section>
+
+    <section class="skills-section">
+      <p class="section-label">Technical Skills</p>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-card-title">AI &amp; Machine Learning</div>
+          <div class="skill-card-items">Generative AI, LLMs, RAG, NLP, Computer Vision, Time Series, Transformers</div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-card-title">Data Engineering</div>
+          <div class="skill-card-items">Spark, Databricks, Azure Synapse, Delta Lake, Polars, Airflow</div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-card-title">Cloud &amp; Infrastructure</div>
+          <div class="skill-card-items">Azure (OpenAI, AI Search, IoT, Functions, Container Apps), AWS, Docker, Kubernetes</div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-card-title">Programming</div>
+          <div class="skill-card-items">Python, Java, Scala, JavaScript, C#, SQL</div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-card-title">Databases &amp; Search</div>
+          <div class="skill-card-items">Elasticsearch / Azure AI Search, MongoDB, Cosmos DB, SQL Server, Neo4j</div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-card-title">Tools &amp; DevOps</div>
+          <div class="skill-card-items">Git, Azure DevOps, Grafana, Bicep, Power BI, Streamlit</div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

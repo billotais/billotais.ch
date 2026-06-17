@@ -1,0 +1,472 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const years = ['2026', '2025', '2024'];
+---
+
+<Layout title="ELCA Gaming" description="Classement des jeux de société ELCA" activeNav="hidden">
+  <main class="container page">
+    <div class="page-header">
+      <h1 class="page-title">🎲 ELCA Gaming</h1>
+      <p class="page-subtitle">Classement des jeux de société</p>
+    </div>
+
+    <div class="g-year-tabs" id="yearTabs">
+      {years.map((y, i) => (
+        <button class={`g-year-tab${i === 0 ? ' active' : ''}`} data-year={y}>{y}</button>
+      ))}
+    </div>
+
+    <div id="loadingState" class="g-loading">Chargement…</div>
+    <div id="errorState" class="g-error" style="display:none"></div>
+
+    <div id="appContent" style="display:none">
+      <div class="g-stats-row" id="statsRow"></div>
+
+      <div class="g-two-col">
+        <section>
+          <p class="section-label">Classement</p>
+          <div id="leaderboard" class="g-leaderboard"></div>
+        </section>
+
+        <section>
+          <p class="section-label">Parties récentes</p>
+          <div id="sessionList" class="g-sessions"></div>
+        </section>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  /* Year tabs */
+  .g-year-tabs {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 32px;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 0;
+  }
+  .g-year-tab {
+    padding: 8px 18px;
+    border: none;
+    background: none;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .g-year-tab:hover { color: var(--color-text); }
+  .g-year-tab.active {
+    color: var(--color-accent);
+    border-bottom-color: var(--color-accent);
+  }
+
+  /* Loading / error */
+  .g-loading {
+    padding: 48px 0;
+    text-align: center;
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+  }
+  .g-error {
+    padding: 16px;
+    border-radius: 8px;
+    background: #fee2e2;
+    color: #991b1b;
+    font-size: 0.875rem;
+    margin-bottom: 24px;
+  }
+
+  /* Stats row */
+  .g-stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+  .g-stat {
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    text-align: center;
+  }
+  .g-stat-val {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    line-height: 1;
+  }
+  .g-stat-lbl {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text-muted);
+    margin-top: 4px;
+  }
+
+  /* Two column layout */
+  .g-two-col {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+  @media (max-width: 700px) {
+    .g-two-col { grid-template-columns: 1fr; }
+    .g-stats-row { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  /* Leaderboard */
+  .g-leaderboard { margin-top: 12px; }
+  .g-player-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .g-player-row:last-child { border-bottom: none; }
+  .g-rank {
+    font-size: 0.85rem;
+    font-weight: 700;
+    width: 22px;
+    text-align: center;
+    flex-shrink: 0;
+    color: var(--color-text-muted);
+  }
+  .g-rank.top1 { color: #b8860b; }
+  .g-rank.top2 { color: #808080; }
+  .g-rank.top3 { color: #a0522d; }
+  .g-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--color-accent-light);
+    color: var(--color-accent);
+    border: 1.5px solid var(--color-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .g-player-info { flex: 1; min-width: 0; }
+  .g-player-name {
+    font-size: 0.875rem;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .g-bar-bg {
+    height: 3px;
+    background: var(--color-border);
+    border-radius: 2px;
+    margin-top: 4px;
+  }
+  .g-bar-fill {
+    height: 3px;
+    background: var(--color-accent);
+    border-radius: 2px;
+    transition: width 0.4s ease;
+  }
+  .g-score {
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .g-score-val {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--color-text);
+  }
+  .g-score-sub {
+    font-size: 0.68rem;
+    color: var(--color-text-muted);
+  }
+
+  /* Sessions */
+  .g-sessions { margin-top: 12px; }
+  .g-session {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .g-session:last-child { border-bottom: none; }
+  .g-session-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+  .g-session-game {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-text);
+    flex: 1;
+    min-width: 0;
+  }
+  .g-session-game a {
+    color: var(--color-text);
+  }
+  .g-session-game a:hover {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+  .g-session-date {
+    font-size: 0.72rem;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .g-session-meta {
+    font-size: 0.72rem;
+    color: var(--color-text-muted);
+    margin-bottom: 6px;
+  }
+  .g-badges { display: flex; flex-wrap: wrap; gap: 4px; }
+  .g-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    padding: 2px 7px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    border: 1px solid;
+  }
+  .g-badge-winner {
+    background: rgba(184,134,11,0.1);
+    color: #a07000;
+    border-color: rgba(184,134,11,0.25);
+  }
+  .g-badge-tie {
+    background: rgba(128,128,128,0.1);
+    color: #606060;
+    border-color: rgba(128,128,128,0.25);
+  }
+  .g-badge-present {
+    background: var(--color-accent-light);
+    color: var(--color-accent);
+    border-color: rgba(11,135,147,0.25);
+  }
+
+  /* dark / stone theme: adjust badge colors */
+  [data-theme="dark"] .g-badge-winner,
+  [data-theme="stone"] .g-badge-winner {
+    background: rgba(255,215,0,0.1);
+    color: #ffd700;
+    border-color: rgba(255,215,0,0.25);
+  }
+  [data-theme="dark"] .g-badge-tie,
+  [data-theme="stone"] .g-badge-tie {
+    background: rgba(192,192,192,0.1);
+    color: #c0c0c0;
+    border-color: rgba(192,192,192,0.25);
+  }
+  [data-theme="dark"] .g-session-game a,
+  [data-theme="stone"] .g-session-game a { color: var(--color-text); }
+
+  /* CSV hint */
+  .g-csv-hint {
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid var(--color-border);
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+  }
+  .g-csv-hint code {
+    font-size: 0.78rem;
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: 1px 5px;
+  }
+</style>
+
+<script>
+const YEARS = ['2026', '2025', '2024'];
+let currentYear = YEARS[0];
+let cache = {};
+
+// ─── CSV parser ──────────────────────────────────────────────────────────────
+function parseCSV(text) {
+  const lines = text.trim().split('\n').map(l => l.trimEnd());
+  const sep = ';';
+  const headers = lines[0].split(sep);
+  const players = headers.slice(4);
+
+  const sessions = [];
+  for (let i = 1; i < lines.length; i++) {
+    const cols = lines[i].split(sep);
+    if (cols.length < 5) continue;
+    const [date, game, complexity, url, ...results] = cols;
+    if (!date || !game) continue;
+
+    const playerResults = {};
+    players.forEach((p, j) => {
+      const code = (results[j] || '').trim();
+      playerResults[p] = code === 'w' ? 'winner' : code === 't' ? 'tie' : code === 'p' ? 'present' : 'absent';
+    });
+
+    sessions.push({
+      date: date.trim(),
+      game: game.trim(),
+      complexity: parseFloat(complexity) || 2.0,
+      url: url.trim() || null,
+      results: playerResults,
+    });
+  }
+  sessions.sort((a, b) => a.date.localeCompare(b.date));
+  return { players, sessions };
+}
+
+// ─── Scoring ─────────────────────────────────────────────────────────────────
+function computeScores({ players, sessions }) {
+  const stats = Object.fromEntries(players.map(p => [p, { tv: 0, tp: 0, wins: 0, ties: 0 }]));
+
+  for (const s of sessions) {
+    for (const p of players) {
+      const r = s.results[p];
+      if (r === 'absent') continue;
+      stats[p].tp++;
+      if (r === 'winner') { stats[p].tv += 1 * s.complexity; stats[p].wins++; }
+      else if (r === 'tie') { stats[p].tv += 0.5 * s.complexity; stats[p].ties++; }
+    }
+  }
+
+  const maxP = Math.max(...players.map(p => stats[p].tp), 1);
+
+  return players.map(p => {
+    const { tv, tp, wins, ties } = stats[p];
+    const ratio = tp > 0 ? tv / tp : 0;
+    const bonus = Math.min(tp * 0.1, 1);
+    const p25 = tp > maxP * 0.25 ? 1 : 0;
+    return { name: p, total: ratio + bonus + p25, ratio, bonus, p25, tv, tp, wins, ties };
+  }).sort((a, b) => b.total - a.total || b.tp - a.tp);
+}
+
+// ─── Render ───────────────────────────────────────────────────────────────────
+function initials(name) {
+  return name.split(/[\s-]/).map(w => w[0] || '').join('').slice(0, 2).toUpperCase();
+}
+
+function renderStats(yearData, scores) {
+  const { sessions } = yearData;
+  const active = scores.filter(s => s.tp > 0).length;
+  const topWinner = scores.reduce((a, b) => a.wins > b.wins ? a : b, { wins: 0, name: '–' });
+  document.getElementById('statsRow').innerHTML = `
+    <div class="g-stat"><div class="g-stat-val">${sessions.length}</div><div class="g-stat-lbl">Parties</div></div>
+    <div class="g-stat"><div class="g-stat-val">${active}</div><div class="g-stat-lbl">Joueurs actifs</div></div>
+    <div class="g-stat"><div class="g-stat-val">${topWinner.wins}</div><div class="g-stat-lbl">Max victoires — ${topWinner.name}</div></div>
+  `;
+}
+
+function renderLeaderboard(scores) {
+  const max = scores[0]?.total || 1;
+  const medals = ['🥇', '🥈', '🥉'];
+  document.getElementById('leaderboard').innerHTML = scores.map((s, i) => {
+    const pct = (s.total / max) * 100;
+    const rankLabel = medals[i] ?? (i + 1);
+    const topClass = i === 0 ? 'top1' : i === 1 ? 'top2' : i === 2 ? 'top3' : '';
+    return `<div class="g-player-row">
+      <div class="g-rank ${topClass}">${rankLabel}</div>
+      <div class="g-avatar">${initials(s.name)}</div>
+      <div class="g-player-info">
+        <div class="g-player-name">${s.name}</div>
+        <div class="g-bar-bg"><div class="g-bar-fill" style="width:${pct.toFixed(1)}%"></div></div>
+      </div>
+      <div class="g-score">
+        <div class="g-score-val">${s.total.toFixed(3)}</div>
+        <div class="g-score-sub">${s.tp} parties</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function fmtDate(d) {
+  // YYYY-MM-DD or DD/MM/YYYY → DD/MM/YYYY
+  const m = d.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  return m ? `${m[3]}/${m[2]}/${m[1]}` : d;
+}
+
+function renderSessions({ sessions }) {
+  const reversed = [...sessions].reverse();
+  document.getElementById('sessionList').innerHTML = reversed.map(s => {
+    const present = Object.entries(s.results).filter(([, r]) => r !== 'absent');
+    const winners = present.filter(([, r]) => r === 'winner');
+    const ties = present.filter(([, r]) => r === 'tie');
+    const presOnly = present.filter(([, r]) => r === 'present');
+
+    const badges = [
+      ...winners.map(([n]) => `<span class="g-badge g-badge-winner">🏆 ${n}</span>`),
+      ...ties.map(([n]) => `<span class="g-badge g-badge-tie">🥈 ${n}</span>`),
+      ...presOnly.map(([n]) => `<span class="g-badge g-badge-present">✓ ${n}</span>`),
+    ].join('');
+
+    const gameEl = s.url
+      ? `<a href="${s.url}" target="_blank" rel="noopener">${s.game}</a>`
+      : s.game;
+
+    return `<div class="g-session">
+      <div class="g-session-header">
+        <div class="g-session-game">${gameEl}</div>
+        <div class="g-session-date">${fmtDate(s.date)}</div>
+      </div>
+      <div class="g-session-meta">Complexité ${s.complexity.toFixed(2)} · ${present.length} joueurs</div>
+      <div class="g-badges">${badges}</div>
+    </div>`;
+  }).join('');
+}
+
+function renderView(yearData) {
+  const scores = computeScores(yearData);
+  renderStats(yearData, scores);
+  renderLeaderboard(scores);
+  renderSessions(yearData);
+  document.getElementById('loadingState').style.display = 'none';
+  document.getElementById('appContent').style.display = '';
+}
+
+// ─── Load CSV ─────────────────────────────────────────────────────────────────
+async function loadYear(year) {
+  if (cache[year]) { renderView(cache[year]); return; }
+
+  document.getElementById('loadingState').style.display = '';
+  document.getElementById('appContent').style.display = 'none';
+  document.getElementById('errorState').style.display = 'none';
+
+  try {
+    const resp = await fetch(`/gaming/${year}.csv`);
+    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+    const text = await resp.text();
+    cache[year] = parseCSV(text);
+    renderView(cache[year]);
+  } catch (e) {
+    document.getElementById('loadingState').style.display = 'none';
+    const err = document.getElementById('errorState');
+    err.textContent = `Impossible de charger les données ${year}: ${e.message}`;
+    err.style.display = '';
+  }
+}
+
+// ─── Year tab clicks ──────────────────────────────────────────────────────────
+document.getElementById('yearTabs').addEventListener('click', e => {
+  const tab = e.target.closest('.g-year-tab');
+  if (!tab) return;
+  document.querySelectorAll('.g-year-tab').forEach(t => t.classList.remove('active'));
+  tab.classList.add('active');
+  currentYear = tab.dataset.year;
+  loadYear(currentYear);
+});
+
+// Initial load
+loadYear(currentYear);
+</script>
