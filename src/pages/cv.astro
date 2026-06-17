@@ -1,178 +1,211 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout
-  title="CV"
-  description="CV of Loïs Bilat – Senior Data & AI Engineer with expertise in GenAI, NLP, and cloud data platforms."
-  activeNav="cv"
+    title="CV"
+    description="CV of Loïs Bilat – Senior Data & AI Engineer with expertise in GenAI, NLP, and cloud data platforms."
+    activeNav="cv"
+    pageSubtitle="Senior Data & AI Engineer"
 >
-  <main class="container page">
-    <div class="page-header">
-      <h1 class="page-title">Curriculum Vitae</h1>
-      <p class="page-subtitle">Senior Data &amp; AI Engineer</p>
-    </div>
+    <main class="container page">
 
-    <div class="cv-actions">
-      <a href="/cv.pdf" download class="btn btn-primary">Download PDF</a>
-      <span style="font-size:0.8rem;color:var(--color-text-muted)">Last updated: September 2025</span>
-    </div>
+        <!-- Experience -->
+        <section class="cv-section">
+            <h2 class="cv-section-title">Experience</h2>
+            <div class="timeline">
+                <div class="timeline-entry">
+                    <div class="timeline-meta">
+                        <div class="timeline-date">2022 – present</div>
+                    </div>
+                    <span class="timeline-dot"></span>
+                    <div class="timeline-body">
+                        <div class="timeline-role">Senior Data &amp; AI Engineer</div>
+                        <div class="timeline-org">ELCA Informatique SA · Pully, Switzerland</div>
+                        <ul class="timeline-bullets">
+                            <li>
+                                <strong>Generative AI &amp; RAG:</strong> Designed and deployed chatbot solutions using Agentic
+                                architectures, integrating enterprise data sources and MCP tools
+                            </li>
+                            <li>
+                                <strong>NLP &amp; Search:</strong> Built intelligent search and knowledge management systems
+                                using Azure AI Search — taxonomy enrichment, multi-language support, synonym handling
+                            </li>
+                            <li>
+                                <strong>Data Engineering &amp; Cloud:</strong> Architected an IoT data platform for regulated
+                                manufacturing (real-time ingestion, Digital Twin, GAMP 5 DevOps); developed device telemetry
+                                monitoring and KPI algorithms; data replication between SQL Server and Dataverse via Azure
+                                Synapse; established CI/CD pipelines and cloud infrastructure on Azure
+                            </li>
+                            <li>
+                                <strong>Architecture &amp; Pre-sales:</strong> Contributed to solution architecture, offers
+                                and client workshops across pharma, manufacturing, international organizations, and public
+                                sector
+                            </li>
+                            <li>
+                                <strong>Mentoring:</strong> Supervised internships and coached junior engineers on technical
+                                practices, code quality, and project delivery
+                            </li>
+                        </ul>
+                        <div class="timeline-tags">
+                            <span class="tag">Microsoft Foundry / Azure AI</span>
+                            <span class="tag">GenAI / RAG / Agentic AI</span>
+                            <span class="tag">IoT</span>
+                            <span class="tag">Databricks</span>
+                            <span class="tag">Azure Synapse</span>
+                            <span class="tag">Python</span>
+                        </div>
+                    </div>
+                </div>
 
-    <!-- Experience -->
-    <section class="cv-section">
-      <h2 class="cv-section-title">Experience</h2>
-      <div class="timeline">
-
-        <div class="timeline-entry">
-          <div class="timeline-meta">
-            <div class="timeline-date">2022 – present</div>
-          </div>
-          <span class="timeline-dot"></span>
-          <div class="timeline-body">
-            <div class="timeline-role">Senior Data &amp; AI Engineer</div>
-            <div class="timeline-org">ELCA Informatique SA · Lausanne, Switzerland</div>
-            <ul class="timeline-bullets">
-              <li>Designed and deployed GenAI chatbot solutions using RAG architectures (Azure OpenAI, Gemini), integrating enterprise data sources such as SharePoint, Confluence, and internal databases</li>
-              <li>Architected an IoT data platform for regulated manufacturing: real-time ingestion pipelines, Digital Twin integration, network security configuration, and GAMP 5–compliant DevOps workflows</li>
-              <li>Built and maintained intelligent search and knowledge management systems using Azure AI Search with advanced NLP features — taxonomy enrichment, multi-language support, synonym handling</li>
-              <li>Led data migration and bidirectional replication between SQL Server and Microsoft Dataverse via Azure Synapse, meeting sub-15-minute SLA requirements for a live production system</li>
-              <li>Developed device telemetry monitoring and KPI generation algorithms from scratch; established CI/CD pipelines, end-to-end testing, and cloud data infrastructure on Azure</li>
-              <li>Contributed to pre-sales, solution architecture, and client workshops across pharma, manufacturing, international organizations, and public sector domains</li>
-              <li>Co-presented "Building Data and AI applications with Cosmos DB" at Microsoft Ignite Switzerland 2024</li>
-            </ul>
-            <div class="timeline-tags">
-              <span class="tag">Azure OpenAI</span>
-              <span class="tag">GenAI / RAG</span>
-              <span class="tag">Azure AI Search</span>
-              <span class="tag">IoT</span>
-              <span class="tag">Azure Synapse</span>
-              <span class="tag">Databricks</span>
-              <span class="tag">Python</span>
+                <div class="timeline-entry">
+                    <div class="timeline-meta">
+                        <div class="timeline-date">2020 – 2022</div>
+                    </div>
+                    <span class="timeline-dot"></span>
+                    <div class="timeline-body">
+                        <div class="timeline-role">Data Scientist</div>
+                        <div class="timeline-org">ELCA Informatique SA · Lausanne, Switzerland</div>
+                        <ul class="timeline-bullets">
+                            <li>
+                                <strong>NLP &amp; Search:</strong> Built pipelines for large-scale analysis of scientific
+                                literature and public websites (NER, similarity scoring); implemented an Elasticsearch search
+                                engine with advanced relevance tuning; contributed to a document analytics framework for automated
+                                classification and extraction
+                            </li>
+                            <li>
+                                <strong>Forecasting &amp; Analytics:</strong> Developed energy consumption clustering (K-means
+                                + DTW) and forecasting (LSTM, ARIMA, Croston) models on large utility datasets
+                            </li>
+                            <li>
+                                <strong>Research:</strong> Completed MSc thesis on cross-lingual hate speech detection using
+                                transformer models (BERT), achieving state-of-the-art performance on zero-shot multilingual
+                                benchmarks
+                            </li>
+                        </ul>
+                        <div class="timeline-tags">
+                            <span class="tag">NLP</span>
+                            <span class="tag">Transformers / BERT</span>
+                            <span class="tag">Elasticsearch</span>
+                            <span class="tag">Time Series</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">Azure</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
+        </section>
 
-        <div class="timeline-entry">
-          <div class="timeline-meta">
-            <div class="timeline-date">2020 – 2022</div>
-          </div>
-          <span class="timeline-dot"></span>
-          <div class="timeline-body">
-            <div class="timeline-role">Data Scientist / ML Engineer</div>
-            <div class="timeline-org">ELCA Informatique SA · Lausanne, Switzerland</div>
-            <ul class="timeline-bullets">
-              <li>Built NLP pipelines for large-scale analysis of scientific and medical literature, including named entity recognition, web scraping, ML-based similarity scoring, and automated reporting</li>
-              <li>Developed energy consumption clustering (K-means + DTW) and forecasting (LSTM, ARIMA, Croston) models on large utility datasets for multiple energy types</li>
-              <li>Implemented an Elasticsearch-based internal search engine with advanced relevance tuning: synonyms, hypernyms, spell correction, and full-text search across structured and unstructured data</li>
-              <li>Contributed to a document analytics framework for automated classification and information extraction using NLP and image recognition techniques</li>
-              <li>Completed MSc thesis on cross-lingual hate speech detection using transformer models (BERT), achieving state-of-the-art performance on zero-shot multilingual benchmarks</li>
-            </ul>
-            <div class="timeline-tags">
-              <span class="tag">NLP</span>
-              <span class="tag">Transformers / BERT</span>
-              <span class="tag">Elasticsearch</span>
-              <span class="tag">Time Series</span>
-              <span class="tag">Python</span>
-              <span class="tag">Azure</span>
+        <!-- Education -->
+        <section class="cv-section">
+            <h2 class="cv-section-title">Education</h2>
+
+            <div class="edu-entry">
+                <div class="edu-meta"><div class="edu-date">2018 – 2020</div></div>
+                <div class="edu-body">
+                    <div class="edu-degree">MSc in Computer Science</div>
+                    <div class="edu-school">EPFL – Lausanne, Switzerland · Specialization: Data Analytics</div>
+                </div>
             </div>
-          </div>
-        </div>
 
-      </div>
-    </section>
+            <div class="edu-entry">
+                <div class="edu-meta"><div class="edu-date">2017 – 2018</div></div>
+                <div class="edu-body">
+                    <div class="edu-degree">Exchange Semester</div>
+                    <div class="edu-school">Linköpings Universitet – Linköping, Sweden</div>
+                </div>
+            </div>
 
-    <!-- Education -->
-    <section class="cv-section">
-      <h2 class="cv-section-title">Education</h2>
+            <div class="edu-entry">
+                <div class="edu-meta"><div class="edu-date">2015 – 2018</div></div>
+                <div class="edu-body">
+                    <div class="edu-degree">BSc in Computer Science</div>
+                    <div class="edu-school">EPFL – Lausanne, Switzerland</div>
+                </div>
+            </div>
+        </section>
 
-      <div class="edu-entry">
-        <div class="edu-meta"><div class="edu-date">2018 – 2020</div></div>
-        <div class="edu-body">
-          <div class="edu-degree">MSc in Computer Science</div>
-          <div class="edu-school">EPFL – Lausanne, Switzerland · Specialization: Data Analytics</div>
-        </div>
-      </div>
+        <!-- Skills -->
+        <section class="cv-section">
+            <h2 class="cv-section-title">Skills</h2>
+            <div class="skills-two-col">
+                <div class="skill-card">
+                    <div class="skill-card-title">AI &amp; ML</div>
+                    <div class="skill-card-items">
+                        Machine Learning, Deep Learning, NLP, GenAI/LLMs, RAG, Computer Vision, Time Series,
+                        Transformers (BERT, GPT)
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-card-title">Data Engineering</div>
+                    <div class="skill-card-items">
+                        Spark / PySpark, Databricks, Azure Synapse, Delta Lake, Polars, Airflow, Dagster, dbt,
+                        Elasticsearch
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-card-title">Cloud &amp; Infrastructure</div>
+                    <div class="skill-card-items">
+                        Azure (OpenAI, AI Search, IoT Hub, Functions, Container Apps, Synapse, DevOps), AWS, Docker,
+                        Kubernetes, Terraform, Bicep
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-card-title">Programming</div>
+                    <div class="skill-card-items">Python, SQL, Java, Scala, JavaScript, C#</div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-card-title">Databases</div>
+                    <div class="skill-card-items">
+                        MongoDB, Cosmos DB, SQL Server, Dataverse, Neo4j, Azure AI Search
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-card-title">Tools &amp; Visualization</div>
+                    <div class="skill-card-items">Git, Azure DevOps, Grafana, Power BI, Streamlit, FastAPI, D3.js</div>
+                </div>
+            </div>
+        </section>
 
-      <div class="edu-entry">
-        <div class="edu-meta"><div class="edu-date">2017 – 2018</div></div>
-        <div class="edu-body">
-          <div class="edu-degree">Exchange Semester</div>
-          <div class="edu-school">Linköpings Universitet – Linköping, Sweden</div>
-        </div>
-      </div>
+        <!-- Certifications & Speaking -->
+        <section class="cv-section">
+            <h2 class="cv-section-title">Certifications &amp; Speaking</h2>
+            <div class="inline-list">
+                <div class="inline-item">
+                    <span class="inline-item-label">Mar 2026</span>
+                    <span>Databricks: Generative AI Associate</span>
+                </div>
+                <div class="inline-item">
+                    <span class="inline-item-label">Apr 2022</span>
+                    <span>Microsoft Certified: Azure AI Fundamentals</span>
+                </div>
+                <div class="inline-item">
+                    <span class="inline-item-label">Mar 2024</span>
+                    <span
+                        >Speaker at <strong>Microsoft Ignite Switzerland 2024</strong> — "Building Data and AI applications
+                        with Cosmos DB"</span
+                    >
+                </div>
+            </div>
+        </section>
 
-      <div class="edu-entry">
-        <div class="edu-meta"><div class="edu-date">2015 – 2018</div></div>
-        <div class="edu-body">
-          <div class="edu-degree">BSc in Computer Science</div>
-          <div class="edu-school">EPFL – Lausanne, Switzerland</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Skills -->
-    <section class="cv-section">
-      <h2 class="cv-section-title">Skills</h2>
-      <div class="skills-two-col">
-        <div class="skill-card">
-          <div class="skill-card-title">AI &amp; ML</div>
-          <div class="skill-card-items">Machine Learning, Deep Learning, NLP, GenAI/LLMs, RAG, Computer Vision, Time Series, Transformers (BERT, GPT)</div>
-        </div>
-        <div class="skill-card">
-          <div class="skill-card-title">Data Engineering</div>
-          <div class="skill-card-items">Spark / PySpark, Databricks, Azure Synapse, Delta Lake, Polars, Airflow, Elasticsearch</div>
-        </div>
-        <div class="skill-card">
-          <div class="skill-card-title">Cloud &amp; Infrastructure</div>
-          <div class="skill-card-items">Azure (OpenAI, AI Search, IoT Hub, Functions, Container Apps, Synapse, DevOps), AWS, Docker, Kubernetes, Bicep</div>
-        </div>
-        <div class="skill-card">
-          <div class="skill-card-title">Programming</div>
-          <div class="skill-card-items">Python, Java, Scala, JavaScript / TypeScript, C#, SQL</div>
-        </div>
-        <div class="skill-card">
-          <div class="skill-card-title">Databases</div>
-          <div class="skill-card-items">MongoDB / Atlas, Cosmos DB, SQL Server, Dataverse, Neo4j, Azure AI Search</div>
-        </div>
-        <div class="skill-card">
-          <div class="skill-card-title">Tools &amp; Visualization</div>
-          <div class="skill-card-items">Git, Azure DevOps, Grafana, Power BI, Streamlit, FastAPI, D3.js</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Certifications & Speaking -->
-    <section class="cv-section">
-      <h2 class="cv-section-title">Certifications &amp; Speaking</h2>
-      <div class="inline-list">
-        <div class="inline-item">
-          <span class="inline-item-label">Apr 2022</span>
-          <span>Microsoft Certified: Azure AI Fundamentals</span>
-        </div>
-        <div class="inline-item">
-          <span class="inline-item-label">Mar 2024</span>
-          <span>Speaker at <strong>Microsoft Ignite Switzerland 2024</strong> — "Building Data and AI applications with Cosmos DB"</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- Languages -->
-    <section class="cv-section">
-      <h2 class="cv-section-title">Languages</h2>
-      <div class="inline-list">
-        <div class="inline-item">
-          <span class="inline-item-label">French</span>
-          <span>Native</span>
-        </div>
-        <div class="inline-item">
-          <span class="inline-item-label">English</span>
-          <span>Fluent (C1–C2)</span>
-        </div>
-        <div class="inline-item">
-          <span class="inline-item-label">German</span>
-          <span>Beginner (A1–A2)</span>
-        </div>
-      </div>
-    </section>
-  </main>
+        <!-- Languages -->
+        <section class="cv-section">
+            <h2 class="cv-section-title">Languages</h2>
+            <div class="inline-list">
+                <div class="inline-item">
+                    <span class="inline-item-label">French</span>
+                    <span>Native</span>
+                </div>
+                <div class="inline-item">
+                    <span class="inline-item-label">English</span>
+                    <span>Fluent (C1–C2)</span>
+                </div>
+                <div class="inline-item">
+                    <span class="inline-item-label">German</span>
+                    <span>Beginner (A1–A2)</span>
+                </div>
+            </div>
+        </section>
+    </main>
 </Layout>

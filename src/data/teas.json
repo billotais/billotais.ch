@@ -1,0 +1,425 @@
+[
+  {
+    "slug": "euphorie-d-hiver-bio",
+    "name": "Euphorie d'Hiver Bio",
+    "type": [
+      "Rooibos",
+      "Maté Vert"
+    ],
+    "brand": "TeaTime",
+    "personalRating": 5,
+    "infusionTime": "7 - 10 minutes",
+    "temperature": "100°C",
+    "ingredients": [
+      "Citronelle",
+      "Fèves de Cacao",
+      "Pomme",
+      "Ortie",
+      "Ecorce d'orange",
+      "Arôme Pamplemousse",
+      "Arôme Orange",
+      "Poivre Rose",
+      "Cardamome",
+      "Verveine",
+      "Huile essentielle de Citron Vert",
+      "Pétales de Rose"
+    ],
+    "purchasePlace": "TeaTime"
+  },
+  {
+    "slug": "le-the-merveilleux",
+    "name": "Le Thé Merveilleux",
+    "type": "Thé vert",
+    "brand": "Palais des Thés",
+    "personalRating": 5,
+    "infusionTime": "4 minutes",
+    "temperature": "75°C",
+    "ingredients": [
+      "Amandes Caramélisées",
+      "Pistache"
+    ],
+    "purchasePlace": "Touthé"
+  },
+  {
+    "slug": "noel-blanc-bio",
+    "name": "Noël Blanc Bio",
+    "type": "Thé Blanc",
+    "brand": "TeaTime",
+    "personalRating": 5,
+    "infusionTime": " 1 - 2 minutes",
+    "temperature": "70 - 80°C",
+    "ingredients": [
+      "Pomme",
+      "Bâtons de cannelle",
+      "Ecorce d'orange",
+      "Gingembre",
+      "Clou de Girofle",
+      "Cardamome"
+    ],
+    "purchasePlace": "TeaTime"
+  },
+  {
+    "slug": "rooibos-prune-canelle",
+    "name": "Rooibos Prune Canelle",
+    "type": [
+      "Rooibos"
+    ],
+    "brand": "TouThé",
+    "personalRating": 5,
+    "infusionTime": "7 - 10 minutes",
+    "temperature": "95°C",
+    "ingredients": [
+      "Gingembre",
+      "Cannelle",
+      "Prune",
+      "Fleurs de Bleuet"
+    ],
+    "purchasePlace": "Touthé"
+  },
+  {
+    "slug": "rooibos-de-noel",
+    "name": "Rooibos de Noël",
+    "type": "Rooibos",
+    "brand": "TeaTime",
+    "personalRating": 5,
+    "infusionTime": "7-10 minutes",
+    "temperature": "100°C",
+    "ingredients": [
+      "Pomme",
+      "Orange",
+      "Canelle",
+      "Clou de Girofle",
+      "Pétales de Rose",
+      "Cardamome"
+    ],
+    "purchasePlace": "TeaTime"
+  },
+  {
+    "slug": "semaine-38-bio",
+    "name": "Semaine 38 Bio",
+    "type": "Infusion",
+    "brand": "TouThé",
+    "personalRating": 5,
+    "infusionTime": "4 minutes",
+    "temperature": "95°C",
+    "ingredients": [
+      "Coco",
+      "Cardamome",
+      "Gingembre",
+      "Réglisse",
+      "Clou de Girofle",
+      "Poivre Rose",
+      "Cannelle"
+    ],
+    "purchasePlace": "Touthé"
+  },
+  {
+    "slug": "the-cannelle",
+    "name": "Thé Cannelle",
+    "type": "Thé noir",
+    "brand": "Thé de l'hospitalité",
+    "personalRating": 5,
+    "infusionTime": "5 minutes",
+    "temperature": "95°C",
+    "ingredients": [
+      "Cannelle"
+    ],
+    "purchasePlace": "Nature et Découverte"
+  },
+  {
+    "slug": "the-blanc-coco-passion",
+    "name": "Thé blanc Coco Passion",
+    "type": "Thé Blanc",
+    "brand": "English Tea Shop",
+    "personalRating": 5,
+    "infusionTime": null,
+    "temperature": null,
+    "ingredients": [
+      "Citronelle",
+      "Cacao",
+      "Gingembre",
+      "Fruit de la Passion"
+    ],
+    "purchasePlace": null
+  },
+  {
+    "slug": "the-des-lords",
+    "name": "Thé des Lords",
+    "type": "Thé noir",
+    "brand": "Palais des Thés",
+    "personalRating": 5,
+    "infusionTime": "4-5 minutes",
+    "temperature": "95°C",
+    "ingredients": [
+      "Bergamote"
+    ],
+    "purchasePlace": "Touthé"
+  },
+  {
+    "slug": "the-vert-menthe",
+    "name": "Thé vert Menthe",
+    "type": "Thé vert",
+    "brand": "English Tea Shop",
+    "personalRating": 5,
+    "infusionTime": null,
+    "temperature": null,
+    "ingredients": [
+      "Menthe"
+    ],
+    "purchasePlace": null
+  },
+  {
+    "slug": "chai-imperial",
+    "name": "Chaï Impérial",
+    "type": "Thé noir",
+    "brand": "Palais des Thés",
+    "personalRating": 4,
+    "infusionTime": "4 minutes",
+    "temperature": "95°C",
+    "ingredients": [
+      "Cardamome",
+      "Clou de Girofle",
+      "Baies Roses",
+      "Cannelle"
+    ],
+    "purchasePlace": "Touthé"
+  },
+  {
+    "slug": "framberry-bio",
+    "name": "Framberry Bio",
+    "type": "Infusion",
+    "brand": "TeaTime",
+    "personalRating": 4,
+    "infusionTime": "10 - 12 minutes",
+    "temperature": "100°C",
+    "ingredients": [
+      "Pomme",
+      "Hibiscus",
+      "Raisin",
+      "Cynorrhodon",
+      "Ananas",
+      "Fraise",
+      "Framboise",
+      "Fleurs de Bleuet"
+    ],
+    "purchasePlace": "TeaTime"
+  },
+  {
+    "slug": "jardin-des-bois",
+    "name": "Jardin des Bois",
+    "type": "Infusion",
+    "brand": "Palais des Thés",
+    "personalRating": 4,
+    "infusionTime": "4 minutes",
+    "temperature": "90°C",
+    "ingredients": [
+      "Sureau",
+      "Framboises",
+      "Baies"
+    ],
+    "purchasePlace": "Touthé"
+  },
+  {
+    "slug": "jardin-des-reines",
+    "name": "Jardin des Reines",
+    "type": "Infusion",
+    "brand": "Palais des Thés",
+    "personalRating": 4,
+    "infusionTime": "4-5 minutes",
+    "temperature": "90°C",
+    "ingredients": [
+      "Amandes Caramélisées",
+      "Pomme",
+      "Cannelle"
+    ],
+    "purchasePlace": "Touthé"
+  },
+  {
+    "slug": "rooibos-cacao-vanille",
+    "name": "Rooibos Cacao & Vanille",
+    "type": "Rooibos",
+    "brand": "English Tea Shop",
+    "personalRating": 4,
+    "infusionTime": null,
+    "temperature": null,
+    "ingredients": [
+      "Cacao",
+      "Vanille"
+    ],
+    "purchasePlace": null
+  },
+  {
+    "slug": "sencha-geisha",
+    "name": "Sencha Geisha",
+    "type": "Thé vert",
+    "brand": "Le comptoir de Mathilde",
+    "personalRating": 4,
+    "infusionTime": "3 minutes",
+    "temperature": "80°C",
+    "ingredients": [
+      "Groseille"
+    ],
+    "purchasePlace": null
+  },
+  {
+    "slug": "the-du-hammam-black-leaf",
+    "name": "Thé du Hammam Black Leaf",
+    "type": "Thé noir",
+    "brand": "Palais des Thés",
+    "personalRating": 4,
+    "infusionTime": "5 minutes",
+    "temperature": "95°C",
+    "ingredients": [
+      "Fruits rouges",
+      "Fleurs",
+      "Rhubarbe"
+    ],
+    "purchasePlace": "Touthé"
+  },
+  {
+    "slug": "the-vert-grenade",
+    "name": "Thé vert Grenade",
+    "type": "Thé vert",
+    "brand": "English Tea Shop",
+    "personalRating": 4,
+    "infusionTime": null,
+    "temperature": null,
+    "ingredients": [
+      "Grenade",
+      "Pétales de Rose"
+    ],
+    "purchasePlace": null
+  },
+  {
+    "slug": "ciel-d-hiver-bio-cannelle-mandarine",
+    "name": "Ciel d'Hiver Bio (Cannelle - Mandarine)",
+    "type": [
+      "Thé vert",
+      "Thé Blanc"
+    ],
+    "brand": "TeaTime",
+    "personalRating": 3,
+    "infusionTime": "2 - 3 minutes",
+    "temperature": "70 - 80°C",
+    "ingredients": [
+      "Bâtons de cannelle",
+      "Ecorce d'orange",
+      "Souci",
+      "Huile essentielle de Citron Vert"
+    ],
+    "purchasePlace": "TeaTime"
+  },
+  {
+    "slug": "delice-des-fees",
+    "name": "Délice des Fées",
+    "type": "Thé noir",
+    "brand": "Les Jardins de Gaïa",
+    "personalRating": 3,
+    "infusionTime": "3 - 4 minutes",
+    "temperature": "90°C",
+    "ingredients": [
+      "Fraise",
+      "Vanille"
+    ],
+    "purchasePlace": "Ravann"
+  },
+  {
+    "slug": "l-herboriste-108",
+    "name": "L'Herboriste 108",
+    "type": "Infusion",
+    "brand": "Palais des Thés",
+    "personalRating": 3,
+    "infusionTime": "5 minutes",
+    "temperature": "90°C",
+    "ingredients": [
+      "Verveine",
+      "Orange",
+      "Menthe"
+    ],
+    "purchasePlace": "Touthé"
+  },
+  {
+    "slug": "the-noir-no-25",
+    "name": "Thé noir no 25",
+    "type": "Thé noir",
+    "brand": "Palais des Thés",
+    "personalRating": 3,
+    "infusionTime": "5 minutes",
+    "temperature": "95°C",
+    "ingredients": [
+      "Agrumes",
+      "Amandes",
+      "Rose",
+      "Epices"
+    ],
+    "purchasePlace": "Touthé"
+  },
+  {
+    "slug": "voyage-au-canada-sirop-d-erable",
+    "name": "Voyage au Canada (Sirop D'érable)",
+    "type": "Thé noir",
+    "brand": "TeaTime",
+    "personalRating": 3,
+    "infusionTime": "3 - 5 minutes",
+    "temperature": "100°C",
+    "ingredients": [
+      "Racine de Chicorée",
+      "Noix",
+      "Caramel",
+      "Racine de Maca",
+      "Arôme de Sirop d'Erable"
+    ],
+    "purchasePlace": "TeaTime"
+  },
+  {
+    "slug": "genmaicha",
+    "name": "Genmaicha",
+    "type": [
+      "Thé vert"
+    ],
+    "brand": "World of Tea",
+    "personalRating": null,
+    "infusionTime": "2 - 3 minutes",
+    "temperature": "70 - 80°C",
+    "ingredients": [
+      "Popcorn"
+    ],
+    "purchasePlace": "World of Tea"
+  },
+  {
+    "slug": "mate-cola",
+    "name": "Mate Cola",
+    "type": [
+      "Maté Vert"
+    ],
+    "brand": "World of Tea",
+    "personalRating": null,
+    "infusionTime": "5 - 10 minutes",
+    "temperature": "95°C",
+    "ingredients": [
+      "Pomme",
+      "Pomelo",
+      "Quartiers d'orange",
+      "Mûres sucrées",
+      "Zeste de Citron",
+      "Zeste d'Orange"
+    ],
+    "purchasePlace": "World of Tea"
+  },
+  {
+    "slug": "sencha-orange-sanguine",
+    "name": "Sencha Orange Sanguine",
+    "type": [
+      "Thé vert"
+    ],
+    "brand": "World of Tea",
+    "personalRating": null,
+    "infusionTime": " 1 - 2 minutes",
+    "temperature": "65 - 75°C",
+    "ingredients": [
+      "Ecorce d'orange",
+      "Orange Sanguine"
+    ],
+    "purchasePlace": "World of Tea"
+  }
+]

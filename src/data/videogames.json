@@ -1,0 +1,348 @@
+[
+  {
+    "slug": "baldur-s-gate-3-2023",
+    "title": "Baldur's Gate 3",
+    "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1086940/48a2fcbda8565bb45025e98fd8ebde8a7203f6a0/header.jpg?t=1748346026",
+    "year": "2023",
+    "onlineRating": 96,
+    "personalRating": 10,
+    "genres": [
+      "Adventure",
+      "RPG",
+      "Strategy"
+    ],
+    "developers": [
+      "Larian Studios"
+    ],
+    "steamUrl": "https://store.steampowered.com/app/1086940"
+  },
+  {
+    "slug": "clair-obscur-expedition-33-2025",
+    "title": "Clair Obscur: Expedition 33",
+    "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1903340/be3305b02d4db0dffa3458537118423bf2792d7e/header.jpg?t=1750245564",
+    "year": "2025",
+    "onlineRating": 91,
+    "personalRating": 10,
+    "genres": [
+      "Action",
+      "RPG"
+    ],
+    "developers": [
+      "Sandfall Interactive"
+    ],
+    "steamUrl": "https://store.steampowered.com/app/1903340"
+  },
+  {
+    "slug": "a-plague-tale-innocence-2019",
+    "title": "A Plague Tale: Innocence",
+    "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/752590/header.jpg?t=1727793332",
+    "year": "2019",
+    "onlineRating": 81,
+    "personalRating": 9,
+    "genres": [
+      "Action",
+      "Adventure"
+    ],
+    "developers": [
+      "Asobo Studio"
+    ],
+    "steamUrl": "https://store.steampowered.com/app/752590"
+  },
+  {
+    "slug": "a-plague-tale-requiem-2022",
+    "title": "A Plague Tale: Requiem",
+    "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1182900/header.jpg?t=1728650613",
+    "year": "2022",
+    "onlineRating": 82,
+    "personalRating": 9,
+    "genres": [
+      "Action",
+      "Adventure"
+    ],
+    "developers": [
+      "Asobo Studio"
+    ],
+    "steamUrl": "https://store.steampowered.com/app/1182900"
+  },
+  {
+    "slug": "celeste-2018",
+    "title": "Celeste",
+    "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/504230/header.jpg?t=1714089525",
+    "year": "2018",
+    "onlineRating": 88,
+    "personalRating": 9,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Indie"
+    ],
+    "developers": [
+      "Maddy Makes Games Inc.",
+      "Extremely OK Games, Ltd."
+    ],
+    "steamUrl": "https://store.steampowered.com/app/504230"
+  },
+  {
+    "slug": "control-ultimate-edition-2020",
+    "title": "Control Ultimate Edition",
+    "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/870780/header.jpg?t=1743425935",
+    "year": "2020",
+    "onlineRating": 85,
+    "personalRating": 9,
+    "genres": [
+      "Action",
+      "Adventure"
+    ],
+    "developers": [
+      "Remedy Entertainment"
+    ],
+    "steamUrl": "https://store.steampowered.com/app/870780"
+  },
+  {
+    "slug": "dead-cells-2018",
+    "title": "Dead Cells",
+    "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/588650/header.jpg?t=1747319767",
+    "year": "2018",
+    "onlineRating": 89,
+    "personalRating": 9,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Indie"
+    ],
+    "developers": [
+      "Motion Twin"
+    ],
+    "steamUrl": "https://store.steampowered.com/app/588650"
+  },
+  {
+    "slug": "hi-fi-rush-2023",
+    "title": "Hi-Fi RUSH",
+    "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1817230/header.jpg?t=1750779437",
+    "year": "2023",
+    "onlineRating": 90,
+    "personalRating": 9,
+    "genres": [
+      "Action"
+    ],
+    "developers": [
+      "Tango Gameworks"
+    ],
+    "steamUrl": "https://store.steampowered.com/app/1817230"
+  },
+  {
+    "slug": "portal-2-2011",
+    "title": "Portal 2",
+    "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/620/header.jpg?t=1745363004",
+    "year": "2011",
+    "onlineRating": 95,
+    "personalRating": 9,
+    "genres": [
+      "Action",
+      "Adventure"
+    ],
+    "developers": [
+      "Valve"
+    ],
+    "steamUrl": "https://store.steampowered.com/app/620"
+  },
+  {
+    "slug": "red-dead-redemption-2-2019",
+    "title": "Red Dead Redemption 2",
+    "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1174180/header.jpg?t=1720558643",
+    "year": "2019",
+    "onlineRating": 93,
+    "personalRating": 9,
+    "genres": [
+      "Action",
+      "Adventure"
+    ],
+    "developers": [
+      "Rockstar Games"
+    ],
+    "steamUrl": "https://store.steampowered.com/app/1174180"
+  },
+  {
+    "slug": "far-far-west-2026",
+    "title": "Far Far West",
+    "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3124540/21362a3efa8067bf28d0abf350c2a13cd39e61bc/header_alt_assets_3.jpg?t=1778234595",
+    "year": "2026",
+    "onlineRating": 0,
+    "personalRating": 8,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Indie",
+      "Early Access"
+    ],
+    "developers": [
+      "Evil Raptor"
+    ],
+    "steamUrl": "https://store.steampowered.com/app/3124540"
+  },
+  {
+    "slug": "grand-theft-auto-v-enhanced-2025",
+    "title": "Grand Theft Auto V Enhanced",
+    "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3240220/header.jpg?t=1750360341",
+    "year": "2025",
+    "onlineRating": 0,
+    "personalRating": 8,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Racing"
+    ],
+    "developers": [
+      "Rockstar North"
+    ],
+    "steamUrl": "https://store.steampowered.com/app/3240220"
+  },
+  {
+    "slug": "hogwarts-legacy-2023",
+    "title": "Hogwarts Legacy",
+    "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/990080/a3cdc6f40d97df8ac993679c2dd1edeb5222421e/header.jpg?t=1747346162",
+    "year": "2023",
+    "onlineRating": 83,
+    "personalRating": 8,
+    "genres": [
+      "Action",
+      "Adventure",
+      "RPG"
+    ],
+    "developers": [
+      "Avalanche Software"
+    ],
+    "steamUrl": "https://store.steampowered.com/app/990080"
+  },
+  {
+    "slug": "horizon-zero-dawn-complete-edition-2020",
+    "title": "Horizon Zero Dawn™ Complete Edition",
+    "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1151640/header.jpg?t=1750105817",
+    "year": "2020",
+    "onlineRating": 0,
+    "personalRating": 8,
+    "genres": [
+      "Action",
+      "Adventure",
+      "RPG"
+    ],
+    "developers": [
+      "Guerrilla"
+    ],
+    "steamUrl": "https://store.steampowered.com/app/1151640"
+  },
+  {
+    "slug": "star-wars-jedi-fallen-order-2019",
+    "title": "STAR WARS Jedi: Fallen Order™",
+    "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1172380/header.jpg?t=1748950986",
+    "year": "2019",
+    "onlineRating": 81,
+    "personalRating": 8,
+    "genres": [
+      "Action",
+      "Adventure"
+    ],
+    "developers": [
+      "Respawn Entertainment"
+    ],
+    "steamUrl": "https://store.steampowered.com/app/1172380"
+  },
+  {
+    "slug": "star-wars-jedi-survivor-2023",
+    "title": "STAR WARS Jedi: Survivor™",
+    "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1774580/header.jpg?t=1748945254",
+    "year": "2023",
+    "onlineRating": 0,
+    "personalRating": 8,
+    "genres": [
+      "Action",
+      "Adventure"
+    ],
+    "developers": [
+      "Respawn"
+    ],
+    "steamUrl": "https://store.steampowered.com/app/1774580"
+  },
+  {
+    "slug": "stray-2022",
+    "title": "Stray",
+    "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1332010/header.jpg?t=1733260906",
+    "year": "2022",
+    "onlineRating": 82,
+    "personalRating": 8,
+    "genres": [
+      "Adventure",
+      "Indie"
+    ],
+    "developers": [
+      "BlueTwelve Studio"
+    ],
+    "steamUrl": "https://store.steampowered.com/app/1332010"
+  },
+  {
+    "slug": "horizon-forbidden-west-complete-edition-2024",
+    "title": "Horizon Forbidden West™ Complete Edition",
+    "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2420110/header.jpg?t=1750953213",
+    "year": "2024",
+    "onlineRating": 0,
+    "personalRating": 6,
+    "genres": [
+      "Action",
+      "RPG"
+    ],
+    "developers": [
+      "Guerrilla",
+      "Nixxes Software"
+    ],
+    "steamUrl": "https://store.steampowered.com/app/2420110"
+  },
+  {
+    "slug": "deltarune-2025",
+    "title": "DELTARUNE",
+    "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1671210/7ccda5b1631d2e60cc756a3271e845dbb9168821/header.jpg?t=1749252480",
+    "year": "2025",
+    "onlineRating": 0,
+    "personalRating": 0,
+    "genres": [
+      "Indie",
+      "RPG"
+    ],
+    "developers": [
+      "tobyfox"
+    ],
+    "steamUrl": "https://store.steampowered.com/app/1671210"
+  },
+  {
+    "slug": "nier-automata-2017",
+    "title": "NieR:Automata™",
+    "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/524220/header.jpg?t=1745222701",
+    "year": "2017",
+    "onlineRating": 84,
+    "personalRating": 0,
+    "genres": [
+      "Action",
+      "RPG"
+    ],
+    "developers": [
+      "Square Enix",
+      "PlatinumGames Inc."
+    ],
+    "steamUrl": "https://store.steampowered.com/app/524220"
+  },
+  {
+    "slug": "resonance-a-plague-tale-legacy-2026",
+    "title": "Resonance: A Plague Tale Legacy",
+    "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2713000/1e291a113dfe7805ad2935a67738d33bd13ccaf5/header.jpg?t=1750330513",
+    "year": "2026",
+    "onlineRating": 0,
+    "personalRating": 0,
+    "genres": [
+      "Action",
+      "Adventure"
+    ],
+    "developers": [
+      "Asobo Studio"
+    ],
+    "steamUrl": "https://store.steampowered.com/app/2713000"
+  }
+]

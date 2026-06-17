@@ -1,97 +1,149 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 
 const projects = [
-  {
-    title: "Cross-Lingual Toxicity Detection",
-    subtitle: "MSc Thesis",
-    description: "Transformer-based classifiers for detecting hateful and offensive content in short texts. Tackled cross-lingual classification using joint-learning and data translation approaches, outperforming existing multilingual models on zero-shot benchmarks.",
-    tags: ["NLP", "BERT", "Transformers", "Python"],
-    link: "http://cltd.bilat.xyz",
-    linkLabel: "Report"
-  },
-  {
-    title: "Denoising with Generative Models",
-    subtitle: "Research Project",
-    description: "Evaluated state-of-the-art techniques for audio denoising and super-resolution, then applied generative adversarial network methods from image processing to the audio domain.",
-    tags: ["GANs", "Deep Learning", "Audio Processing", "Python"],
-    link: "http://vita.bilat.xyz",
-    linkLabel: "Demo"
-  },
-  {
-    title: "Detecting Bias in Amazon Reviews",
-    subtitle: "Data Analysis",
-    description: "Data story exploring potential bias in Amazon user reviews and methods to correct it, working on 20 GB of comments using Pandas, PySpark, and Matplotlib.",
-    tags: ["Data Analysis", "PySpark", "Python"],
-    link: "https://ada-lyn.github.io/",
-    linkLabel: "Data Story"
-  },
-  {
-    title: "The Quest for The Holy Grail",
-    subtitle: "3D Game",
-    description: "3D maze game built in C with OpenGL, featuring world physics, lighting effects, rendering optimizations, a user interface, and sound effects.",
-    tags: ["C", "OpenGL", "Graphics"],
-    link: "https://github.com/Billotais/TSBK07_project",
-    linkLabel: "GitHub"
-  },
-  {
-    title: "Part-of-Speech Tagger &amp; Dependency Parser",
-    subtitle: "NLP / ML",
-    description: "Multi-class perceptron POS tagger (93%+ accuracy) and sentence dependency parser (76%+ accuracy) implemented from scratch in Python.",
-    tags: ["NLP", "Python", "Machine Learning"],
-    link: "https://github.com/Billotais/TDDE09_project",
-    linkLabel: "GitHub"
-  },
-  {
-    title: "Calcul Mental",
-    subtitle: "Android App",
-    description: "Android app for mental arithmetic practice with multiple modes including test mode, timed mode, and rush mode.",
-    tags: ["Android", "Java"],
-    link: "https://play.google.com/store/apps/details?id=com.lafloculation.billotais.livrets",
-    linkLabel: "Play Store"
-  },
-  {
-    title: "La Pipopipette",
-    subtitle: "iOS Game · Maturity Project",
-    description: "Multiplayer iOS implementation of Dots and Boxes supporting up to 4 local players, with an AI opponent. Written in Objective-C.",
-    tags: ["iOS", "Objective-C", "Game AI"],
-    link: "http://tm.bilat.xyz",
-    linkLabel: "Project"
-  }
+    {
+        title: "3D Mapping and Object Change Detection with VGGT-SLAM",
+        subtitle: "Article · ELCA IT Blog",
+        description:
+            "Co-authored technical article demonstrating a system for detecting environmental changes across multiple drone flights using monocular VGGT-SLAM and semantic segmentation. The approach reconstructs 3D scenes from single-camera video, identifies objects with ML, and aligns separate reconstructions to highlight what persists, appears, or disappears between flights.",
+        tags: ["Computer Vision", "3D Reconstruction", "SLAM", "Object Detection", "Python", "ELCA"],
+        links: [
+            {
+                href: "https://medium.com/elca-it/3d-mapping-and-object-change-detection-with-vggt-slam-2028ee3508ad",
+                label: "Read",
+            },
+        ],
+    },
+    {
+        title: "Obsidian Template",
+        subtitle: "Productivity / Knowledge Management",
+        description:
+            "A daily-use Obsidian vault template centred on Templater for note creation and Bases views surfaced in the sidebar. Keeps the plugin footprint small, with Excalidraw as the main optional addition.",
+        tags: ["Obsidian", "Knowledge Management", "Productivity", "Templater", "Bases"],
+        links: [{ href: "https://github.com/billotais/obsidian-template", label: "GitHub" }],
+    },
+    {
+        title: "Human-Robot Communication for Embedded Systems",
+        subtitle: "Article · ELCA IT Blog · Project supervision",
+        description:
+            "Project I supervised exploring a lightweight, offline voice command system for a Mars rover. The system converts natural speech into executable commands by chaining hotword detection, speech-to-text, and a local LLM — enabling hands-free rover control without network access or a traditional gamepad. Written by Pierre Hellich.",
+        tags: ["LLM", "Speech-to-Text", "Embedded Systems", "Robotics", "ELCA"],
+        links: [
+            {
+                href: "https://medium.com/elca-it/human-robot-communication-for-embedded-systems-2a6d040daadc",
+                label: "Read",
+            },
+        ],
+    },
+
+    {
+        title: "Cross-Lingual Toxicity Detection",
+        subtitle: "MSc Thesis",
+        description:
+            "Transformer-based classifiers for detecting hateful and offensive content in short texts. Tackled cross-lingual classification using joint-learning and data translation approaches, outperforming existing multilingual models on zero-shot benchmarks.",
+        tags: ["NLP", "BERT", "Transformers", "Python"],
+        links: [
+            { href: "/pdf/cltd.pdf", label: "Thesis PDF" },
+            {
+                href: "https://medium.com/elca-it/zero-shot-multilingual-classification-models-13c3c0f44ad7",
+                label: "Article",
+            },
+        ],
+    },
+    {
+        title: "Denoising with Generative Models",
+        subtitle: "Research Project",
+        description:
+            "Evaluated state-of-the-art techniques for audio denoising and super-resolution, then applied generative adversarial network methods from image processing to the audio domain.",
+        tags: ["GANs", "Deep Learning", "Audio Processing", "Python"],
+        links: [{ href: "/blog/denoising-generative-models", label: "Post" }],
+    },
+    {
+        title: "Detecting Bias in Amazon Reviews",
+        subtitle: "Data Analysis",
+        description:
+            "Data story exploring potential bias in Amazon user reviews and methods to correct it, working on 20 GB of comments using Pandas, PySpark, and Matplotlib.",
+        tags: ["Data Analysis", "PySpark", "Python"],
+        links: [{ href: "https://ada-lyn.github.io/", label: "Data Story" }],
+    },
+    {
+        title: "The Quest for The Holy Grail",
+        subtitle: "3D Game",
+        description:
+            "3D maze game built in C with OpenGL, featuring world physics, lighting effects, rendering optimizations, a user interface, and sound effects.",
+        tags: ["C", "OpenGL", "Graphics"],
+        links: [{ href: "https://github.com/Billotais/TSBK07_project", label: "GitHub" }],
+    },
+    {
+        title: "Part-of-Speech Tagger &amp; Dependency Parser",
+        subtitle: "NLP / ML",
+        description:
+            "Multi-class perceptron POS tagger (93%+ accuracy) and sentence dependency parser (76%+ accuracy) implemented from scratch in Python.",
+        tags: ["NLP", "Python", "Machine Learning"],
+        links: [{ href: "https://github.com/Billotais/TDDE09_project", label: "GitHub" }],
+    },
+    {
+        title: "Calcul Mental",
+        subtitle: "Android App",
+        description:
+            "Android app for mental arithmetic practice with multiple modes including test mode, timed mode, and rush mode.",
+        tags: ["Android", "Java"],
+    },
+    {
+        title: "La Pipopipette",
+        subtitle: "iOS Game · Maturity Project",
+        description:
+            "Multiplayer iOS implementation of Dots and Boxes supporting up to 4 local players, with an AI opponent. Written in Objective-C.",
+        tags: ["iOS", "Objective-C", "Game AI"],
+        links: [{ href: "/pdf/tm.pdf", label: "PDF" }],
+    },
 ];
 ---
 
 <Layout
-  title="Projects"
-  description="Academic and personal projects by Loïs Bilat — NLP, ML, data analysis, game development."
-  activeNav="projects"
+    title="Projects"
+    description="Academic, professional and personal projects by Loïs Bilat — NLP, ML, data analysis, game development."
+    activeNav="projects"
+    pageSubtitle="Various projects I have worked on, from academic research to personal experiments and published professional work."
 >
-  <main class="container page">
-    <div class="page-header">
-      <h1 class="page-title">Projects</h1>
-      <p class="page-subtitle">Academic and personal work from my studies and free time</p>
-    </div>
-
-    <div class="project-list">
-      {projects.map(p => (
-        <div class="project-card">
-          <div class="project-card-header">
-            <div>
-              <div class="project-card-title">{p.title}</div>
-              <div style="font-size:0.8rem;color:var(--color-text-muted);margin-top:2px;">{p.subtitle}</div>
-            </div>
-            {p.link && (
-              <a href={p.link} target="_blank" rel="noopener" class="project-card-link btn btn-outline" style="padding:5px 12px;">
-                {p.linkLabel} ↗
-              </a>
-            )}
-          </div>
-          <p class="project-card-desc" set:html={p.description}></p>
-          <div class="timeline-tags" style="margin-top:14px;">
-            {p.tags.map(t => <span class="tag">{t}</span>)}
-          </div>
+    <main class="container page">
+        <div class="project-list">
+            {
+                projects.map((p) => (
+                    <div class="project-card">
+                        <div class="project-card-header">
+                            <div>
+                                <div class="project-card-title" set:html={p.title} />
+                                <div style="font-size:0.8rem;color:var(--color-text-muted);margin-top:2px;">
+                                    {p.subtitle}
+                                </div>
+                            </div>
+                            {p.links && p.links.length > 0 && (
+                                <div class="project-card-links">
+                                    {p.links.map((l) => (
+                                        <a
+                                            href={l.href}
+                                            target={l.href.startsWith("http") ? "_blank" : undefined}
+                                            rel="noopener"
+                                            class="btn btn-outline"
+                                            style="padding:5px 12px;font-size:0.8rem;"
+                                        >
+                                            {l.label} {l.href.startsWith("http") ? "↗" : ""}
+                                        </a>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
+                        <p class="project-card-desc" set:html={p.description} />
+                        <div class="timeline-tags" style="margin-top:14px;">
+                            {p.tags.map((t) => (
+                                <span class="tag">{t}</span>
+                            ))}
+                        </div>
+                    </div>
+                ))
+            }
         </div>
-      ))}
-    </div>
-  </main>
+    </main>
 </Layout>

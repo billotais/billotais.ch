@@ -1,0 +1,149 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import tvshows from '../../data/tvshows.json';
+
+const sorted = [...tvshows].sort((a, b) => {
+  if (a.personalRating === null && b.personalRating === null) return 0;
+  if (a.personalRating === null) return 1;
+  if (b.personalRating === null) return -1;
+  return b.personalRating - a.personalRating;
+});
+
+const rated = tvshows.filter(s => s.personalRating !== null);
+const subtitle = tvshows.length === 0 ? 'Not yet synced — run npm run sync with Trakt credentials' : `${tvshows.length} shows watched · ${rated.length} rated`;
+---
+
+<Layout
+  title="TV Shows"
+  description="TV shows I have watched, with personal ratings from Trakt."
+  activeNav="collections"
+  pageSubtitle={subtitle}
+>
+  <main class="container page">
+
+    {tvshows.length === 0 ? (
+      <div class="empty-state">
+        <p>To populate this page, add your Trakt credentials to <code>.env</code> and run <code>npm run sync</code>.</p>
+        <p style="margin-top:8px;">See <code>.env.example</code> for the required keys.</p>
+      </div>
+    ) : (
+      <>
+        <div class="tab-list" role="tablist">
+          <button class="tab-btn active" data-tab="all"    role="tab">All <span class="tab-count">{tvshows.length}</span></button>
+          <button class="tab-btn"        data-tab="9-10"   role="tab">★ 9–10</button>
+          <button class="tab-btn"        data-tab="7-8"    role="tab">★ 7–8</button>
+          <button class="tab-btn"        data-tab="low"    role="tab">★ ≤6</button>
+          <button class="tab-btn"        data-tab="unrated" role="tab">Unrated</button>
+        </div>
+
+        <div class="media-grid" id="shows-grid">
+          {sorted.map(s => {
+            const r = s.personalRating;
+            const bucket = r === null ? 'unrated' : r >= 9 ? '9-10' : r >= 7 ? '7-8' : 'low';
+            return (
+              <a
+                href={s.traktUrl}
+                target="_blank"
+                rel="noopener"
+                class="media-card"
+                data-rating={bucket}
+              >
+                {s.image
+                  ? <img class="media-card-img" src={s.image} alt={s.title} loading="lazy" />
+                  : <div class="media-card-img media-card-img-placeholder">📺</div>
+                }
+                <div class="media-card-body">
+                  <div class="media-card-title">{s.title}</div>
+                  {s.network && <div class="media-card-summary">{s.network}{s.year ? ` · ${s.year}` : ''}</div>}
+                  <div class="media-card-meta">
+                    {s.status && (
+                      <span class={`show-status show-status--${s.status?.toLowerCase().replace(/\s+/g, '-')}`}>
+                        {s.status}
+                      </span>
+                    )}
+                    {s.genres.slice(0, 2).map((g: string) => (
+                      <span class="tag">{g}</span>
+                    ))}
+                  </div>
+                  {r !== null && (
+                    <div class="media-card-ratings">
+                      <span class="rating-personal" title={`My rating: ${r}/10`}>★ {r}</span>
+                      {s.onlineRating !== null && s.onlineRating > 0 && (
+                        <span class="rating-online">Trakt {s.onlineRating}</span>
+                      )}
+                    </div>
+                  )}
+                </div>
+              </a>
+            );
+          })}
+        </div>
+      </>
+    )}
+  </main>
+</Layout>
+
+<style>
+  .tab-list {
+    display: flex;
+    gap: 0.25rem;
+    border-bottom: 2px solid var(--color-border);
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .tab-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0.5rem 1.1rem;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  .tab-btn:hover { color: var(--color-text); }
+
+  .tab-btn.active {
+    color: var(--color-accent);
+    border-bottom-color: var(--color-accent);
+  }
+
+  .tab-count {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--color-text-muted);
+  }
+
+  .tab-btn.active .tab-count {
+    color: var(--color-accent);
+  }
+
+  .media-card[hidden] { display: none; }
+</style>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.tab-btn');
+  const cards   = document.querySelectorAll<HTMLElement>('#shows-grid .media-card');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tab = btn.dataset.tab!;
+
+      buttons.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+
+      cards.forEach(card => {
+        const show = tab === 'all' || card.dataset.rating === tab;
+        card.hidden = !show;
+      });
+    });
+  });
+</script>

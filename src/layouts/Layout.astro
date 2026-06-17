@@ -1,50 +1,195 @@
 ---
-import '../styles/global.css';
+import "../styles/global.css";
 
 interface Props {
-  title: string;
-  description?: string;
-  activeNav?: string;
+    title: string;
+    description?: string;
+    activeNav?: string;
+    pageSubtitle?: string;
 }
 
-const { title, description = "Loïs Bilat – Senior Data & AI Engineer", activeNav } = Astro.props;
+const { title, description = "Loïs Bilat – Senior Data & AI Engineer", activeNav, pageSubtitle } = Astro.props;
 const fullTitle = title === "Loïs Bilat" ? title : `${title} – Loïs Bilat`;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content={description} />
-    <meta property="og:title" content={fullTitle} />
-    <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>{fullTitle}</title>
-  </head>
-  <body>
-    <nav class="nav">
-      <div class="container nav-inner">
-        <a href="/" class="nav-logo">Loïs Bilat</a>
-        <ul class="nav-links">
-          <li><a href="/" class={activeNav === 'home' ? 'active' : ''}>About</a></li>
-          <li><a href="/cv" class={activeNav === 'cv' ? 'active' : ''}>CV</a></li>
-          <li><a href="/projects" class={activeNav === 'projects' ? 'active' : ''}>Projects</a></li>
-          <li><a href="https://github.com/Billotais" target="_blank" rel="noopener">GitHub</a></li>
-        </ul>
-      </div>
-    </nav>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content={description} />
+        <meta property="og:title" content={fullTitle} />
+        <meta property="og:description" content={description} />
+        <meta property="og:type" content="website" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <title>{fullTitle}</title>
+        <script is:inline>
+            (function () {
+                var saved = localStorage.getItem("theme");
+                if (saved === "dark") document.documentElement.setAttribute("data-theme", "dark");
+            })();
+        </script>
+    </head>
+    <body>
+        <nav class="nav">
+            <div class="container nav-inner">
+                <a href="/" class="nav-logo">Loïs Bilat</a>
 
-    <slot />
+                <ul class="nav-links" id="nav-links">
+                    <li>
+                        <a href="/" class={`nav-home${activeNav === "home" ? " active" : ""}`} aria-label="Home" title="Home">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/><polyline points="9 21 9 12 15 12 15 21"/></svg>
+                        </a>
+                    </li>
+                    <li><a href="/cv" class={activeNav === "cv" ? "active" : ""}>CV</a></li>
+                    <li><a href="/projects" class={activeNav === "projects" ? "active" : ""}>Projects</a></li>
+                    <li><a href="/collections" class={activeNav === "collections" ? "active" : ""}>Collections</a></li>
+                    <li><a href="/blog" class={activeNav === "blog" ? "active" : ""}>Blog</a></li>
+                </ul>
 
-    <footer class="footer">
-      <div class="container">
-        © {new Date().getFullYear()} Loïs Bilat &nbsp;·&nbsp;
-        <a href="https://linkedin.com/in/lois-bilat" target="_blank" rel="noopener">LinkedIn</a>
-        &nbsp;·&nbsp;
-        <a href="https://github.com/Billotais" target="_blank" rel="noopener">GitHub</a>
-      </div>
-    </footer>
-  </body>
+                <div class="nav-actions">
+                    <button
+                        id="theme-toggle"
+                        class="theme-toggle"
+                        aria-label="Toggle dark mode"
+                        title="Toggle dark mode"
+                    >
+                        <svg
+                            id="theme-icon-moon"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            ><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg
+                        >
+                        <svg
+                            id="theme-icon-sun"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            style="display:none"
+                            ><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line
+                                x1="12"
+                                y1="21"
+                                x2="12"
+                                y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line
+                                x1="18.36"
+                                y1="18.36"
+                                x2="19.78"
+                                y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line
+                                x1="21"
+                                y1="12"
+                                x2="23"
+                                y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line
+                                x1="18.36"
+                                y1="5.64"
+                                x2="19.78"
+                                y2="4.22"></line></svg
+                        >
+                    </button>
+                    <button id="nav-hamburger" class="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
+                        <svg
+                            id="hamburger-icon-open"
+                            width="20"
+                            height="20"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            ><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line
+                                x1="3"
+                                y1="18"
+                                x2="21"
+                                y2="18"></line></svg
+                        >
+                        <svg
+                            id="hamburger-icon-close"
+                            width="20"
+                            height="20"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            style="display:none"
+                            ><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg
+                        >
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        {
+            pageSubtitle !== undefined && (
+                <div class="page-band">
+                    <div class="container">
+                        <h1 class="page-title">{title}</h1>
+                        <p class="page-subtitle">{pageSubtitle}</p>
+                    </div>
+                </div>
+            )
+        }
+
+        <slot />
+
+        <footer class="footer">
+            <div class="container">
+                © {new Date().getFullYear()} Loïs Bilat &nbsp;·&nbsp;
+                <a href="https://linkedin.com/in/lois-bilat" target="_blank" rel="noopener">LinkedIn</a>
+                &nbsp;·&nbsp;
+                <a href="https://github.com/Billotais" target="_blank" rel="noopener">GitHub</a>
+            </div>
+        </footer>
+
+        <script is:inline>
+            (function () {
+                function syncIcon() {
+                    var isDark = document.documentElement.getAttribute("data-theme") === "dark";
+                    document.getElementById("theme-icon-moon").style.display = isDark ? "none" : "";
+                    document.getElementById("theme-icon-sun").style.display = isDark ? "" : "none";
+                }
+                document.getElementById("theme-toggle").addEventListener("click", function () {
+                    var isDark = document.documentElement.getAttribute("data-theme") === "dark";
+                    if (isDark) {
+                        document.documentElement.removeAttribute("data-theme");
+                        localStorage.removeItem("theme");
+                    } else {
+                        document.documentElement.setAttribute("data-theme", "dark");
+                        localStorage.setItem("theme", "dark");
+                    }
+                    syncIcon();
+                });
+                syncIcon();
+
+                var hamburger = document.getElementById("nav-hamburger");
+                var navLinks = document.getElementById("nav-links");
+                hamburger.addEventListener("click", function () {
+                    var open = navLinks.classList.toggle("nav-open");
+                    hamburger.setAttribute("aria-expanded", open ? "true" : "false");
+                    document.getElementById("hamburger-icon-open").style.display = open ? "none" : "";
+                    document.getElementById("hamburger-icon-close").style.display = open ? "" : "none";
+                });
+                navLinks.querySelectorAll("a").forEach(function (a) {
+                    a.addEventListener("click", function () {
+                        navLinks.classList.remove("nav-open");
+                        hamburger.setAttribute("aria-expanded", "false");
+                        document.getElementById("hamburger-icon-open").style.display = "";
+                        document.getElementById("hamburger-icon-close").style.display = "none";
+                    });
+                });
+            })();
+        </script>
+    </body>
 </html>

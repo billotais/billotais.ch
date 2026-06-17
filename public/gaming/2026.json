@@ -1,0 +1,84 @@
+[
+  {
+    "date": "2026-06-01",
+    "game": "Secret Identity + Detective Club",
+    "complexity": 1.22,
+    "players": {
+      "Loïs": "tie",
+      "Lucas": "present",
+      "Colin": "present",
+      "Annie": "present",
+      "Laetitia": "present",
+      "Edgar": "tie"
+    }
+  },
+  {
+    "date": "2026-03-02",
+    "game": "Tiny Towns",
+    "complexity": 2.06,
+    "players": {
+      "Loïs": "present",
+      "Olga": "present",
+      "Colin": "present",
+      "Annie": "present",
+      "Laetitia": "present",
+      "Justine": "winner"
+    }
+  },
+  {
+    "date": "2026-03-03",
+    "game": "Courtisans & Oriflame",
+    "complexity": 1.8,
+    "players": {
+      "Loïs": "present",
+      "André": "winner",
+      "Colin": "present",
+      "Laetitia": "present"
+    }
+  },
+  {
+    "date": "2026-04-14",
+    "game": "Mysterium & Far away",
+    "complexity": 1.9,
+    "players": {
+      "Loïs": "tie",
+      "André": "present",
+      "Olga": "tie",
+      "Colin": "present",
+      "Raphaël": "present"
+    }
+  },
+  {
+    "date": "2026-04-28",
+    "game": "Santorini",
+    "complexity": 1.66,
+    "players": {
+      "Loïs": "tie",
+      "André": "present",
+      "Laetitia": "tie",
+      "Maxence": "present"
+    }
+  },
+  {
+    "date": "2026-05-26",
+    "game": "Take Time",
+    "complexity": 1.77,
+    "players": {
+      "Loïs": "tie",
+      "Annie": "tie",
+      "Paloma": "tie"
+    }
+  },
+  {
+    "date": "2026-06-09",
+    "game": "Take Time + Bluffer",
+    "complexity": 1.47,
+    "players": {
+      "Loïs": "present",
+      "André": "winner",
+      "Annie": "present",
+      "Laetitia": "present",
+      "Maxence": "present"
+    }
+  }
+]

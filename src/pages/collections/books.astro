@@ -1,0 +1,73 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import books from '../../data/books.json';
+
+const read = books.filter(b => b.read);
+const unread = books.filter(b => !b.read);
+const subtitle = `${read.length} read${unread.length > 0 ? ` · ${unread.length} to read` : ''}`;
+---
+
+<Layout
+  title="Books"
+  description="Books I have read, with personal ratings."
+  activeNav="collections"
+  pageSubtitle={subtitle}
+>
+  <main class="container page">
+
+    <div class="media-grid">
+      {read.map(b => (
+        <a
+          href={b.openLibraryUrl ?? '#'}
+          target={b.openLibraryUrl ? '_blank' : undefined}
+          rel="noopener"
+          class="media-card"
+        >
+          {b.image
+            ? <img class="media-card-img" src={b.image} alt={b.title} loading="lazy" />
+            : <div class="media-card-img media-card-img-placeholder">📚</div>
+          }
+          <div class="media-card-body">
+            <div class="media-card-title">{b.title}</div>
+            {b.authors?.length > 0 && (
+              <div class="media-card-summary">{b.authors.join(', ')}</div>
+            )}
+            {b.year && <div class="media-card-meta"><span>{b.year}</span></div>}
+            <div class="media-card-ratings">
+              {b.personalRating !== null && (
+                <span class="rating-personal">★ {b.personalRating}</span>
+              )}
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    {unread.length > 0 && (
+      <section style="margin-top: 56px;">
+        <h2 class="cv-section-title">To read</h2>
+        <div class="media-grid media-grid-small">
+          {unread.map(b => (
+            <a
+              href={b.openLibraryUrl ?? '#'}
+              target={b.openLibraryUrl ? '_blank' : undefined}
+              rel="noopener"
+              class="media-card"
+            >
+              {b.image
+                ? <img class="media-card-img" src={b.image} alt={b.title} loading="lazy" />
+                : <div class="media-card-img media-card-img-placeholder">📚</div>
+              }
+              <div class="media-card-body">
+                <div class="media-card-title">{b.title}</div>
+                {b.authors?.length > 0 && (
+                  <div class="media-card-summary">{b.authors.join(', ')}</div>
+                )}
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+  </main>
+</Layout>

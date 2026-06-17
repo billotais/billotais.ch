@@ -1,0 +1,50 @@
+[
+  {
+    "slug": "l-art-de-clair-obscur-2025",
+    "title": "L'art de Clair Obscur",
+    "image": "https://covers.openlibrary.org/b/id/15155192-L.jpg",
+    "year": "2025",
+    "authors": [
+      "Marine Macq"
+    ],
+    "personalRating": 10,
+    "read": true,
+    "openLibraryUrl": "https://openlibrary.org/works/OL44675385W"
+  },
+  {
+    "slug": "art-and-making-of-arcane-2024",
+    "title": "Art and Making of Arcane",
+    "image": "https://covers.openlibrary.org/b/id/15125218-L.jpg",
+    "year": "2024",
+    "authors": [
+      "Elisabeth Vincentelli, Insight Insight Editions"
+    ],
+    "personalRating": 9,
+    "read": true,
+    "openLibraryUrl": "https://openlibrary.org/works/OL39194295W"
+  },
+  {
+    "slug": "la-horde-du-contrevent-2004",
+    "title": "La horde du contrevent",
+    "image": "https://covers.openlibrary.org/b/OLID/OL35659293M-L.jpg",
+    "year": 2004,
+    "authors": [
+      "Alain Damasio"
+    ],
+    "personalRating": 9,
+    "read": true,
+    "openLibraryUrl": "https://openlibrary.org/works/OL26413656W"
+  },
+  {
+    "slug": "the-last-house-on-needless-street-2021",
+    "title": "The Last House on Needless Street",
+    "image": "https://covers.openlibrary.org/b/OLID/OL32163380M-L.jpg",
+    "year": 2021,
+    "authors": [
+      "Catriona Ward"
+    ],
+    "personalRating": 8,
+    "read": true,
+    "openLibraryUrl": "https://openlibrary.org/works/OL24312716W"
+  }
+]

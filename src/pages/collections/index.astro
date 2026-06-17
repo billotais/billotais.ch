@@ -1,0 +1,156 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import boardgames from "../../data/boardgames.json";
+import videogames from "../../data/videogames.json";
+import teas from "../../data/teas.json";
+import tvshows from "../../data/tvshows.json";
+import books from "../../data/books.json";
+import races from "../../data/races.json";
+
+const collections = [
+    {
+        href: "/collections/board-games",
+        title: "Board Games",
+        count: boardgames.length,
+        description: "Games I own and have played, rated from my collection.",
+        icon: "🎲",
+    },
+    {
+        href: "/collections/video-games",
+        title: "Video Games",
+        count: videogames.length,
+        description: "PC and console games tracked from my Steam library.",
+        icon: "🎮",
+    },
+
+    {
+        href: "/collections/tv-shows",
+        title: "TV Shows",
+        count: tvshows.length,
+        description: "Shows I have watched, with personal ratings synced from Trakt.",
+        icon: "📺",
+    },
+    {
+        href: "/collections/music",
+        title: "Music",
+        count: null,
+        description: "My favourite playlists on Apple Music.",
+        icon: "🎵",
+    },
+    {
+        href: "/collections/teas",
+        title: "Teas",
+        count: teas.length,
+        description: "Teas I have bought, with brewing notes and personal ratings.",
+        icon: "🍵",
+    },
+    {
+        href: "/collections/races",
+        title: "Races",
+        count: races.filter((r: { upcoming: boolean }) => !r.upcoming).length,
+        description: "Running races I have participated in, with finish times and pace.",
+        icon: "🏃",
+    },
+    // {
+    //   href: '/collections/books',
+    //   title: 'Books',
+    //   count: books.filter((b: { read: boolean }) => b.read).length,
+    //   description: 'Books I have read, with personal ratings.',
+    //   icon: '📚',
+    // },
+];
+---
+
+<Layout
+    title="Collections"
+    description="Personal collections — board games, video games, teas, and more."
+    activeNav="collections"
+    pageSubtitle="Things I track, rate, and care about"
+>
+    <main class="container page">
+        <div class="coll-grid">
+            {
+                collections.map((c) => (
+                    <a href={c.href} class="coll-card">
+                        <span class="coll-icon">{c.icon}</span>
+                        <div class="coll-title">
+                            {c.title}
+                            {c.count !== null && <span class="coll-count">{c.count}</span>}
+                        </div>
+                        <p class="coll-desc">{c.description}</p>
+                    </a>
+                ))
+            }
+        </div>
+    </main>
+</Layout>
+
+<style>
+    .coll-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+    }
+
+    @media (max-width: 640px) {
+        .coll-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 380px) {
+        .coll-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .coll-card {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        border: 1px solid var(--color-border);
+        border-radius: 12px;
+        padding: 24px 20px;
+        text-decoration: none;
+        color: inherit;
+        transition:
+            border-color 0.15s,
+            transform 0.15s,
+            box-shadow 0.15s;
+    }
+
+    .coll-card:hover {
+        border-color: var(--color-accent);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+        text-decoration: none;
+    }
+
+    .coll-icon {
+        font-size: 2rem;
+        line-height: 1;
+        margin-bottom: 4px;
+    }
+
+    .coll-title {
+        font-size: 0.9375rem;
+        font-weight: 600;
+        color: var(--color-text);
+        display: flex;
+        align-items: baseline;
+        gap: 6px;
+    }
+
+    .coll-count {
+        font-size: 0.775rem;
+        font-weight: 400;
+        color: var(--color-text-muted);
+    }
+
+    .coll-desc {
+        font-size: 0.8125rem;
+        color: var(--color-text-muted);
+        line-height: 1.5;
+        margin: 0;
+    }
+</style>

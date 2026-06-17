@@ -1,0 +1,130 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+  title="Music"
+  description="My favourite music — curated playlists on Apple Music."
+  activeNav="collections"
+  pageSubtitle="My Apple Music Replay playlists"
+>
+  <main class="container page">
+
+    <div class="tabs">
+      <div class="tab-list" role="tablist">
+        <button class="tab-btn active" data-tab="2026" role="tab" aria-selected="true">2026</button>
+        <button class="tab-btn" data-tab="2025" role="tab" aria-selected="false">2025</button>
+        <button class="tab-btn" data-tab="2024" role="tab" aria-selected="false">2024</button>
+        <button class="tab-btn" data-tab="alltime" role="tab" aria-selected="false">All Time</button>
+      </div>
+
+      <div class="tab-panel active" data-panel="2026" role="tabpanel">
+        <iframe
+          allow="autoplay *; encrypted-media *;"
+          frameborder="0"
+          height="450"
+          style="width:100%;max-width:660px;overflow:hidden;background:transparent;"
+          sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+          src="https://embed.music.apple.com/us/playlist/replay-2026/pl.rp-AR55SM6lD8k?l=en"
+        ></iframe>
+      </div>
+
+      <div class="tab-panel" data-panel="2025" role="tabpanel">
+        <iframe
+          allow="autoplay *; encrypted-media *;"
+          frameborder="0"
+          height="450"
+          style="width:100%;max-width:660px;overflow:hidden;background:transparent;"
+          sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+          src="https://embed.music.apple.com/us/playlist/replay-2025/pl.rp-6xDxU63ERw1?l=en"
+        ></iframe>
+      </div>
+
+      <div class="tab-panel" data-panel="2024" role="tabpanel">
+        <iframe
+          allow="autoplay *; encrypted-media *;"
+          frameborder="0"
+          height="450"
+          style="width:100%;max-width:660px;overflow:hidden;background:transparent;"
+          sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+          src="https://embed.music.apple.com/us/playlist/replay-2024/pl.rp-1kGwCEoPG7e?l=en"
+        ></iframe>
+      </div>
+
+      <div class="tab-panel" data-panel="alltime" role="tabpanel">
+        <iframe
+          allow="autoplay *; encrypted-media *;"
+          frameborder="0"
+          height="450"
+          style="width:100%;max-width:660px;overflow:hidden;background:transparent;"
+          sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+          src="https://embed.music.apple.com/us/playlist/replay-all-time/pl.rp-EECPXVpgJ?l=en"
+        ></iframe>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .tabs {
+    margin-top: 2rem;
+  }
+
+  .tab-list {
+    display: flex;
+    gap: 0.25rem;
+    border-bottom: 2px solid var(--color-border, #e5e7eb);
+    margin-bottom: 1.5rem;
+  }
+
+  .tab-btn {
+    padding: 0.5rem 1.25rem;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--color-text-muted, #6b7280);
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  .tab-btn:hover {
+    color: var(--color-text, #111827);
+  }
+
+  .tab-btn.active {
+    color: var(--color-accent, #e8272a);
+    border-bottom-color: var(--color-accent, #e8272a);
+  }
+
+  .tab-panel {
+    display: none;
+  }
+
+  .tab-panel.active {
+    display: block;
+  }
+</style>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.tab-btn');
+  const panels = document.querySelectorAll<HTMLElement>('.tab-panel');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.tab;
+
+      buttons.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      panels.forEach(p => p.classList.remove('active'));
+
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+      document.querySelector<HTMLElement>(`.tab-panel[data-panel="${target}"]`)?.classList.add('active');
+    });
+  });
+</script>

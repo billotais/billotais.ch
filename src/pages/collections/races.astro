@@ -1,0 +1,71 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import races from '../../data/races.json';
+
+const upcoming = races.filter(r => r.upcoming);
+const past = races.filter(r => !r.upcoming);
+const subtitle = `${past.length} races run${upcoming.length > 0 ? ` · ${upcoming.length} upcoming` : ''}`;
+
+function fmtDate(iso: string) {
+  return new Date(iso).toLocaleDateString('en-CH', { day: 'numeric', month: 'short', year: 'numeric' });
+}
+---
+
+<Layout
+  title="Races"
+  description="Running races I have participated in, with times and pace."
+  activeNav="collections"
+  pageSubtitle={subtitle}
+>
+  <main class="container page">
+
+    {upcoming.length > 0 && (
+      <section class="cv-section">
+        <h2 class="cv-section-title">Upcoming</h2>
+        <div class="race-list">
+          {upcoming.map(r => (
+            <div class="race-card race-card--upcoming">
+              <div class="race-card-main">
+                <div class="race-card-name">{r.name}</div>
+                <div class="race-card-meta">
+                  <span>📅 {fmtDate(r.date)}</span>
+                  <span>📏 {r.distance} km</span>
+                  {r.goalTime && <span>🎯 {r.goalTime}</span>}
+                </div>
+              </div>
+              <span class="race-badge race-badge--upcoming">Upcoming</span>
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <section class="cv-section">
+      {upcoming.length > 0 && <h2 class="cv-section-title">Past races</h2>}
+      <div class="race-list">
+        {past.map(r => (
+          <div class={`race-card${r.dnf ? ' race-card--dnf' : ''}`}>
+            <div class="race-card-main">
+              <div class="race-card-name">{r.name}</div>
+              <div class="race-card-meta">
+                <span>📅 {fmtDate(r.date)}</span>
+                <span>📏 {r.distance} km</span>
+                {r.goalTime && <span>🎯 {r.goalTime}</span>}
+              </div>
+            </div>
+            <div class="race-card-result">
+              {r.dnf ? (
+                <span class="race-badge race-badge--dnf">DNF</span>
+              ) : r.finalTime ? (
+                <>
+                  <span class="race-time">{r.finalTime}</span>
+                  {r.pace && <span class="race-pace">{r.pace}</span>}
+                </>
+              ) : null}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  </main>
+</Layout>

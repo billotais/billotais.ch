@@ -1,0 +1,56 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import teas from '../../data/teas.json';
+
+const byType = teas.reduce((acc: Record<string, typeof teas>, tea) => {
+  const key = tea.type ?? 'Other';
+  (acc[key] ??= []).push(tea);
+  return acc;
+}, {});
+
+const sortedTypes = Object.keys(byType).sort();
+---
+
+<Layout
+  title="Teas"
+  description="My Tea collection, with brewing notes and personal ratings."
+  activeNav="collections"
+>
+  <main class="container page">
+    <div class="page-header">
+      <h1 class="page-title">Teas</h1>
+      <p class="page-subtitle">{teas.length} teas tasted</p>
+    </div>
+
+    {sortedTypes.map(type => (
+      <section class="cv-section">
+        <h2 class="cv-section-title">{type}</h2>
+        <div class="tea-list">
+          {byType[type].map(tea => (
+            <div class="tea-card">
+              <div class="tea-card-header">
+                <div>
+                  <div class="tea-card-name">{tea.name}</div>
+                  {tea.brand && <div class="tea-card-brand">{tea.brand}</div>}
+                </div>
+                {tea.personalRating !== null && (
+                  <div class="rating-personal tea-rating">★ {tea.personalRating}<span class="tea-rating-max">/5</span></div>
+                )}
+              </div>
+              <div class="tea-card-details">
+                {tea.temperature && <span>🌡 {tea.temperature}</span>}
+                {tea.infusionTime && <span>⏱ {tea.infusionTime}</span>}
+                {tea.purchasePlace && <span>📍 {tea.purchasePlace}</span>}
+              </div>
+              {tea.ingredients.length > 0 && (
+                <div class="timeline-tags" style="margin-top: 10px;">
+                  {tea.ingredients.map((i: string) => <span class="tag">{i}</span>)}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </section>
+    ))}
+  </main>
+</Layout>

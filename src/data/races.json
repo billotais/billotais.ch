@@ -1,0 +1,98 @@
+[
+  {
+    "slug": "morat-fribourg-2026",
+    "name": "Morat-Fribourg - 2026",
+    "date": "2026-10-04",
+    "upcoming": true,
+    "distance": 17.17,
+    "goalTime": "1h 20m",
+    "finalTime": null,
+    "paceSec": null,
+    "pace": null,
+    "dnf": false
+  },
+  {
+    "slug": "catp-2026",
+    "name": "CATP - 2026",
+    "date": "2026-05-29",
+    "upcoming": false,
+    "distance": 4,
+    "goalTime": null,
+    "finalTime": "DNF",
+    "paceSec": null,
+    "pace": null,
+    "dnf": true
+  },
+  {
+    "slug": "grand-prix-de-berne-2026",
+    "name": "Grand Prix de Berne - 2026",
+    "date": "2026-05-09",
+    "upcoming": false,
+    "distance": 16.1,
+    "goalTime": null,
+    "finalTime": "1h 39m 30s",
+    "paceSec": 371,
+    "pace": "6:11 /km",
+    "dnf": false
+  },
+  {
+    "slug": "christmas-run-2025",
+    "name": "Christmas Run - 2025",
+    "date": "2025-12-13",
+    "upcoming": false,
+    "distance": 4.8,
+    "goalTime": null,
+    "finalTime": "27m 43s",
+    "paceSec": 346,
+    "pace": "5:46 /km",
+    "dnf": false
+  },
+  {
+    "slug": "semi-marathon-lausanne-2025",
+    "name": "Semi Marathon Lausanne - 2025",
+    "date": "2025-10-26",
+    "upcoming": false,
+    "distance": 21.2,
+    "goalTime": "2h05 - 2h10",
+    "finalTime": "1h 54m 46s",
+    "paceSec": 325,
+    "pace": "5:25 /km",
+    "dnf": false
+  },
+  {
+    "slug": "b2run-2025",
+    "name": "B2Run - 2025",
+    "date": "2025-05-12",
+    "upcoming": false,
+    "distance": 5.6,
+    "goalTime": "< 35 min",
+    "finalTime": "31m 43s",
+    "paceSec": 340,
+    "pace": "5:40 /km",
+    "dnf": false
+  },
+  {
+    "slug": "10km-de-lausanne-2025",
+    "name": "10km de Lausanne - 2025",
+    "date": "2025-05-04",
+    "upcoming": false,
+    "distance": 10,
+    "goalTime": "1h00 - 1h10",
+    "finalTime": "1h 00m 58s",
+    "paceSec": 366,
+    "pace": "6:06 /km",
+    "dnf": false
+  },
+  {
+    "slug": "10km-de-lausanne-2026",
+    "name": "10km de Lausanne - 2026",
+    "date": "2026-04-25",
+    "upcoming": false,
+    "distance": 10,
+    "goalTime": "52m 30s",
+    "finalTime": "49m 14s",
+    "paceSec": 295,
+    "pace": "4:55 /km",
+    "dnf": false
+  }
+]

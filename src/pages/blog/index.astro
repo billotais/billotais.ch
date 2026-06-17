@@ -1,0 +1,37 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+const posts = (await getCollection('posts')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('en-CH', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+---
+
+<Layout
+  title="Blog"
+  description="Notes and articles by Loïs Bilat on productivity, tools, and personal interests."
+  activeNav="blog"
+  pageSubtitle="Notes on tools, productivity, and things I find interesting"
+>
+  <main class="container page">
+
+    <div class="post-list">
+      {posts.map(post => (
+        <a href={`/blog/${post.slug}`} class="post-card">
+          <div class="post-card-date">{formatDate(post.data.date)}</div>
+          <div class="post-card-title">{post.data.title}</div>
+          <div class="post-card-desc">{post.data.description}</div>
+          {post.data.tags.length > 0 && (
+            <div class="timeline-tags" style="margin-top:12px;">
+              {post.data.tags.map((t: string) => <span class="tag">{t}</span>)}
+            </div>
+          )}
+        </a>
+      ))}
+    </div>
+  </main>
+</Layout>

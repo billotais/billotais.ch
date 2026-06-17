@@ -1,0 +1,1817 @@
+[
+  {
+    "slug": "anachrony-fractures-of-time",
+    "title": "Anachrony Fractures of Time",
+    "image": "https://cf.geekdo-images.com/coeTqbybidQJlx8Xwp_tHA__itemrep/img/scN4nTVw9d4QGZcBWXIEJub_NSk=/fit-in/246x300/filters:strip_icc()/pic4924713.jpg",
+    "summary": "More depth with the new Flux/Blink-mechanism - and a Solo-Mode!",
+    "year": 2020,
+    "onlineRating": 8.8,
+    "personalRating": 10,
+    "minPlayers": 1,
+    "maxPlayers": 4,
+    "playtime": "90 - 150 minutes",
+    "categories": [
+      "Economic",
+      "Expansion for Base-game",
+      "Science Fiction"
+    ],
+    "mechanisms": [
+      "Set Collection",
+      "Variable Player Powers",
+      "Worker Placement"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgameexpansion/272077/anachrony-fractures-of-time",
+    "isExpansion": true
+  },
+  {
+    "slug": "anachrony",
+    "title": "Anachrony",
+    "image": "https://cf.geekdo-images.com/31quLNzteInnevVRAABoow__itemrep/img/arsLLQqoHPgt3yXqvc-AydPFHVw=/fit-in/246x300/filters:strip_icc()/pic3499707.jpg",
+    "summary": "Use Exosuits & time travel to ensure your vision for the future after the cataclysm.",
+    "year": 2017,
+    "onlineRating": 8,
+    "personalRating": 10,
+    "minPlayers": 1,
+    "maxPlayers": 4,
+    "playtime": "30 - 120 minutes",
+    "categories": [
+      "Economic",
+      "Science Fiction"
+    ],
+    "mechanisms": [
+      "Contracts",
+      "Dice Rolling",
+      "Die Icon Resolution",
+      "End Game Bonuses",
+      "Events"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/185343/anachrony",
+    "isExpansion": false
+  },
+  {
+    "slug": "bunny-kingdom-in-the-sky",
+    "title": "Bunny Kingdom In the Sky",
+    "image": "https://cf.geekdo-images.com/j9JljicZdy5SG6PJc-OKRg__itemrep/img/0njmskjqh5yhj3S0wYFowCu65Wo=/fit-in/246x300/filters:strip_icc()/pic4550867.jpg",
+    "summary": "Expand your fiefs with new resources and castles in the clouds!",
+    "year": 2019,
+    "onlineRating": 7.5,
+    "personalRating": 10,
+    "minPlayers": 2,
+    "maxPlayers": 5,
+    "playtime": "40 - 60 minutes",
+    "categories": [
+      "Animals",
+      "Expansion for Base-game",
+      "Medieval",
+      "Territory Building"
+    ],
+    "mechanisms": [
+      "Area Majority / Influence",
+      "Open Drafting"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgameexpansion/264396/bunny-kingdom-in-the-sky",
+    "isExpansion": true
+  },
+  {
+    "slug": "bunny-kingdom",
+    "title": "Bunny Kingdom",
+    "image": "https://cf.geekdo-images.com/Noz8-u1ba828WUv69pTXKg__itemrep/img/EwNAAUagulHIXWq2Jfj4EnyRO2k=/fit-in/246x300/filters:strip_icc()/pic3613444.jpg",
+    "summary": "Adorable bunnies build cities, harvest carrots, and go on missions to be \"Big Ears!\"",
+    "year": 2017,
+    "onlineRating": 7.4,
+    "personalRating": 10,
+    "minPlayers": 2,
+    "maxPlayers": 4,
+    "playtime": "40 - 60 minutes",
+    "categories": [
+      "Animals",
+      "Medieval",
+      "Territory Building"
+    ],
+    "mechanisms": [
+      "Area Majority / Influence",
+      "Closed Drafting",
+      "End Game Bonuses",
+      "Grid Coverage",
+      "Hand Management"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/184921/bunny-kingdom",
+    "isExpansion": false
+  },
+  {
+    "slug": "clank-catacombs",
+    "title": "Clank! Catacombs",
+    "image": "https://cf.geekdo-images.com/cCLn9Mvb7jRSaZzHeUXhoQ__itemrep/img/A1D0c966kaxlKRgGMPakzgeupmU=/fit-in/246x300/filters:strip_icc()/pic6937913.jpg",
+    "summary": "Deck-building adventure meets tile-laying in the newest incarnation of Clank!",
+    "year": 2022,
+    "onlineRating": 8.2,
+    "personalRating": 10,
+    "minPlayers": 2,
+    "maxPlayers": 4,
+    "playtime": "45 - 90 minutes",
+    "categories": [
+      "Adventure",
+      "Exploration",
+      "Fantasy"
+    ],
+    "mechanisms": [
+      "Deck, Bag, and Pool Building",
+      "Delayed Purchase",
+      "End Game Bonuses",
+      "Map Addition",
+      "Map Deformation"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/365717/clank-catacombs",
+    "isExpansion": false
+  },
+  {
+    "slug": "great-western-trail-argentina",
+    "title": "Great Western Trail Argentina",
+    "image": "https://cf.geekdo-images.com/qPNWng17gy-ghltZfNcBwA__itemrep/img/l3aoTZjXDimM7z2OBs2eqQMSmbc=/fit-in/246x300/filters:strip_icc()/pic6893215.png",
+    "summary": "Travel the beautiful plains of the Pampas with your cattle.",
+    "year": 2022,
+    "onlineRating": 8.2,
+    "personalRating": 10,
+    "minPlayers": 1,
+    "maxPlayers": 4,
+    "playtime": "75 - 150 minutes",
+    "categories": [
+      "Animals"
+    ],
+    "mechanisms": [
+      "Deck, Bag, and Pool Building",
+      "Hand Management",
+      "Ownership",
+      "Set Collection",
+      "Solo / Solitaire Game"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/364011/great-western-trail-argentina",
+    "isExpansion": false
+  },
+  {
+    "slug": "hansa-teutonica-big-box",
+    "title": "Hansa Teutonica Big Box",
+    "image": "https://cf.geekdo-images.com/qickPeokpmzZN2pAx1cdUA__itemrep/img/pTP7lPeVAlObA3ytteds3dM46zc=/fit-in/246x300/filters:strip_icc()/pic5441398.jpg",
+    "summary": "Build networks of merchants along the roads and market towns of the Hanseatic League.",
+    "year": 2020,
+    "onlineRating": 8.4,
+    "personalRating": 10,
+    "minPlayers": 3,
+    "maxPlayers": 5,
+    "playtime": "45 - 90 minutes",
+    "categories": [
+      "Medieval"
+    ],
+    "mechanisms": [
+      "Action Points",
+      "Area Majority / Influence",
+      "End Game Bonuses",
+      "Network and Route Building",
+      "Ownership"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/286749/hansa-teutonica-big-box",
+    "isExpansion": false
+  },
+  {
+    "slug": "root-the-riverfolk-expansion",
+    "title": "Root The Riverfolk Expansion",
+    "image": "https://cf.geekdo-images.com/durhzLYyIypxg7CuVYe82Q__itemrep/img/2xVq5g204iR6RWNuapQ6oRjwHpY=/fit-in/246x300/filters:strip_icc()/pic4252654.jpg",
+    "summary": "Expand the world of Root with opportunistic otters and zealous lizards.",
+    "year": 2018,
+    "onlineRating": 8.4,
+    "personalRating": 10,
+    "minPlayers": 1,
+    "maxPlayers": 6,
+    "playtime": "60 - 90 minutes",
+    "categories": [
+      "Animals",
+      "Expansion for Base-game",
+      "Fantasy",
+      "Wargame"
+    ],
+    "mechanisms": [
+      "Area Majority / Influence",
+      "Area Movement",
+      "Cooperative Game",
+      "Dice Rolling",
+      "Hand Management"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgameexpansion/241386/root-the-riverfolk-expansion",
+    "isExpansion": true
+  },
+  {
+    "slug": "root-the-underworld-expansion",
+    "title": "Root The Underworld Expansion",
+    "image": "https://cf.geekdo-images.com/LzZVgiX-d1nA_MSmZmH5tA__itemrep/img/JitS5kf2bmAYrqkOf2TEdC_Gido=/fit-in/246x300/filters:strip_icc()/pic4608840.jpg",
+    "summary": "Bring two new factions and maps into the battle for the right to rule the woodlands.",
+    "year": 2020,
+    "onlineRating": 8.7,
+    "personalRating": 10,
+    "minPlayers": 2,
+    "maxPlayers": 6,
+    "playtime": "60 - 90 minutes",
+    "categories": [
+      "Animals",
+      "Expansion for Base-game",
+      "Fantasy",
+      "Wargame"
+    ],
+    "mechanisms": [
+      "Action Queue",
+      "Area Majority / Influence",
+      "Betting and Bluffing",
+      "Dice Rolling",
+      "Hand Management"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgameexpansion/272637/root-the-underworld-expansion",
+    "isExpansion": true
+  },
+  {
+    "slug": "root",
+    "title": "Root",
+    "image": "https://cf.geekdo-images.com/JUAUWaVUzeBgzirhZNmHHw__itemrep/img/sQgkl-_hydBVvQHAMLt2Zk_3dwI=/fit-in/246x300/filters:strip_icc()/pic4254509.jpg",
+    "summary": "Decide the fate of the woodland as asymmetric factions fight for contrasting goals.",
+    "year": 2018,
+    "onlineRating": 8.1,
+    "personalRating": 10,
+    "minPlayers": 2,
+    "maxPlayers": 4,
+    "playtime": "60 - 90 minutes",
+    "categories": [
+      "Animals",
+      "Fantasy",
+      "Negotiation",
+      "Territory Building",
+      "Wargame"
+    ],
+    "mechanisms": [
+      "Action Points",
+      "Action Queue",
+      "Action Retrieval",
+      "Area Majority / Influence",
+      "Area Movement"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/237182/root",
+    "isExpansion": false
+  },
+  {
+    "slug": "santorini-pantheon-edition",
+    "title": "Santorini Pantheon Edition",
+    "image": "https://cf.geekdo-images.com/WH-73J7y3jrhNSUZiXNmrQ__itemrep/img/qKpraJeeZtqFiX3lA56lHRhB9Pw=/fit-in/246x300/filters:strip_icc()/pic7456764.jpg",
+    "summary": "Use different divine powers to build and climb the towers!",
+    "year": 2025,
+    "onlineRating": 8.5,
+    "personalRating": 10,
+    "minPlayers": 2,
+    "maxPlayers": 4,
+    "playtime": "20 minutes",
+    "categories": [
+      "Abstract Strategy",
+      "Ancient",
+      "Mythology"
+    ],
+    "mechanisms": [
+      "Grid Movement",
+      "Map Reduction",
+      "Race",
+      "Square Grid",
+      "Team-Based Game"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/386166/santorini-pantheon-edition",
+    "isExpansion": false
+  },
+  {
+    "slug": "spirit-island-branch-claw",
+    "title": "Spirit Island Branch & Claw",
+    "image": "https://cf.geekdo-images.com/l1k4gxERlIuhCNIn3TPU_g__itemrep/img/ecv30l5zDf5k6oNt0vR42nu4V4Q=/fit-in/246x300/filters:strip_icc()/pic7010668.jpg",
+    "summary": "Enrich the wildlife of the island and take control of beasts and disease!",
+    "year": 2017,
+    "onlineRating": 9,
+    "personalRating": 10,
+    "minPlayers": 1,
+    "maxPlayers": 4,
+    "playtime": "90 - 120 minutes",
+    "categories": [
+      "Expansion for Base-game"
+    ],
+    "mechanisms": [
+      "Cooperative Game",
+      "Hand Management",
+      "Modular Board",
+      "Open Drafting",
+      "Simultaneous Action Selection",
+      "Variable Player Powers"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgameexpansion/193065/spirit-island-branch-and-claw",
+    "isExpansion": true
+  },
+  {
+    "slug": "spirit-island",
+    "title": "Spirit Island",
+    "image": "https://cf.geekdo-images.com/kjCm4ZvPjIZxS-mYgSPy1g__itemrep/img/7AXozbOIxk5MDpn_RNlat4omAcc=/fit-in/246x300/filters:strip_icc()/pic7013651.jpg",
+    "summary": "Island Spirits join forces using elemental powers to defend their home from invaders.",
+    "year": 2017,
+    "onlineRating": 8.3,
+    "personalRating": 10,
+    "minPlayers": 1,
+    "maxPlayers": 4,
+    "playtime": "90 - 120 minutes",
+    "categories": [
+      "Environmental",
+      "Fantasy",
+      "Mythology",
+      "Territory Building"
+    ],
+    "mechanisms": [
+      "Action Retrieval",
+      "Area Majority / Influence",
+      "Automatic Resource Growth",
+      "Campaign / Battle Card Driven",
+      "Cooperative Game"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/162886/spirit-island",
+    "isExpansion": false
+  },
+  {
+    "slug": "azul",
+    "title": "Azul",
+    "image": "https://cf.geekdo-images.com/aPSHJO0d0XOpQR5X-wJonw__itemrep/img/6oRLPDvy4zz3gOZM6e6NzIk8Seg=/fit-in/246x300/filters:strip_icc()/pic6973671.png",
+    "summary": "Artfully embellish the walls of your palace by drafting the most beautiful tiles.",
+    "year": 2017,
+    "onlineRating": 7.7,
+    "personalRating": 9,
+    "minPlayers": 2,
+    "maxPlayers": 4,
+    "playtime": "30 - 45 minutes",
+    "categories": [
+      "Abstract Strategy",
+      "Renaissance"
+    ],
+    "mechanisms": [
+      "Chaining",
+      "End Game Bonuses",
+      "Grid Coverage",
+      "Open Drafting",
+      "Pattern Building"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/230802/azul",
+    "isExpansion": false
+  },
+  {
+    "slug": "courtisans",
+    "title": "Courtisans",
+    "image": "https://cf.geekdo-images.com/JK1HbIGtiVfsIbnw3Q543w__itemrep/img/BKBh20zvh2rZFpMvXhkGj02rNXs=/fit-in/246x300/filters:strip_icc()/pic8004908.jpg",
+    "summary": "When the Queen holds her banquet, skullduggery is on the menu!",
+    "year": 2024,
+    "onlineRating": 7.3,
+    "personalRating": 9,
+    "minPlayers": 2,
+    "maxPlayers": 5,
+    "playtime": "20 - 30 minutes",
+    "categories": [
+      "Card Game",
+      "Medieval"
+    ],
+    "mechanisms": [
+      "End Game Bonuses",
+      "Set Collection",
+      "Take That"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/402283/courtisans",
+    "isExpansion": false
+  },
+  {
+    "slug": "everdell",
+    "title": "Everdell",
+    "image": "https://cf.geekdo-images.com/fjE7V5LNq31yVEW_yuqI-Q__itemrep/img/nyVhVuXdmw-1sigbocTKG81UInM=/fit-in/246x300/filters:strip_icc()/pic3918905.png",
+    "summary": "Gather resources to develop a harmonious village of woodland critters and structures.",
+    "year": 2018,
+    "onlineRating": 8,
+    "personalRating": 9,
+    "minPlayers": 1,
+    "maxPlayers": 4,
+    "playtime": "40 - 80 minutes",
+    "categories": [
+      "Animals",
+      "Card Game",
+      "City Building",
+      "Fantasy"
+    ],
+    "mechanisms": [
+      "Contracts",
+      "End Game Bonuses",
+      "Hand Management",
+      "Income",
+      "Open Drafting"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/199792/everdell",
+    "isExpansion": false
+  },
+  {
+    "slug": "harmonies",
+    "title": "Harmonies",
+    "image": "https://cf.geekdo-images.com/A_XP2_VN3ugyqPhezowB_w__itemrep/img/wGng6fVAYRI5NKBX6x-pksZKJGI=/fit-in/246x300/filters:strip_icc()/pic8026369.png",
+    "summary": "Create your own landscape and habitats to welcome animals.",
+    "year": 2024,
+    "onlineRating": 8,
+    "personalRating": 9,
+    "minPlayers": 1,
+    "maxPlayers": 4,
+    "playtime": "30 - 45 minutes",
+    "categories": [
+      "Abstract Strategy",
+      "Animals",
+      "Environmental",
+      "Puzzle"
+    ],
+    "mechanisms": [
+      "Chaining",
+      "Hexagon Grid",
+      "Open Drafting",
+      "Pattern Building",
+      "Set Collection"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/414317/harmonies",
+    "isExpansion": false
+  },
+  {
+    "slug": "lost-ruins-of-arnak",
+    "title": "Lost Ruins of Arnak",
+    "image": "https://cf.geekdo-images.com/6GqH14TJJhza86BX5HCLEQ__itemrep/img/ETni1QwddAVjM-xLhciF0UM0FxQ=/fit-in/246x300/filters:strip_icc()/pic5674958.jpg",
+    "summary": "Explore an island to find resources and discover the lost ruins of Arnak.",
+    "year": 2020,
+    "onlineRating": 8.1,
+    "personalRating": 9,
+    "minPlayers": 1,
+    "maxPlayers": 4,
+    "playtime": "30 - 120 minutes",
+    "categories": [
+      "Adventure",
+      "Card Game",
+      "Exploration",
+      "Fantasy"
+    ],
+    "mechanisms": [
+      "Area Movement",
+      "Contracts",
+      "Deck, Bag, and Pool Building",
+      "Delayed Purchase",
+      "End Game Bonuses"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/312484/lost-ruins-of-arnak",
+    "isExpansion": false
+  },
+  {
+    "slug": "railroad-ink-deep-blue-edition",
+    "title": "Railroad Ink Deep Blue Edition",
+    "image": "https://cf.geekdo-images.com/x3hjEgkxZE9M96o6wgj6Tw__itemrep/img/MpwGSYawrf0hcH-7Gc0z-lhUCvo=/fit-in/246x300/filters:strip_icc()/pic4097632.png",
+    "summary": "Build a network of rails and roads through a watery landscape.",
+    "year": 2018,
+    "onlineRating": 7.1,
+    "personalRating": 9,
+    "minPlayers": 1,
+    "maxPlayers": 6,
+    "playtime": "20 - 30 minutes",
+    "categories": [
+      "Dice",
+      "Trains"
+    ],
+    "mechanisms": [
+      "Bingo",
+      "Connections",
+      "Dice Rolling",
+      "Line Drawing",
+      "Network and Route Building"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/245654/railroad-ink-deep-blue-edition",
+    "isExpansion": false
+  },
+  {
+    "slug": "unconscious-mind",
+    "title": "Unconscious Mind",
+    "image": "https://cf.geekdo-images.com/ufkAbhulnKJ7uDpi09TXOQ__itemrep/img/ygiDWSHMrInDEkqyR0TcHhVhf54=/fit-in/246x300/filters:strip_icc()/pic7127448.jpg",
+    "summary": "As one of Freud's followers, delve into clients’ unconscious minds to bring healing.",
+    "year": 2024,
+    "onlineRating": 7.9,
+    "personalRating": 9,
+    "minPlayers": 1,
+    "maxPlayers": 4,
+    "playtime": "60 - 120 minutes",
+    "categories": [
+      "Medical",
+      "Post-Napoleonic"
+    ],
+    "mechanisms": [
+      "Contracts",
+      "End Game Bonuses",
+      "Layering",
+      "Melding and Splaying",
+      "Open Drafting"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/329500/unconscious-mind",
+    "isExpansion": false
+  },
+  {
+    "slug": "wavelength",
+    "title": "Wavelength",
+    "image": "https://cf.geekdo-images.com/z4fbPdmJg_5yphJEvql4ZA__itemrep/img/Dnjsh4DWMkiZBsPszNWs8bqtvGY=/fit-in/246x300/filters:strip_icc()/pic4552862.png",
+    "summary": "Read your teammates’ minds in this pinpoint party game of infinite possibilities.",
+    "year": 2019,
+    "onlineRating": 7.2,
+    "personalRating": 9,
+    "minPlayers": 2,
+    "maxPlayers": 12,
+    "playtime": "30 - 45 minutes",
+    "categories": [
+      "Party Game"
+    ],
+    "mechanisms": [
+      "Race",
+      "Targeted Clues",
+      "Team-Based Game"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/262543/wavelength",
+    "isExpansion": false
+  },
+  {
+    "slug": "7-wonders-duel",
+    "title": "7 Wonders Duel",
+    "image": "https://cf.geekdo-images.com/zdagMskTF7wJBPjX74XsRw__itemrep/img/x5L93n_pSsxfFZ0Ir-JqtjLf-Jw=/fit-in/246x300/filters:strip_icc()/pic2576399.jpg",
+    "summary": "Science? Military? What will you draft to win this head-to-head version of 7 Wonders?",
+    "year": 2015,
+    "onlineRating": 8.1,
+    "personalRating": 8,
+    "minPlayers": 2,
+    "maxPlayers": 2,
+    "playtime": "30 minutes",
+    "categories": [
+      "Ancient",
+      "Card Game",
+      "City Building",
+      "Civilization",
+      "Economic"
+    ],
+    "mechanisms": [
+      "End Game Bonuses",
+      "Income",
+      "Melding and Splaying",
+      "Modular Board",
+      "Multi-Use Cards"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/173346/7-wonders-duel",
+    "isExpansion": false
+  },
+  {
+    "slug": "codex-naturalis",
+    "title": "Codex Naturalis",
+    "image": "https://cf.geekdo-images.com/0I7U0tz-RgpIFWWco5FKLA__itemrep/img/KslJVipFSC2aBNhBtoRjlZ19hIk=/fit-in/246x300/filters:strip_icc()/pic5612161.png",
+    "summary": "Compile a manuscript of overlapping pages revealing plants, animals, bugs, and fungi.",
+    "year": 2021,
+    "onlineRating": 7.2,
+    "personalRating": 8,
+    "minPlayers": 1,
+    "maxPlayers": 4,
+    "playtime": "20 - 30 minutes",
+    "categories": [
+      "Card Game",
+      "Environmental"
+    ],
+    "mechanisms": [
+      "Hand Management",
+      "Layering",
+      "Open Drafting",
+      "Pattern Building"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/314503/codex-naturalis",
+    "isExpansion": false
+  },
+  {
+    "slug": "concept",
+    "title": "Concept",
+    "image": "https://cf.geekdo-images.com/hHFs0_KRoW_FJ0cMIVgZcw__itemrep/img/uTJREz55VIG7CJAy1oQYBE1duAU=/fit-in/246x300/filters:strip_icc()/pic4991925.jpg",
+    "summary": "Select icons to help your team guess a secret word or phrase.",
+    "year": 2013,
+    "onlineRating": 6.7,
+    "personalRating": 8,
+    "minPlayers": 4,
+    "maxPlayers": 12,
+    "playtime": "40 minutes",
+    "categories": [
+      "Deduction",
+      "Party Game",
+      "Word Game"
+    ],
+    "mechanisms": [
+      "Communication Limits",
+      "Race",
+      "Team-Based Game"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/147151/concept",
+    "isExpansion": false
+  },
+  {
+    "slug": "faraway",
+    "title": "Faraway",
+    "image": "https://cf.geekdo-images.com/u1cwi9BWSKsPxSkVO0BzbA__itemrep/img/zePe7fFwykEcn7UUR6OKGdXJ2z0=/fit-in/246x300/filters:strip_icc()/pic7570101.png",
+    "summary": "Explore a mysterious land and fulfill quests on your way back.",
+    "year": 2023,
+    "onlineRating": 7.5,
+    "personalRating": 8,
+    "minPlayers": 2,
+    "maxPlayers": 6,
+    "playtime": "15 - 30 minutes",
+    "categories": [
+      "Card Game",
+      "Fantasy",
+      "Puzzle"
+    ],
+    "mechanisms": [
+      "Constrained Bidding",
+      "End Game Bonuses",
+      "Hand Management",
+      "Open Drafting",
+      "Selection Order Bid"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/385761/faraway",
+    "isExpansion": false
+  },
+  {
+    "slug": "fiesta-de-los-muertos",
+    "title": "Fiesta de los Muertos",
+    "image": "https://cf.geekdo-images.com/cbcG9UP9T430LZqV3aVVEg__itemrep/img/b5lxiMuZQCaz9K6AlsI-2Wi8yiM=/fit-in/246x300/filters:strip_icc()/pic4868417.png",
+    "summary": "A fun and cooperative party-game !",
+    "year": 2019,
+    "onlineRating": 7,
+    "personalRating": 8,
+    "minPlayers": 4,
+    "maxPlayers": 8,
+    "playtime": "15 minutes",
+    "categories": [
+      "Deduction",
+      "Party Game",
+      "Word Game"
+    ],
+    "mechanisms": [
+      "Communication Limits",
+      "Cooperative Game"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/285253/fiesta-de-los-muertos",
+    "isExpansion": false
+  },
+  {
+    "slug": "lost-ruins-of-arnak-expedition-leaders",
+    "title": "Lost Ruins of Arnak Expedition Leaders",
+    "image": "https://cf.geekdo-images.com/U4aoXbKATU7YbA8bAT73FQ__itemrep/img/_PjoJQ70biv6LEDe8fUPDlGVg58=/fit-in/246x300/filters:strip_icc()/pic6253876.png",
+    "summary": "Give your expedition an edge by playing as one of six unique leaders.",
+    "year": 2021,
+    "onlineRating": 8.7,
+    "personalRating": 8,
+    "minPlayers": 1,
+    "maxPlayers": 4,
+    "playtime": "30 - 120 minutes",
+    "categories": [
+      "Expansion for Base-game"
+    ],
+    "mechanisms": [
+      "Deck, Bag, and Pool Building",
+      "Open Drafting",
+      "Solo / Solitaire Game",
+      "Variable Player Powers",
+      "Worker Placement"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgameexpansion/341254/lost-ruins-of-arnak-expedition-leaders",
+    "isExpansion": false
+  },
+  {
+    "slug": "oriflamme-alliance",
+    "title": "Oriflamme Alliance",
+    "image": "https://cf.geekdo-images.com/QP-YwXdFVLIgvc4SFq-cgA__itemrep/img/rX0sOjyCTdE0ICY8nd79nzXdnvg=/fit-in/246x300/filters:strip_icc()/pic6570464.jpg",
+    "summary": "In the East, rival families use all their influence to gain access to the throne.",
+    "year": 2022,
+    "onlineRating": 7.1,
+    "personalRating": 8,
+    "minPlayers": 3,
+    "maxPlayers": 5,
+    "playtime": "15 - 30 minutes",
+    "categories": [
+      "Card Game",
+      "Political"
+    ],
+    "mechanisms": [
+      "Action Queue",
+      "Hand Management",
+      "Take That"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/352981/oriflamme-alliance",
+    "isExpansion": false
+  },
+  {
+    "slug": "parks-nightfall",
+    "title": "PARKS Nightfall",
+    "image": "https://cf.geekdo-images.com/ucDMn6DilNfP6MgrgVJ8ng__itemrep/img/jk1q0HpOHtDrqzlSORdgIXVKEEk=/fit-in/246x300/filters:strip_icc()/pic5673231.jpg",
+    "summary": "Camp under the stars, visit new parks, and explore a brand new year deck.",
+    "year": 2021,
+    "onlineRating": 8.1,
+    "personalRating": 8,
+    "minPlayers": 1,
+    "maxPlayers": 5,
+    "playtime": "40 - 70 minutes",
+    "categories": [
+      "Animals",
+      "Environmental",
+      "Expansion for Base-game",
+      "Travel"
+    ],
+    "mechanisms": [
+      "Contracts",
+      "End Game Bonuses",
+      "Worker Placement"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgameexpansion/298729/parks-nightfall",
+    "isExpansion": false
+  },
+  {
+    "slug": "parks",
+    "title": "PARKS",
+    "image": "https://cf.geekdo-images.com/mF2cSNRk2O6HtE45Sl9TcA__itemrep/img/aO688RtGLH5MV7LUHkmghPUjSJQ=/fit-in/246x300/filters:strip_icc()/pic4852372.jpg",
+    "summary": "Hike through National Parks tiles, collecting memories and admiring gorgeous scenery.",
+    "year": 2019,
+    "onlineRating": 7.6,
+    "personalRating": 8,
+    "minPlayers": 1,
+    "maxPlayers": 5,
+    "playtime": "30 - 60 minutes",
+    "categories": [
+      "Animals",
+      "Economic",
+      "Environmental",
+      "Travel"
+    ],
+    "mechanisms": [
+      "Contracts",
+      "End Game Bonuses",
+      "Events",
+      "Modular Board",
+      "Solo / Solitaire Game"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/266524/parks",
+    "isExpansion": false
+  },
+  {
+    "slug": "quest",
+    "title": "Quest",
+    "image": "https://cf.geekdo-images.com/IwEAO-GRsYdO6WeA0uWtFg__itemrep/img/j_QOjjZFDRVcQOKeZHBhg7CjSc4=/fit-in/246x300/filters:strip_icc()/pic5578189.jpg",
+    "summary": "Evil and good face off in an epic quest, full of traitors and lying.",
+    "year": 2021,
+    "onlineRating": 7.3,
+    "personalRating": 8,
+    "minPlayers": 4,
+    "maxPlayers": 10,
+    "playtime": "30 minutes",
+    "categories": [
+      "Bluffing",
+      "Card Game",
+      "Deduction",
+      "Fantasy",
+      "Medieval"
+    ],
+    "mechanisms": [
+      "Deduction",
+      "Hidden Roles",
+      "Memory",
+      "Roles with Asymmetric Information",
+      "Simultaneous Action Selection"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/316287/quest",
+    "isExpansion": false
+  },
+  {
+    "slug": "saboteur",
+    "title": "Saboteur",
+    "image": "https://cf.geekdo-images.com/oeN-MHAJKsC2KCI3avKj9w__itemrep/img/HR8TYZ1SYp5luArqPagg8_cTUJs=/fit-in/246x300/filters:strip_icc()/pic8679622.jpg",
+    "summary": "You are dwarves laying tunnel cards to get gold: but which one of you is the traitor?",
+    "year": 2004,
+    "onlineRating": 6.5,
+    "personalRating": 8,
+    "minPlayers": 3,
+    "maxPlayers": 10,
+    "playtime": "30 minutes",
+    "categories": [
+      "Bluffing",
+      "Card Game",
+      "Deduction",
+      "Exploration",
+      "Fantasy",
+      "Party Game"
+    ],
+    "mechanisms": [
+      "Hand Management",
+      "Hidden Roles",
+      "Hidden Victory Points",
+      "Map Addition",
+      "Network and Route Building"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/9220/saboteur",
+    "isExpansion": false
+  },
+  {
+    "slug": "santorini-riddle-of-the-sphinx",
+    "title": "Santorini Riddle of the Sphinx",
+    "image": "https://cf.geekdo-images.com/2VqZQDrqgIrn-g6OK7ea_A__itemrep/img/RNE0y5bHhStw39f5Rr07-picphg=/fit-in/246x300/filters:strip_icc()/pic9290381.png",
+    "summary": "Work together to solve a series of Santorini Riddles!",
+    "year": 2025,
+    "onlineRating": 8,
+    "personalRating": 8,
+    "minPlayers": 1,
+    "maxPlayers": 4,
+    "playtime": "20 minutes",
+    "categories": [
+      "Expansion for Base-game"
+    ],
+    "mechanisms": [
+      "Cooperative Game",
+      "Grid Coverage",
+      "Grid Movement",
+      "Three Dimensional Movement",
+      "Variable Player Powers"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgameexpansion/383477/santorini-riddle-of-the-sphinx",
+    "isExpansion": false
+  },
+  {
+    "slug": "terraforming-mars-ares-expedition",
+    "title": "Terraforming Mars Ares Expedition",
+    "image": "https://cf.geekdo-images.com/eT_Atcy_vRJvuUMgYakNrQ__itemrep/img/QBe3lvL_bW4N53ZZsSaoWE3k0oQ=/fit-in/246x300/filters:strip_icc()/pic6260098.jpg",
+    "summary": "Return to Mars and terraform it once again, this time using only cards.",
+    "year": 2021,
+    "onlineRating": 7.6,
+    "personalRating": 8,
+    "minPlayers": 1,
+    "maxPlayers": 4,
+    "playtime": "45 - 60 minutes",
+    "categories": [
+      "Card Game",
+      "Science Fiction",
+      "Space Exploration"
+    ],
+    "mechanisms": [
+      "End Game Bonuses",
+      "Follow",
+      "Hand Management",
+      "Income",
+      "Market"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/328871/terraforming-mars-ares-expedition",
+    "isExpansion": false
+  },
+  {
+    "slug": "the-crew-the-quest-for-planet-nine",
+    "title": "The Crew The Quest for Planet Nine",
+    "image": "https://cf.geekdo-images.com/98LnQShydr11OBKS46xY-Q__itemrep/img/etVRTXdF6IDsnGKQe77FRFP4H7M=/fit-in/246x300/filters:strip_icc()/pic5687013.jpg",
+    "summary": "Cooperate with your fellow astronauts as you explore the outer solar system.",
+    "year": 2019,
+    "onlineRating": 7.8,
+    "personalRating": 8,
+    "minPlayers": 2,
+    "maxPlayers": 5,
+    "playtime": "20 minutes",
+    "categories": [
+      "Card Game",
+      "Science Fiction",
+      "Space Exploration"
+    ],
+    "mechanisms": [
+      "Communication Limits",
+      "Cooperative Game",
+      "Hand Management",
+      "Scenario / Mission / Campaign Game",
+      "Trick-taking"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/284083/the-crew-the-quest-for-planet-nine",
+    "isExpansion": false
+  },
+  {
+    "slug": "wingspan",
+    "title": "Wingspan",
+    "image": "https://cf.geekdo-images.com/yLZJCVLlIx4c7eJEWUNJ7w__itemrep/img/DR7181wU4sHT6gn6Q1XccpPxNHg=/fit-in/246x300/filters:strip_icc()/pic4458123.jpg",
+    "summary": "Attract a beautiful and diverse collection of birds to your wildlife preserve.",
+    "year": 2019,
+    "onlineRating": 8,
+    "personalRating": 8,
+    "minPlayers": 1,
+    "maxPlayers": 5,
+    "playtime": "40 - 70 minutes",
+    "categories": [
+      "Animals",
+      "Card Game",
+      "Educational"
+    ],
+    "mechanisms": [
+      "Action Queue",
+      "Dice Rolling",
+      "End Game Bonuses",
+      "Hand Management",
+      "Once-Per-Game Abilities"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/266192/wingspan",
+    "isExpansion": false
+  },
+  {
+    "slug": "azul-summer-pavilion",
+    "title": "Azul Summer Pavilion",
+    "image": "https://cf.geekdo-images.com/843kZ6WR0HfyXWEybA6L7A__itemrep/img/zOE89_4aCHOqoYITnbMSxAVR_UA=/fit-in/246x300/filters:strip_icc()/pic4930887.jpg",
+    "summary": "You're an artisan working on creating striking patterns within a king's palace.",
+    "year": 2019,
+    "onlineRating": 7.6,
+    "personalRating": 7,
+    "minPlayers": 2,
+    "maxPlayers": 4,
+    "playtime": "30 - 45 minutes",
+    "categories": [
+      "Abstract Strategy",
+      "Puzzle"
+    ],
+    "mechanisms": [
+      "End Game Bonuses",
+      "Open Drafting",
+      "Pattern Building",
+      "Set Collection",
+      "Tile Placement",
+      "Turn Order: Claim Action"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/287954/azul-summer-pavilion",
+    "isExpansion": false
+  },
+  {
+    "slug": "citadels",
+    "title": "Citadels",
+    "image": "https://cf.geekdo-images.com/shXqRK7Sfsp-jCLwoN3kqw__itemrep/img/oH3tfcboUKXbBDhDEVShQ6_vxeY=/fit-in/246x300/filters:strip_icc()/pic636868.jpg",
+    "summary": "Bishop, warlord, thief, king: change roles, build your city and hinder your rivals.",
+    "year": 2000,
+    "onlineRating": 7.1,
+    "personalRating": 7,
+    "minPlayers": 2,
+    "maxPlayers": 8,
+    "playtime": "20 - 60 minutes",
+    "categories": [
+      "Bluffing",
+      "Card Game",
+      "City Building",
+      "Deduction",
+      "Fantasy",
+      "Medieval"
+    ],
+    "mechanisms": [
+      "Action Drafting",
+      "Closed Drafting",
+      "Income",
+      "Lose a Turn",
+      "Set Collection"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/478/citadels",
+    "isExpansion": false
+  },
+  {
+    "slug": "cryptid",
+    "title": "Cryptid",
+    "image": "https://cf.geekdo-images.com/qrPLpAnhFgc470ZRuXlvbg__itemrep/img/z6MdPedVOUZ3rKOu7513i3D9fnY=/fit-in/246x300/filters:strip_icc()/pic4037705.jpg",
+    "summary": "Be the first to locate the cryptid through pure deduction and subtle deception.",
+    "year": 2018,
+    "onlineRating": 7.4,
+    "personalRating": 7,
+    "minPlayers": 3,
+    "maxPlayers": 5,
+    "playtime": "30 - 50 minutes",
+    "categories": [
+      "Deduction"
+    ],
+    "mechanisms": [
+      "Deduction",
+      "Hexagon Grid",
+      "Modular Board",
+      "Pattern Recognition",
+      "Race"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/246784/cryptid",
+    "isExpansion": false
+  },
+  {
+    "slug": "furnace",
+    "title": "Furnace",
+    "image": "https://cf.geekdo-images.com/7UK6bLlP0Cz3EFYCqhtcSw__itemrep/img/sBBqwZDhiH4fyBRK5-LPxuX2JfQ=/fit-in/246x300/filters:strip_icc()/pic5934958.png",
+    "summary": "19th century capitalists manipulate the market and manage their industrial empires.",
+    "year": 2020,
+    "onlineRating": 7.4,
+    "personalRating": 7,
+    "minPlayers": 2,
+    "maxPlayers": 4,
+    "playtime": "30 - 60 minutes",
+    "categories": [
+      "Card Game",
+      "Economic",
+      "Industry / Manufacturing",
+      "Post-Napoleonic"
+    ],
+    "mechanisms": [
+      "Action Queue",
+      "Auction / Bidding",
+      "Auction Compensation",
+      "Auction: Fixed Placement",
+      "Auction: Multiple Lot"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/318084/furnace",
+    "isExpansion": false
+  },
+  {
+    "slug": "mysterium",
+    "title": "Mysterium",
+    "image": "https://cf.geekdo-images.com/1nQ3ZKudtDeAP7IiKE-kNg__itemrep/img/w_Dvb6hWYgSr_glCXZd3p6GqkTQ=/fit-in/246x300/filters:strip_icc()/pic8625343.jpg",
+    "summary": "Become a psychic and divine spectral visions to solve the murder of a restless ghost.",
+    "year": 2015,
+    "onlineRating": 7.2,
+    "personalRating": 7,
+    "minPlayers": 2,
+    "maxPlayers": 7,
+    "playtime": "42 minutes",
+    "categories": [
+      "Deduction",
+      "Murder / Mystery",
+      "Party Game",
+      "Real-time"
+    ],
+    "mechanisms": [
+      "Communication Limits",
+      "Cooperative Game",
+      "Deduction",
+      "Finale Ending",
+      "Hand Management"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/181304/mysterium",
+    "isExpansion": false
+  },
+  {
+    "slug": "mythic-mischief",
+    "title": "Mythic Mischief",
+    "image": "https://cf.geekdo-images.com/B1h4rA9VVLB6-3NxDucMLw__itemrep/img/dIUM9isklDV8UJgnNLMpIQQeqq4=/fit-in/246x300/filters:strip_icc()/pic6294970.png",
+    "summary": "Mythical high school factions compete to avoid the Tomekeeper in the school library.",
+    "year": 2022,
+    "onlineRating": 7.5,
+    "personalRating": 7,
+    "minPlayers": 1,
+    "maxPlayers": 4,
+    "playtime": "45 - 90 minutes",
+    "categories": [
+      "Abstract Strategy",
+      "Fantasy",
+      "Miniatures"
+    ],
+    "mechanisms": [
+      "Action Points",
+      "Grid Movement",
+      "Variable Player Powers"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/342894/mythic-mischief",
+    "isExpansion": false
+  },
+  {
+    "slug": "p-achakuna",
+    "title": "P'achakuna",
+    "image": "https://cf.geekdo-images.com/nHdPR_qZde5JeWk_r8Kr5w__itemrep/img/W_NJXRDaI-PQyFBeLkbQl_LN3gA=/fit-in/246x300/filters:strip_icc()/pic5710165.jpg",
+    "summary": "Guide your llamas through the Andes.",
+    "year": 2021,
+    "onlineRating": 6.8,
+    "personalRating": 7,
+    "minPlayers": 2,
+    "maxPlayers": 60,
+    "playtime": "30 - 60 minutes",
+    "categories": [
+      "Animals",
+      "Maze",
+      "Puzzle"
+    ],
+    "mechanisms": [
+      "Hexagon Grid",
+      "Map Deformation",
+      "Modular Board",
+      "Network and Route Building",
+      "Pick-up and Deliver"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/321596/pachakuna",
+    "isExpansion": false
+  },
+  {
+    "slug": "tiny-towns",
+    "title": "Tiny Towns",
+    "image": "https://cf.geekdo-images.com/aE1EoOzr530gQin8bj8QDA__itemrep/img/GjMIudOJ68knCPVBze1ojLD72Sw=/fit-in/246x300/filters:strip_icc()/pic4460401.jpg",
+    "summary": "Plan well as you build your town one building at a time. Will it fit?",
+    "year": 2019,
+    "onlineRating": 7.2,
+    "personalRating": 7,
+    "minPlayers": 1,
+    "maxPlayers": 6,
+    "playtime": "45 - 60 minutes",
+    "categories": [
+      "Abstract Strategy",
+      "Animals",
+      "City Building",
+      "Puzzle"
+    ],
+    "mechanisms": [
+      "End Game Bonuses",
+      "Follow",
+      "Grid Coverage",
+      "Pattern Building",
+      "Player Elimination"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/265736/tiny-towns",
+    "isExpansion": false
+  },
+  {
+    "slug": "under-falling-skies",
+    "title": "Under Falling Skies",
+    "image": "https://cf.geekdo-images.com/ecO5eAd3RkctQ0-Tbqv37Q__itemrep/img/Y_6XiSED1VO6ZskJSHdIjKuWe84=/fit-in/246x300/filters:strip_icc()/pic5428723.jpg",
+    "summary": "You alone command the forces of a city holding off invading aliens.",
+    "year": 2020,
+    "onlineRating": 7.6,
+    "personalRating": 7,
+    "minPlayers": 1,
+    "maxPlayers": 40,
+    "playtime": "20 - 40 minutes",
+    "categories": [
+      "Dice",
+      "Science Fiction"
+    ],
+    "mechanisms": [
+      "Dice Rolling",
+      "Modular Board",
+      "Once-Per-Game Abilities",
+      "Re-rolling and Locking",
+      "Scenario / Mission / Campaign Game"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/306735/under-falling-skies",
+    "isExpansion": false
+  },
+  {
+    "slug": "6-nimmt-25-jahre",
+    "title": "6 nimmt! 25 Jahre",
+    "image": "https://cf.geekdo-images.com/DFeZsC973xdZ1CKUzmjAUw__itemrep/img/DxMQXyOmTOdsWO0wXGSxd8ZOodc=/fit-in/246x300/filters:strip_icc()/pic4496538.jpg",
+    "summary": "Choose sequential cards for rows simultaneously, but avoid adding the 6th card!",
+    "year": 2019,
+    "onlineRating": 7.3,
+    "personalRating": 6,
+    "minPlayers": 2,
+    "maxPlayers": 10,
+    "playtime": "45 minutes",
+    "categories": [
+      "Card Game",
+      "Number"
+    ],
+    "mechanisms": [
+      "Hand Management",
+      "Score-and-Reset Game",
+      "Simultaneous Action Selection"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/268586/6-nimmt-25-jahre",
+    "isExpansion": false
+  },
+  {
+    "slug": "carcassonne",
+    "title": "Carcassonne",
+    "image": "https://cf.geekdo-images.com/peUgu3A20LRmAXAMyDQfpQ__itemrep/img/6TWoEvnQQe_sO--6WLd_PQOnEQg=/fit-in/246x300/filters:strip_icc()/pic8621446.jpg",
+    "summary": "Shape the medieval French landscape, claiming cities, monasteries, roads, and farms.",
+    "year": 2000,
+    "onlineRating": 7.4,
+    "personalRating": 6,
+    "minPlayers": 2,
+    "maxPlayers": 5,
+    "playtime": "30 - 45 minutes",
+    "categories": [
+      "Medieval",
+      "Territory Building"
+    ],
+    "mechanisms": [
+      "Area Majority / Influence",
+      "Enclosure",
+      "Kill Steal",
+      "Map Addition",
+      "Pattern Building"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/822/carcassonne",
+    "isExpansion": false
+  },
+  {
+    "slug": "just-one",
+    "title": "Just One",
+    "image": "https://cf.geekdo-images.com/74haNunMBn85beBi-yIKwA__itemrep/img/JJ6JxH8LXK_y5YFwBxMq4UCGNfw=/fit-in/246x300/filters:strip_icc()/pic8669313.png",
+    "summary": "Give unique one-word clues so someone can guess one word!",
+    "year": 2018,
+    "onlineRating": 7.6,
+    "personalRating": 6,
+    "minPlayers": 3,
+    "maxPlayers": 7,
+    "playtime": "20 - 60 minutes",
+    "categories": [
+      "Deduction",
+      "Party Game",
+      "Word Game"
+    ],
+    "mechanisms": [
+      "Communication Limits",
+      "Cooperative Game",
+      "Deduction",
+      "Score-and-Reset Game"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/254640/just-one",
+    "isExpansion": false
+  },
+  {
+    "slug": "magic-maze",
+    "title": "Magic Maze",
+    "image": "https://cf.geekdo-images.com/NVsxRYyE_vIBzObK72maCQ__itemrep/img/ozjueUP3d2DwPtf9ajsjH1DO6zs=/fit-in/246x300/filters:strip_icc()/pic9402780.jpg",
+    "summary": "Silently cooperate to rob a labyrinthine shopping mall before time runs out.",
+    "year": 2017,
+    "onlineRating": 6.9,
+    "personalRating": 6,
+    "minPlayers": 1,
+    "maxPlayers": 8,
+    "playtime": "15 minutes",
+    "categories": [
+      "Exploration",
+      "Fantasy",
+      "Maze",
+      "Real-time"
+    ],
+    "mechanisms": [
+      "Communication Limits",
+      "Cooperative Game",
+      "Elapsed Real Time Ending",
+      "Grid Movement",
+      "Map Addition"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/209778/magic-maze",
+    "isExpansion": false
+  },
+  {
+    "slug": "mister-x",
+    "title": "Mister X",
+    "image": "https://cf.geekdo-images.com/T1pA9jjf69JaGbqWLBIHmQ__itemrep/img/QQx1pCHIimzP_5Hwx9b0KIU4k8s=/fit-in/246x300/filters:strip_icc()/pic580418.jpg",
+    "summary": null,
+    "year": 2009,
+    "onlineRating": 6.6,
+    "personalRating": 6,
+    "minPlayers": 2,
+    "maxPlayers": 6,
+    "playtime": "60 minutes",
+    "categories": [
+      "Bluffing",
+      "Deduction"
+    ],
+    "mechanisms": [
+      "Hand Management",
+      "Hidden Movement",
+      "Memory",
+      "Point to Point Movement",
+      "Team-Based Game"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/55763/mister-x",
+    "isExpansion": false
+  },
+  {
+    "slug": "monopoly-deal-card-game",
+    "title": "Monopoly Deal Card Game",
+    "image": "https://cf.geekdo-images.com/XACkCb3JL0uvF6xOn0lRSg__itemrep/img/brjpaf4elZcwWCh5qm3CyX5ydPY=/fit-in/246x300/filters:strip_icc()/pic4595026.jpg",
+    "summary": "Can you collect three sets of properties before your fortune runs out?",
+    "year": 2008,
+    "onlineRating": 6.3,
+    "personalRating": 6,
+    "minPlayers": 2,
+    "maxPlayers": 5,
+    "playtime": "15 minutes",
+    "categories": [
+      "Card Game",
+      "Economic"
+    ],
+    "mechanisms": [
+      "Hand Management",
+      "Set Collection",
+      "Take That"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/40398/monopoly-deal-card-game",
+    "isExpansion": false
+  },
+  {
+    "slug": "catan",
+    "title": "Catan",
+    "image": "https://cf.geekdo-images.com/0XODRpReiZBFUffEcqT5-Q__itemrep/img/6Jf5G-bSvdOIMUSwxsJfZXl29B8=/fit-in/246x300/filters:strip_icc()/pic9156909.png",
+    "summary": "Collect and trade resources to build up the island of Catan in this modern classic.",
+    "year": 1995,
+    "onlineRating": 7.1,
+    "personalRating": 5,
+    "minPlayers": 3,
+    "maxPlayers": 4,
+    "playtime": "60 - 120 minutes",
+    "categories": [
+      "Economic",
+      "Negotiation"
+    ],
+    "mechanisms": [
+      "Chaining",
+      "Dice Rolling",
+      "Hand Management",
+      "Hexagon Grid",
+      "Hidden Victory Points"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/13/catan",
+    "isExpansion": false
+  },
+  {
+    "slug": "dune-a-game-of-conquest-and-diplomacy",
+    "title": "Dune A Game of Conquest and Diplomacy",
+    "image": "https://cf.geekdo-images.com/nSjPo2DiZftBXbwuGvuhEQ__itemrep/img/IEJhN34V0IQzKaSiFkPwECEF0fI=/fit-in/246x300/filters:strip_icc()/pic6269064.jpg",
+    "summary": "Collect spice, avoid worms, enter treacherous battles, control DUNE.",
+    "year": 2021,
+    "onlineRating": 6.7,
+    "personalRating": 5,
+    "minPlayers": 2,
+    "maxPlayers": 4,
+    "playtime": "20 - 60 minutes",
+    "categories": [
+      "Novel-based",
+      "Science Fiction",
+      "Wargame"
+    ],
+    "mechanisms": [
+      "Area Majority / Influence",
+      "Force Commitment",
+      "Variable Player Powers"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/341165/dune-a-game-of-conquest-and-diplomacy",
+    "isExpansion": false
+  },
+  {
+    "slug": "love-letter",
+    "title": "Love Letter",
+    "image": "https://cf.geekdo-images.com/V7WQjhAh0AatPXTYOrXtCQ__itemrep/img/vrt4T5nCJNEl5KZHo892PfTwwMw=/fit-in/246x300/filters:strip_icc()/pic4766499.png",
+    "summary": "Help sneakily maneuver your love letter to the Princess—or to those closest to her.",
+    "year": 2019,
+    "onlineRating": 7.5,
+    "personalRating": 5,
+    "minPlayers": 2,
+    "maxPlayers": 6,
+    "playtime": "20 minutes",
+    "categories": [
+      "Card Game",
+      "Deduction",
+      "Renaissance"
+    ],
+    "mechanisms": [
+      "Deduction",
+      "Hand Management",
+      "Player Elimination",
+      "Score-and-Reset Game",
+      "Take That"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/277085/love-letter",
+    "isExpansion": false
+  },
+  {
+    "slug": "star-wars-unlock",
+    "title": "Star Wars Unlock!",
+    "image": "https://cf.geekdo-images.com/KTa-65f1B6P4OoFg7B5qzg__itemrep/img/XUsF5A2-ooJU9KgbRHYUjE4HTNI=/fit-in/246x300/filters:strip_icc()/pic5759223.jpg",
+    "summary": "Rebels, Imperials, and Scum - adventure and mystery await in a galaxy far, far away..",
+    "year": 2020,
+    "onlineRating": 7,
+    "personalRating": 5,
+    "minPlayers": 1,
+    "maxPlayers": 6,
+    "playtime": "60 minutes",
+    "categories": [
+      "Card Game",
+      "Movies / TV / Radio theme",
+      "Puzzle"
+    ],
+    "mechanisms": [
+      "Cooperative Game",
+      "Elapsed Real Time Ending",
+      "Storytelling"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/312267/star-wars-unlock",
+    "isExpansion": false
+  },
+  {
+    "slug": "blokus",
+    "title": "Blokus",
+    "image": "https://cf.geekdo-images.com/96YA5wUJDxtPkmPxemr5Qg__itemrep/img/bAT-4VVj_PaCupAHL5nCjxhBqhM=/fit-in/246x300/filters:strip_icc()/pic2197702.jpg",
+    "summary": "Fit your tiles on a shared board with not enough space for everyone.",
+    "year": 2000,
+    "onlineRating": 6.9,
+    "personalRating": null,
+    "minPlayers": 2,
+    "maxPlayers": 4,
+    "playtime": "30 minutes",
+    "categories": [
+      "Abstract Strategy",
+      "Territory Building"
+    ],
+    "mechanisms": [
+      "Chaining",
+      "Enclosure",
+      "Grid Coverage",
+      "Hand Management",
+      "Player Elimination"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/2453/blokus",
+    "isExpansion": false
+  },
+  {
+    "slug": "bluffer",
+    "title": "Bluffer",
+    "image": "https://cf.geekdo-images.com/Ke_b9dzAU7OqpeDvTM4EkQ__itemrep/img/og0IDqW9gGdVoxNhAcGXPW1NTcQ=/fit-in/246x300/filters:strip_icc()/pic5595259.png",
+    "summary": null,
+    "year": 1993,
+    "onlineRating": 7.1,
+    "personalRating": null,
+    "minPlayers": 2,
+    "maxPlayers": 10,
+    "playtime": "20 minutes",
+    "categories": [
+      "Bluffing",
+      "Trivia"
+    ],
+    "mechanisms": [
+      "Player Judge",
+      "Simultaneous Action Selection"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/58782/bluffer",
+    "isExpansion": false
+  },
+  {
+    "slug": "codenames-duet",
+    "title": "Codenames Duet",
+    "image": "https://cf.geekdo-images.com/VG31TvBpKngZ8ztV-N4Dcg__itemrep/img/iUsQ9d4-jczl-4kZ4k8CeOmnt9E=/fit-in/246x300/filters:strip_icc()/pic8911183.png",
+    "summary": "Swap one-word coded clues with your partner, trying to identify specific word cards.",
+    "year": 2017,
+    "onlineRating": 7.4,
+    "personalRating": null,
+    "minPlayers": 2,
+    "maxPlayers": 30,
+    "playtime": "15 - 30 minutes",
+    "categories": [
+      "Card Game",
+      "Deduction",
+      "Spies / Secret Agents",
+      "Word Game"
+    ],
+    "mechanisms": [
+      "Communication Limits",
+      "Cooperative Game",
+      "Memory"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/224037/codenames-duet",
+    "isExpansion": false
+  },
+  {
+    "slug": "dixit",
+    "title": "Dixit",
+    "image": "https://cf.geekdo-images.com/J0PlHArkZDJ57H-brXW2Fw__itemrep/img/tsmN3sAHJ6trDaWNbq08BZXtq7g=/fit-in/246x300/filters:strip_icc()/pic6738336.jpg",
+    "summary": "Give the perfect clue so most (not all) players guess the right surreal image card.",
+    "year": 2008,
+    "onlineRating": 7.2,
+    "personalRating": null,
+    "minPlayers": 3,
+    "maxPlayers": 6,
+    "playtime": "30 minutes",
+    "categories": [
+      "Card Game",
+      "Humor",
+      "Party Game"
+    ],
+    "mechanisms": [
+      "Race",
+      "Singing",
+      "Storytelling",
+      "Targeted Clues",
+      "Voting"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/39856/dixit",
+    "isExpansion": false
+  },
+  {
+    "slug": "frantic",
+    "title": "Frantic",
+    "image": "https://cf.geekdo-images.com/hWJQQGjkEc5iBEc-9pQZww__itemrep/img/qiY7jTEGPPd2us_zow9962llano=/fit-in/246x300/filters:strip_icc()/pic4287137.jpg",
+    "summary": "UNO variant with more special cards and the ability to mess with any player.",
+    "year": 2015,
+    "onlineRating": 6.4,
+    "personalRating": null,
+    "minPlayers": 2,
+    "maxPlayers": 8,
+    "playtime": "5 - 45 minutes",
+    "categories": [
+      "Card Game",
+      "Humor",
+      "Party Game"
+    ],
+    "mechanisms": [
+      "Events",
+      "Open Drafting",
+      "Take That"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/184287/frantic",
+    "isExpansion": false
+  },
+  {
+    "slug": "hidden-leaders",
+    "title": "Hidden Leaders",
+    "image": "https://cf.geekdo-images.com/vDu0Zb4ooGEOF29ZaRQ3EQ__itemrep/img/mjljolaPV0Y9NUYBVU1YOmdnnBY=/fit-in/246x300/filters:strip_icc()/pic5845169.jpg",
+    "summary": "Gather heroes to secretly influence the conflict and become the new Emperor.",
+    "year": 2022,
+    "onlineRating": 6.7,
+    "personalRating": null,
+    "minPlayers": 2,
+    "maxPlayers": 6,
+    "playtime": "20 - 40 minutes",
+    "categories": [
+      "Bluffing",
+      "Card Game",
+      "Deduction",
+      "Fantasy",
+      "Party Game"
+    ],
+    "mechanisms": [
+      "Betting and Bluffing",
+      "Deduction",
+      "Hand Management",
+      "Hidden Roles",
+      "Open Drafting"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/320718/hidden-leaders",
+    "isExpansion": false
+  },
+  {
+    "slug": "linq",
+    "title": "Linq",
+    "image": "https://cf.geekdo-images.com/v0tBL165ZpANe4Ov0K1bgg__itemrep/img/MKPxGYi00bZARm17dQ9xNSGbrcw=/fit-in/246x300/filters:strip_icc()/pic8170026.png",
+    "summary": "Confuse and outsmart the counter spies. Do not confuse nor outsmart your sole friend.",
+    "year": 2004,
+    "onlineRating": 6.9,
+    "personalRating": null,
+    "minPlayers": 4,
+    "maxPlayers": 8,
+    "playtime": "45 minutes",
+    "categories": [
+      "Deduction",
+      "Party Game",
+      "Word Game"
+    ],
+    "mechanisms": [
+      "Hidden Roles",
+      "Pattern Recognition",
+      "Targeted Clues",
+      "Team-Based Game",
+      "Voting"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/11945/linq",
+    "isExpansion": false
+  },
+  {
+    "slug": "munchkin",
+    "title": "Munchkin",
+    "image": "https://cf.geekdo-images.com/J-ts3MW0UhDzs621TR6cog__itemrep/img/2MRtjy32fdzTBDCvUk73dA-ZtJk=/fit-in/246x300/filters:strip_icc()/pic1871016.jpg",
+    "summary": "Attack and loot in this humorous, card-based dungeon crawler.",
+    "year": 2001,
+    "onlineRating": 5.9,
+    "personalRating": null,
+    "minPlayers": 3,
+    "maxPlayers": 6,
+    "playtime": "60 - 120 minutes",
+    "categories": [
+      "Card Game",
+      "Fantasy",
+      "Fighting",
+      "Humor"
+    ],
+    "mechanisms": [
+      "Hand Management",
+      "Race",
+      "Take That",
+      "Variable Player Powers"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/1927/munchkin",
+    "isExpansion": false
+  },
+  {
+    "slug": "overstocked",
+    "title": "Overstocked",
+    "image": "https://cf.geekdo-images.com/7s_C_FsAtXK84hhR9LkggQ__itemrep/img/sRYe3uDf1unZ2JocL3dH84aqI-o=/fit-in/246x300/filters:strip_icc()/pic6196059.png",
+    "summary": "Stock your warehouse with 90s toys and stay ahead of the latest trends.",
+    "year": 2022,
+    "onlineRating": 6.8,
+    "personalRating": null,
+    "minPlayers": 1,
+    "maxPlayers": 6,
+    "playtime": "20 - 30 minutes",
+    "categories": [
+      "Card Game"
+    ],
+    "mechanisms": [
+      "Commodity Speculation",
+      "Hand Management",
+      "Layering",
+      "Pattern Building",
+      "Selection Order Bid"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/297001/overstocked",
+    "isExpansion": false
+  },
+  {
+    "slug": "swissiq",
+    "title": "SwissIQ",
+    "image": "https://cf.geekdo-images.com/Ea-Lj8k5iVuRlI4KNeJDMw__itemrep/img/4f7hQGiEuUtN4U097Q3FjSZDCGI=/fit-in/246x300/filters:strip_icc()/pic2590615.jpg",
+    "summary": null,
+    "year": 2013,
+    "onlineRating": 6.4,
+    "personalRating": null,
+    "minPlayers": 2,
+    "maxPlayers": 12,
+    "playtime": "20 minutes",
+    "categories": [
+      "Party Game",
+      "Trivia"
+    ],
+    "mechanisms": [],
+    "bggLink": "https://boardgamegeek.com/boardgame/154673/swissiq",
+    "isExpansion": false
+  },
+  {
+    "slug": "take-time",
+    "title": "Take Time",
+    "image": "https://cf.geekdo-images.com/h6Bg4PZkapMB-fYfugoBrw__itemrep/img/ii1q3jq2kviBNqQYMqm6x8dl2ko=/fit-in/246x300/filters:strip_icc()/pic8751380.png",
+    "summary": "Time beckons you to discover a multitude of challenging universes.",
+    "year": 2025,
+    "onlineRating": 7.7,
+    "personalRating": null,
+    "minPlayers": 2,
+    "maxPlayers": 4,
+    "playtime": "30 minutes",
+    "categories": [
+      "Card Game",
+      "Puzzle"
+    ],
+    "mechanisms": [
+      "Communication Limits",
+      "Cooperative Game",
+      "Deduction",
+      "Scenario / Mission / Campaign Game"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/440540/take-time",
+    "isExpansion": false
+  },
+  {
+    "slug": "that-s-life",
+    "title": "That's Life!",
+    "image": "https://cf.geekdo-images.com/fnH6cwR6hPjjQ6SbrRl0ig__itemrep/img/wXGpZe7foO4msfBtHW-CV3CT_1g=/fit-in/246x300/filters:strip_icc()/pic108094.jpg",
+    "summary": "Move across tiles, giving you plus or minus points if you are the last to leave them.",
+    "year": 2005,
+    "onlineRating": 6.5,
+    "personalRating": null,
+    "minPlayers": 2,
+    "maxPlayers": 6,
+    "playtime": "30 minutes",
+    "categories": [
+      "Humor"
+    ],
+    "mechanisms": [
+      "Dice Rolling",
+      "Map Reduction",
+      "Modular Board",
+      "Roll / Spin and Move"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/17240/thats-life",
+    "isExpansion": false
+  },
+  {
+    "slug": "the-lord-of-the-rings-fate-of-the-fellowship",
+    "title": "The Lord of the Rings Fate of the Fellowship",
+    "image": "https://cf.geekdo-images.com/scw36iBIad7l-rGzxPGcGg__itemrep/img/UkJy_2ut0G5krsR6wZv_r1Plmto=/fit-in/246x300/filters:strip_icc()/pic8662670.png",
+    "summary": "As members of The Fellowship, embark on a journey to save—or doom—Middle-earth.",
+    "year": 2025,
+    "onlineRating": 8.3,
+    "personalRating": null,
+    "minPlayers": 1,
+    "maxPlayers": 5,
+    "playtime": "60 - 150 minutes",
+    "categories": [
+      "Fantasy",
+      "Novel-based"
+    ],
+    "mechanisms": [
+      "Action Points",
+      "Cooperative Game",
+      "Dice Rolling",
+      "Hand Management",
+      "Set Collection"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/436217/the-lord-of-the-rings-fate-of-the-fellowship",
+    "isExpansion": false
+  },
+  {
+    "slug": "threepia",
+    "title": "Threepia",
+    "image": "https://cf.geekdo-images.com/lCERiVZRhOw5BHGPzLNweQ__itemrep/img/2k2H_Q7mgmea5flbG2SMj4KHVF0=/fit-in/246x300/filters:strip_icc()/pic5951973.jpg",
+    "summary": "The puzzle game that explores the realm of our mind, color, and shape.",
+    "year": 2021,
+    "onlineRating": 6,
+    "personalRating": null,
+    "minPlayers": 1,
+    "maxPlayers": 6,
+    "playtime": "15 - 60 minutes",
+    "categories": [
+      "Card Game",
+      "Children's Game",
+      "Party Game",
+      "Puzzle"
+    ],
+    "mechanisms": [
+      "Connections",
+      "Highest-Lowest Scoring",
+      "Layering",
+      "Matching",
+      "Melding and Splaying"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/328784/threepia",
+    "isExpansion": false
+  },
+  {
+    "slug": "ticket-to-ride",
+    "title": "Ticket to Ride",
+    "image": "https://cf.geekdo-images.com/kdWYkW-7AqG63HhqPL6ekA__itemrep/img/OYmwWIZ8MCn3aDAiywQ1fG7UY6E=/fit-in/246x300/filters:strip_icc()/pic8937637.jpg",
+    "summary": "All aboard!  Collect trains, choo-choo-choose your routes, fulfill your destination!",
+    "year": 2004,
+    "onlineRating": 7.4,
+    "personalRating": null,
+    "minPlayers": 2,
+    "maxPlayers": 5,
+    "playtime": "30 - 60 minutes",
+    "categories": [
+      "Trains"
+    ],
+    "mechanisms": [
+      "Connections",
+      "Contracts",
+      "End Game Bonuses",
+      "Hand Management",
+      "Network and Route Building"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/9209/ticket-to-ride",
+    "isExpansion": false
+  },
+  {
+    "slug": "time-bomb-undercover",
+    "title": "Time Bomb Undercover",
+    "image": "https://cf.geekdo-images.com/6A7aCSQa6D6kkR3zBdo-eg__itemrep/img/ZqRrGOJRuTEweKnNBc_EyCwyGTk=/fit-in/246x300/filters:strip_icc()/pic8385329.jpg",
+    "summary": "Three teams work to save, destroy, or manipulate the fate of the world.",
+    "year": 2024,
+    "onlineRating": 7.6,
+    "personalRating": null,
+    "minPlayers": 4,
+    "maxPlayers": 8,
+    "playtime": "20 - 30 minutes",
+    "categories": [
+      "Bluffing",
+      "Card Game",
+      "Deduction",
+      "Party Game",
+      "Spies / Secret Agents"
+    ],
+    "mechanisms": [
+      "Deduction",
+      "Hidden Roles",
+      "Team-Based Game"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/425442/time-bomb-undercover",
+    "isExpansion": false
+  },
+  {
+    "slug": "iknow",
+    "title": "iKNOW",
+    "image": "https://cf.geekdo-images.com/GDCDK9ZaD4AfTYf8FWoVaA__itemrep/img/HkDvKhx1OnE2qC53OB6mUCN9ATw=/fit-in/246x300/filters:strip_icc()/pic5885668.jpg",
+    "summary": "Combine knowledge with clever tactics for excitement, wit, and skill!",
+    "year": 2012,
+    "onlineRating": 6.4,
+    "personalRating": null,
+    "minPlayers": 2,
+    "maxPlayers": 6,
+    "playtime": "60 minutes",
+    "categories": [
+      "Card Game",
+      "Party Game",
+      "Trivia"
+    ],
+    "mechanisms": [
+      "Betting and Bluffing"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/130680/iknow",
+    "isExpansion": false
+  }
+]

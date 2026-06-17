@@ -1,0 +1,88 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import boardgames from '../../data/boardgames.json';
+
+const played = (g: typeof boardgames[0]) => g.personalRating !== null && g.personalRating > 0;
+const baseGames = boardgames.filter(g => !g.isExpansion && played(g));
+const expansions = boardgames.filter(g => g.isExpansion && played(g));
+const subtitle = `${baseGames.length} games played · ${expansions.length} expansions`;
+
+function stars(n: number | null) {
+  if (!n) return null;
+  return '★'.repeat(Math.round(n / 2)) + '☆'.repeat(5 - Math.round(n / 2));
+}
+---
+
+<Layout
+  title="Board Games"
+  description="Board games I own and have played, with personal ratings."
+  activeNav="collections"
+  pageSubtitle={subtitle}
+>
+  <main class="container page">
+
+    <div class="media-grid">
+      {baseGames.map(g => (
+        <a
+          href={g.bggLink ?? '#'}
+          target={g.bggLink ? '_blank' : undefined}
+          rel="noopener"
+          class="media-card"
+          title={g.title}
+        >
+          {g.image
+            ? <img class="media-card-img" src={g.image} alt={g.title} loading="lazy" />
+            : <div class="media-card-img media-card-img-placeholder">🎲</div>
+          }
+          <div class="media-card-body">
+            <div class="media-card-title">{g.title}</div>
+            {g.summary && <div class="media-card-summary">{g.summary}</div>}
+            <div class="media-card-meta">
+              {g.minPlayers && g.maxPlayers && (
+                <span>{g.minPlayers}–{g.maxPlayers} players</span>
+              )}
+              {g.playtime && <span>{g.playtime}</span>}
+            </div>
+            <div class="media-card-ratings">
+              {g.personalRating !== null && (
+                <span class="rating-personal" title={`My rating: ${g.personalRating}/10`}>
+                  ★ {g.personalRating}
+                </span>
+              )}
+              {g.onlineRating !== null && g.onlineRating > 0 && (
+                <span class="rating-online" title="BGG rating">BGG {g.onlineRating}</span>
+              )}
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    {expansions.length > 0 && (
+      <section style="margin-top: 56px;">
+        <h2 class="cv-section-title">Expansions</h2>
+        <div class="media-grid media-grid-small">
+          {expansions.map(g => (
+            <a
+              href={g.bggLink ?? '#'}
+              target={g.bggLink ? '_blank' : undefined}
+              rel="noopener"
+              class="media-card"
+            >
+              {g.image
+                ? <img class="media-card-img" src={g.image} alt={g.title} loading="lazy" />
+                : <div class="media-card-img media-card-img-placeholder">🎲</div>
+              }
+              <div class="media-card-body">
+                <div class="media-card-title">{g.title}</div>
+                <div class="media-card-ratings">
+                  {g.personalRating !== null && <span class="rating-personal">★ {g.personalRating}</span>}
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+  </main>
+</Layout>

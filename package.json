@@ -5,9 +5,15 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "sync": "node scripts/sync-vault.mjs",
+    "build:all": "npm run sync && npm run build",
+    "trakt-auth": "node scripts/trakt-auth.mjs"
   },
   "dependencies": {
     "astro": "^4.16.0"
+  },
+  "devDependencies": {
+    "gray-matter": "^4.0.3"
   }
 }

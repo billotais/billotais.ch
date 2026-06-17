@@ -4,13 +4,8 @@ import Layout from '../layouts/Layout.astro';
 const years = ['2026', '2025', '2024'];
 ---
 
-<Layout title="ELCA Gaming" description="Classement des jeux de société ELCA" activeNav="hidden">
+<Layout title="🎲 ELCA Gaming" description="Classement des jeux de société ELCA" pageSubtitle="Classement des jeux de société" activeNav="hidden">
   <main class="container page">
-    <div class="page-header">
-      <h1 class="page-title">🎲 ELCA Gaming</h1>
-      <p class="page-subtitle">Classement des jeux de société</p>
-    </div>
-
     <div class="g-year-tabs" id="yearTabs">
       {years.map((y, i) => (
         <button class={`g-year-tab${i === 0 ? ' active' : ''}`} data-year={y}>{y}</button>
@@ -275,22 +270,6 @@ const years = ['2026', '2025', '2024'];
   [data-theme="dark"] .g-session-game a,
   [data-theme="stone"] .g-session-game a { color: var(--color-text); }
 
-  /* CSV hint */
-  .g-csv-hint {
-    margin-top: 40px;
-    padding-top: 24px;
-    border-top: 1px solid var(--color-border);
-    font-size: 0.8rem;
-    color: var(--color-text-muted);
-  }
-  .g-csv-hint code {
-    font-size: 0.78rem;
-    background: var(--color-bg-subtle);
-    border: 1px solid var(--color-border);
-    border-radius: 4px;
-    padding: 1px 5px;
-  }
-
   /* Score tooltip */
   .g-player-row { cursor: default; }
   .g-tooltip {
@@ -344,35 +323,28 @@ const YEARS = ['2026', '2025', '2024'];
 let currentYear = YEARS[0];
 let cache = {};
 
-// ─── CSV parser ──────────────────────────────────────────────────────────────
-function parseCSV(text) {
-  const lines = text.trim().split('\n').map(l => l.trimEnd());
-  const sep = ';';
-  const headers = lines[0].split(sep);
-  const players = headers.slice(4);
-
-  const sessions = [];
-  for (let i = 1; i < lines.length; i++) {
-    const cols = lines[i].split(sep);
-    if (cols.length < 5) continue;
-    const [date, game, complexity, url, ...results] = cols;
-    if (!date || !game) continue;
-
-    const playerResults = {};
-    players.forEach((p, j) => {
-      const code = (results[j] || '').trim();
-      playerResults[p] = code === 'w' ? 'winner' : code === 't' ? 'tie' : code === 'p' ? 'present' : 'absent';
-    });
-
-    sessions.push({
-      date: date.trim(),
-      game: game.trim(),
-      complexity: parseFloat(complexity) || 2.0,
-      url: url.trim() || null,
-      results: playerResults,
-    });
-  }
+// ─── JSON parser ─────────────────────────────────────────────────────────────
+function parseJSON(data) {
+  const sessions = data.map(s => ({
+    date: s.date,
+    game: s.game,
+    complexity: s.complexity ?? 2.0,
+    url: s.url || null,
+    results: s.players,
+  }));
   sessions.sort((a, b) => a.date.localeCompare(b.date));
+
+  const playerSet = new Set();
+  sessions.forEach(s => Object.keys(s.results).forEach(p => playerSet.add(p)));
+  const players = [...playerSet];
+
+  // Fill in 'absent' for players not listed in a session
+  sessions.forEach(s => {
+    players.forEach(p => {
+      if (!s.results[p]) s.results[p] = 'absent';
+    });
+  });
+
   return { players, sessions };
 }
 
@@ -506,7 +478,7 @@ function renderView(yearData, year) {
   document.getElementById('appContent').style.display = '';
 }
 
-// ─── Load CSV ─────────────────────────────────────────────────────────────────
+// ─── Load JSON ────────────────────────────────────────────────────────────────
 async function loadYear(year) {
   if (cache[year]) { renderView(cache[year], year); return; }
 
@@ -515,10 +487,10 @@ async function loadYear(year) {
   document.getElementById('errorState').style.display = 'none';
 
   try {
-    const resp = await fetch(`/gaming/${year}.csv`);
+    const resp = await fetch(`/gaming/${year}.json`);
     if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-    const text = await resp.text();
-    cache[year] = parseCSV(text);
+    const data = await resp.json();
+    cache[year] = parseJSON(data);
     renderView(cache[year], year);
   } catch (e) {
     document.getElementById('loadingState').style.display = 'none';

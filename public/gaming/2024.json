@@ -1,0 +1,302 @@
+[
+  {
+    "date": "2024-01-09",
+    "game": "Hansa Teutonica",
+    "complexity": 2.95,
+    "players": {
+      "LBI": "present",
+      "TAG": "tie",
+      "LVI": "tie",
+      "JLH": "present",
+      "LANM": "present"
+    }
+  },
+  {
+    "date": "2024-01-15",
+    "game": "Parks Nightfall",
+    "complexity": 2.26,
+    "players": {
+      "LBI": "present",
+      "DSA": "winner"
+    }
+  },
+  {
+    "date": "2024-01-23",
+    "game": "Betrayal at House on the Hill",
+    "complexity": 0.956,
+    "players": {
+      "LBI": "tie",
+      "TAG": "present",
+      "LVI": "tie",
+      "JLH": "tie",
+      "LANM": "tie",
+      "OPO": "tie"
+    }
+  },
+  {
+    "date": "2024-02-06",
+    "game": "Mythic Mischief",
+    "complexity": 2.51,
+    "players": {
+      "LBI": "present",
+      "LVI": "tie",
+      "JLH": "tie",
+      "LANM": "present"
+    }
+  },
+  {
+    "date": "2024-02-12",
+    "game": "Santorini",
+    "complexity": 1.73,
+    "players": {
+      "LBI": "present",
+      "JLH": "winner",
+      "DSA": "present"
+    }
+  },
+  {
+    "date": "2024-02-20",
+    "game": "Quest",
+    "complexity": 1.83,
+    "players": {
+      "LBI": "present",
+      "TAG": "present",
+      "LVI": "present",
+      "JLH": "winner",
+      "OPO": "present",
+      "HOFC": "present"
+    }
+  },
+  {
+    "date": "2024-03-05",
+    "game": "Bunny Kindom",
+    "complexity": 2.94,
+    "players": {
+      "LBI": "present",
+      "TAG": "winner",
+      "JLH": "present",
+      "OPO": "present"
+    }
+  },
+  {
+    "date": "2024-03-19",
+    "game": "Wingspan",
+    "complexity": 2.46,
+    "players": {
+      "LBI": "winner",
+      "TAG": "present",
+      "LANM": "present",
+      "OPO": "present"
+    }
+  },
+  {
+    "date": "2024-04-16",
+    "game": "Mysterium",
+    "complexity": 1.9,
+    "url": "https://boardgamegeek.com/boardgame/181304/mysterium",
+    "players": {
+      "LBI": "present",
+      "TAG": "present",
+      "LVI": "present",
+      "JLH": "present",
+      "LANM": "present",
+      "OPO": "winner"
+    }
+  },
+  {
+    "date": "2024-04-30",
+    "game": "Wavelength",
+    "complexity": 0.55,
+    "url": "https://boardgamegeek.com/boardgame/262543/wavelength",
+    "players": {
+      "LBI": "tie",
+      "LVI": "present",
+      "JLH": "present",
+      "LANM": "tie",
+      "OPO": "tie",
+      "HOFC": "tie"
+    }
+  },
+  {
+    "date": "2024-05-14",
+    "game": "Citadelles",
+    "complexity": 2.04,
+    "url": "https://boardgamegeek.com/boardgame/205398/citadels",
+    "players": {
+      "LBI": "present",
+      "TAG": "present",
+      "LVI": "present",
+      "JLH": "present",
+      "LANM": "present",
+      "HOFC": "winner"
+    }
+  },
+  {
+    "date": "2024-05-28",
+    "game": "Dune",
+    "complexity": 2.7,
+    "url": "https://boardgamegeek.com/boardgame/341165/dune-a-game-of-conquest-and-diplomacy",
+    "players": {
+      "LBI": "present",
+      "TAG": "present",
+      "LVI": "present",
+      "OPO": "winner"
+    }
+  },
+  {
+    "date": "2024-06-11",
+    "game": "Faraway",
+    "complexity": 1.88,
+    "url": "https://boardgamegeek.com/boardgame/385761/faraway",
+    "players": {
+      "LBI": "present",
+      "LVI": "tie",
+      "JLH": "tie",
+      "LANM": "present",
+      "OPO": "present",
+      "REMJ": "present"
+    }
+  },
+  {
+    "date": "2024-06-25",
+    "game": "Everdell",
+    "complexity": 2.83,
+    "url": "https://boardgamegeek.com/boardgame/199792/everdell",
+    "players": {
+      "LBI": "present",
+      "TAG": "winner",
+      "LVI": "present",
+      "JLH": "present"
+    }
+  },
+  {
+    "date": "2024-08-06",
+    "game": "Clank Catacombs",
+    "complexity": 2.52,
+    "url": "https://boardgamegeek.com/boardgame/365717/clank-catacombs",
+    "players": {
+      "LBI": "winner",
+      "TAG": "present",
+      "LANM": "present"
+    }
+  },
+  {
+    "date": "2024-08-20",
+    "game": "Parks Nightfall",
+    "complexity": 2.26,
+    "players": {
+      "LBI": "winner",
+      "TAG": "present",
+      "LANM": "present",
+      "VALT": "present"
+    }
+  },
+  {
+    "date": "2024-08-27",
+    "game": "Root",
+    "complexity": 3.81,
+    "url": "https://boardgamegeek.com/boardgame/237182/root",
+    "players": {
+      "LBI": "present",
+      "TAG": "present",
+      "LVI": "present",
+      "LANM": "winner"
+    }
+  },
+  {
+    "date": "2024-09-03",
+    "game": "Concept",
+    "complexity": 1.38,
+    "url": "https://boardgamegeek.com/boardgame/147151/concept",
+    "players": {
+      "LBI": "present",
+      "LVI": "present",
+      "LANM": "present",
+      "OPO": "present",
+      "REMJ": "winner",
+      "HATL": "present"
+    }
+  },
+  {
+    "date": "2024-09-10",
+    "game": "Lost Ruins of Arnak",
+    "complexity": 2.92,
+    "url": "https://boardgamegeek.com/boardgame/312484/lost-ruins-of-arnak",
+    "players": {
+      "LBI": "present",
+      "TAG": "present",
+      "LVI": "winner",
+      "LANM": "present"
+    }
+  },
+  {
+    "date": "2024-09-17",
+    "game": "Hansa Teutonica",
+    "complexity": 2.95,
+    "players": {
+      "LBI": "winner",
+      "TAG": "present",
+      "LVI": "present"
+    }
+  },
+  {
+    "date": "2024-10-15",
+    "game": "Cryptide",
+    "complexity": 2.26,
+    "url": "https://boardgamegeek.com/boardgame/246784/cryptid",
+    "players": {
+      "LBI": "winner",
+      "LVI": "present",
+      "OPO": "present"
+    }
+  },
+  {
+    "date": "2024-10-30",
+    "game": "Monopoly Deal",
+    "complexity": 1.32,
+    "url": "https://boardgamegeek.com/boardgame/40398/monopoly-deal-card-game",
+    "players": {
+      "LBI": "tie",
+      "LVI": "present",
+      "OPO": "present",
+      "LHEP": "tie"
+    }
+  },
+  {
+    "date": "2024-11-12",
+    "game": "Tiny Towns",
+    "complexity": 2.05,
+    "url": "https://boardgamegeek.com/boardgame/265736/tiny-towns",
+    "players": {
+      "LBI": "present",
+      "LANM": "tie",
+      "PAG": "present",
+      "OPO": "present",
+      "HOFC": "tie",
+      "YGR": "present"
+    }
+  },
+  {
+    "date": "2024-11-27",
+    "game": "Bunny Kindom",
+    "complexity": 2.94,
+    "players": {
+      "LBI": "winner",
+      "LVI": "present",
+      "LANM": "present",
+      "OPO": "present",
+      "REMJ": "present"
+    }
+  },
+  {
+    "date": "2024-12-11",
+    "game": "Terraform Mars Ares Expeditions",
+    "complexity": 2.92,
+    "url": "https://boardgamegeek.com/boardgame/328871/terraforming-mars-ares-expedition",
+    "players": {
+      "LBI": "winner",
+      "LVI": "present",
+      "LANM": "present"
+    }
+  }
+]

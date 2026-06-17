@@ -1,0 +1,44 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('en-CH', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+---
+
+<Layout title={post.data.title} description={post.data.description} activeNav="blog" pageSubtitle={post.data.description}>
+  <main class="container page">
+    <div class="post-header">
+      <div class="post-meta">
+        <div class="post-meta-left">
+          <a href="/blog" class="post-back">← All posts</a>
+          {post.data.tags.length > 0 && (
+            <>
+              <span class="post-meta-sep">·</span>
+              <div class="timeline-tags" style="display:inline-flex;margin-top:0;gap:4px;">
+                {post.data.tags.map((t: string) => <span class="tag">{t}</span>)}
+              </div>
+            </>
+          )}
+        </div>
+        <span>{formatDate(post.data.date)}</span>
+      </div>
+    </div>
+
+    <article class="prose">
+      <Content />
+    </article>
+  </main>
+</Layout>

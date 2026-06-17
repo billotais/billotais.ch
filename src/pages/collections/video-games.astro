@@ -1,0 +1,61 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import videogames from "../../data/videogames.json";
+
+const subtitle = `${videogames.length} games tracked`;
+---
+
+<Layout
+    title="Video Games"
+    description="Some of the video games I have played."
+    activeNav="collections"
+    pageSubtitle={subtitle}
+>
+    <main class="container page">
+        <div class="media-grid">
+            {
+                videogames
+                    .filter((g) => g.personalRating > 0)
+                    .map((g) => (
+                        <a
+                            href={g.steamUrl ?? "#"}
+                            target={g.steamUrl ? "_blank" : undefined}
+                            rel="noopener"
+                            class="media-card"
+                        >
+                            {g.image ? (
+                                <img
+                                    class="media-card-img media-card-img-wide"
+                                    src={g.image}
+                                    alt={g.title}
+                                    loading="lazy"
+                                />
+                            ) : (
+                                <div class="media-card-img media-card-img-placeholder">🎮</div>
+                            )}
+                            <div class="media-card-body">
+                                <div class="media-card-title">{g.title}</div>
+                                {g.developers?.length > 0 && (
+                                    <div class="media-card-summary">{g.developers.join(", ")}</div>
+                                )}
+                                <div class="media-card-meta">
+                                    {g.year && <span>{g.year}</span>}
+                                    {g.genres?.slice(0, 2).map((genre: string) => (
+                                        <span class="tag">{genre}</span>
+                                    ))}
+                                </div>
+                                <div class="media-card-ratings">
+                                    {g.personalRating !== null && (
+                                        <span class="rating-personal">★ {g.personalRating}</span>
+                                    )}
+                                    {g.onlineRating !== null && g.onlineRating > 0 && (
+                                        <span class="rating-online">Metacritic {g.onlineRating}</span>
+                                    )}
+                                </div>
+                            </div>
+                        </a>
+                    ))
+            }
+        </div>
+    </main>
+</Layout>
