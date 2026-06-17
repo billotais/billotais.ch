@@ -36,6 +36,7 @@ const years = ['2026', '2025', '2024'];
       </div>
     </div>
   </main>
+  <div class="g-tooltip" id="scoreTooltip" role="tooltip"></div>
 </Layout>
 
 <style is:global>
@@ -289,6 +290,53 @@ const years = ['2026', '2025', '2024'];
     border-radius: 4px;
     padding: 1px 5px;
   }
+
+  /* Score tooltip */
+  .g-player-row { cursor: default; }
+  .g-tooltip {
+    position: fixed;
+    z-index: 500;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.12s;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 12px 14px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    min-width: 200px;
+    font-size: 0.8rem;
+  }
+  .g-tooltip.visible { opacity: 1; }
+  .g-tooltip-name {
+    font-weight: 700;
+    font-size: 0.875rem;
+    margin-bottom: 10px;
+    color: var(--color-text);
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 8px;
+  }
+  .g-tooltip-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 3px 0;
+    color: var(--color-text-muted);
+  }
+  .g-tooltip-row.total {
+    border-top: 1px solid var(--color-border);
+    margin-top: 6px;
+    padding-top: 8px;
+    font-weight: 700;
+    color: var(--color-text);
+    font-size: 0.875rem;
+  }
+  .g-tooltip-val {
+    font-weight: 600;
+    color: var(--color-text);
+    font-variant-numeric: tabular-nums;
+  }
+  .g-tooltip-row.total .g-tooltip-val { color: var(--color-accent); }
 </style>
 
 <script>
@@ -351,15 +399,17 @@ function computeScores({ players, sessions }, year) {
   return players.map(p => {
     const { tv, tp, wins, ties } = stats[p];
     const ratio = tp > 0 ? tv / tp : 0;
-    let total;
+    let bonus, p25, total;
     if (use2026Formula) {
-      const bonus = Math.min(tp * 0.1, 1);
-      const p25   = tp > maxP * 0.25 ? 1 : 0;
+      bonus = Math.min(tp * 0.1, 1);
+      p25   = tp > maxP * 0.25 ? 1 : 0;
       total = ratio + bonus + p25;
     } else {
-      total = ratio + tp * 0.1;
+      bonus = tp * 0.1;
+      p25   = null; // not used in this formula
+      total = ratio + bonus;
     }
-    return { name: p, total, ratio, tv, tp, wins, ties };
+    return { name: p, total, ratio, bonus, p25, tv, tp, wins, ties };
   }).sort((a, b) => b.total - a.total || b.tp - a.tp);
 }
 
@@ -386,7 +436,18 @@ function renderLeaderboard(scores) {
     const pct = (s.total / max) * 100;
     const rankLabel = medals[i] ?? (i + 1);
     const topClass = i === 0 ? 'top1' : i === 1 ? 'top2' : i === 2 ? 'top3' : '';
-    return `<div class="g-player-row">
+    // Store breakdown in data attributes for the tooltip
+    const data = [
+      `data-tv="${s.tv.toFixed(3)}"`,
+      `data-tp="${s.tp}"`,
+      `data-wins="${s.wins}"`,
+      `data-ties="${s.ties}"`,
+      `data-ratio="${s.ratio.toFixed(4)}"`,
+      `data-bonus="${s.bonus.toFixed(4)}"`,
+      s.p25 !== null ? `data-p25="${s.p25}"` : '',
+      `data-total="${s.total.toFixed(4)}"`,
+    ].join(' ');
+    return `<div class="g-player-row" ${data}>
       <div class="g-rank ${topClass}">${rankLabel}</div>
       <div class="g-avatar">${initials(s.name)}</div>
       <div class="g-player-info">
@@ -465,6 +526,76 @@ async function loadYear(year) {
     err.textContent = `Impossible de charger les données ${year}: ${e.message}`;
     err.style.display = '';
   }
+}
+
+// ─── Score tooltip ────────────────────────────────────────────────────────────
+const tooltip = document.getElementById('scoreTooltip');
+
+document.getElementById('leaderboard').addEventListener('mouseover', e => {
+  const row = e.target.closest('.g-player-row');
+  if (!row || !row.dataset.total) return;
+
+  const d = row.dataset;
+  const hasP25 = d.p25 !== undefined;
+  const winsLabel = `${d.wins} victoire${d.wins != 1 ? 's' : ''}, ${d.ties} égalité${d.ties != 1 ? 's' : ''}`;
+  const p25Row = hasP25
+    ? `<div class="g-tooltip-row">
+         <span>Bonus présent 25%</span>
+         <span class="g-tooltip-val">+${d.p25}</span>
+       </div>`
+    : '';
+
+  const name = row.querySelector('.g-player-name').textContent;
+  tooltip.innerHTML = `
+    <div class="g-tooltip-name">${name}</div>
+    <div class="g-tooltip-row">
+      <span>Total victoire (TV)</span>
+      <span class="g-tooltip-val">${parseFloat(d.tv).toFixed(3)}</span>
+    </div>
+    <div class="g-tooltip-row">
+      <span style="padding-left:10px;font-size:0.72rem">${winsLabel}</span>
+      <span></span>
+    </div>
+    <div class="g-tooltip-row">
+      <span>Parties jouées</span>
+      <span class="g-tooltip-val">${d.tp}</span>
+    </div>
+    <div class="g-tooltip-row">
+      <span>Ratio (TV ÷ parties)</span>
+      <span class="g-tooltip-val">${parseFloat(d.ratio).toFixed(4)}</span>
+    </div>
+    <div class="g-tooltip-row">
+      <span>Bonus présence</span>
+      <span class="g-tooltip-val">+${parseFloat(d.bonus).toFixed(3)}</span>
+    </div>
+    ${p25Row}
+    <div class="g-tooltip-row total">
+      <span>Total</span>
+      <span class="g-tooltip-val">${parseFloat(d.total).toFixed(4)}</span>
+    </div>`;
+
+  tooltip.classList.add('visible');
+  positionTooltip(e);
+});
+
+document.getElementById('leaderboard').addEventListener('mousemove', e => {
+  if (tooltip.classList.contains('visible')) positionTooltip(e);
+});
+
+document.getElementById('leaderboard').addEventListener('mouseout', e => {
+  if (!e.relatedTarget?.closest('.g-player-row')) tooltip.classList.remove('visible');
+});
+
+function positionTooltip(e) {
+  const margin = 12;
+  const tw = tooltip.offsetWidth  || 220;
+  const th = tooltip.offsetHeight || 160;
+  let x = e.clientX + margin;
+  let y = e.clientY + margin;
+  if (x + tw > window.innerWidth  - margin) x = e.clientX - tw - margin;
+  if (y + th > window.innerHeight - margin) y = e.clientY - th - margin;
+  tooltip.style.left = x + 'px';
+  tooltip.style.top  = y + 'px';
 }
 
 // ─── Year tab clicks ──────────────────────────────────────────────────────────
