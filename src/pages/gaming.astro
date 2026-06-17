@@ -329,7 +329,10 @@ function parseCSV(text) {
 }
 
 // ─── Scoring ─────────────────────────────────────────────────────────────────
-function computeScores({ players, sessions }) {
+// Formulas differ by year:
+//   2024/2025 : total = ratio_victoire + presence × 0.1          (no cap, no p25%)
+//   2026+     : total = ratio_victoire + min(presence × 0.1, 1) + present_25%
+function computeScores({ players, sessions }, year) {
   const stats = Object.fromEntries(players.map(p => [p, { tv: 0, tp: 0, wins: 0, ties: 0 }]));
 
   for (const s of sessions) {
@@ -343,13 +346,20 @@ function computeScores({ players, sessions }) {
   }
 
   const maxP = Math.max(...players.map(p => stats[p].tp), 1);
+  const use2026Formula = parseInt(year) >= 2026;
 
   return players.map(p => {
     const { tv, tp, wins, ties } = stats[p];
     const ratio = tp > 0 ? tv / tp : 0;
-    const bonus = Math.min(tp * 0.1, 1);
-    const p25 = tp > maxP * 0.25 ? 1 : 0;
-    return { name: p, total: ratio + bonus + p25, ratio, bonus, p25, tv, tp, wins, ties };
+    let total;
+    if (use2026Formula) {
+      const bonus = Math.min(tp * 0.1, 1);
+      const p25   = tp > maxP * 0.25 ? 1 : 0;
+      total = ratio + bonus + p25;
+    } else {
+      total = ratio + tp * 0.1;
+    }
+    return { name: p, total, ratio, tv, tp, wins, ties };
   }).sort((a, b) => b.total - a.total || b.tp - a.tp);
 }
 
@@ -426,8 +436,8 @@ function renderSessions({ sessions }) {
   }).join('');
 }
 
-function renderView(yearData) {
-  const scores = computeScores(yearData);
+function renderView(yearData, year) {
+  const scores = computeScores(yearData, year);
   renderStats(yearData, scores);
   renderLeaderboard(scores);
   renderSessions(yearData);
@@ -437,7 +447,7 @@ function renderView(yearData) {
 
 // ─── Load CSV ─────────────────────────────────────────────────────────────────
 async function loadYear(year) {
-  if (cache[year]) { renderView(cache[year]); return; }
+  if (cache[year]) { renderView(cache[year], year); return; }
 
   document.getElementById('loadingState').style.display = '';
   document.getElementById('appContent').style.display = 'none';
@@ -448,7 +458,7 @@ async function loadYear(year) {
     if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
     const text = await resp.text();
     cache[year] = parseCSV(text);
-    renderView(cache[year]);
+    renderView(cache[year], year);
   } catch (e) {
     document.getElementById('loadingState').style.display = 'none';
     const err = document.getElementById('errorState');
