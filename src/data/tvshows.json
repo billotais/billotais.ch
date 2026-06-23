@@ -11,10 +11,10 @@
       "comedy",
       "drama"
     ],
-    "runtime": 35,
-    "onlineRating": 8.3,
+    "runtime": 40,
+    "onlineRating": 8.2,
     "personalRating": 10,
-    "image": "https://image.tmdb.org/t/p/w300/5lcxWLVAEICkFpuAiV1aMy7ZZj3.jpg",
+    "image": "https://image.tmdb.org/t/p/w300/vKq8XEJKxQTHd2Bm5zZMFPUrke7.jpg",
     "traktUrl": "https://trakt.tv/shows/widow-s-bay",
     "imdbId": "tt33332385"
   },
@@ -251,7 +251,7 @@
     "runtime": 50,
     "onlineRating": 9.3,
     "personalRating": 10,
-    "image": "https://image.tmdb.org/t/p/w300/3xnWaLQjelJDDF7LT1WBo6f4BRe.jpg",
+    "image": "https://image.tmdb.org/t/p/w300/ztkUQFLlC19CCMYHW9o1zWhJRNq.jpg",
     "traktUrl": "https://trakt.tv/shows/breaking-bad",
     "imdbId": "tt0903747"
   },
@@ -364,7 +364,7 @@
     "runtime": 60,
     "onlineRating": 8.3,
     "personalRating": 9,
-    "image": "https://image.tmdb.org/t/p/w300/38PkhBGRQtmVx2drvPik3F42qHO.jpg",
+    "image": "https://image.tmdb.org/t/p/w300/nWPZb800NCGiDPNGsKCfY0w44Z2.jpg",
     "traktUrl": "https://trakt.tv/shows/the-haunting-of-hill-house",
     "imdbId": "tt6763664"
   },
@@ -922,23 +922,6 @@
     "imdbId": "tt1898069"
   },
   {
-    "slug": "trial-error",
-    "title": "Trial & Error",
-    "year": 2017,
-    "overview": "A bright-eyed New York lawyer takes his first big case defending an eccentric poetry professor accused of murdering his wife.",
-    "status": "canceled",
-    "network": "NBC",
-    "genres": [
-      "comedy"
-    ],
-    "runtime": 22,
-    "onlineRating": 7.6,
-    "personalRating": 9,
-    "image": "https://image.tmdb.org/t/p/w300/6CwHR4Ni2BybeiXzBMAOtlNfvkB.jpg",
-    "traktUrl": "https://trakt.tv/shows/trial-error",
-    "imdbId": "tt5511512"
-  },
-  {
     "slug": "star-wars-the-clone-wars",
     "title": "Star Wars: The Clone Wars",
     "year": 2008,
@@ -956,6 +939,23 @@
     "image": "https://image.tmdb.org/t/p/w300/e1nWfnnCVqxS2LeTO3dwGyAsG2V.jpg",
     "traktUrl": "https://trakt.tv/shows/star-wars-the-clone-wars",
     "imdbId": "tt0458290"
+  },
+  {
+    "slug": "trial-error",
+    "title": "Trial & Error",
+    "year": 2017,
+    "overview": "A bright-eyed New York lawyer takes his first big case defending an eccentric poetry professor accused of murdering his wife.",
+    "status": "canceled",
+    "network": "NBC",
+    "genres": [
+      "comedy"
+    ],
+    "runtime": 22,
+    "onlineRating": 7.6,
+    "personalRating": 9,
+    "image": "https://image.tmdb.org/t/p/w300/6CwHR4Ni2BybeiXzBMAOtlNfvkB.jpg",
+    "traktUrl": "https://trakt.tv/shows/trial-error",
+    "imdbId": "tt5511512"
   },
   {
     "slug": "parks-and-recreation",
@@ -1086,6 +1086,25 @@
     "imdbId": "tt0417299"
   },
   {
+    "slug": "house-of-the-dragon",
+    "title": "House of the Dragon",
+    "year": 2022,
+    "overview": "The Targaryen dynasty is at the absolute apex of its power, with more than 15 dragons under their yoke. Most empires crumble from such heights. In the case of the Targaryens, their slow fall begins when King Viserys breaks with a century of tradition by naming his daughter Rhaenyra heir to the Iron Throne. But when Viserys later fathers a son, the court is shocked when Rhaenyra retains her status as his heir, and seeds of division sow friction across the realm.",
+    "status": "returning series",
+    "network": "HBO",
+    "genres": [
+      "drama",
+      "action",
+      "adventure"
+    ],
+    "runtime": 62,
+    "onlineRating": 8.1,
+    "personalRating": 8,
+    "image": "https://image.tmdb.org/t/p/w300/7V0Ebks0GgpKvQ7QbLAIdX5dos4.jpg",
+    "traktUrl": "https://trakt.tv/shows/house-of-the-dragon",
+    "imdbId": "tt11198330"
+  },
+  {
     "slug": "star-city",
     "title": "Star City",
     "year": 2026,
@@ -1100,7 +1119,7 @@
     "runtime": 60,
     "onlineRating": 7.3,
     "personalRating": 8,
-    "image": "https://image.tmdb.org/t/p/w300/jjJZyBCDgyYylGdtctuqEYcO7Lc.jpg",
+    "image": "https://image.tmdb.org/t/p/w300/aOyhj8ERPpijIyrwJoTd4ZEhqJR.jpg",
     "traktUrl": "https://trakt.tv/shows/star-city",
     "imdbId": "tt32140872"
   },
@@ -1782,25 +1801,6 @@
     "imdbId": "tt7222086"
   },
   {
-    "slug": "house-of-the-dragon",
-    "title": "House of the Dragon",
-    "year": 2022,
-    "overview": "The Targaryen dynasty is at the absolute apex of its power, with more than 15 dragons under their yoke. Most empires crumble from such heights. In the case of the Targaryens, their slow fall begins when King Viserys breaks with a century of tradition by naming his daughter Rhaenyra heir to the Iron Throne. But when Viserys later fathers a son, the court is shocked when Rhaenyra retains her status as his heir, and seeds of division sow friction across the realm.",
-    "status": "returning series",
-    "network": "HBO",
-    "genres": [
-      "drama",
-      "action",
-      "adventure"
-    ],
-    "runtime": 62,
-    "onlineRating": 8.1,
-    "personalRating": 8,
-    "image": "https://image.tmdb.org/t/p/w300/7V0Ebks0GgpKvQ7QbLAIdX5dos4.jpg",
-    "traktUrl": "https://trakt.tv/shows/house-of-the-dragon",
-    "imdbId": "tt11198330"
-  },
-  {
     "slug": "the-promised-neverland",
     "title": "The Promised Neverland",
     "year": 2019,
@@ -1839,25 +1839,6 @@
     "imdbId": "tt1865718"
   },
   {
-    "slug": "she-ra-and-the-princesses-of-power",
-    "title": "She-Ra and the Princesses of Power",
-    "year": 2018,
-    "overview": "Soldier Adora finds a magic sword -- and her identity as legendary hero She-Ra. She joins the Rebellion, but her best friend stays with the evil Horde.",
-    "status": "ended",
-    "network": "Netflix",
-    "genres": [
-      "animation",
-      "fantasy",
-      "science-fiction"
-    ],
-    "runtime": 25,
-    "onlineRating": 8.2,
-    "personalRating": 8,
-    "image": "https://image.tmdb.org/t/p/w300/y6YLtlnV5FGh3Mhs5SUc80IQSV5.jpg",
-    "traktUrl": "https://trakt.tv/shows/she-ra-and-the-princesses-of-power",
-    "imdbId": "tt7745956"
-  },
-  {
     "slug": "the-gentlemen",
     "title": "The Gentlemen",
     "year": 2024,
@@ -1875,6 +1856,25 @@
     "image": "https://image.tmdb.org/t/p/w300/tw3tzfXaSpmUZIB8ZNqNEGzMBCy.jpg",
     "traktUrl": "https://trakt.tv/shows/the-gentlemen",
     "imdbId": "tt13210838"
+  },
+  {
+    "slug": "she-ra-and-the-princesses-of-power",
+    "title": "She-Ra and the Princesses of Power",
+    "year": 2018,
+    "overview": "Soldier Adora finds a magic sword -- and her identity as legendary hero She-Ra. She joins the Rebellion, but her best friend stays with the evil Horde.",
+    "status": "ended",
+    "network": "Netflix",
+    "genres": [
+      "animation",
+      "fantasy",
+      "science-fiction"
+    ],
+    "runtime": 25,
+    "onlineRating": 8.2,
+    "personalRating": 8,
+    "image": "https://image.tmdb.org/t/p/w300/y6YLtlnV5FGh3Mhs5SUc80IQSV5.jpg",
+    "traktUrl": "https://trakt.tv/shows/she-ra-and-the-princesses-of-power",
+    "imdbId": "tt7745956"
   },
   {
     "slug": "archer",
@@ -2277,7 +2277,7 @@
       "crime"
     ],
     "runtime": 60,
-    "onlineRating": 7.5,
+    "onlineRating": 7.6,
     "personalRating": 7,
     "image": "https://image.tmdb.org/t/p/w300/fQpJFVWX8MCdOkwoutDw7tjhvgp.jpg",
     "traktUrl": "https://trakt.tv/shows/this-city-is-ours",
@@ -2753,23 +2753,6 @@
     "imdbId": "tt4477976"
   },
   {
-    "slug": "suits",
-    "title": "Suits",
-    "year": 2011,
-    "overview": "While running from a drug deal gone bad, Mike Ross, a brilliant young college-dropout, slips into a job interview with one of New York City's best legal closers, Harvey Specter. Tired of cookie-cutter law school grads, Harvey takes a gamble by hiring Mike on the spot after he recognizes his raw talent and photographic memory.",
-    "status": "ended",
-    "network": "USA Network",
-    "genres": [
-      "drama"
-    ],
-    "runtime": 42,
-    "onlineRating": 8.2,
-    "personalRating": 7,
-    "image": "https://image.tmdb.org/t/p/w300/vQiryp6LioFxQThywxbC6TuoDjy.jpg",
-    "traktUrl": "https://trakt.tv/shows/suits",
-    "imdbId": "tt1632701"
-  },
-  {
     "slug": "orange-is-the-new-black",
     "title": "Orange Is the New Black",
     "year": 2013,
@@ -2787,6 +2770,23 @@
     "image": "https://image.tmdb.org/t/p/w300/ekaa7YjGPTkFLcPhwWXTnARuCEU.jpg",
     "traktUrl": "https://trakt.tv/shows/orange-is-the-new-black",
     "imdbId": "tt2372162"
+  },
+  {
+    "slug": "suits",
+    "title": "Suits",
+    "year": 2011,
+    "overview": "While running from a drug deal gone bad, Mike Ross, a brilliant young college-dropout, slips into a job interview with one of New York City's best legal closers, Harvey Specter. Tired of cookie-cutter law school grads, Harvey takes a gamble by hiring Mike on the spot after he recognizes his raw talent and photographic memory.",
+    "status": "ended",
+    "network": "USA Network",
+    "genres": [
+      "drama"
+    ],
+    "runtime": 42,
+    "onlineRating": 8.2,
+    "personalRating": 7,
+    "image": "https://image.tmdb.org/t/p/w300/vQiryp6LioFxQThywxbC6TuoDjy.jpg",
+    "traktUrl": "https://trakt.tv/shows/suits",
+    "imdbId": "tt1632701"
   },
   {
     "slug": "lazarus",
@@ -3054,6 +3054,62 @@
     "imdbId": "tt10857160"
   },
   {
+    "slug": "from",
+    "title": "FROM",
+    "year": 2022,
+    "overview": "Unravel the mystery of a nightmarish town in middle America that traps all those who enter. As the unwilling residents fight to keep a sense of normalcy and search for a way out, they must also survive the threats of the surrounding forest – including the terrifying creatures that come out when the sun goes down.",
+    "status": "returning series",
+    "network": "MGM+",
+    "genres": [
+      "mystery",
+      "fantasy",
+      "science-fiction"
+    ],
+    "runtime": 50,
+    "onlineRating": 8,
+    "personalRating": null,
+    "image": "https://image.tmdb.org/t/p/w300/pRtJagIxpfODzzb0T0NAvZSzErC.jpg",
+    "traktUrl": "https://trakt.tv/shows/from",
+    "imdbId": "tt9813792"
+  },
+  {
+    "slug": "your-friends-neighbors",
+    "title": "Your Friends & Neighbors",
+    "year": 2025,
+    "overview": "When a financial titan suddenly finds himself divorced and jobless, he starts robbing his wealthy neighbors to stay afloat. Stealing from his own social circle strangely exhilarates him—but he gradually gets tangled in a deadly web.",
+    "status": "returning series",
+    "network": "Apple TV+",
+    "genres": [
+      "drama",
+      "crime"
+    ],
+    "runtime": 52,
+    "onlineRating": 7.8,
+    "personalRating": null,
+    "image": "https://image.tmdb.org/t/p/w300/lcp63INKEsVHUly9eayx7gEEOcG.jpg",
+    "traktUrl": "https://trakt.tv/shows/your-friends-neighbors",
+    "imdbId": "tt30459041"
+  },
+  {
+    "slug": "witch-hat-atelier",
+    "title": "Witch Hat Atelier",
+    "year": 2026,
+    "overview": "In a world where only witches can cast magic, they must avoid being seen by ordinary people while casting. While Coco does her chores, she daydreams of becoming a witch. When a young witch named Qifrey visits her village, Coco uncovers the “absolute secret,” becomes Qifrey’s apprentice, and begins her studies. This is the story of children who encounter despair, yet reach out toward hope.",
+    "status": "returning series",
+    "network": "BS11",
+    "genres": [
+      "anime",
+      "fantasy",
+      "science-fiction"
+    ],
+    "runtime": 24,
+    "onlineRating": 8.8,
+    "personalRating": null,
+    "image": "https://image.tmdb.org/t/p/w300/78m1Tv3suHmUryTI9VNPwKLKjHZ.jpg",
+    "traktUrl": "https://trakt.tv/shows/witch-hat-atelier",
+    "imdbId": "tt32550889"
+  },
+  {
     "slug": "terror-in-resonance",
     "title": "Terror in Resonance",
     "year": 2014,
@@ -3091,44 +3147,6 @@
     "imdbId": "tt11815682"
   },
   {
-    "slug": "from",
-    "title": "FROM",
-    "year": 2022,
-    "overview": "Unravel the mystery of a nightmarish town in middle America that traps all those who enter. As the unwilling residents fight to keep a sense of normalcy and search for a way out, they must also survive the threats of the surrounding forest – including the terrifying creatures that come out when the sun goes down.",
-    "status": "returning series",
-    "network": "MGM+",
-    "genres": [
-      "mystery",
-      "fantasy",
-      "science-fiction"
-    ],
-    "runtime": 50,
-    "onlineRating": 8,
-    "personalRating": null,
-    "image": "https://image.tmdb.org/t/p/w300/pRtJagIxpfODzzb0T0NAvZSzErC.jpg",
-    "traktUrl": "https://trakt.tv/shows/from",
-    "imdbId": "tt9813792"
-  },
-  {
-    "slug": "witch-hat-atelier",
-    "title": "Witch Hat Atelier",
-    "year": 2026,
-    "overview": "In a world where only witches can cast magic, they must avoid being seen by ordinary people while casting. While Coco does her chores, she daydreams of becoming a witch. When a young witch named Qifrey visits her village, Coco uncovers the “absolute secret,” becomes Qifrey’s apprentice, and begins her studies. This is the story of children who encounter despair, yet reach out toward hope.",
-    "status": "returning series",
-    "network": "BS11",
-    "genres": [
-      "anime",
-      "fantasy",
-      "science-fiction"
-    ],
-    "runtime": 24,
-    "onlineRating": 8.9,
-    "personalRating": null,
-    "image": "https://image.tmdb.org/t/p/w300/78m1Tv3suHmUryTI9VNPwKLKjHZ.jpg",
-    "traktUrl": "https://trakt.tv/shows/witch-hat-atelier",
-    "imdbId": "tt32550889"
-  },
-  {
     "slug": "spider-noir",
     "title": "Spider-Noir",
     "year": 2026,
@@ -3141,7 +3159,7 @@
       "crime"
     ],
     "runtime": 45,
-    "onlineRating": 7.9,
+    "onlineRating": 7.8,
     "personalRating": null,
     "image": "https://image.tmdb.org/t/p/w300/oD8WSVqz84ZRfelkr7JPeJwR9Iv.jpg",
     "traktUrl": "https://trakt.tv/shows/spider-noir",
@@ -3251,7 +3269,7 @@
       "drama"
     ],
     "runtime": 48,
-    "onlineRating": 8.8,
+    "onlineRating": 8.9,
     "personalRating": null,
     "image": "https://image.tmdb.org/t/p/w300/kvFSpESyBZMjaeOJDx7RS3P1jey.jpg",
     "traktUrl": "https://trakt.tv/shows/the-pitt",
@@ -3812,24 +3830,6 @@
     "imdbId": "tt10795658"
   },
   {
-    "slug": "good-girls",
-    "title": "Good Girls",
-    "year": 2018,
-    "overview": "Three \"good girl\" suburban wives and mothers suddenly find themselves in desperate circumstances and decide to stop playing it safe and risk everything to take their power back.",
-    "status": "canceled",
-    "network": "NBC",
-    "genres": [
-      "drama",
-      "crime"
-    ],
-    "runtime": 42,
-    "onlineRating": 7.5,
-    "personalRating": null,
-    "image": "https://image.tmdb.org/t/p/w300/wpgg6G3UHXepH2Zgpt4W60d6gxR.jpg",
-    "traktUrl": "https://trakt.tv/shows/good-girls",
-    "imdbId": "tt6474378"
-  },
-  {
     "slug": "13-reasons-why",
     "title": "13 Reasons Why",
     "year": 2017,
@@ -3847,6 +3847,24 @@
     "image": "https://image.tmdb.org/t/p/w300/nel144y4dIOdFFid6twN5mAX9Yd.jpg",
     "traktUrl": "https://trakt.tv/shows/13-reasons-why",
     "imdbId": "tt1837492"
+  },
+  {
+    "slug": "good-girls",
+    "title": "Good Girls",
+    "year": 2018,
+    "overview": "Three \"good girl\" suburban wives and mothers suddenly find themselves in desperate circumstances and decide to stop playing it safe and risk everything to take their power back.",
+    "status": "canceled",
+    "network": "NBC",
+    "genres": [
+      "drama",
+      "crime"
+    ],
+    "runtime": 42,
+    "onlineRating": 7.5,
+    "personalRating": null,
+    "image": "https://image.tmdb.org/t/p/w300/wpgg6G3UHXepH2Zgpt4W60d6gxR.jpg",
+    "traktUrl": "https://trakt.tv/shows/good-girls",
+    "imdbId": "tt6474378"
   },
   {
     "slug": "marvel-s-iron-fist",
@@ -3868,24 +3886,6 @@
     "imdbId": "tt3322310"
   },
   {
-    "slug": "inside-job-2021",
-    "title": "Inside Job",
-    "year": 2021,
-    "overview": "For employees of the Deep State, conspiracies aren't just theories — they're fact. And keeping them a secret is a full-time job.",
-    "status": "canceled",
-    "network": "Netflix",
-    "genres": [
-      "animation",
-      "comedy"
-    ],
-    "runtime": 28,
-    "onlineRating": 7.7,
-    "personalRating": null,
-    "image": "https://image.tmdb.org/t/p/w300/qwJUDMJ4i3KBYjeUFK9Js87iJEa.jpg",
-    "traktUrl": "https://trakt.tv/shows/inside-job-2021",
-    "imdbId": "tt10231312"
-  },
-  {
     "slug": "marvel-s-luke-cage",
     "title": "Marvel's Luke Cage",
     "year": 2016,
@@ -3903,6 +3903,24 @@
     "image": "https://image.tmdb.org/t/p/w300/yzM1hMB3PUJqbISX0f421b3xOjB.jpg",
     "traktUrl": "https://trakt.tv/shows/marvel-s-luke-cage",
     "imdbId": "tt3322314"
+  },
+  {
+    "slug": "inside-job-2021",
+    "title": "Inside Job",
+    "year": 2021,
+    "overview": "For employees of the Deep State, conspiracies aren't just theories — they're fact. And keeping them a secret is a full-time job.",
+    "status": "canceled",
+    "network": "Netflix",
+    "genres": [
+      "animation",
+      "comedy"
+    ],
+    "runtime": 28,
+    "onlineRating": 7.7,
+    "personalRating": null,
+    "image": "https://image.tmdb.org/t/p/w300/qwJUDMJ4i3KBYjeUFK9Js87iJEa.jpg",
+    "traktUrl": "https://trakt.tv/shows/inside-job-2021",
+    "imdbId": "tt10231312"
   },
   {
     "slug": "el-chapo",
@@ -3943,24 +3961,6 @@
     "imdbId": "tt5363918"
   },
   {
-    "slug": "good-omens",
-    "title": "Good Omens",
-    "year": 2019,
-    "overview": "Aziraphale and Crowley, of Heaven and Hell respectively, have grown rather fond of the Earth. So it's terrible news that it's about to end. The armies of Good and Evil are amassing. The Four Horsemen are ready to ride. Everything is going according to the Divine Plan...except that someone seems to have misplaced the Antichrist. Can our heroes find him and stop Armageddon before it's too late?",
-    "status": "ended",
-    "network": "Amazon",
-    "genres": [
-      "comedy",
-      "fantasy"
-    ],
-    "runtime": 52,
-    "onlineRating": 7.9,
-    "personalRating": null,
-    "image": "https://image.tmdb.org/t/p/w300/nO68XVx5of8hlBwEOGOkPC8Mveu.jpg",
-    "traktUrl": "https://trakt.tv/shows/good-omens",
-    "imdbId": "tt1869454"
-  },
-  {
     "slug": "the-afterparty",
     "title": "The Afterparty",
     "year": 2022,
@@ -3978,6 +3978,24 @@
     "image": "https://image.tmdb.org/t/p/w300/9iAxAxeX5RjB39ckhxPMDCJPpG9.jpg",
     "traktUrl": "https://trakt.tv/shows/the-afterparty",
     "imdbId": "tt12614214"
+  },
+  {
+    "slug": "good-omens",
+    "title": "Good Omens",
+    "year": 2019,
+    "overview": "Aziraphale and Crowley, of Heaven and Hell respectively, have grown rather fond of the Earth. So it's terrible news that it's about to end. The armies of Good and Evil are amassing. The Four Horsemen are ready to ride. Everything is going according to the Divine Plan...except that someone seems to have misplaced the Antichrist. Can our heroes find him and stop Armageddon before it's too late?",
+    "status": "ended",
+    "network": "Amazon",
+    "genres": [
+      "comedy",
+      "fantasy"
+    ],
+    "runtime": 52,
+    "onlineRating": 7.9,
+    "personalRating": null,
+    "image": "https://image.tmdb.org/t/p/w300/nO68XVx5of8hlBwEOGOkPC8Mveu.jpg",
+    "traktUrl": "https://trakt.tv/shows/good-omens",
+    "imdbId": "tt1869454"
   },
   {
     "slug": "pantheon",
@@ -4113,7 +4131,7 @@
     "title": "American Horror Stories",
     "year": 2021,
     "overview": "An anthology series of stand alone episodes delving into horror myths, legends and lore.",
-    "status": "ended",
+    "status": "canceled",
     "network": "Hulu",
     "genres": [
       "drama",
@@ -4121,7 +4139,7 @@
       "fantasy"
     ],
     "runtime": 45,
-    "onlineRating": 6.5,
+    "onlineRating": 6.4,
     "personalRating": null,
     "image": "https://image.tmdb.org/t/p/w300/8b9FGJ9WhpkeGFOHYgKjPT5AXS6.jpg",
     "traktUrl": "https://trakt.tv/shows/american-horror-stories",
@@ -4332,23 +4350,23 @@
     "imdbId": "tt5607976"
   },
   {
-    "slug": "the-peripheral",
-    "title": "The Peripheral",
-    "year": 2022,
-    "overview": "Stuck in a small Appalachian town, a young woman’s only escape from the daily grind is playing advanced video games. She is such a good player that a company sends her a new video game system to test…but it has a surprise in store. It unlocks all of her dreams of finding a purpose, romance, and glamour in what seems like a game…but it also puts her and her family in real danger.",
-    "status": "canceled",
-    "network": "Amazon",
+    "slug": "the-dragon-prince",
+    "title": "The Dragon Prince",
+    "year": 2018,
+    "overview": "An extraordinary discovery inspires two human princes and an elven assassin to team up on an epic quest to bring peace to their warring lands.",
+    "status": "ended",
+    "network": "Netflix",
     "genres": [
-      "science-fiction",
-      "fantasy",
-      "drama"
+      "adventure",
+      "animation",
+      "action"
     ],
-    "runtime": 63,
-    "onlineRating": 7.5,
+    "runtime": 26,
+    "onlineRating": 7.9,
     "personalRating": null,
-    "image": "https://image.tmdb.org/t/p/w300/2e5NNQu9B1fXBNllRj8fzysCguP.jpg",
-    "traktUrl": "https://trakt.tv/shows/the-peripheral",
-    "imdbId": "tt8291284"
+    "image": "https://image.tmdb.org/t/p/w300/d7PIRa6ez7ZEl9D4JUrnSsmcnVD.jpg",
+    "traktUrl": "https://trakt.tv/shows/the-dragon-prince",
+    "imdbId": "tt8688814"
   },
   {
     "slug": "star-wars-tales-of-the-jedi",
@@ -4370,23 +4388,23 @@
     "imdbId": "tt20723374"
   },
   {
-    "slug": "the-dragon-prince",
-    "title": "The Dragon Prince",
-    "year": 2018,
-    "overview": "An extraordinary discovery inspires two human princes and an elven assassin to team up on an epic quest to bring peace to their warring lands.",
-    "status": "ended",
-    "network": "Netflix",
+    "slug": "the-peripheral",
+    "title": "The Peripheral",
+    "year": 2022,
+    "overview": "Stuck in a small Appalachian town, a young woman’s only escape from the daily grind is playing advanced video games. She is such a good player that a company sends her a new video game system to test…but it has a surprise in store. It unlocks all of her dreams of finding a purpose, romance, and glamour in what seems like a game…but it also puts her and her family in real danger.",
+    "status": "canceled",
+    "network": "Amazon",
     "genres": [
-      "adventure",
-      "animation",
-      "action"
+      "science-fiction",
+      "fantasy",
+      "drama"
     ],
-    "runtime": 26,
-    "onlineRating": 7.9,
+    "runtime": 63,
+    "onlineRating": 7.5,
     "personalRating": null,
-    "image": "https://image.tmdb.org/t/p/w300/d7PIRa6ez7ZEl9D4JUrnSsmcnVD.jpg",
-    "traktUrl": "https://trakt.tv/shows/the-dragon-prince",
-    "imdbId": "tt8688814"
+    "image": "https://image.tmdb.org/t/p/w300/2e5NNQu9B1fXBNllRj8fzysCguP.jpg",
+    "traktUrl": "https://trakt.tv/shows/the-peripheral",
+    "imdbId": "tt8291284"
   },
   {
     "slug": "avenue-5",
@@ -4667,6 +4685,23 @@
     "imdbId": "tt4288182"
   },
   {
+    "slug": "inventing-anna",
+    "title": "Inventing Anna",
+    "year": 2022,
+    "overview": "Audacious entrepreneur or con artist? A journalist chases down the story of Anna Delvey, who convinced New York's elite she was a German heiress.",
+    "status": "ended",
+    "network": "Netflix",
+    "genres": [
+      "drama"
+    ],
+    "runtime": 65,
+    "onlineRating": 7,
+    "personalRating": null,
+    "image": "https://image.tmdb.org/t/p/w300/aZraQSnS9Dbvipv4WLJQ5xrhG3g.jpg",
+    "traktUrl": "https://trakt.tv/shows/inventing-anna",
+    "imdbId": "tt8740976"
+  },
+  {
     "slug": "upload",
     "title": "Upload",
     "year": 2020,
@@ -4683,23 +4718,6 @@
     "image": "https://image.tmdb.org/t/p/w300/6TPGDrU9MyWbn2TpggJphVAVXiq.jpg",
     "traktUrl": "https://trakt.tv/shows/upload",
     "imdbId": "tt7826376"
-  },
-  {
-    "slug": "inventing-anna",
-    "title": "Inventing Anna",
-    "year": 2022,
-    "overview": "Audacious entrepreneur or con artist? A journalist chases down the story of Anna Delvey, who convinced New York's elite she was a German heiress.",
-    "status": "ended",
-    "network": "Netflix",
-    "genres": [
-      "drama"
-    ],
-    "runtime": 65,
-    "onlineRating": 7,
-    "personalRating": null,
-    "image": "https://image.tmdb.org/t/p/w300/aZraQSnS9Dbvipv4WLJQ5xrhG3g.jpg",
-    "traktUrl": "https://trakt.tv/shows/inventing-anna",
-    "imdbId": "tt8740976"
   },
   {
     "slug": "space-force",
@@ -4749,7 +4767,7 @@
       "fantasy",
       "science-fiction"
     ],
-    "runtime": 43,
+    "runtime": 45,
     "onlineRating": 8.2,
     "personalRating": null,
     "image": "https://image.tmdb.org/t/p/w300/tjFYkWMafg71sihs1aa7IDx17aS.jpg",
@@ -4884,7 +4902,7 @@
     "runtime": 60,
     "onlineRating": 8.4,
     "personalRating": null,
-    "image": "https://image.tmdb.org/t/p/w300/zYqVTiHK5ZajYcNzAW7qWte5NWS.jpg",
+    "image": "https://image.tmdb.org/t/p/w300/dC7jkj2g1aU8sxKqM6D4g44xA6w.jpg",
     "traktUrl": "https://trakt.tv/shows/true-detective",
     "imdbId": "tt2356777"
   },
@@ -4995,21 +5013,23 @@
     "imdbId": "tt2193021"
   },
   {
-    "slug": "a-p-bio",
-    "title": "A.P. Bio",
-    "year": 2018,
-    "overview": "When disgraced Harvard philosophy scholar Jack Griffin loses out on his dream job, he is forced to return to Toledo, Ohio, and work as a high school Advanced Placement biology teacher.",
-    "status": "canceled",
-    "network": "Peacock",
+    "slug": "the-100",
+    "title": "The 100",
+    "year": 2014,
+    "overview": "100 years in the future, when the Earth has been abandoned due to radioactivity, the last surviving humans live on an ark orbiting the planet — but the ark won't last forever. So the repressive regime picks 100 expendable juvenile delinquents to send down to Earth to see if the planet is still habitable.",
+    "status": "ended",
+    "network": "The CW",
     "genres": [
-      "comedy"
+      "drama",
+      "science-fiction",
+      "action"
     ],
-    "runtime": 22,
-    "onlineRating": 7.2,
+    "runtime": 42,
+    "onlineRating": 7.5,
     "personalRating": null,
-    "image": "https://image.tmdb.org/t/p/w300/8GwiuZazRFNrmvSkagZlEDH7qSS.jpg",
-    "traktUrl": "https://trakt.tv/shows/a-p-bio",
-    "imdbId": "tt6461726"
+    "image": "https://image.tmdb.org/t/p/w300/wcaDIAG1QdXQLRaj4vC1EFdBT2.jpg",
+    "traktUrl": "https://trakt.tv/shows/the-100",
+    "imdbId": "tt2661044"
   },
   {
     "slug": "constantine",
@@ -5031,6 +5051,23 @@
     "imdbId": "tt3489184"
   },
   {
+    "slug": "a-p-bio",
+    "title": "A.P. Bio",
+    "year": 2018,
+    "overview": "When disgraced Harvard philosophy scholar Jack Griffin loses out on his dream job, he is forced to return to Toledo, Ohio, and work as a high school Advanced Placement biology teacher.",
+    "status": "canceled",
+    "network": "Peacock",
+    "genres": [
+      "comedy"
+    ],
+    "runtime": 22,
+    "onlineRating": 7.2,
+    "personalRating": null,
+    "image": "https://image.tmdb.org/t/p/w300/8GwiuZazRFNrmvSkagZlEDH7qSS.jpg",
+    "traktUrl": "https://trakt.tv/shows/a-p-bio",
+    "imdbId": "tt6461726"
+  },
+  {
     "slug": "the-big-bang-theory",
     "title": "The Big Bang Theory",
     "year": 2007,
@@ -5046,61 +5083,6 @@
     "image": "https://image.tmdb.org/t/p/w300/an3uTx1P0XgHPylgfPV6W7yxKAo.jpg",
     "traktUrl": "https://trakt.tv/shows/the-big-bang-theory",
     "imdbId": "tt0898266"
-  },
-  {
-    "slug": "the-100",
-    "title": "The 100",
-    "year": 2014,
-    "overview": "100 years in the future, when the Earth has been abandoned due to radioactivity, the last surviving humans live on an ark orbiting the planet — but the ark won't last forever. So the repressive regime picks 100 expendable juvenile delinquents to send down to Earth to see if the planet is still habitable.",
-    "status": "ended",
-    "network": "The CW",
-    "genres": [
-      "drama",
-      "science-fiction",
-      "action"
-    ],
-    "runtime": 42,
-    "onlineRating": 7.5,
-    "personalRating": null,
-    "image": "https://image.tmdb.org/t/p/w300/wcaDIAG1QdXQLRaj4vC1EFdBT2.jpg",
-    "traktUrl": "https://trakt.tv/shows/the-100",
-    "imdbId": "tt2661044"
-  },
-  {
-    "slug": "watchmen",
-    "title": "Watchmen",
-    "year": 2019,
-    "overview": "Set in an alternate history where “superheroes” are treated as outlaws, “Watchmen” embraces the nostalgia of the original groundbreaking graphic novel while attempting to break new ground of its own.",
-    "status": "ended",
-    "network": "HBO",
-    "genres": [
-      "drama",
-      "crime",
-      "action"
-    ],
-    "runtime": 60,
-    "onlineRating": 8,
-    "personalRating": null,
-    "image": "https://image.tmdb.org/t/p/w300/m8rWq3j73ZGhDuSCZWMMoE9ePH1.jpg",
-    "traktUrl": "https://trakt.tv/shows/watchmen",
-    "imdbId": "tt7049682"
-  },
-  {
-    "slug": "schitt-s-creek",
-    "title": "Schitt's Creek",
-    "year": 2015,
-    "overview": "Formerly filthy rich video store magnate Johnny Rose, his soap star wife Moira, and their two kids, über-hipster son David and socialite daughter Alexis, suddenly find themselves broke and forced to live in Schitt's Creek, a small depressing town they once bought as a joke.",
-    "status": "ended",
-    "network": "CBC Television",
-    "genres": [
-      "comedy"
-    ],
-    "runtime": 22,
-    "onlineRating": 8.1,
-    "personalRating": null,
-    "image": "https://image.tmdb.org/t/p/w300/iRfSzrPS5VYWQv7KVSEg2BZZL6C.jpg",
-    "traktUrl": "https://trakt.tv/shows/schitt-s-creek",
-    "imdbId": "tt3526078"
   },
   {
     "slug": "the-strain",
@@ -5120,6 +5102,42 @@
     "image": "https://image.tmdb.org/t/p/w300/2BWErT9QcADpf2G4BZ769eSnFTP.jpg",
     "traktUrl": "https://trakt.tv/shows/the-strain",
     "imdbId": "tt2654620"
+  },
+  {
+    "slug": "schitt-s-creek",
+    "title": "Schitt's Creek",
+    "year": 2015,
+    "overview": "Formerly filthy rich video store magnate Johnny Rose, his soap star wife Moira, and their two kids, über-hipster son David and socialite daughter Alexis, suddenly find themselves broke and forced to live in Schitt's Creek, a small depressing town they once bought as a joke.",
+    "status": "ended",
+    "network": "CBC Television",
+    "genres": [
+      "comedy"
+    ],
+    "runtime": 22,
+    "onlineRating": 8.1,
+    "personalRating": null,
+    "image": "https://image.tmdb.org/t/p/w300/iRfSzrPS5VYWQv7KVSEg2BZZL6C.jpg",
+    "traktUrl": "https://trakt.tv/shows/schitt-s-creek",
+    "imdbId": "tt3526078"
+  },
+  {
+    "slug": "watchmen",
+    "title": "Watchmen",
+    "year": 2019,
+    "overview": "Set in an alternate history where “superheroes” are treated as outlaws, “Watchmen” embraces the nostalgia of the original groundbreaking graphic novel while attempting to break new ground of its own.",
+    "status": "ended",
+    "network": "HBO",
+    "genres": [
+      "drama",
+      "crime",
+      "action"
+    ],
+    "runtime": 60,
+    "onlineRating": 8,
+    "personalRating": null,
+    "image": "https://image.tmdb.org/t/p/w300/m8rWq3j73ZGhDuSCZWMMoE9ePH1.jpg",
+    "traktUrl": "https://trakt.tv/shows/watchmen",
+    "imdbId": "tt7049682"
   },
   {
     "slug": "how-i-met-your-mother",

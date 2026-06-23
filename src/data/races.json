@@ -36,6 +36,18 @@
     "dnf": false
   },
   {
+    "slug": "10km-de-lausanne-2026",
+    "name": "10km de Lausanne - 2026",
+    "date": "2026-04-25",
+    "upcoming": false,
+    "distance": 10,
+    "goalTime": "52m 30s",
+    "finalTime": "49m 14s",
+    "paceSec": 295,
+    "pace": "4:55 /km",
+    "dnf": false
+  },
+  {
     "slug": "christmas-run-2025",
     "name": "Christmas Run - 2025",
     "date": "2025-12-13",
@@ -81,18 +93,6 @@
     "finalTime": "1h 00m 58s",
     "paceSec": 366,
     "pace": "6:06 /km",
-    "dnf": false
-  },
-  {
-    "slug": "10km-de-lausanne-2026",
-    "name": "10km de Lausanne - 2026",
-    "date": "2026-04-25",
-    "upcoming": false,
-    "distance": 10,
-    "goalTime": "52m 30s",
-    "finalTime": "49m 14s",
-    "paceSec": 295,
-    "pace": "4:55 /km",
     "dnf": false
   }
 ]

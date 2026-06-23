@@ -80,5 +80,14 @@
       "Laetitia": "present",
       "Maxence": "present"
     }
+  },
+  {
+    "date": "2026-06-23",
+    "game": "Feya's Swamp",
+    "complexity": 3.17,
+    "players": {
+      "Loïs": "present",
+      "Olga": "winner"
+    }
   }
 ]
