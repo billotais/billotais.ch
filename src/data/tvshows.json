@@ -69,6 +69,28 @@
     "imdbId": "tt4934214"
   },
   {
+    "slug": "arrested-development",
+    "title": "Arrested Development",
+    "year": 2003,
+    "overview": "",
+    "status": "ended",
+    "network": "Netflix",
+    "genres": [
+      "comedy"
+    ],
+    "runtime": 25,
+    "certification": "TV-MA",
+    "onlineRating": 8.3,
+    "personalRating": 10,
+    "episodesWatched": 84,
+    "episodesAired": 84,
+    "watchStatus": "completed",
+    "lastWatchedAt": "2025-09-18T20:03:48.000Z",
+    "image": "https://image.tmdb.org/t/p/w300/p4r4RD7RsNcJVoz0H6z3dBoTBtW.jpg",
+    "traktUrl": "https://trakt.tv/shows/arrested-development",
+    "imdbId": "tt0367279"
+  },
+  {
     "slug": "severance",
     "title": "Severance",
     "year": 2022,
@@ -632,28 +654,6 @@
     "imdbId": "tt30217403"
   },
   {
-    "slug": "arrested-development",
-    "title": "Arrested Development",
-    "year": 2003,
-    "overview": "",
-    "status": "ended",
-    "network": "Netflix",
-    "genres": [
-      "comedy"
-    ],
-    "runtime": 25,
-    "certification": "TV-MA",
-    "onlineRating": 8.3,
-    "personalRating": 9,
-    "episodesWatched": 84,
-    "episodesAired": 84,
-    "watchStatus": "completed",
-    "lastWatchedAt": "2025-09-18T20:03:48.000Z",
-    "image": "https://image.tmdb.org/t/p/w300/p4r4RD7RsNcJVoz0H6z3dBoTBtW.jpg",
-    "traktUrl": "https://trakt.tv/shows/arrested-development",
-    "imdbId": "tt0367279"
-  },
-  {
     "slug": "takopi-s-original-sin",
     "title": "Takopi's Original Sin",
     "year": 2025,
@@ -911,30 +911,6 @@
     "imdbId": "tt15435876"
   },
   {
-    "slug": "erased",
-    "title": "ERASED",
-    "year": 2016,
-    "overview": "",
-    "status": "ended",
-    "network": "Sakuranbo TV",
-    "genres": [
-      "drama",
-      "mystery",
-      "anime"
-    ],
-    "runtime": 25,
-    "certification": "TV-14",
-    "onlineRating": 8.4,
-    "personalRating": 9,
-    "episodesWatched": 12,
-    "episodesAired": 12,
-    "watchStatus": "completed",
-    "lastWatchedAt": "2024-10-14T17:31:28.000Z",
-    "image": "https://image.tmdb.org/t/p/w300/EljUwZJhpuYfVuSfqY8Pt1xxpH.jpg",
-    "traktUrl": "https://trakt.tv/shows/erased",
-    "imdbId": "tt5249462"
-  },
-  {
     "slug": "death-note",
     "title": "Death Note",
     "year": 2006,
@@ -1147,6 +1123,29 @@
     "imdbId": "tt2442560"
   },
   {
+    "slug": "veep",
+    "title": "Veep",
+    "year": 2012,
+    "overview": "",
+    "status": "ended",
+    "network": "HBO",
+    "genres": [
+      "comedy",
+      "war"
+    ],
+    "runtime": 30,
+    "certification": "TV-MA",
+    "onlineRating": 8.2,
+    "personalRating": 9,
+    "episodesWatched": 65,
+    "episodesAired": 65,
+    "watchStatus": "completed",
+    "lastWatchedAt": "2022-02-12T11:06:35.000Z",
+    "image": "https://image.tmdb.org/t/p/w300/cdd78fGdaA3EbK2ToZRWcaaB1fx.jpg",
+    "traktUrl": "https://trakt.tv/shows/veep",
+    "imdbId": "tt1759761"
+  },
+  {
     "slug": "the-expanse",
     "title": "The Expanse",
     "year": 2015,
@@ -1218,30 +1217,6 @@
     "imdbId": "tt2297757"
   },
   {
-    "slug": "american-gods",
-    "title": "American Gods",
-    "year": 2017,
-    "overview": "",
-    "status": "canceled",
-    "network": "STARZ",
-    "genres": [
-      "drama",
-      "mystery",
-      "fantasy"
-    ],
-    "runtime": 60,
-    "certification": "TV-MA",
-    "onlineRating": 7.3,
-    "personalRating": 9,
-    "episodesWatched": 26,
-    "episodesAired": 26,
-    "watchStatus": "completed",
-    "lastWatchedAt": "2021-11-20T22:47:33.000Z",
-    "image": "https://image.tmdb.org/t/p/w300/3KCAZaKHmoMIN9dHutqaMtubQqD.jpg",
-    "traktUrl": "https://trakt.tv/shows/american-gods",
-    "imdbId": "tt1898069"
-  },
-  {
     "slug": "star-wars-the-clone-wars",
     "title": "Star Wars: The Clone Wars",
     "year": 2008,
@@ -1286,6 +1261,29 @@
     "image": "https://image.tmdb.org/t/p/w300/6CwHR4Ni2BybeiXzBMAOtlNfvkB.jpg",
     "traktUrl": "https://trakt.tv/shows/trial-error",
     "imdbId": "tt5511512"
+  },
+  {
+    "slug": "the-americans-2013",
+    "title": "The Americans",
+    "year": 2013,
+    "overview": "",
+    "status": "ended",
+    "network": "FX",
+    "genres": [
+      "drama",
+      "crime"
+    ],
+    "runtime": 50,
+    "certification": "TV-MA",
+    "onlineRating": 8.4,
+    "personalRating": 9,
+    "episodesWatched": 75,
+    "episodesAired": 75,
+    "watchStatus": "completed",
+    "lastWatchedAt": "2021-11-20T22:29:10.000Z",
+    "image": "https://image.tmdb.org/t/p/w300/w1UBlxEXhbKe8sp0fxFZh7MqTce.jpg",
+    "traktUrl": "https://trakt.tv/shows/the-americans-2013",
+    "imdbId": "tt2149175"
   },
   {
     "slug": "parks-and-recreation",
@@ -2232,6 +2230,30 @@
     "imdbId": "tt7790776"
   },
   {
+    "slug": "erased",
+    "title": "ERASED",
+    "year": 2016,
+    "overview": "",
+    "status": "ended",
+    "network": "Sakuranbo TV",
+    "genres": [
+      "drama",
+      "mystery",
+      "anime"
+    ],
+    "runtime": 25,
+    "certification": "TV-14",
+    "onlineRating": 8.4,
+    "personalRating": 8,
+    "episodesWatched": 12,
+    "episodesAired": 12,
+    "watchStatus": "completed",
+    "lastWatchedAt": "2024-10-14T17:31:28.000Z",
+    "image": "https://image.tmdb.org/t/p/w300/EljUwZJhpuYfVuSfqY8Pt1xxpH.jpg",
+    "traktUrl": "https://trakt.tv/shows/erased",
+    "imdbId": "tt5249462"
+  },
+  {
     "slug": "chainsaw-man",
     "title": "Chainsaw Man",
     "year": 2022,
@@ -2661,29 +2683,6 @@
     "imdbId": "tt4288182"
   },
   {
-    "slug": "veep",
-    "title": "Veep",
-    "year": 2012,
-    "overview": "",
-    "status": "ended",
-    "network": "HBO",
-    "genres": [
-      "comedy",
-      "war"
-    ],
-    "runtime": 30,
-    "certification": "TV-MA",
-    "onlineRating": 8.2,
-    "personalRating": 8,
-    "episodesWatched": 65,
-    "episodesAired": 65,
-    "watchStatus": "completed",
-    "lastWatchedAt": "2022-02-12T11:06:35.000Z",
-    "image": "https://image.tmdb.org/t/p/w300/cdd78fGdaA3EbK2ToZRWcaaB1fx.jpg",
-    "traktUrl": "https://trakt.tv/shows/veep",
-    "imdbId": "tt1759761"
-  },
-  {
     "slug": "castlevania",
     "title": "Castlevania",
     "year": 2017,
@@ -2800,6 +2799,29 @@
     "imdbId": "tt2707408"
   },
   {
+    "slug": "the-man-in-the-high-castle",
+    "title": "The Man in the High Castle",
+    "year": 2015,
+    "overview": "",
+    "status": "ended",
+    "network": "Prime Video",
+    "genres": [
+      "drama",
+      "science-fiction"
+    ],
+    "runtime": 55,
+    "certification": "TV-MA",
+    "onlineRating": 7.7,
+    "personalRating": 8,
+    "episodesWatched": 40,
+    "episodesAired": 40,
+    "watchStatus": "completed",
+    "lastWatchedAt": "2021-11-20T22:49:35.000Z",
+    "image": "https://image.tmdb.org/t/p/w300/xhoDZbMNeyCA0BGPZQsdIiO43Dp.jpg",
+    "traktUrl": "https://trakt.tv/shows/the-man-in-the-high-castle",
+    "imdbId": "tt1740299"
+  },
+  {
     "slug": "the-leftovers",
     "title": "The Leftovers",
     "year": 2014,
@@ -2824,27 +2846,28 @@
     "imdbId": "tt2699128"
   },
   {
-    "slug": "the-americans-2013",
-    "title": "The Americans",
-    "year": 2013,
+    "slug": "american-gods",
+    "title": "American Gods",
+    "year": 2017,
     "overview": "",
-    "status": "ended",
-    "network": "FX",
+    "status": "canceled",
+    "network": "STARZ",
     "genres": [
       "drama",
-      "crime"
+      "mystery",
+      "fantasy"
     ],
-    "runtime": 50,
+    "runtime": 60,
     "certification": "TV-MA",
-    "onlineRating": 8.4,
+    "onlineRating": 7.3,
     "personalRating": 8,
-    "episodesWatched": 75,
-    "episodesAired": 75,
+    "episodesWatched": 26,
+    "episodesAired": 26,
     "watchStatus": "completed",
-    "lastWatchedAt": "2021-11-20T22:29:10.000Z",
-    "image": "https://image.tmdb.org/t/p/w300/w1UBlxEXhbKe8sp0fxFZh7MqTce.jpg",
-    "traktUrl": "https://trakt.tv/shows/the-americans-2013",
-    "imdbId": "tt2149175"
+    "lastWatchedAt": "2021-11-20T22:47:33.000Z",
+    "image": "https://image.tmdb.org/t/p/w300/3KCAZaKHmoMIN9dHutqaMtubQqD.jpg",
+    "traktUrl": "https://trakt.tv/shows/american-gods",
+    "imdbId": "tt1898069"
   },
   {
     "slug": "lost-2004",
@@ -2989,6 +3012,29 @@
     "imdbId": "tt33043892"
   },
   {
+    "slug": "dexter-new-blood",
+    "title": "Dexter: New Blood",
+    "year": 2021,
+    "overview": "",
+    "status": "ended",
+    "network": "Showtime",
+    "genres": [
+      "drama",
+      "crime"
+    ],
+    "runtime": 55,
+    "certification": "TV-MA",
+    "onlineRating": 7.6,
+    "personalRating": 7,
+    "episodesWatched": 10,
+    "episodesAired": 10,
+    "watchStatus": "completed",
+    "lastWatchedAt": "2026-04-25T17:24:00.000Z",
+    "image": "https://image.tmdb.org/t/p/w300/9EBKgrFIsCFSV1RZKWhYUdbtGiv.jpg",
+    "traktUrl": "https://trakt.tv/shows/dexter-new-blood",
+    "imdbId": "tt14164730"
+  },
+  {
     "slug": "dexter",
     "title": "Dexter",
     "year": 2006,
@@ -3004,10 +3050,10 @@
     "certification": "TV-MA",
     "onlineRating": 8.4,
     "personalRating": 7,
-    "episodesWatched": 93,
+    "episodesWatched": 96,
     "episodesAired": 96,
-    "watchStatus": "watching",
-    "lastWatchedAt": "2026-04-18T13:37:00.000Z",
+    "watchStatus": "completed",
+    "lastWatchedAt": "2026-04-18T16:47:00.000Z",
     "image": "https://image.tmdb.org/t/p/w300/q8dWfc4JwQuv3HayIZeO84jAXED.jpg",
     "traktUrl": "https://trakt.tv/shows/dexter",
     "imdbId": "tt0773262"
@@ -3200,6 +3246,30 @@
     "imdbId": "tt13159924"
   },
   {
+    "slug": "re-zero-starting-life-in-another-world",
+    "title": "Re:ZERO -Starting Life in Another World-",
+    "year": 2016,
+    "overview": "",
+    "status": "returning series",
+    "network": "AT-X",
+    "genres": [
+      "comedy",
+      "drama",
+      "fantasy"
+    ],
+    "runtime": 25,
+    "certification": "TV-14",
+    "onlineRating": 8.1,
+    "personalRating": 7,
+    "episodesWatched": 66,
+    "episodesAired": 77,
+    "watchStatus": "dropped",
+    "lastWatchedAt": "2025-10-11T09:12:00.000Z",
+    "image": "https://image.tmdb.org/t/p/w300/oHqYrPAsIiTD5m4DuxumV4er8BU.jpg",
+    "traktUrl": "https://trakt.tv/shows/re-zero-starting-life-in-another-world",
+    "imdbId": "tt5607616"
+  },
+  {
     "slug": "rascal-does-not-dream-of-bunny-girl-senpai",
     "title": "Rascal Does Not Dream of Bunny Girl Senpai",
     "year": 2018,
@@ -3318,6 +3388,30 @@
     "image": "https://image.tmdb.org/t/p/w300/kf5Hz70tjNAHg4swGDzOr9BfoZ1.jpg",
     "traktUrl": "https://trakt.tv/shows/the-lord-of-the-rings-the-rings-of-power",
     "imdbId": "tt7631058"
+  },
+  {
+    "slug": "neon-genesis-evangelion",
+    "title": "Neon Genesis Evangelion",
+    "year": 1995,
+    "overview": "",
+    "status": "ended",
+    "network": "TV Tokyo",
+    "genres": [
+      "anime",
+      "action",
+      "drama"
+    ],
+    "runtime": 25,
+    "certification": "TV-14",
+    "onlineRating": 8.3,
+    "personalRating": 7,
+    "episodesWatched": 26,
+    "episodesAired": 26,
+    "watchStatus": "completed",
+    "lastWatchedAt": "2025-04-10T19:43:07.000Z",
+    "image": "https://image.tmdb.org/t/p/w300/y2ah9t0navXyIvoHg1uIbIHO3tt.jpg",
+    "traktUrl": "https://trakt.tv/shows/neon-genesis-evangelion",
+    "imdbId": "tt0112159"
   },
   {
     "slug": "parasyte-the-maxim",
@@ -3460,30 +3554,6 @@
     "image": "https://image.tmdb.org/t/p/w300/5o32Jnu6MWJr7lfiGapVq0BSYiK.jpg",
     "traktUrl": "https://trakt.tv/shows/magia-record-puella-magi-madoka-magica-side-story",
     "imdbId": "tt9547400"
-  },
-  {
-    "slug": "psycho-pass",
-    "title": "Psycho-Pass",
-    "year": 2012,
-    "overview": "",
-    "status": "ended",
-    "network": "Fuji TV",
-    "genres": [
-      "action",
-      "adventure",
-      "fantasy"
-    ],
-    "runtime": 28,
-    "certification": "TV-MA",
-    "onlineRating": 7.9,
-    "personalRating": 7,
-    "episodesWatched": 33,
-    "episodesAired": 41,
-    "watchStatus": "dropped",
-    "lastWatchedAt": "2025-01-01T17:56:20.000Z",
-    "image": "https://image.tmdb.org/t/p/w300/uWnP6qTcc4imPJ9ZHaXlPQlcYnB.jpg",
-    "traktUrl": "https://trakt.tv/shows/psycho-pass",
-    "imdbId": "tt2379308"
   },
   {
     "slug": "dune-prophecy",
@@ -3674,6 +3744,29 @@
     "image": "https://image.tmdb.org/t/p/w300/lztz5XBMG1x6Y5ubz7CxfPFsAcW.jpg",
     "traktUrl": "https://trakt.tv/shows/what-if-2021",
     "imdbId": "tt10168312"
+  },
+  {
+    "slug": "good-girls",
+    "title": "Good Girls",
+    "year": 2018,
+    "overview": "",
+    "status": "canceled",
+    "network": "NBC",
+    "genres": [
+      "drama",
+      "crime"
+    ],
+    "runtime": 42,
+    "certification": "TV-14",
+    "onlineRating": 7.6,
+    "personalRating": 7,
+    "episodesWatched": 50,
+    "episodesAired": 50,
+    "watchStatus": "completed",
+    "lastWatchedAt": "2024-08-25T12:22:47.000Z",
+    "image": "https://image.tmdb.org/t/p/w300/wpgg6G3UHXepH2Zgpt4W60d6gxR.jpg",
+    "traktUrl": "https://trakt.tv/shows/good-girls",
+    "imdbId": "tt6474378"
   },
   {
     "slug": "inside-job-2021",
@@ -4150,6 +4243,30 @@
     "imdbId": "tt8291284"
   },
   {
+    "slug": "dota-dragon-s-blood",
+    "title": "DOTA: Dragon's Blood",
+    "year": 2021,
+    "overview": "",
+    "status": "ended",
+    "network": "Netflix",
+    "genres": [
+      "action",
+      "adventure",
+      "animation"
+    ],
+    "runtime": 25,
+    "certification": "TV-MA",
+    "onlineRating": 7.3,
+    "personalRating": 7,
+    "episodesWatched": 24,
+    "episodesAired": 24,
+    "watchStatus": "completed",
+    "lastWatchedAt": "2022-08-16T19:48:33.000Z",
+    "image": "https://image.tmdb.org/t/p/w300/s1wP1YeQS9fgSHiXZ3yJb2ufB2D.jpg",
+    "traktUrl": "https://trakt.tv/shows/dota-dragon-s-blood",
+    "imdbId": "tt14069590"
+  },
+  {
     "slug": "moon-knight",
     "title": "Moon Knight",
     "year": 2022,
@@ -4291,29 +4408,6 @@
     "imdbId": "tt5296406"
   },
   {
-    "slug": "the-man-in-the-high-castle",
-    "title": "The Man in the High Castle",
-    "year": 2015,
-    "overview": "",
-    "status": "ended",
-    "network": "Prime Video",
-    "genres": [
-      "drama",
-      "science-fiction"
-    ],
-    "runtime": 55,
-    "certification": "TV-MA",
-    "onlineRating": 7.7,
-    "personalRating": 7,
-    "episodesWatched": 40,
-    "episodesAired": 40,
-    "watchStatus": "completed",
-    "lastWatchedAt": "2021-11-20T22:49:35.000Z",
-    "image": "https://image.tmdb.org/t/p/w300/xhoDZbMNeyCA0BGPZQsdIiO43Dp.jpg",
-    "traktUrl": "https://trakt.tv/shows/the-man-in-the-high-castle",
-    "imdbId": "tt1740299"
-  },
-  {
     "slug": "a-p-bio",
     "title": "A.P. Bio",
     "year": 2018,
@@ -4378,6 +4472,30 @@
     "image": "https://image.tmdb.org/t/p/w300/iRfSzrPS5VYWQv7KVSEg2BZZL6C.jpg",
     "traktUrl": "https://trakt.tv/shows/schitt-s-creek",
     "imdbId": "tt3526078"
+  },
+  {
+    "slug": "watchmen",
+    "title": "Watchmen",
+    "year": 2019,
+    "overview": "",
+    "status": "ended",
+    "network": "HBO",
+    "genres": [
+      "drama",
+      "crime",
+      "action"
+    ],
+    "runtime": 60,
+    "certification": "TV-MA",
+    "onlineRating": 8,
+    "personalRating": 7,
+    "episodesWatched": 9,
+    "episodesAired": 9,
+    "watchStatus": "completed",
+    "lastWatchedAt": "2021-11-20T22:46:17.000Z",
+    "image": "https://image.tmdb.org/t/p/w300/m8rWq3j73ZGhDuSCZWMMoE9ePH1.jpg",
+    "traktUrl": "https://trakt.tv/shows/watchmen",
+    "imdbId": "tt7049682"
   },
   {
     "slug": "how-i-met-your-mother",
@@ -4510,9 +4628,9 @@
     "certification": "TV-MA",
     "onlineRating": 8.3,
     "personalRating": 6,
-    "episodesWatched": 39,
+    "episodesWatched": 40,
     "episodesAired": 40,
-    "watchStatus": "watching",
+    "watchStatus": "completed",
     "lastWatchedAt": "2026-05-20T08:07:00.000Z",
     "image": "https://image.tmdb.org/t/p/w300/in1R2dDc421JxsoRWaIIAqVI2KE.jpg",
     "traktUrl": "https://trakt.tv/shows/the-boys-2019",
@@ -4663,6 +4781,30 @@
     "imdbId": "tt5897304"
   },
   {
+    "slug": "psycho-pass",
+    "title": "Psycho-Pass",
+    "year": 2012,
+    "overview": "",
+    "status": "ended",
+    "network": "Fuji TV",
+    "genres": [
+      "action",
+      "adventure",
+      "fantasy"
+    ],
+    "runtime": 28,
+    "certification": "TV-MA",
+    "onlineRating": 7.9,
+    "personalRating": 6,
+    "episodesWatched": 33,
+    "episodesAired": 41,
+    "watchStatus": "dropped",
+    "lastWatchedAt": "2025-01-01T17:56:20.000Z",
+    "image": "https://image.tmdb.org/t/p/w300/uWnP6qTcc4imPJ9ZHaXlPQlcYnB.jpg",
+    "traktUrl": "https://trakt.tv/shows/psycho-pass",
+    "imdbId": "tt2379308"
+  },
+  {
     "slug": "konosuba-an-explosion-on-this-wonderful-world",
     "title": "KONOSUBA – An Explosion on This Wonderful World!",
     "year": 2023,
@@ -4772,7 +4914,7 @@
     ],
     "runtime": 25,
     "certification": "TV-MA",
-    "onlineRating": 8.6,
+    "onlineRating": 8.5,
     "personalRating": 6,
     "episodesWatched": 63,
     "episodesAired": 63,
@@ -5307,29 +5449,6 @@
     "imdbId": "tt26670955"
   },
   {
-    "slug": "dexter-new-blood",
-    "title": "Dexter: New Blood",
-    "year": 2021,
-    "overview": "",
-    "status": "ended",
-    "network": "Showtime",
-    "genres": [
-      "drama",
-      "crime"
-    ],
-    "runtime": 55,
-    "certification": "TV-MA",
-    "onlineRating": 7.6,
-    "personalRating": null,
-    "episodesWatched": 10,
-    "episodesAired": 10,
-    "watchStatus": "completed",
-    "lastWatchedAt": "2026-04-25T17:24:00.000Z",
-    "image": "https://image.tmdb.org/t/p/w300/9EBKgrFIsCFSV1RZKWhYUdbtGiv.jpg",
-    "traktUrl": "https://trakt.tv/shows/dexter-new-blood",
-    "imdbId": "tt14164730"
-  },
-  {
     "slug": "twin-peaks",
     "title": "Twin Peaks",
     "year": 1990,
@@ -5387,7 +5506,7 @@
     ],
     "runtime": 27,
     "certification": "TV-14",
-    "onlineRating": 7.8,
+    "onlineRating": 7.7,
     "personalRating": null,
     "episodesWatched": 5,
     "episodesAired": 13,
@@ -5445,30 +5564,6 @@
     "imdbId": "tt31987295"
   },
   {
-    "slug": "re-zero-starting-life-in-another-world",
-    "title": "Re:ZERO -Starting Life in Another World-",
-    "year": 2016,
-    "overview": "",
-    "status": "returning series",
-    "network": "AT-X",
-    "genres": [
-      "comedy",
-      "drama",
-      "fantasy"
-    ],
-    "runtime": 25,
-    "certification": "TV-14",
-    "onlineRating": 8.1,
-    "personalRating": null,
-    "episodesWatched": 66,
-    "episodesAired": 77,
-    "watchStatus": "dropped",
-    "lastWatchedAt": "2025-10-11T09:12:00.000Z",
-    "image": "https://image.tmdb.org/t/p/w300/oHqYrPAsIiTD5m4DuxumV4er8BU.jpg",
-    "traktUrl": "https://trakt.tv/shows/re-zero-starting-life-in-another-world",
-    "imdbId": "tt5607616"
-  },
-  {
     "slug": "the-sandman",
     "title": "The Sandman",
     "year": 2022,
@@ -5490,30 +5585,6 @@
     "image": "https://image.tmdb.org/t/p/w300/q54qEgagGOYCq5D1903eBVMNkbo.jpg",
     "traktUrl": "https://trakt.tv/shows/the-sandman",
     "imdbId": "tt1751634"
-  },
-  {
-    "slug": "neon-genesis-evangelion",
-    "title": "Neon Genesis Evangelion",
-    "year": 1995,
-    "overview": "",
-    "status": "ended",
-    "network": "TV Tokyo",
-    "genres": [
-      "anime",
-      "action",
-      "drama"
-    ],
-    "runtime": 25,
-    "certification": "TV-14",
-    "onlineRating": 8.3,
-    "personalRating": null,
-    "episodesWatched": 26,
-    "episodesAired": 26,
-    "watchStatus": "completed",
-    "lastWatchedAt": "2025-04-10T19:43:07.000Z",
-    "image": "https://image.tmdb.org/t/p/w300/y2ah9t0navXyIvoHg1uIbIHO3tt.jpg",
-    "traktUrl": "https://trakt.tv/shows/neon-genesis-evangelion",
-    "imdbId": "tt0112159"
   },
   {
     "slug": "gintama",
@@ -5586,29 +5657,6 @@
     "image": "https://image.tmdb.org/t/p/w300/mGsxKwXUjojitRv2E9qMTbxbBRd.jpg",
     "traktUrl": "https://trakt.tv/shows/agatha-all-along",
     "imdbId": "tt15571732"
-  },
-  {
-    "slug": "good-girls",
-    "title": "Good Girls",
-    "year": 2018,
-    "overview": "",
-    "status": "canceled",
-    "network": "NBC",
-    "genres": [
-      "drama",
-      "crime"
-    ],
-    "runtime": 42,
-    "certification": "TV-14",
-    "onlineRating": 7.6,
-    "personalRating": null,
-    "episodesWatched": 50,
-    "episodesAired": 50,
-    "watchStatus": "completed",
-    "lastWatchedAt": "2024-08-25T12:22:47.000Z",
-    "image": "https://image.tmdb.org/t/p/w300/wpgg6G3UHXepH2Zgpt4W60d6gxR.jpg",
-    "traktUrl": "https://trakt.tv/shows/good-girls",
-    "imdbId": "tt6474378"
   },
   {
     "slug": "13-reasons-why",
@@ -6081,30 +6129,6 @@
     "image": "https://image.tmdb.org/t/p/w300/qhcwrnnCnN8NE1N6XXKHFmveJR9.jpg",
     "traktUrl": "https://trakt.tv/shows/the-umbrella-academy",
     "imdbId": "tt1312171"
-  },
-  {
-    "slug": "dota-dragon-s-blood",
-    "title": "DOTA: Dragon's Blood",
-    "year": 2021,
-    "overview": "",
-    "status": "ended",
-    "network": "Netflix",
-    "genres": [
-      "action",
-      "adventure",
-      "animation"
-    ],
-    "runtime": 25,
-    "certification": "TV-MA",
-    "onlineRating": 7.3,
-    "personalRating": null,
-    "episodesWatched": 24,
-    "episodesAired": 24,
-    "watchStatus": "completed",
-    "lastWatchedAt": "2022-08-16T19:48:33.000Z",
-    "image": "https://image.tmdb.org/t/p/w300/s1wP1YeQS9fgSHiXZ3yJb2ufB2D.jpg",
-    "traktUrl": "https://trakt.tv/shows/dota-dragon-s-blood",
-    "imdbId": "tt14069590"
   },
   {
     "slug": "mad-men",
@@ -6664,30 +6688,6 @@
     "image": "https://image.tmdb.org/t/p/w300/2BWErT9QcADpf2G4BZ769eSnFTP.jpg",
     "traktUrl": "https://trakt.tv/shows/the-strain",
     "imdbId": "tt2654620"
-  },
-  {
-    "slug": "watchmen",
-    "title": "Watchmen",
-    "year": 2019,
-    "overview": "",
-    "status": "ended",
-    "network": "HBO",
-    "genres": [
-      "drama",
-      "crime",
-      "action"
-    ],
-    "runtime": 60,
-    "certification": "TV-MA",
-    "onlineRating": 8,
-    "personalRating": null,
-    "episodesWatched": 9,
-    "episodesAired": 9,
-    "watchStatus": "completed",
-    "lastWatchedAt": "2021-11-20T22:46:17.000Z",
-    "image": "https://image.tmdb.org/t/p/w300/m8rWq3j73ZGhDuSCZWMMoE9ePH1.jpg",
-    "traktUrl": "https://trakt.tv/shows/watchmen",
-    "imdbId": "tt7049682"
   },
   {
     "slug": "american-horror-story",
