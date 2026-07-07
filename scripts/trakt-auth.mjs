@@ -23,13 +23,36 @@ if (!CLIENT_ID || !CLIENT_SECRET) {
   process.exit(1);
 }
 
+// Trakt sits behind Cloudflare, which serves an HTML challenge page to
+// requests that lack a browser-like User-Agent + the trakt-api headers.
+const headers = {
+  'Content-Type': 'application/json',
+  'trakt-api-version': '2',
+  'trakt-api-key': CLIENT_ID,
+  'User-Agent':
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+};
+
+// Parse a response as JSON, but surface HTML/error bodies legibly.
+async function parseJson(resp, label) {
+  const text = await resp.text();
+  try {
+    return JSON.parse(text);
+  } catch {
+    throw new Error(`${label} returned non-JSON (status ${resp.status}):\n${text.slice(0, 300)}`);
+  }
+}
+
 // Step 1: request a device code
 const codeResp = await fetch('https://api.trakt.tv/oauth/device/code', {
   method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
+  headers,
   body: JSON.stringify({ client_id: CLIENT_ID }),
 });
-const { device_code, user_code, verification_url, expires_in, interval } = await codeResp.json();
+const { device_code, user_code, verification_url, expires_in, interval } = await parseJson(
+  codeResp,
+  'device/code',
+);
 
 console.log('\n──────────────────────────────────────────');
 console.log(`  Go to: ${verification_url}`);
@@ -46,12 +69,12 @@ while (Date.now() < deadline) {
 
   const tokenResp = await fetch('https://api.trakt.tv/oauth/device/token', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers,
     body: JSON.stringify({ code: device_code, client_id: CLIENT_ID, client_secret: CLIENT_SECRET }),
   });
 
   if (tokenResp.status === 200) {
-    const { access_token, refresh_token } = await tokenResp.json();
+    const { access_token, refresh_token } = await parseJson(tokenResp, 'device/token');
     console.log('\n✓ Authorized! Add these to your .env:\n');
     console.log(`TRAKT_ACCESS_TOKEN=${access_token}`);
     console.log(`TRAKT_REFRESH_TOKEN=${refresh_token}`);

@@ -29,15 +29,34 @@ const subtitle = tvshows.length === 0 ? 'Not yet synced — run npm run sync wit
     ) : (
       <>
         <div class="tab-list" role="tablist">
-          <button class="tab-btn active" data-tab="all"    role="tab">All <span class="tab-count">{tvshows.length}</span></button>
-          <button class="tab-btn"        data-tab="9-10"   role="tab">★ 9–10</button>
-          <button class="tab-btn"        data-tab="7-8"    role="tab">★ 7–8</button>
-          <button class="tab-btn"        data-tab="low"    role="tab">★ ≤6</button>
-          <button class="tab-btn"        data-tab="unrated" role="tab">Unrated</button>
+          <div class="tab-dropdown">
+            <button class="tab-btn tab-dropdown-toggle active" data-tab="all" role="tab">
+              <span class="dropdown-label">All <span class="tab-count">{tvshows.length}</span></span>
+              <span class="caret">▾</span>
+            </button>
+            <div class="tab-dropdown-menu">
+              <button class="tab-btn" data-tab="9-10"    role="tab">★ 9–10</button>
+              <button class="tab-btn" data-tab="7-8"     role="tab">★ 7–8</button>
+              <button class="tab-btn" data-tab="low"     role="tab">★ ≤6</button>
+              <button class="tab-btn" data-tab="unrated" role="tab">Unrated</button>
+            </div>
+          </div>
+          <button class="tab-btn" data-tab="recent" role="tab">Recently watched</button>
+
+          <div class="status-legend" tabindex="0">
+            <span class="status-legend-trigger">Status legend</span>
+            <div class="status-legend-popover" role="tooltip">
+              <div class="legend-row"><span class="watch-icon watch-icon--watching">▶</span> Watching</div>
+              <div class="legend-row"><span class="watch-icon watch-icon--new_episodes">＋</span> New episodes</div>
+              <div class="legend-row"><span class="watch-icon watch-icon--up_to_date">~</span> Up to date</div>
+              <div class="legend-row"><span class="watch-icon watch-icon--completed">✓</span> Completed</div>
+              <div class="legend-row"><span class="watch-icon watch-icon--dropped">✕</span> Dropped</div>
+            </div>
+          </div>
         </div>
 
         <div class="media-grid" id="shows-grid">
-          {sorted.map(s => {
+          {sorted.map((s, i) => {
             const r = s.personalRating;
             const bucket = r === null ? 'unrated' : r >= 9 ? '9-10' : r >= 7 ? '7-8' : 'low';
             return (
@@ -47,32 +66,55 @@ const subtitle = tvshows.length === 0 ? 'Not yet synced — run npm run sync wit
                 rel="noopener"
                 class="media-card"
                 data-rating={bucket}
+                data-watch-status={s.watchStatus ?? ''}
+                data-index={i}
+                data-last-watched={s.lastWatchedAt ?? ''}
               >
-                {s.image
-                  ? <img class="media-card-img" src={s.image} alt={s.title} loading="lazy" />
-                  : <div class="media-card-img media-card-img-placeholder">📺</div>
-                }
+                <div class="media-card-img-wrap">
+                  {s.image
+                    ? <img class="media-card-img" src={s.image} alt={s.title} loading="lazy" />
+                    : <div class="media-card-img media-card-img-placeholder">📺</div>
+                  }
+                  {r !== null && (
+                    <span class={`rating-banner ${r >= 9 ? 'rating-banner--favorite' : r === 8 ? 'rating-banner--recommend' : 'rating-banner--plain'}`}>
+                      {r} ★{r >= 9 ? ' favorite' : r === 8 ? ' recommend' : ''}
+                    </span>
+                  )}
+                  {s.watchStatus && (
+                    <span
+                      class={`watch-icon watch-icon--${s.watchStatus}`}
+                      title={
+                        s.watchStatus === 'completed' ? 'Completed'
+                        : s.watchStatus === 'up_to_date' ? 'Up to date'
+                        : s.watchStatus === 'watching' ? 'Watching'
+                        : s.watchStatus === 'new_episodes' ? 'New episodes'
+                        : 'Dropped'
+                      }
+                    >
+                      {s.watchStatus === 'completed' ? '✓'
+                        : s.watchStatus === 'up_to_date' ? '~'
+                        : s.watchStatus === 'watching' ? '▶'
+                        : s.watchStatus === 'new_episodes' ? '＋'
+                        : '✕'}
+                    </span>
+                  )}
+                </div>
+                {(s.episodesWatched != null && s.episodesAired != null && s.episodesAired > 0) && (
+                  <div class="episodes-progress-track" title={`${s.episodesWatched}/${s.episodesAired} episodes watched`}>
+                    <div
+                      class="episodes-progress-bar"
+                      style={`width:${Math.min(100, Math.round((s.episodesWatched / s.episodesAired) * 100))}%`}
+                    />
+                  </div>
+                )}
                 <div class="media-card-body">
                   <div class="media-card-title">{s.title}</div>
                   {s.network && <div class="media-card-summary">{s.network}{s.year ? ` · ${s.year}` : ''}</div>}
                   <div class="media-card-meta">
-                    {s.status && (
-                      <span class={`show-status show-status--${s.status?.toLowerCase().replace(/\s+/g, '-')}`}>
-                        {s.status}
-                      </span>
-                    )}
                     {s.genres.slice(0, 2).map((g: string) => (
                       <span class="tag">{g}</span>
                     ))}
                   </div>
-                  {r !== null && (
-                    <div class="media-card-ratings">
-                      <span class="rating-personal" title={`My rating: ${r}/10`}>★ {r}</span>
-                      {s.onlineRating !== null && s.onlineRating > 0 && (
-                        <span class="rating-online">Trakt {s.onlineRating}</span>
-                      )}
-                    </div>
-                  )}
                 </div>
               </a>
             );
@@ -125,25 +167,210 @@ const subtitle = tvshows.length === 0 ? 'Not yet synced — run npm run sync wit
     color: var(--color-accent);
   }
 
+  /* "All" dropdown holding the rating filters */
+  .tab-dropdown {
+    position: relative;
+  }
+  .tab-dropdown-toggle .caret {
+    font-size: 0.7rem;
+    opacity: 0.7;
+  }
+  .tab-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 4px;
+    z-index: 10;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 4px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    display: none;
+    flex-direction: column;
+    min-width: 130px;
+  }
+  .tab-dropdown:hover .tab-dropdown-menu,
+  .tab-dropdown:focus-within .tab-dropdown-menu {
+    display: flex;
+  }
+  .tab-dropdown-menu .tab-btn {
+    border-bottom: none;
+    margin-bottom: 0;
+    border-radius: 5px;
+    justify-content: flex-start;
+  }
+  .tab-dropdown-menu .tab-btn:hover {
+    background: var(--color-bg-subtle);
+  }
+  .tab-dropdown-menu .tab-btn.active {
+    color: var(--color-accent);
+    border-bottom-color: transparent;
+  }
+
   .media-card[hidden] { display: none; }
+
+  /* TMDB posters are 2:3 — match the slot so they aren't cropped */
+  .media-card-img {
+    aspect-ratio: 2 / 3;
+  }
+
+  .media-card-img-wrap {
+    position: relative;
+    display: block;
+  }
+
+  .rating-banner {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 4px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    pointer-events: none;
+  }
+  .rating-banner--favorite  { background: #d4a017; color: #1a1500; }
+  .rating-banner--recommend { background: var(--color-accent); color: #fff; }
+  .rating-banner--plain     { background: rgba(0, 0, 0, 0.6); color: #cbcbcb; }
+
+  .watch-icon {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.6rem;
+    font-weight: 700;
+    pointer-events: none;
+  }
+  .watch-icon--completed    { background: #1a3a1a; color: #6fcf6f; }
+  .watch-icon--up_to_date   { background: #1a2a3a; color: #6fb3cf; }
+  .watch-icon--watching     { background: #2a2a1a; color: #cfcf6f; }
+  .watch-icon--new_episodes { background: #2a1a3a; color: #b98fcf; }
+  .watch-icon--dropped      { background: #3a1a1a; color: #cf6f6f; }
+
+  /* Status legend — sits at the end of the tab bar, popover on hover/focus */
+  .status-legend {
+    position: relative;
+    margin-left: auto;
+    align-self: center;
+    cursor: default;
+    outline: none;
+  }
+  .status-legend-trigger {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    border-bottom: 1px dotted var(--color-text-muted);
+    padding-bottom: 1px;
+  }
+  .status-legend:hover .status-legend-trigger,
+  .status-legend:focus .status-legend-trigger {
+    color: var(--color-text);
+  }
+  .status-legend-popover {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 8px;
+    z-index: 10;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 10px 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    display: none;
+    min-width: 150px;
+  }
+  .status-legend:hover .status-legend-popover,
+  .status-legend:focus .status-legend-popover,
+  .status-legend:focus-within .status-legend-popover {
+    display: block;
+  }
+  .legend-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    color: var(--color-text);
+    white-space: nowrap;
+  }
+  .legend-row + .legend-row { margin-top: 6px; }
+  /* Reset the absolute-positioned poster overlay styling for legend icons */
+  .status-legend-popover .watch-icon {
+    position: static;
+    flex: 0 0 20px;
+  }
+
+  /* Progress bar sitting just under the poster, inset from the edges */
+  .episodes-progress-track {
+    height: 4px;
+    margin: 8px 10px 0;
+    background: var(--color-border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .episodes-progress-bar {
+    height: 100%;
+    background: var(--color-accent);
+    border-radius: 2px;
+  }
 </style>
 
 <script>
   const buttons = document.querySelectorAll<HTMLButtonElement>('.tab-btn');
-  const cards   = document.querySelectorAll<HTMLElement>('#shows-grid .media-card');
+  const grid    = document.getElementById('shows-grid')!;
+  const toggle      = document.querySelector<HTMLElement>('.tab-dropdown-toggle')!;
+  const toggleLabel = toggle.querySelector<HTMLElement>('.dropdown-label')!;
+  const defaultLabelHTML = toggleLabel.innerHTML;
+
+  function getCards() {
+    return [...grid.querySelectorAll<HTMLElement>('.media-card')];
+  }
+
+  function restoreRatingOrder() {
+    const cards = getCards().sort((a, b) =>
+      parseInt(a.dataset.index!) - parseInt(b.dataset.index!)
+    );
+    cards.forEach(c => grid.appendChild(c));
+  }
 
   buttons.forEach(btn => {
     btn.addEventListener('click', () => {
       const tab = btn.dataset.tab!;
+      const isRatingFilter = btn.closest('.tab-dropdown-menu') !== null;
 
       buttons.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
       btn.classList.add('active');
       btn.setAttribute('aria-selected', 'true');
 
-      cards.forEach(card => {
-        const show = tab === 'all' || card.dataset.rating === tab;
-        card.hidden = !show;
-      });
+      // The "All" dropdown stays highlighted while a rating bucket is active,
+      // and its label reflects the current selection.
+      if (isRatingFilter) {
+        toggle.classList.add('active');
+        toggleLabel.textContent = btn.textContent!.trim();
+        btn.blur(); // release focus so the hover menu collapses
+      } else {
+        toggleLabel.innerHTML = defaultLabelHTML;
+      }
+
+      if (tab === 'recent') {
+        const cards = getCards().sort((a, b) =>
+          (b.dataset.lastWatched ?? '').localeCompare(a.dataset.lastWatched ?? '')
+        );
+        cards.forEach(c => { c.hidden = false; grid.appendChild(c); });
+      } else {
+        restoreRatingOrder();
+        getCards().forEach(card => {
+          card.hidden = tab !== 'all' && card.dataset.rating !== tab;
+        });
+      }
     });
   });
 </script>
