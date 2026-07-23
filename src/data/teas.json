@@ -41,6 +41,19 @@
     "purchasePlace": "Touthé"
   },
   {
+    "slug": "matcha",
+    "name": "Matcha",
+    "type": [
+      "Matcha"
+    ],
+    "brand": "Mon Matcha",
+    "personalRating": 5,
+    "infusionTime": null,
+    "temperature": "75°C",
+    "ingredients": [],
+    "purchasePlace": "monmatcha.ch"
+  },
+  {
     "slug": "noel-blanc-bio",
     "name": "Noël Blanc Bio",
     "type": "Thé Blanc",

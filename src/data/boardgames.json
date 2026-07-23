@@ -487,6 +487,31 @@
     "isExpansion": false
   },
   {
+    "slug": "the-lord-of-the-rings-fate-of-the-fellowship",
+    "title": "The Lord of the Rings Fate of the Fellowship",
+    "image": "https://cf.geekdo-images.com/scw36iBIad7l-rGzxPGcGg__itemrep/img/UkJy_2ut0G5krsR6wZv_r1Plmto=/fit-in/246x300/filters:strip_icc()/pic8662670.png",
+    "summary": "As members of The Fellowship, embark on a journey to save—or doom—Middle-earth.",
+    "year": 2025,
+    "onlineRating": 8.3,
+    "personalRating": 9,
+    "minPlayers": 1,
+    "maxPlayers": 5,
+    "playtime": "60 - 150 minutes",
+    "categories": [
+      "Fantasy",
+      "Novel-based"
+    ],
+    "mechanisms": [
+      "Action Points",
+      "Cooperative Game",
+      "Dice Rolling",
+      "Hand Management",
+      "Set Collection"
+    ],
+    "bggLink": "https://boardgamegeek.com/boardgame/436217/the-lord-of-the-rings-fate-of-the-fellowship",
+    "isExpansion": false
+  },
+  {
     "slug": "unconscious-mind",
     "title": "Unconscious Mind",
     "image": "https://cf.geekdo-images.com/ufkAbhulnKJ7uDpi09TXOQ__itemrep/img/ygiDWSHMrInDEkqyR0TcHhVhf54=/fit-in/246x300/filters:strip_icc()/pic7127448.jpg",
@@ -680,7 +705,7 @@
       "Worker Placement"
     ],
     "bggLink": "https://boardgamegeek.com/boardgameexpansion/341254/lost-ruins-of-arnak-expedition-leaders",
-    "isExpansion": false
+    "isExpansion": true
   },
   {
     "slug": "oriflamme-alliance",
@@ -1688,31 +1713,6 @@
       "Roll / Spin and Move"
     ],
     "bggLink": "https://boardgamegeek.com/boardgame/17240/thats-life",
-    "isExpansion": false
-  },
-  {
-    "slug": "the-lord-of-the-rings-fate-of-the-fellowship",
-    "title": "The Lord of the Rings Fate of the Fellowship",
-    "image": "https://cf.geekdo-images.com/scw36iBIad7l-rGzxPGcGg__itemrep/img/UkJy_2ut0G5krsR6wZv_r1Plmto=/fit-in/246x300/filters:strip_icc()/pic8662670.png",
-    "summary": "As members of The Fellowship, embark on a journey to save—or doom—Middle-earth.",
-    "year": 2025,
-    "onlineRating": 8.3,
-    "personalRating": null,
-    "minPlayers": 1,
-    "maxPlayers": 5,
-    "playtime": "60 - 150 minutes",
-    "categories": [
-      "Fantasy",
-      "Novel-based"
-    ],
-    "mechanisms": [
-      "Action Points",
-      "Cooperative Game",
-      "Dice Rolling",
-      "Hand Management",
-      "Set Collection"
-    ],
-    "bggLink": "https://boardgamegeek.com/boardgame/436217/the-lord-of-the-rings-fate-of-the-fellowship",
     "isExpansion": false
   },
   {
