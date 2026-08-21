@@ -108,5 +108,15 @@
       "André": "tie",
       "Laetitia": "tie"
     }
+  },
+  {
+    "date": "2026-08-18",
+    "game": "Santorini",
+    "complexity": 1.66,
+    "players": {
+      "Loïs": "present",
+      "André": "winner",
+      "Sophia": "present"
+    }
   }
 ]

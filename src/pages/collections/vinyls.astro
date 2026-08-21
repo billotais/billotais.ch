@@ -1,0 +1,76 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import vinyls from '../../data/vinyls.json';
+
+const byArtist = (a: { artist: string | null; album: string | null }, b: { artist: string | null; album: string | null }) =>
+  (a.artist ?? '').localeCompare(b.artist ?? '') || (a.album ?? '').localeCompare(b.album ?? '');
+
+const owned = vinyls.filter(v => v.status === 'Owned').sort(byArtist);
+const preOrdered = vinyls.filter(v => v.status === 'Pre-Order').sort(byArtist);
+
+const subtitle = `${owned.length} owned${preOrdered.length > 0 ? ` · ${preOrdered.length} pre-ordered` : ''}`;
+---
+
+<Layout
+  title="Vinyls"
+  description="Vinyl records I own, and the ones I am waiting for."
+  activeNav="collections"
+  pageSubtitle={subtitle}
+>
+  <main class="container page">
+
+    <div class="media-grid">
+      {owned.map(v => (
+        <div class="media-card">
+          {v.image
+            ? <img class="media-card-img vinyl-card-img" src={v.image} alt={`${v.artist} – ${v.album}`} loading="lazy" />
+            : <div class="media-card-img vinyl-card-img media-card-img-placeholder">🎵</div>
+          }
+          <div class="media-card-body">
+            <div class="media-card-title">{v.album}</div>
+            <div class="media-card-summary">{v.artist}</div>
+            {v.edition && v.edition !== 'Standard' && (
+              <div class="media-card-meta"><span>{v.edition}</span></div>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    {preOrdered.length > 0 && (
+      <section style="margin-top: 56px;">
+        <h2 class="cv-section-title">Pre-ordered</h2>
+        <div class="media-grid media-grid-small">
+          {preOrdered.map(v => (
+            <div class="media-card">
+              {v.image
+                ? <img class="media-card-img vinyl-card-img" src={v.image} alt={`${v.artist} – ${v.album}`} loading="lazy" />
+                : <div class="media-card-img vinyl-card-img media-card-img-placeholder">🎵</div>
+              }
+              <div class="media-card-body">
+                <div class="media-card-title">{v.album}</div>
+                <div class="media-card-summary">{v.artist}</div>
+                {v.edition && v.edition !== 'Standard' && (
+                  <div class="media-card-meta"><span>{v.edition}</span></div>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+  </main>
+</Layout>
+
+<style>
+  /* Album covers are square, unlike the portrait box art in other collections */
+  .vinyl-card-img {
+    aspect-ratio: 1 / 1;
+  }
+
+  /* These cards are not links, so drop the hover affordance */
+  .media-card:hover {
+    border-color: var(--color-border);
+    transform: none;
+  }
+</style>

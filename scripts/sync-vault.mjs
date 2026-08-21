@@ -11,6 +11,7 @@
 import { readFileSync, writeFileSync, readdirSync, existsSync } from "fs";
 import { join, basename } from "path";
 import matter from "gray-matter";
+import { exit } from "process";
 
 // Load .env if present
 if (existsSync(".env")) {
@@ -146,6 +147,25 @@ const books = bookFiles
 
 writeFileSync("src/data/books.json", JSON.stringify(books, null, 2));
 console.log(`  Books: ${books.length} entries`);
+
+// ── Vinyls ─────────────────────────────────────────────────────────────────────
+const vinylDir = join(VAULT, "Concepts/Achats/Vinyls");
+const vinylFiles = readCollection(vinylDir);
+const vinyls = vinylFiles
+  .map((d) => ({
+    slug: slug(d._filename),
+    name: basename(d._filename, ".md"),
+    artist: d["Artist"] ?? null,
+    album: d["Album"] ?? null,
+    edition: d["Edition"] ?? null,
+    status: d["Status"] ?? null,
+    image: d["image"] ?? null,
+  }))
+  .sort((a, b) => (b.personalRating ?? -1) - (a.personalRating ?? -1));
+
+writeFileSync("src/data/vinyls.json", JSON.stringify(vinyls, null, 2));
+console.log(`  Vinyls: ${vinyls.length} entries`);
+// exit()
 
 // ── Races ─────────────────────────────────────────────────────────────────────
 function parseTime(str) {

@@ -6,6 +6,7 @@ import teas from "../../data/teas.json";
 import tvshows from "../../data/tvshows.json";
 import books from "../../data/books.json";
 import races from "../../data/races.json";
+import vinyls from "../../data/vinyls.json";
 
 const collections = [
     {
@@ -31,10 +32,10 @@ const collections = [
         icon: "📺",
     },
     {
-        href: "/collections/music",
-        title: "Music",
-        count: null,
-        description: "My favourite playlists on Apple Music.",
+        href: "/collections/vinyls",
+        title: "Vinyls",
+        count: vinyls.filter((v: { status: string }) => v.status === "Owned").length,
+        description: "Vinyl records I own, and the ones I am waiting for.",
         icon: "🎵",
     },
     {

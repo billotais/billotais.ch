@@ -46,5 +46,17 @@
     "personalRating": 8,
     "read": true,
     "openLibraryUrl": "https://openlibrary.org/works/OL24312716W"
+  },
+  {
+    "slug": "three-body-problem-series-2017",
+    "title": "Three-Body Problem Series",
+    "image": "https://covers.openlibrary.org/b/id/14632491-L.jpg",
+    "year": "2017",
+    "authors": [
+      "刘慈欣, Ken Liu, Joel Martinsen"
+    ],
+    "personalRating": 0,
+    "read": false,
+    "openLibraryUrl": "https://openlibrary.org/works/OL26796577W"
   }
 ]

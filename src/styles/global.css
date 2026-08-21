@@ -762,22 +762,6 @@ a:hover {
     font-weight: 400;
 }
 
-/* Music */
-.music-playlists {
-    display: flex;
-    flex-direction: column;
-    gap: 48px;
-}
-
-.music-section-title {
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--color-text-muted);
-    margin-bottom: 16px;
-}
-
 /* Races */
 .race-list {
     display: flex;

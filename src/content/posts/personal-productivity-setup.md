@@ -1,7 +1,7 @@
 ---
 title: "My Personal Productivity Setup"
 description: "The tools I use daily to manage email, files, calendar, passwords, and notes — with a focus on privacy and keeping things off Big Tech."
-date: 2025-06-17
+date: 2026-06-17
 tags: ["productivity", "privacy", "tools", "obsidian"]
 ---
 
