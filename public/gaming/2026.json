@@ -118,5 +118,17 @@
       "André": "winner",
       "Sophia": "present"
     }
+  },
+  {
+    "date": "2026-09-01",
+    "game": "Harmonies",
+    "complexity": 2.01,
+    "url": "https://boardgamegeek.com/boardgame/414317/harmonies",
+    "players": {
+      "Loïs": "tie",
+      "Max": "tie",
+      "Laetitia": "present",
+      "Lucas": "present"
+    }
   }
 ]

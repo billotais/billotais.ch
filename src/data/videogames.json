@@ -232,6 +232,22 @@
     "steamUrl": "https://store.steampowered.com/app/1151640"
   },
   {
+    "slug": "resonance-a-plague-tale-legacy-2026",
+    "title": "Resonance: A Plague Tale Legacy",
+    "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2713000/1e291a113dfe7805ad2935a67738d33bd13ccaf5/header.jpg?t=1750330513",
+    "year": "2026",
+    "onlineRating": 0,
+    "personalRating": 8,
+    "genres": [
+      "Action",
+      "Adventure"
+    ],
+    "developers": [
+      "Asobo Studio"
+    ],
+    "steamUrl": "https://store.steampowered.com/app/2713000"
+  },
+  {
     "slug": "star-wars-jedi-fallen-order-2019",
     "title": "STAR WARS Jedi: Fallen Order™",
     "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1172380/header.jpg?t=1748950986",
@@ -328,21 +344,5 @@
       "PlatinumGames Inc."
     ],
     "steamUrl": "https://store.steampowered.com/app/524220"
-  },
-  {
-    "slug": "resonance-a-plague-tale-legacy-2026",
-    "title": "Resonance: A Plague Tale Legacy",
-    "image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2713000/1e291a113dfe7805ad2935a67738d33bd13ccaf5/header.jpg?t=1750330513",
-    "year": "2026",
-    "onlineRating": 0,
-    "personalRating": 0,
-    "genres": [
-      "Action",
-      "Adventure"
-    ],
-    "developers": [
-      "Asobo Studio"
-    ],
-    "steamUrl": "https://store.steampowered.com/app/2713000"
   }
 ]

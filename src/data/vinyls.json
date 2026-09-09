@@ -6,6 +6,7 @@
     "album": "Season 1 Soundtrack",
     "edition": "2026 Limited Edition",
     "status": "Pre-Order",
+    "personalRating": null,
     "image": "https://static.fnac-static.com/multimedia/Images/FR/NR/3b/30/31/20000827/1540-1/tsp20260306153221/Arcane-Season-1.jpg"
   },
   {
@@ -14,8 +15,29 @@
     "artist": "Arcane",
     "album": "Season 2 Soundtrack",
     "edition": "2026 Limited Edition",
-    "status": "Pre-Order",
+    "status": "Owned",
+    "personalRating": null,
     "image": "https://www.roughtrade.com/_next/image?url=https%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F0867%2F1120%2F6219%2Ffiles%2FARC2-S2.ALBUM_COVER-3000x3000px_5663a130_thumbnail_4096.jpg%3Fv%3D1733145869&w=3840&q=75"
+  },
+  {
+    "slug": "asaf-avidan-anagnorisis",
+    "name": "Asaf Avidan - Anagnorisis",
+    "artist": "Asaf Avidan",
+    "album": "Anagnorisis",
+    "edition": null,
+    "status": "Wanted",
+    "personalRating": null,
+    "image": null
+  },
+  {
+    "slug": "asaf-avidan-unfurl",
+    "name": "Asaf Avidan - Unfurl",
+    "artist": "Asaf Avidan",
+    "album": "Unfurl",
+    "edition": "Standard",
+    "status": "Owned",
+    "personalRating": null,
+    "image": "https://images.squarespace-cdn.com/content/v1/66d08e0f3174ae1c60294d6c/95dfc9c6-1149-4892-bf49-e8c57c3c5d30/AA_UNFURL_Album+Cover+-+3000X3000+%281%29.jpg"
   },
   {
     "slug": "c2c-tetra",
@@ -23,7 +45,8 @@
     "artist": "C2C",
     "album": "Tetra",
     "edition": "Blue and Purple Edition",
-    "status": "Pre-Order",
+    "status": "Owned",
+    "personalRating": null,
     "image": "https://i.discogs.com/bXvqV_fNl0dnj8DMYOVvexKfE4lFs7JkDnn-xNNgDqM/rs:fit/g:sm/q:40/h:300/w:300/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTM4NDQ3/OTYtMTM0NjYzNDA5/Mi03NjM4LmpwZWc.jpeg"
   },
   {
@@ -33,6 +56,7 @@
     "album": "Gangbusters Melody Club",
     "edition": "Exclusive Color Edition",
     "status": "Owned",
+    "personalRating": null,
     "image": "https://i.discogs.com/-iDFmSZeg8pjIa38v6lsnCjke8SqXroPPbUdDdPRTW0/rs:fit/g:sm/q:40/h:300/w:300/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTMwMDI2/Njc3LTE3MDk4MTQ2/NDMtMjQ1Ni5wbmc.jpeg"
   },
   {
@@ -42,6 +66,7 @@
     "album": "Random Access Memories",
     "edition": "Standard",
     "status": "Owned",
+    "personalRating": null,
     "image": "https://i.discogs.com/d2qNb43Z2ID1VFLvu402wBKLjp-5pXcM23UAJ5N8lGU/rs:fit/g:sm/q:40/h:300/w:300/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTQ1NzAz/NjYtMTc0OTM3MjMx/Ny0xODg1LmpwZWc.jpeg"
   },
   {
@@ -51,7 +76,18 @@
     "album": "The Mountain",
     "edition": "Standard",
     "status": "Owned",
+    "personalRating": null,
     "image": "https://i.discogs.com/pvobPqUKRLA8HteHgy2pP69JaLjc9XI46qjgc5NCz6g/rs:fit/g:sm/q:40/h:300/w:300/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTM2NTk5/NzcwLTE3NzM4MTUy/OTMtODkwMy5wbmc.jpeg"
+  },
+  {
+    "slug": "imagine-dragons-mercury-acts-1-2",
+    "name": "Imagine Dragons - Mercury Acts 1 & 2",
+    "artist": "Imagine Dragons",
+    "album": "Mercury Acts 1 & 2",
+    "edition": null,
+    "status": "Wanted",
+    "personalRating": null,
+    "image": null
   },
   {
     "slug": "linking-park-living-things",
@@ -60,6 +96,7 @@
     "album": "Living Things",
     "edition": "Standard",
     "status": "Owned",
+    "personalRating": null,
     "image": "https://i.discogs.com/86PhjuXq-lOQZSYK-kcrnJijShiOiVv98cDGb_FZhQ8/rs:fit/g:sm/q:40/h:300/w:300/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTQ2Mjk0/MjQtMTM3MDQzMzg4/OS00MTY4LmpwZWc.jpeg"
   },
   {
@@ -69,7 +106,48 @@
     "album": "Clair Obscur: Expedition 33 Soundtrack",
     "edition": "Color Edition",
     "status": "Pre-Order",
+    "personalRating": null,
     "image": "https://blob.cede.ch/catalog/19123000/19123609_1_92.jpg?v=1"
+  },
+  {
+    "slug": "mika-life-in-cartoon-motion",
+    "name": "Mika - Life in Cartoon Motion",
+    "artist": "Mika",
+    "album": "Life in Cartoon Motion",
+    "edition": null,
+    "status": "Wanted",
+    "personalRating": null,
+    "image": null
+  },
+  {
+    "slug": "muse-black-holes-and-revelations",
+    "name": "Muse - Black Holes and Revelations",
+    "artist": "Muse",
+    "album": "Black Holes and Revelations",
+    "edition": null,
+    "status": "Wanted",
+    "personalRating": null,
+    "image": null
+  },
+  {
+    "slug": "muse-drones",
+    "name": "Muse - Drones",
+    "artist": "Muse",
+    "album": "Drones",
+    "edition": null,
+    "status": "Wanted",
+    "personalRating": null,
+    "image": null
+  },
+  {
+    "slug": "muse-origin-of-symmetry",
+    "name": "Muse - Origin of Symmetry",
+    "artist": "Muse",
+    "album": "Origin of Symmetry",
+    "edition": null,
+    "status": "Wanted",
+    "personalRating": null,
+    "image": null
   },
   {
     "slug": "muse-the-wow-signal",
@@ -78,7 +156,68 @@
     "album": "The Wow Signal",
     "edition": "Translucent Rosette Nebula",
     "status": "Owned",
+    "personalRating": null,
     "image": "https://preview.redd.it/the-high-res-cover-image-of-the-wow-signal-v0-ljaqx57ne1qg1.jpeg?width=1080&crop=smart&auto=webp&s=320cfee8de4234b66336ae4a92dfaf76b836f656"
+  },
+  {
+    "slug": "muse-will-of-the-people",
+    "name": "Muse - Will of the People",
+    "artist": "Muse",
+    "album": "Will of the People",
+    "edition": null,
+    "status": "Wanted",
+    "personalRating": null,
+    "image": null
+  },
+  {
+    "slug": "shaka-ponk-the-white-pixel-ape",
+    "name": "Shaka Ponk - The White Pixel Ape",
+    "artist": "Shaka Ponk",
+    "album": "The White Pixel Ape",
+    "edition": null,
+    "status": "Wanted",
+    "personalRating": null,
+    "image": null
+  },
+  {
+    "slug": "stromae-multitude",
+    "name": "Stromae - Multitude",
+    "artist": "Stromae",
+    "album": "Multitude",
+    "edition": null,
+    "status": "Wanted",
+    "personalRating": null,
+    "image": null
+  },
+  {
+    "slug": "stromae-racine-carree",
+    "name": "Stromae - Racine Carrée",
+    "artist": "Stromae",
+    "album": "Racine Carrée",
+    "edition": null,
+    "status": "Wanted",
+    "personalRating": null,
+    "image": null
+  },
+  {
+    "slug": "twenty-one-pilots-blurryface",
+    "name": "Twenty One Pilots - Blurryface",
+    "artist": "Twenty One Pilots",
+    "album": "Blurryface",
+    "edition": null,
+    "status": "Wanted",
+    "personalRating": null,
+    "image": null
+  },
+  {
+    "slug": "twenty-one-pilots-breach",
+    "name": "Twenty One Pilots - Breach",
+    "artist": "Twenty One Pilots",
+    "album": "Breach",
+    "edition": "Red Edition",
+    "status": "Pre-Order",
+    "personalRating": null,
+    "image": "https://upload.wikimedia.org/wikipedia/en/5/5a/Twenty_One_Pilots_-_Breach.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
   },
   {
     "slug": "twenty-one-pilots-vessel",
@@ -87,7 +226,28 @@
     "album": "Vessel",
     "edition": "Silver Edition",
     "status": "Pre-Order",
+    "personalRating": null,
     "image": "https://i.discogs.com/ea-jT01_8JygIrjh0zZrEShLeweZIusmzdWFQVh9UPQ/rs:fit/g:sm/q:40/h:300/w:300/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTQyNDk1/NzItMTQ4MDUzNjc1/OC04MTIxLmpwZWc.jpeg"
+  },
+  {
+    "slug": "woodkid-death-stranding",
+    "name": "Woodkid - Death Stranding",
+    "artist": "Woodkid",
+    "album": "Death Stranding",
+    "edition": null,
+    "status": "Wanted",
+    "personalRating": null,
+    "image": null
+  },
+  {
+    "slug": "woodkid-s16",
+    "name": "Woodkid - S16",
+    "artist": "Woodkid",
+    "album": "S16",
+    "edition": null,
+    "status": "Wanted",
+    "personalRating": null,
+    "image": null
   },
   {
     "slug": "woodkid-the-golden-age",
@@ -96,6 +256,7 @@
     "album": "The Golden Age",
     "edition": "Standard",
     "status": "Owned",
+    "personalRating": null,
     "image": "https://i.discogs.com/F1jS_sM7yiohix6WgktYMvhiK7qrBuDkI4owMlaQyKk/rs:fit/g:sm/q:40/h:300/w:300/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTQ0NjY2/MzktMTQ0NDAyNzAw/NS04NDYzLnBuZw.jpeg"
   }
 ]

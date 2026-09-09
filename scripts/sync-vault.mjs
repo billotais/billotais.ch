@@ -67,7 +67,17 @@ function asNumber(val) {
   return isNaN(n) ? null : n;
 }
 
+// Vault statuses are lowercase slugs ("owned", "preorder", "wanted");
+// the site renders them as labels.
+const STATUS_LABELS = { owned: "Owned", preorder: "Pre-Order", wanted: "Wanted" };
+function titleCaseStatus(val) {
+  if (!val) return null;
+  const key = String(val).toLowerCase().replace(/[^a-z]/g, "");
+  return STATUS_LABELS[key] ?? String(val);
+}
+
 // ── Board games ──────────────────────────────────────────────────────────────
+// Path unchanged. Notes no longer carry a `title` property — the filename is it.
 const boardgameFiles = readCollection(join(VAULT, "Media DB/boardgames"));
 const boardgames = boardgameFiles
   .map((d) => ({
@@ -111,19 +121,25 @@ writeFileSync("src/data/videogames.json", JSON.stringify(videogames, null, 2));
 console.log(`  Video games: ${videogames.length} entries`);
 
 // ── Teas ─────────────────────────────────────────────────────────────────────
-const teaDir = join(VAULT, "Concepts/Achats/Thés");
+// Vault: Collections/Teas (was Concepts/Achats/Thés, French property names).
+// "wanted" teas are wishlist entries with no brewing data — not part of the collection.
+const teaDir = join(VAULT, "Collections/Teas");
 const teaFiles = readCollection(teaDir);
 const teas = teaFiles
+  .filter((d) => d.status !== "wanted")
   .map((d) => ({
     slug: slug(d._filename),
     name: basename(d._filename, ".md"),
-    type: d["Type de thé"] ?? null,
-    brand: d["Marque"] ?? null,
-    personalRating: asNumber(d["Note"]),
-    infusionTime: d["Durée infusion"] ?? null,
-    temperature: d["Température Infusion"] ? `${d["Température Infusion"]}°C` : null,
-    ingredients: asArray(d["Ingrédients"]).filter(Boolean),
-    purchasePlace: d["Lieu d'achat"] ?? null,
+    type: asArray(d.teaType)[0] ?? null,
+    types: asArray(d.teaType),
+    brand: d.brand ?? null,
+    personalRating: asNumber(d.personalRating),
+    infusionTime: d.steepTime ?? null,
+    temperature: d.steepTemp ? `${d.steepTemp}°C` : null,
+    ingredients: asArray(d.ingredients).filter(Boolean),
+    purchasePlace: d.shop ?? null,
+    sugar: d.sugar ?? null,
+    status: titleCaseStatus(d.status),
   }))
   .sort((a, b) => (b.personalRating ?? -1) - (a.personalRating ?? -1));
 
@@ -148,24 +164,25 @@ const books = bookFiles
 writeFileSync("src/data/books.json", JSON.stringify(books, null, 2));
 console.log(`  Books: ${books.length} entries`);
 
-// ── Vinyls ─────────────────────────────────────────────────────────────────────
-const vinylDir = join(VAULT, "Concepts/Achats/Vinyls");
+// ── Vinyls ────────────────────────────────────────────────────────────────────
+// Vault: Collections/Vinyls (was Concepts/Achats/Vinyls).
+const vinylDir = join(VAULT, "Collections/Vinyls");
 const vinylFiles = readCollection(vinylDir);
 const vinyls = vinylFiles
   .map((d) => ({
     slug: slug(d._filename),
     name: basename(d._filename, ".md"),
-    artist: d["Artist"] ?? null,
-    album: d["Album"] ?? null,
-    edition: d["Edition"] ?? null,
-    status: d["Status"] ?? null,
-    image: d["image"] ?? null,
+    artist: d.artist ?? null,
+    album: d.album ?? null,
+    edition: d.edition ?? null,
+    status: titleCaseStatus(d.status),
+    personalRating: asNumber(d.personalRating),
+    image: d.image ?? null,
   }))
   .sort((a, b) => (b.personalRating ?? -1) - (a.personalRating ?? -1));
 
 writeFileSync("src/data/vinyls.json", JSON.stringify(vinyls, null, 2));
 console.log(`  Vinyls: ${vinyls.length} entries`);
-// exit()
 
 // ── Races ─────────────────────────────────────────────────────────────────────
 function parseTime(str) {
@@ -205,13 +222,15 @@ function asISODate(val) {
   return String(val).slice(0, 10);
 }
 
-const raceFiles = readCollection(join(VAULT, "Concepts/Evenements"));
+// Vault: Entities/Events (was Concepts/Evenements). Races are now flagged by
+// `type: race` rather than a "race" tag (tags are `sport/running` now).
+const raceFiles = readCollection(join(VAULT, "Entities/Events"));
 const races = raceFiles
-  .filter((d) => asArray(d.tags).some((t) => String(t).includes("race")))
+  .filter((d) => d.type === "race" || asArray(d.tags).some((t) => String(t).includes("race")))
   .map((d) => {
     const name = basename(d._filename, ".md");
     const distKm = parseDist(d.distance);
-    const finalSec = parseTime(d["temps-final"]);
+    const finalSec = parseTime(d.finalTime);
     const pace = finalSec && finalSec !== "DNF" && distKm ? Math.round(finalSec / distKm) : null;
     const today = new Date().toISOString().slice(0, 10);
     const raceDate = asISODate(d.date);
@@ -221,7 +240,7 @@ const races = raceFiles
       date: raceDate,
       upcoming: raceDate ? raceDate > today : false,
       distance: distKm,
-      goalTime: d["temps-objectif"] && d["temps-objectif"] !== "-" ? String(d["temps-objectif"]) : null,
+      goalTime: d.targetTime && d.targetTime !== "-" ? String(d.targetTime) : null,
       finalTime: finalSec === "DNF" ? "DNF" : finalSec ? formatTime(finalSec) : null,
       paceSec: pace,
       pace: pace ? `${Math.floor(pace / 60)}:${String(pace % 60).padStart(2, "0")} /km` : null,

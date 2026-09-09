@@ -1,5 +1,17 @@
 [
   {
+    "slug": "vortex-race-2026",
+    "name": "Vortex Race - 2026",
+    "date": "2026-10-17",
+    "upcoming": true,
+    "distance": 7,
+    "goalTime": null,
+    "finalTime": null,
+    "paceSec": null,
+    "pace": null,
+    "dnf": false
+  },
+  {
     "slug": "morat-fribourg-2026",
     "name": "Morat-Fribourg - 2026",
     "date": "2026-10-04",
