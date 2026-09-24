@@ -54,7 +54,7 @@
     "name": "Caravan Palace - Gangbusters Melody Club",
     "artist": "Caravan Palace",
     "album": "Gangbusters Melody Club",
-    "edition": "Exclusive Color Edition",
+    "edition": "Exclusive Color",
     "status": "Owned",
     "personalRating": null,
     "image": "https://i.discogs.com/-iDFmSZeg8pjIa38v6lsnCjke8SqXroPPbUdDdPRTW0/rs:fit/g:sm/q:40/h:300/w:300/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTMwMDI2/Njc3LTE3MDk4MTQ2/NDMtMjQ1Ni5wbmc.jpeg"
@@ -70,6 +70,16 @@
     "image": "https://i.discogs.com/d2qNb43Z2ID1VFLvu402wBKLjp-5pXcM23UAJ5N8lGU/rs:fit/g:sm/q:40/h:300/w:300/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTQ1NzAz/NjYtMTc0OTM3MjMx/Ny0xODg1LmpwZWc.jpeg"
   },
   {
+    "slug": "daniel-pemberton-spider-man-across-the-spider-verse",
+    "name": "Daniel Pemberton - Spider-Man - Across the Spider-Verse",
+    "artist": "Daniel Pemberton",
+    "album": "Spider-Man - Across the Spider-Verse",
+    "edition": null,
+    "status": "Wanted",
+    "personalRating": null,
+    "image": null
+  },
+  {
     "slug": "gorillaz-the-mountain",
     "name": "Gorillaz - The Mountain",
     "artist": "Gorillaz",
@@ -80,14 +90,44 @@
     "image": "https://i.discogs.com/pvobPqUKRLA8HteHgy2pP69JaLjc9XI46qjgc5NCz6g/rs:fit/g:sm/q:40/h:300/w:300/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTM2NTk5/NzcwLTE3NzM4MTUy/OTMtODkwMy5wbmc.jpeg"
   },
   {
-    "slug": "imagine-dragons-mercury-acts-1-2",
-    "name": "Imagine Dragons - Mercury Acts 1 & 2",
-    "artist": "Imagine Dragons",
-    "album": "Mercury Acts 1 & 2",
+    "slug": "hazbin-hotel",
+    "name": "Hazbin Hotel",
+    "artist": "Hazbin Hotel",
+    "album": "Season 1",
     "edition": null,
     "status": "Wanted",
     "personalRating": null,
     "image": null
+  },
+  {
+    "slug": "imagine-dragons-mercury-act-1",
+    "name": "Imagine Dragons - Mercury Act 1",
+    "artist": "Imagine Dragons",
+    "album": "Mercury Act 1",
+    "edition": "Standard",
+    "status": "Owned",
+    "personalRating": null,
+    "image": "https://upload.wikimedia.org/wikipedia/en/d/d1/Imagine_Dragons_-_Mercury_Act_1.png?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original"
+  },
+  {
+    "slug": "imagine-dragons-mercury-act-2",
+    "name": "Imagine Dragons - Mercury Act 2",
+    "artist": "Imagine Dragons",
+    "album": "Mercury Act 2",
+    "edition": "Standard",
+    "status": "Owned",
+    "personalRating": null,
+    "image": "https://upload.wikimedia.org/wikipedia/en/d/d9/Imagine_Dragons_Mercury_album_cover_2022.webp?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original"
+  },
+  {
+    "slug": "linkin-park-the-hunting-party",
+    "name": "Linkin Park - The Hunting Party",
+    "artist": "Linkin Park",
+    "album": "The Hunting Party",
+    "edition": "Translucent Light Blue Limited Edition",
+    "status": "Pre-Order",
+    "personalRating": null,
+    "image": "https://upload.wikimedia.org/wikipedia/en/f/fa/Linkin_Park%2C_The_Hunting_Party%2C_album_art_final.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original"
   },
   {
     "slug": "linking-park-living-things",
@@ -110,14 +150,24 @@
     "image": "https://blob.cede.ch/catalog/19123000/19123609_1_92.jpg?v=1"
   },
   {
+    "slug": "maneskin-rush",
+    "name": "Maneskin - Rush",
+    "artist": "Maneskin",
+    "album": "Rush",
+    "edition": "White Vinyl Silver Foil Edition",
+    "status": "Owned",
+    "personalRating": null,
+    "image": "https://media.pitchfork.com/photos/63bc6f61f0f99d529cd0e8b8/master/w_1280%2Cc_limit/Ma%25CC%258Aneskin-%2520Rush!%2520.jpeg"
+  },
+  {
     "slug": "mika-life-in-cartoon-motion",
     "name": "Mika - Life in Cartoon Motion",
     "artist": "Mika",
     "album": "Life in Cartoon Motion",
-    "edition": null,
-    "status": "Wanted",
+    "edition": "Standard",
+    "status": "Owned",
     "personalRating": null,
-    "image": null
+    "image": "https://upload.wikimedia.org/wikipedia/en/7/74/MikaCartoonMotion.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original"
   },
   {
     "slug": "muse-black-holes-and-revelations",
@@ -144,6 +194,16 @@
     "name": "Muse - Origin of Symmetry",
     "artist": "Muse",
     "album": "Origin of Symmetry",
+    "edition": "Standard",
+    "status": "Owned",
+    "personalRating": null,
+    "image": "https://upload.wikimedia.org/wikipedia/en/3/35/Muse_-_Origin_of_Symmetry_cover_art.png?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original"
+  },
+  {
+    "slug": "muse-the-2nd-law",
+    "name": "Muse - The 2nd Law",
+    "artist": "Muse",
+    "album": "The 2nd Law",
     "edition": null,
     "status": "Wanted",
     "personalRating": null,
@@ -170,6 +230,46 @@
     "image": null
   },
   {
+    "slug": "panic-at-the-disco-death-of-a-bachelor",
+    "name": "Panic at the Disco - Death of a Bachelor",
+    "artist": "Panic at the Disco",
+    "album": "Death of a Bachelor",
+    "edition": null,
+    "status": "Wanted",
+    "personalRating": null,
+    "image": null
+  },
+  {
+    "slug": "panic-at-the-disco-pray-for-the-wicked",
+    "name": "Panic at the Disco - Pray for the Wicked",
+    "artist": "Panic at the Disco",
+    "album": "Pray for the Wicked",
+    "edition": null,
+    "status": "Wanted",
+    "personalRating": null,
+    "image": null
+  },
+  {
+    "slug": "parov-stelar-artifact",
+    "name": "Parov Stelar - Artifact",
+    "artist": "Parov Stelar",
+    "album": "Artifact",
+    "edition": "Standard",
+    "status": "Owned",
+    "personalRating": null,
+    "image": "https://images.thalia.media/07/-/b37af6fb3de04598a0dd556db18efb7c/artifact-cd-parov-stelar.jpeg"
+  },
+  {
+    "slug": "royal-blood-typhoons",
+    "name": "Royal Blood - Typhoons",
+    "artist": "Royal Blood",
+    "album": "Typhoons",
+    "edition": null,
+    "status": "Wanted",
+    "personalRating": null,
+    "image": null
+  },
+  {
     "slug": "shaka-ponk-the-white-pixel-ape",
     "name": "Shaka Ponk - The White Pixel Ape",
     "artist": "Shaka Ponk",
@@ -180,14 +280,34 @@
     "image": null
   },
   {
-    "slug": "stromae-multitude",
-    "name": "Stromae - Multitude",
-    "artist": "Stromae",
-    "album": "Multitude",
+    "slug": "sia-reasonable-woman",
+    "name": "Sia - Reasonable Woman",
+    "artist": "Sia",
+    "album": "Reasonable Woman",
     "edition": null,
     "status": "Wanted",
     "personalRating": null,
     "image": null
+  },
+  {
+    "slug": "sia-this-is-acting",
+    "name": "Sia - This is Acting",
+    "artist": "Sia",
+    "album": "This is Acting",
+    "edition": null,
+    "status": "Wanted",
+    "personalRating": null,
+    "image": null
+  },
+  {
+    "slug": "stromae-multitude",
+    "name": "Stromae - Multitude",
+    "artist": "Stromae",
+    "album": "Multitude",
+    "edition": "Standard",
+    "status": "Owned",
+    "personalRating": null,
+    "image": "https://i.scdn.co/image/ab67616d0000b2736af3a93773dcb59a67ab2953"
   },
   {
     "slug": "stromae-racine-carree",
@@ -215,7 +335,7 @@
     "artist": "Twenty One Pilots",
     "album": "Breach",
     "edition": "Red Edition",
-    "status": "Pre-Order",
+    "status": "Owned",
     "personalRating": null,
     "image": "https://upload.wikimedia.org/wikipedia/en/5/5a/Twenty_One_Pilots_-_Breach.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
   },
