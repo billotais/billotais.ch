@@ -130,5 +130,15 @@
       "Laetitia": "present",
       "Lucas": "present"
     }
+  },
+  {
+    "date": "2026-09-30",
+    "game": "Clank Catacombs",
+    "complexity": 2.5,
+    "url": "https://boardgamegeek.com/boardgame/365717/clank-catacombs",
+    "players": {
+      "Loïs": "winner",
+      "Max": "present"
+    }
   }
 ]

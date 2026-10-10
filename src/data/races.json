@@ -15,12 +15,12 @@
     "slug": "morat-fribourg-2026",
     "name": "Morat-Fribourg - 2026",
     "date": "2026-10-04",
-    "upcoming": true,
+    "upcoming": false,
     "distance": 17.17,
-    "goalTime": "1h 20m",
-    "finalTime": null,
-    "paceSec": null,
-    "pace": null,
+    "goalTime": "1h 40m",
+    "finalTime": "1h 40m 14s",
+    "paceSec": 350,
+    "pace": "5:50 /km",
     "dnf": false
   },
   {

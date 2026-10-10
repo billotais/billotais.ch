@@ -24,10 +24,10 @@
     "name": "Asaf Avidan - Anagnorisis",
     "artist": "Asaf Avidan",
     "album": "Anagnorisis",
-    "edition": null,
-    "status": "Wanted",
+    "edition": "Standard",
+    "status": "Owned",
     "personalRating": null,
-    "image": null
+    "image": "https://static.fnac-static.com/multimedia/Images/FR/NR/f1/f7/bd/12449777/1507-1/tsp20200623141213/Anagnorisis.jpg"
   },
   {
     "slug": "asaf-avidan-unfurl",
@@ -48,6 +48,16 @@
     "status": "Owned",
     "personalRating": null,
     "image": "https://i.discogs.com/bXvqV_fNl0dnj8DMYOVvexKfE4lFs7JkDnn-xNNgDqM/rs:fit/g:sm/q:40/h:300/w:300/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTM4NDQ3/OTYtMTM0NjYzNDA5/Mi03NjM4LmpwZWc.jpeg"
+  },
+  {
+    "slug": "caravan-palace-chronologic",
+    "name": "Caravan Palace - Chronologic",
+    "artist": "Caravan Palace",
+    "album": "Chronologic",
+    "edition": null,
+    "status": "Wanted",
+    "personalRating": null,
+    "image": null
   },
   {
     "slug": "caravan-palace-gangbusters-melody-club",
@@ -74,10 +84,10 @@
     "name": "Daniel Pemberton - Spider-Man - Across the Spider-Verse",
     "artist": "Daniel Pemberton",
     "album": "Spider-Man - Across the Spider-Verse",
-    "edition": null,
-    "status": "Wanted",
+    "edition": "White and Dark Edition",
+    "status": "Pre-Order",
     "personalRating": null,
-    "image": null
+    "image": "https://www.normanrecords.com/artwork/medium/61/199061-daniel-pemberton-spiderman-across-the-spiderverse-original.jpg"
   },
   {
     "slug": "gorillaz-the-mountain",
@@ -88,16 +98,6 @@
     "status": "Owned",
     "personalRating": null,
     "image": "https://i.discogs.com/pvobPqUKRLA8HteHgy2pP69JaLjc9XI46qjgc5NCz6g/rs:fit/g:sm/q:40/h:300/w:300/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTM2NTk5/NzcwLTE3NzM4MTUy/OTMtODkwMy5wbmc.jpeg"
-  },
-  {
-    "slug": "hazbin-hotel",
-    "name": "Hazbin Hotel",
-    "artist": "Hazbin Hotel",
-    "album": "Season 1",
-    "edition": null,
-    "status": "Wanted",
-    "personalRating": null,
-    "image": null
   },
   {
     "slug": "imagine-dragons-mercury-act-1",
@@ -120,24 +120,34 @@
     "image": "https://upload.wikimedia.org/wikipedia/en/d/d9/Imagine_Dragons_Mercury_album_cover_2022.webp?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original"
   },
   {
-    "slug": "linkin-park-the-hunting-party",
-    "name": "Linkin Park - The Hunting Party",
+    "slug": "linkin-park-from-zero",
+    "name": "Linkin Park - From Zero",
     "artist": "Linkin Park",
-    "album": "The Hunting Party",
-    "edition": "Translucent Light Blue Limited Edition",
+    "album": "From Zero",
+    "edition": "Blue Edition",
     "status": "Pre-Order",
     "personalRating": null,
-    "image": "https://upload.wikimedia.org/wikipedia/en/f/fa/Linkin_Park%2C_The_Hunting_Party%2C_album_art_final.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original"
+    "image": "https://www.emp-online.ch/dw/image/v2/BBQV_PRD/on/demandware.static/-/Sites-master-emp/default/dwb2528493/images/5/7/6/9/576918.jpg?sfrm=png"
   },
   {
-    "slug": "linking-park-living-things",
-    "name": "Linking Park - Living Things",
+    "slug": "linkin-park-living-things",
+    "name": "Linkin Park - Living Things",
     "artist": "Linkin Park",
     "album": "Living Things",
     "edition": "Standard",
     "status": "Owned",
     "personalRating": null,
     "image": "https://i.discogs.com/86PhjuXq-lOQZSYK-kcrnJijShiOiVv98cDGb_FZhQ8/rs:fit/g:sm/q:40/h:300/w:300/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTQ2Mjk0/MjQtMTM3MDQzMzg4/OS00MTY4LmpwZWc.jpeg"
+  },
+  {
+    "slug": "linkin-park-the-hunting-party",
+    "name": "Linkin Park - The Hunting Party",
+    "artist": "Linkin Park",
+    "album": "The Hunting Party",
+    "edition": "Translucent Light Blue Limited Edition",
+    "status": "Owned",
+    "personalRating": null,
+    "image": "https://upload.wikimedia.org/wikipedia/en/f/fa/Linkin_Park%2C_The_Hunting_Party%2C_album_art_final.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original"
   },
   {
     "slug": "lorien-testard-clair-obscur",
@@ -168,6 +178,36 @@
     "status": "Owned",
     "personalRating": null,
     "image": "https://upload.wikimedia.org/wikipedia/en/7/74/MikaCartoonMotion.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original"
+  },
+  {
+    "slug": "mika-my-name-is-michael-holbrook",
+    "name": "Mika - My Name is Michael Holbrook",
+    "artist": "Mika",
+    "album": "My Name is Michael Holbrook",
+    "edition": null,
+    "status": "Wanted",
+    "personalRating": null,
+    "image": null
+  },
+  {
+    "slug": "mika-no-place-in-heaven",
+    "name": "Mika - No Place in Heaven",
+    "artist": "Mika",
+    "album": "No Place in Heaven",
+    "edition": null,
+    "status": "Wanted",
+    "personalRating": null,
+    "image": null
+  },
+  {
+    "slug": "muse-absolution",
+    "name": "Muse - Absolution",
+    "artist": "Muse",
+    "album": "Absolution",
+    "edition": null,
+    "status": "Pre-Order",
+    "personalRating": null,
+    "image": "https://static.fnac-static.com/multimedia/Images/FR/NR/a2/1e/1d/1908386/1540-1/tsp20210802144219/Absolution.jpg"
   },
   {
     "slug": "muse-black-holes-and-revelations",
@@ -315,9 +355,9 @@
     "artist": "Stromae",
     "album": "Racine Carrée",
     "edition": null,
-    "status": "Wanted",
+    "status": "Pre-Order",
     "personalRating": null,
-    "image": null
+    "image": "https://static.fnac-static.com/multimedia/Images/FR/NR/72/20/51/5316722/1507-1/tsp20171106114246/Racine-carree.jpg"
   },
   {
     "slug": "twenty-one-pilots-blurryface",
