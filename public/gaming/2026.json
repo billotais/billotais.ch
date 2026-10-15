@@ -140,5 +140,17 @@
       "Loïs": "winner",
       "Max": "present"
     }
+  },
+  {
+    "date": "2026-10-13",
+    "game": "Castle Combo",
+    "complexity": 1.73,
+    "url": "https://boardgamegeek.com/boardgame/416851/castle-combo",
+    "players": {
+      "Loïs": "present",
+      "Max": "present",
+      "Olga": "present",
+      "André": "winner"
+    }
   }
 ]

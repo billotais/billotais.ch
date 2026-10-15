@@ -85,7 +85,7 @@
     "artist": "Daniel Pemberton",
     "album": "Spider-Man - Across the Spider-Verse",
     "edition": "White and Dark Edition",
-    "status": "Pre-Order",
+    "status": "Owned",
     "personalRating": null,
     "image": "https://www.normanrecords.com/artwork/medium/61/199061-daniel-pemberton-spiderman-across-the-spiderverse-original.jpg"
   },
@@ -124,8 +124,8 @@
     "name": "Linkin Park - From Zero",
     "artist": "Linkin Park",
     "album": "From Zero",
-    "edition": "Blue Edition",
-    "status": "Pre-Order",
+    "edition": "Petrol Blue Edition",
+    "status": "Owned",
     "personalRating": null,
     "image": "https://www.emp-online.ch/dw/image/v2/BBQV_PRD/on/demandware.static/-/Sites-master-emp/default/dwb2528493/images/5/7/6/9/576918.jpg?sfrm=png"
   },
@@ -205,7 +205,7 @@
     "artist": "Muse",
     "album": "Absolution",
     "edition": null,
-    "status": "Pre-Order",
+    "status": "Owned",
     "personalRating": null,
     "image": "https://static.fnac-static.com/multimedia/Images/FR/NR/a2/1e/1d/1908386/1540-1/tsp20210802144219/Absolution.jpg"
   },
@@ -320,6 +320,16 @@
     "image": null
   },
   {
+    "slug": "shaka-ponk-shaka-ponk",
+    "name": "Shaka Ponk - shaka Ponk",
+    "artist": "Shaka Ponk",
+    "album": "Shaka Ponk",
+    "edition": null,
+    "status": "Wanted",
+    "personalRating": null,
+    "image": null
+  },
+  {
     "slug": "sia-reasonable-woman",
     "name": "Sia - Reasonable Woman",
     "artist": "Sia",
@@ -355,7 +365,7 @@
     "artist": "Stromae",
     "album": "Racine Carrée",
     "edition": null,
-    "status": "Pre-Order",
+    "status": "Owned",
     "personalRating": null,
     "image": "https://static.fnac-static.com/multimedia/Images/FR/NR/72/20/51/5316722/1507-1/tsp20171106114246/Racine-carree.jpg"
   },
@@ -385,7 +395,7 @@
     "artist": "Twenty One Pilots",
     "album": "Vessel",
     "edition": "Silver Edition",
-    "status": "Pre-Order",
+    "status": "Owned",
     "personalRating": null,
     "image": "https://i.discogs.com/ea-jT01_8JygIrjh0zZrEShLeweZIusmzdWFQVh9UPQ/rs:fit/g:sm/q:40/h:300/w:300/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTQyNDk1/NzItMTQ4MDUzNjc1/OC04MTIxLmpwZWc.jpeg"
   },
