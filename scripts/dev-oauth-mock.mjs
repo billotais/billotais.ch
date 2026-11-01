@@ -1,6 +1,6 @@
 // Dev-only stand-in for oauth2-proxy (`npm run dev`): signing in just sets a cookie. Not part of the build.
 const COOKIE = 'mock_session';
-const user = { user: 'dev-user-id', email: 'dev@example.com', preferredUsername: 'dev', groups: ['admins'] };
+const user = { user: '00000000-0000-4000-8000-000000000000', email: 'dev@example.com', preferredUsername: 'dev', groups: ['admin', 'users'] };
 
 export default function devOauthMock() {
     return {

@@ -42,17 +42,17 @@ users in with Pocket ID. Each protected path lists the Pocket ID group(s) allowe
 
 ```
 handle /secret* {
-    import gate admins            # one group
+    import gate admin             # one group
 }
 handle /family/* {
-    import gate "family|admins"   # either group (regex over the `groups` claim)
+    import gate "elca|admin"      # either group (regex over the `groups` claim)
 }
 ```
 
 Not signed in -> redirected to Pocket ID; signed in but wrong group -> 403. Add the page under `src/pages/`, add a
 `handle` block, push, deploy. The dev server (`npm run dev`) does not enforce this; only the Caddy image does.
 
-Setup in Pocket ID: on the existing OIDC client add the callback URL `https://billotais.ch/oauth2/callback`,
+Setup in Pocket ID: on the existing OIDC client add the callback URL `https://www.billotais.ch/oauth2/callback`,
 generate a client secret, and make sure the `groups` scope is allowed. Then on the VPS:
 
 ```sh

@@ -1,6 +1,18 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import oidc from "../config/oidc.json";
+import { readFileSync } from "node:fs";
+
+// Protected pages come from the Caddyfile (`handle /path* { import gate <groups> }`), so this list always matches
+// what Caddy actually enforces. Each entry is shown only to users whose groups match.
+const caddyfile = readFileSync("Caddyfile", "utf8");
+const pages = [
+    ...caddyfile.matchAll(/(?:#\s*title:\s*(.+)\n\s*)?handle\s+(\S+)\s*\{[^}]*?import\s+gate\s+(?:"([^"]+)"|(\S+))/g),
+].map(([, title, path, quoted, bare]) => {
+    const base = path.replace(/\/?\*$/, "");
+    const name = base.split("/").filter(Boolean).pop() ?? "";
+    return { href: `${base}/`, title: title?.trim() ?? name.charAt(0).toUpperCase() + name.slice(1), groups: quoted ?? bare };
+});
 ---
 
 <Layout title="Profile" description="Your account" activeNav="hidden" pageSubtitle="Signed in with SSO">
@@ -23,6 +35,10 @@ import oidc from "../config/oidc.json";
                 </div>
             </div>
             <dl class="profile-list" id="p-list"></dl>
+            <div id="p-pages" hidden>
+                <h3>Your pages</h3>
+                <ul id="p-pages-list" class="profile-pages"></ul>
+            </div>
             <a class="profile-btn profile-btn--ghost" href="/oauth2/sign_out?rd=/profile/">Sign out</a>
         </div>
 
@@ -46,6 +62,9 @@ import oidc from "../config/oidc.json";
     .profile-list { display: grid; grid-template-columns: max-content 1fr; gap: 8px 16px; margin-bottom: 24px; }
     .profile-list dt { color: var(--color-text-muted); font-size: 0.85rem; }
     .profile-list dd { margin: 0; overflow-wrap: anywhere; }
+    h3 { font-size: 0.85rem; color: var(--color-text-muted); font-weight: 600; margin-bottom: 8px; }
+    #p-pages { margin-bottom: 24px; }
+    .profile-pages { list-style: none; padding: 0; margin: 0; display: grid; gap: 4px; }
     .profile-btn {
         display: inline-block;
         margin-top: 16px;
@@ -66,7 +85,7 @@ import oidc from "../config/oidc.json";
     .signup { margin-top: 16px; }
 </style>
 
-<script>
+<script define:vars={{ issuer: oidc.issuer, pages }}>
     // The session lives in oauth2-proxy's cookie (see Caddyfile); /oauth2/userinfo answers 200 with the user
     // when signed in and 401 otherwise.
     function show(id) {
@@ -93,6 +112,33 @@ import oidc from "../config/oidc.json";
             dd.textContent = row[1];
             list.append(dt, dd);
         });
+        // Same rule as the Caddyfile gate: one of the user's groups must fully match the page's group pattern.
+        var groups = Array.isArray(user.groups) ? user.groups : [];
+        var allowed = pages.filter(function (page) {
+            var rule = new RegExp("^(" + page.groups + ")$");
+            return groups.some(function (g) {
+                return rule.test(g);
+            });
+        });
+        var pagesList = document.getElementById("p-pages-list");
+        pagesList.textContent = "";
+        allowed.forEach(function (page) {
+            var li = document.createElement("li");
+            var a = document.createElement("a");
+            a.href = page.href;
+            a.textContent = page.title;
+            li.append(a);
+            pagesList.append(li);
+        });
+        document.getElementById("p-pages").hidden = allowed.length === 0;
+        if (/^[0-9a-f]{8}-([0-9a-f]{4}-){3}[0-9a-f]{12}$/i.test(user.user || "")) {
+            var img = document.getElementById("p-picture");
+            img.addEventListener("error", function () {
+                img.hidden = true;
+            });
+            img.src = issuer + "/api/users/" + user.user + "/profile-picture.png";
+            img.hidden = false;
+        }
         show("state-signed-in");
     }
 

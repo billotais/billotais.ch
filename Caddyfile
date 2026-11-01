@@ -34,15 +34,14 @@
 	}
 
 	# Protected pages. Add one block per page or folder; the argument is the allowed group(s).
+	# The optional `# title:` line is the name shown in the "Your pages" list on /profile.
+	# title: Secret
 	handle /secret* {
 		import gate admin
 		file_server
 	}
-    handle /profile* {
-		import gate users
-		file_server
-	}
 
+	# title: ELCA Gaming
 	handle /gaming* {
 		import gate elca
 		file_server

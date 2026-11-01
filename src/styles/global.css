@@ -131,6 +131,18 @@ a:hover {
     transition: background 0.15s;
 }
 
+.nav-avatar {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.nav-avatar[hidden],
+#profile-icon[hidden] {
+    display: none;
+}
+
 .nav-icon:hover,
 .nav-actions .theme-toggle:hover {
     background: rgba(255, 255, 255, 0.18);

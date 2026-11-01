@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import Icon from "../components/Icon.astro";
+import oidc from "../config/oidc.json";
 
 interface Props {
     title: string;
@@ -98,8 +99,19 @@ const fullTitle = title === "Loïs Bilat" ? title : `${title} – Loïs Bilat`;
                         aria-label="GitHub"
                         title="GitHub"><Icon name="github-fill" size={20} /></a
                     >
-                    <a href="/profile/" class="nav-icon" aria-label="Profile" title="Profile"
-                        ><Icon name="user" size={20} /></a
+                    <a
+                        href="/profile/"
+                        id="profile-link"
+                        class="nav-icon"
+                        aria-label="Profile"
+                        title="Profile"
+                        data-avatar-base={oidc.issuer}
+                        ><span id="profile-icon"><Icon name="user" size={20} /></span><img
+                            id="profile-avatar"
+                            class="nav-avatar"
+                            alt=""
+                            hidden
+                        /></a
                     >
                     <button
                         id="theme-toggle"
@@ -226,6 +238,45 @@ const fullTitle = title === "Loïs Bilat" ? title : `${title} – Loïs Bilat`;
                     syncIcon();
                 });
                 syncIcon();
+
+                // Profile picture from Pocket ID when signed in (the user id oauth2-proxy reports is the Pocket ID
+                // user id); falls back to the plain icon. The URL is cached to avoid a flash on each page.
+                var profileLink = document.getElementById("profile-link");
+                var avatar = document.getElementById("profile-avatar");
+                var AVATAR_KEY = "avatar_url";
+                function setAvatar(url) {
+                    document.getElementById("profile-icon").hidden = !!url;
+                    avatar.hidden = !url;
+                    if (url) avatar.src = url;
+                }
+                avatar.addEventListener("error", function () {
+                    setAvatar(null);
+                });
+                try {
+                    setAvatar(localStorage.getItem(AVATAR_KEY));
+                } catch (e) {}
+                fetch("/oauth2/userinfo", { headers: { Accept: "application/json" } })
+                    .then(function (r) {
+                        if (!r.ok) throw new Error(String(r.status));
+                        return r.json();
+                    })
+                    .then(function (user) {
+                        var isId = /^[0-9a-f]{8}-([0-9a-f]{4}-){3}[0-9a-f]{12}$/i.test(user.user || "");
+                        var url = isId
+                            ? profileLink.dataset.avatarBase + "/api/users/" + user.user + "/profile-picture.png"
+                            : null;
+                        setAvatar(url);
+                        try {
+                            if (url) localStorage.setItem(AVATAR_KEY, url);
+                            else localStorage.removeItem(AVATAR_KEY);
+                        } catch (e) {}
+                    })
+                    .catch(function () {
+                        setAvatar(null);
+                        try {
+                            localStorage.removeItem(AVATAR_KEY);
+                        } catch (e) {}
+                    });
 
                 var dropdown = document.getElementById("nav-dropdown");
                 var dropToggle = document.getElementById("nav-drop-toggle");

@@ -23,6 +23,8 @@ services:
       OAUTH2_PROXY_REDIRECT_URL: https://www.billotais.ch/oauth2/callback
       OAUTH2_PROXY_SCOPE: openid profile email groups
       OAUTH2_PROXY_OIDC_GROUPS_CLAIM: groups
+      # Report the Pocket ID user id (sub) as `user` so the site can build the profile picture URL.
+      OAUTH2_PROXY_USER_ID_CLAIM: sub
       OAUTH2_PROXY_CODE_CHALLENGE_METHOD: S256
       OAUTH2_PROXY_EMAIL_DOMAINS: "*"
       OAUTH2_PROXY_INSECURE_OIDC_ALLOW_UNVERIFIED_EMAIL: "true"
