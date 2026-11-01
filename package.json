@@ -8,6 +8,7 @@
     "preview": "astro preview",
     "sync": "node scripts/sync-vault.mjs",
     "build:all": "npm run sync && npm run build",
+    "deploy": "bash scripts/deploy.sh",
     "trakt-auth": "node scripts/trakt-auth.mjs",
     "import-gpx": "node scripts/import-gpx.mjs"
   },

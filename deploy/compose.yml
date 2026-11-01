@@ -1,0 +1,12 @@
+# Static file server for the site on the VPS. `npm run deploy` rsyncs dist/ into /srv/billotais.ch;
+# NetBird's reverse proxy points at this container (http://localhost:8080) and handles the domain and TLS.
+# Start with: docker compose -f compose.yml up -d
+services:
+  billotais-ch:
+    image: caddy:2-alpine
+    command: caddy file-server --root /srv --listen :8080
+    volumes:
+      - /srv/billotais.ch:/srv:ro
+    ports:
+      - "127.0.0.1:8080:8080"
+    restart: unless-stopped
