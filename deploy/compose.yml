@@ -1,9 +1,35 @@
 # Site on the VPS: the image is built by GitHub Actions (.github/workflows/docker.yml) and pulled from GHCR.
 # NetBird's reverse proxy points at this container and handles the domain and TLS.
 # Start with: docker compose up -d      Update with: npm run deploy
+# Needs a .env next to this file (see .env.example) with the Pocket ID client secret and a cookie secret.
 services:
   billotais-ch:
     image: ghcr.io/billotais/billotais.ch:latest
     ports:
       - "8080:8080"
+    depends_on:
+      - oauth2-proxy
+    restart: unless-stopped
+
+  # Login for the protected pages (see Caddyfile). Not exposed: only Caddy talks to it.
+  oauth2-proxy:
+    image: quay.io/oauth2-proxy/oauth2-proxy:v7.7.1
+    environment:
+      OAUTH2_PROXY_PROVIDER: oidc
+      OAUTH2_PROXY_OIDC_ISSUER_URL: https://auth.billotais.ch
+      OAUTH2_PROXY_CLIENT_ID: db39ed6a-c0f2-4362-9418-1f1982b5fa68
+      OAUTH2_PROXY_CLIENT_SECRET: ${OIDC_CLIENT_SECRET:?set in .env}
+      OAUTH2_PROXY_COOKIE_SECRET: ${COOKIE_SECRET:?set in .env}
+      OAUTH2_PROXY_REDIRECT_URL: https://www.billotais.ch/oauth2/callback
+      OAUTH2_PROXY_SCOPE: openid profile email groups
+      OAUTH2_PROXY_OIDC_GROUPS_CLAIM: groups
+      OAUTH2_PROXY_CODE_CHALLENGE_METHOD: S256
+      OAUTH2_PROXY_EMAIL_DOMAINS: "*"
+      OAUTH2_PROXY_INSECURE_OIDC_ALLOW_UNVERIFIED_EMAIL: "true"
+      OAUTH2_PROXY_HTTP_ADDRESS: 0.0.0.0:4180
+      OAUTH2_PROXY_UPSTREAMS: static://202
+      OAUTH2_PROXY_REVERSE_PROXY: "true"
+      OAUTH2_PROXY_SET_XAUTHREQUEST: "true"
+      OAUTH2_PROXY_SKIP_PROVIDER_BUTTON: "true"
+      OAUTH2_PROXY_COOKIE_SECURE: "true"
     restart: unless-stopped

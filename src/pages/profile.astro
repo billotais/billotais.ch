@@ -1,0 +1,232 @@
+---
+import Layout from "../layouts/Layout.astro";
+import oidc from "../config/oidc.json";
+---
+
+<Layout title="Profile" description="Your account" activeNav="hidden" pageSubtitle="Signed in with SSO">
+    <main class="container page">
+        <div id="state-loading" class="profile-card">Loading…</div>
+
+        <div id="state-signed-out" class="profile-card" hidden>
+            <h2>Sign in</h2>
+            <p class="muted">This page is only available to signed-in users.</p>
+            <button id="login" class="profile-btn" type="button">Sign in with SSO</button>
+            <p class="muted signup">No account yet? <a href={`${oidc.issuer}/signup`}>Create one</a>, then come back and sign in.</p>
+        </div>
+
+        <div id="state-signed-in" class="profile-card" hidden>
+            <div class="profile-head">
+                <img id="p-picture" class="profile-picture" alt="" hidden />
+                <div>
+                    <h2 id="p-name"></h2>
+                    <p id="p-username" class="muted"></p>
+                </div>
+            </div>
+            <dl class="profile-list" id="p-list"></dl>
+            <button id="logout" class="profile-btn profile-btn--ghost" type="button">Sign out</button>
+        </div>
+
+        <p id="state-error" class="profile-error" role="alert" hidden></p>
+        <noscript><p class="muted">JavaScript is required to sign in.</p></noscript>
+    </main>
+</Layout>
+
+<style>
+    .profile-card {
+        max-width: 480px;
+        padding: 24px;
+        background: var(--color-bg-subtle);
+        border: 1px solid var(--color-border);
+        border-radius: 12px;
+    }
+    .profile-card[hidden], .profile-error[hidden] { display: none; }
+    h2 { font-size: 1.2rem; margin-bottom: 4px; }
+    .muted { color: var(--color-text-muted); font-size: 0.9rem; }
+    .profile-head { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+    .profile-picture { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; }
+    .profile-list { display: grid; grid-template-columns: max-content 1fr; gap: 8px 16px; margin-bottom: 24px; }
+    .profile-list dt { color: var(--color-text-muted); font-size: 0.85rem; }
+    .profile-list dd { margin: 0; overflow-wrap: anywhere; }
+    .profile-btn {
+        margin-top: 16px;
+        padding: 9px 18px;
+        border: 1px solid var(--color-accent);
+        border-radius: 8px;
+        background: var(--color-accent);
+        color: #fff;
+        font: inherit;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.15s;
+    }
+    .profile-btn:hover { background: var(--color-accent-hover); }
+    .profile-btn--ghost { margin-top: 0; background: none; color: var(--color-accent); }
+    .profile-btn--ghost:hover { background: var(--color-accent-light); }
+    .signup { margin-top: 16px; }
+    .profile-error { max-width: 480px; margin-top: 16px; color: #b91c1c; }
+</style>
+
+<script define:vars={{ oidc }}>
+    // Browser-side OpenID Connect (authorization code + PKCE) against Pocket ID. No client secret:
+    // the Pocket ID client must be a public client with PKCE enabled.
+    var KEY = "oidc_session";
+    var TMP = "oidc_login";
+    var redirectUri = location.origin + "/profile/";
+
+    function store(area, key, value) {
+        try {
+            if (value === null) area.removeItem(key);
+            else area.setItem(key, JSON.stringify(value));
+        } catch (e) {}
+    }
+    function load(area, key) {
+        try {
+            return JSON.parse(area.getItem(key));
+        } catch (e) {
+            return null;
+        }
+    }
+    function b64url(bytes) {
+        return btoa(String.fromCharCode.apply(null, new Uint8Array(bytes)))
+            .replace(/\+/g, "-")
+            .replace(/\//g, "_")
+            .replace(/=+$/, "");
+    }
+    function random() {
+        return b64url(crypto.getRandomValues(new Uint8Array(32)));
+    }
+    function show(id) {
+        ["state-loading", "state-signed-out", "state-signed-in"].forEach(function (s) {
+            document.getElementById(s).hidden = s !== id;
+        });
+    }
+    function fail(message) {
+        show("state-signed-out");
+        var el = document.getElementById("state-error");
+        el.textContent = message;
+        el.hidden = false;
+    }
+    function discover() {
+        return fetch(oidc.issuer + "/.well-known/openid-configuration").then(function (r) {
+            if (!r.ok) throw new Error("Could not reach the identity provider.");
+            return r.json();
+        });
+    }
+
+    function login() {
+        var verifier = random();
+        var state = random();
+        var nonce = random();
+        Promise.all([
+            discover(),
+            crypto.subtle.digest("SHA-256", new TextEncoder().encode(verifier)),
+        ])
+            .then(function (res) {
+                store(sessionStorage, TMP, { verifier: verifier, state: state, nonce: nonce });
+                var params = new URLSearchParams({
+                    response_type: "code",
+                    client_id: oidc.clientId,
+                    redirect_uri: redirectUri,
+                    scope: oidc.scope,
+                    state: state,
+                    nonce: nonce,
+                    code_challenge: b64url(res[1]),
+                    code_challenge_method: "S256",
+                });
+                location.href = res[0].authorization_endpoint + "?" + params;
+            })
+            .catch(function (e) {
+                fail(e.message);
+            });
+    }
+
+    function fetchUserinfo(config, accessToken) {
+        return fetch(config.userinfo_endpoint, { headers: { Authorization: "Bearer " + accessToken } }).then(
+            function (r) {
+                if (!r.ok) throw new Error("Could not load your profile.");
+                return r.json();
+            },
+        );
+    }
+
+    function finishLogin(code, state) {
+        var tmp = load(sessionStorage, TMP);
+        store(sessionStorage, TMP, null);
+        history.replaceState(null, "", "/profile/");
+        if (!tmp || tmp.state !== state) return fail("Sign-in failed: invalid state. Please try again.");
+        discover()
+            .then(function (config) {
+                return fetch(config.token_endpoint, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body: new URLSearchParams({
+                        grant_type: "authorization_code",
+                        code: code,
+                        redirect_uri: redirectUri,
+                        client_id: oidc.clientId,
+                        code_verifier: tmp.verifier,
+                    }),
+                })
+                    .then(function (r) {
+                        if (!r.ok) throw new Error("Sign-in failed: token exchange was rejected.");
+                        return r.json();
+                    })
+                    .then(function (tokens) {
+                        return fetchUserinfo(config, tokens.access_token);
+                    });
+            })
+            .then(function (user) {
+                store(sessionStorage, KEY, { user: user });
+                render(user);
+            })
+            .catch(function (e) {
+                fail(e.message);
+            });
+    }
+
+    function render(user) {
+        var name = user.name || [user.given_name, user.family_name].filter(Boolean).join(" ") || user.preferred_username || "Signed in";
+        document.getElementById("p-name").textContent = name;
+        document.getElementById("p-username").textContent = user.preferred_username ? "@" + user.preferred_username : "";
+        if (user.picture) {
+            var img = document.getElementById("p-picture");
+            img.src = user.picture;
+            img.hidden = false;
+        }
+        var rows = [
+            ["Email", user.email ? user.email + (user.email_verified ? " ✓" : "") : null],
+            ["Groups", Array.isArray(user.groups) ? user.groups.join(", ") : null],
+            ["User ID", user.sub],
+        ];
+        var list = document.getElementById("p-list");
+        list.textContent = "";
+        rows.forEach(function (row) {
+            if (!row[1]) return;
+            var dt = document.createElement("dt");
+            var dd = document.createElement("dd");
+            dt.textContent = row[0];
+            dd.textContent = row[1];
+            list.append(dt, dd);
+        });
+        show("state-signed-in");
+    }
+
+    document.getElementById("login").addEventListener("click", login);
+    document.getElementById("logout").addEventListener("click", function () {
+        store(sessionStorage, KEY, null);
+        show("state-signed-out");
+    });
+
+    var query = new URLSearchParams(location.search);
+    var session = load(sessionStorage, KEY);
+    if (query.get("error")) {
+        history.replaceState(null, "", "/profile/");
+        fail("Sign-in failed: " + (query.get("error_description") || query.get("error")));
+    } else if (query.get("code")) {
+        finishLogin(query.get("code"), query.get("state"));
+    } else if (session && session.user) {
+        render(session.user);
+    } else {
+        show("state-signed-out");
+    }
+</script>

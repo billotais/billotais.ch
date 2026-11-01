@@ -1,0 +1,49 @@
+{
+	auto_https off
+	admin off
+	servers {
+		# NetBird's reverse proxy sits in front: trust its X-Forwarded-* headers (CGNAT range + private ranges).
+		trusted_proxies static 100.64.0.0/10 private_ranges
+	}
+}
+
+# Protect a path: require an oauth2-proxy session (login via Pocket ID), then require one of the given groups.
+# Usage: import gate <group>   or   import gate "group-a|group-b"   (a regex over the Pocket ID `groups` claim)
+(gate) {
+	# `route` keeps the written order: authenticate first, then check the group, then serve.
+	route {
+		forward_auth oauth2-proxy:4180 {
+			uri /oauth2/auth
+			copy_headers X-Auth-Request-User X-Auth-Request-Email X-Auth-Request-Groups
+			@unauthenticated status 401
+			handle_response @unauthenticated {
+				redir * /oauth2/start?rd={http.request.uri} 302
+			}
+		}
+		@denied not header_regexp X-Auth-Request-Groups (^|,)({args[0]})(,|$)
+		respond @denied "Forbidden: your account is not in a group allowed to see this page." 403
+	}
+}
+
+:8080 {
+	root * /srv
+	encode gzip
+
+	handle /oauth2/* {
+		reverse_proxy oauth2-proxy:4180
+	}
+
+	# Protected pages. Add one block per page or folder; the argument is the allowed group(s).
+	handle /secret* {
+		import gate admins
+		file_server
+	}
+    handle /profile* {
+		import gate users
+		file_server
+	}
+
+	handle {
+		file_server
+	}
+}
