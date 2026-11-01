@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Icon from '../../components/Icon.astro';
 import tvshows from '../../data/tvshows.json';
 
 const sorted = [...tvshows].sort((a, b) => {
@@ -8,6 +9,19 @@ const sorted = [...tvshows].sort((a, b) => {
   if (b.personalRating === null) return -1;
   return b.personalRating - a.personalRating;
 });
+
+// Genre dropdown: only genres with enough shows to be a useful filter
+const genreCounts = new Map<string, number>();
+for (const s of tvshows) for (const g of s.genres) genreCounts.set(g, (genreCounts.get(g) ?? 0) + 1);
+const genres = [...genreCounts].filter(([, n]) => n >= 5).sort((a, b) => b[1] - a[1]);
+const genreLabel = (g: string) => g.replace(/-/g, ' ');
+
+const statusOptions = [
+  { value: 'all', label: 'Any status' },
+  { value: 'completed', label: 'Completed' },
+  { value: 'ongoing', label: 'Ongoing' },
+  { value: 'dropped', label: 'Dropped' },
+];
 
 const rated = tvshows.filter(s => s.personalRating !== null);
 const subtitle = tvshows.length === 0 ? 'Not yet synced — run npm run sync with Trakt credentials' : `${tvshows.length} shows watched · ${rated.length} rated`;
@@ -43,6 +57,17 @@ const subtitle = tvshows.length === 0 ? 'Not yet synced — run npm run sync wit
           </div>
           <button class="tab-btn" data-tab="recent" role="tab">Recently watched</button>
 
+          <div class="filter-selects">
+            <select id="genre-filter" aria-label="Filter by genre">
+              <option value="">All genres</option>
+              {genres.map(([g, n]) => <option value={g}>{genreLabel(g)} ({n})</option>)}
+            </select>
+            <select id="status-filter" aria-label="Filter by status">
+              {statusOptions.map(o => <option value={o.value}>{o.label}</option>)}
+            </select>
+            <span class="filter-summary" id="filter-summary" hidden></span>
+          </div>
+
           <div class="status-legend" tabindex="0">
             <span class="status-legend-trigger">Status legend</span>
             <div class="status-legend-popover" role="tooltip">
@@ -69,11 +94,12 @@ const subtitle = tvshows.length === 0 ? 'Not yet synced — run npm run sync wit
                 data-watch-status={s.watchStatus ?? ''}
                 data-index={i}
                 data-last-watched={s.lastWatchedAt ?? ''}
+                data-genres={s.genres.join(',')}
               >
                 <div class="media-card-img-wrap">
                   {s.image
                     ? <img class="media-card-img" src={s.image} alt={s.title} loading="lazy" />
-                    : <div class="media-card-img media-card-img-placeholder">📺</div>
+                    : <div class="media-card-img media-card-img-placeholder"><Icon name="tv" size="36" /></div>
                   }
                   {r !== null && (
                     <span class={`rating-banner ${r >= 9 ? 'rating-banner--favorite' : r === 8 ? 'rating-banner--recommend' : 'rating-banner--plain'}`}>
@@ -208,7 +234,41 @@ const subtitle = tvshows.length === 0 ? 'Not yet synced — run npm run sync wit
     border-bottom-color: transparent;
   }
 
-  .media-card[hidden] { display: none; }
+  .media-card[hidden], .media-card.filter-hidden { display: none; }
+
+  /* Genre / status dropdowns sit at the right of the tab bar */
+  .filter-selects {
+    margin-left: auto;
+    align-self: center;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 4px;
+  }
+  .filter-selects select {
+    padding: 4px 8px;
+    font-size: 0.82rem;
+    text-transform: capitalize;
+    color: var(--color-text);
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  #genre-filter  { width: 150px; }
+  #status-filter { width: 125px; }
+  .filter-selects select:hover,
+  .filter-selects select:focus { border-color: var(--color-accent); outline: none; }
+  /* Fixed-width so the dropdowns don't shift when the count appears */
+  .filter-summary {
+    display: inline-block;
+    min-width: 72px;
+    text-align: right;
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+  }
+  .filter-summary[hidden] { display: inline-block; visibility: hidden; }
 
   /* TMDB posters are 2:3 — match the slot so they aren't cropped */
   .media-card-img {
@@ -259,7 +319,7 @@ const subtitle = tvshows.length === 0 ? 'Not yet synced — run npm run sync wit
   /* Status legend — sits at the end of the tab bar, popover on hover/focus */
   .status-legend {
     position: relative;
-    margin-left: auto;
+    margin-left: 16px;
     align-self: center;
     cursor: default;
     outline: none;
@@ -341,6 +401,32 @@ const subtitle = tvshows.length === 0 ? 'Not yet synced — run npm run sync wit
     cards.forEach(c => grid.appendChild(c));
   }
 
+  // Genre / status dropdowns combine with the rating tabs above (AND)
+  const dropdownFilters = { genre: '', status: 'all' };
+  const summary = document.getElementById('filter-summary')!;
+  const ongoing = new Set(['watching', 'new_episodes', 'up_to_date']);
+
+  function applyDropdowns() {
+    let shown = 0;
+    getCards().forEach(c => {
+      const okGenre = !dropdownFilters.genre || (c.dataset.genres ?? '').split(',').includes(dropdownFilters.genre);
+      const st = c.dataset.watchStatus ?? '';
+      const okStatus = dropdownFilters.status === 'all'
+        || (dropdownFilters.status === 'ongoing' ? ongoing.has(st) : st === dropdownFilters.status);
+      const ok = okGenre && okStatus;
+      c.classList.toggle('filter-hidden', !ok);
+      if (ok && !c.hidden) shown++;
+    });
+    const active = dropdownFilters.genre || dropdownFilters.status !== 'all';
+    summary.hidden = !active;
+    summary.textContent = `${shown} show${shown === 1 ? '' : 's'}`;
+  }
+
+  const genreSelect  = document.getElementById('genre-filter') as HTMLSelectElement;
+  const statusSelect = document.getElementById('status-filter') as HTMLSelectElement;
+  genreSelect.addEventListener('change', () => { dropdownFilters.genre = genreSelect.value; applyDropdowns(); });
+  statusSelect.addEventListener('change', () => { dropdownFilters.status = statusSelect.value; applyDropdowns(); });
+
   buttons.forEach(btn => {
     btn.addEventListener('click', () => {
       const tab = btn.dataset.tab!;
@@ -371,6 +457,7 @@ const subtitle = tvshows.length === 0 ? 'Not yet synced — run npm run sync wit
           card.hidden = tab !== 'all' && card.dataset.rating !== tab;
         });
       }
+      applyDropdowns();
     });
   });
 </script>

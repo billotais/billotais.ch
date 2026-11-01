@@ -7,6 +7,7 @@
     "edition": "2026 Limited Edition",
     "status": "Pre-Order",
     "personalRating": null,
+    "favorite": false,
     "image": "https://static.fnac-static.com/multimedia/Images/FR/NR/3b/30/31/20000827/1540-1/tsp20260306153221/Arcane-Season-1.jpg"
   },
   {
@@ -17,6 +18,7 @@
     "edition": "2026 Limited Edition",
     "status": "Owned",
     "personalRating": null,
+    "favorite": false,
     "image": "https://www.roughtrade.com/_next/image?url=https%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F0867%2F1120%2F6219%2Ffiles%2FARC2-S2.ALBUM_COVER-3000x3000px_5663a130_thumbnail_4096.jpg%3Fv%3D1733145869&w=3840&q=75"
   },
   {
@@ -27,6 +29,7 @@
     "edition": "Standard",
     "status": "Owned",
     "personalRating": null,
+    "favorite": true,
     "image": "https://static.fnac-static.com/multimedia/Images/FR/NR/f1/f7/bd/12449777/1507-1/tsp20200623141213/Anagnorisis.jpg"
   },
   {
@@ -37,6 +40,7 @@
     "edition": "Standard",
     "status": "Owned",
     "personalRating": null,
+    "favorite": true,
     "image": "https://images.squarespace-cdn.com/content/v1/66d08e0f3174ae1c60294d6c/95dfc9c6-1149-4892-bf49-e8c57c3c5d30/AA_UNFURL_Album+Cover+-+3000X3000+%281%29.jpg"
   },
   {
@@ -47,6 +51,7 @@
     "edition": null,
     "status": "Wanted",
     "personalRating": null,
+    "favorite": false,
     "image": null
   },
   {
@@ -57,6 +62,7 @@
     "edition": "Blue and Purple Edition",
     "status": "Owned",
     "personalRating": null,
+    "favorite": true,
     "image": "https://i.discogs.com/bXvqV_fNl0dnj8DMYOVvexKfE4lFs7JkDnn-xNNgDqM/rs:fit/g:sm/q:40/h:300/w:300/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTM4NDQ3/OTYtMTM0NjYzNDA5/Mi03NjM4LmpwZWc.jpeg"
   },
   {
@@ -67,6 +73,7 @@
     "edition": null,
     "status": "Wanted",
     "personalRating": null,
+    "favorite": false,
     "image": null
   },
   {
@@ -77,6 +84,7 @@
     "edition": "Exclusive Color",
     "status": "Owned",
     "personalRating": null,
+    "favorite": true,
     "image": "https://i.discogs.com/-iDFmSZeg8pjIa38v6lsnCjke8SqXroPPbUdDdPRTW0/rs:fit/g:sm/q:40/h:300/w:300/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTMwMDI2/Njc3LTE3MDk4MTQ2/NDMtMjQ1Ni5wbmc.jpeg"
   },
   {
@@ -87,6 +95,7 @@
     "edition": "Standard",
     "status": "Owned",
     "personalRating": null,
+    "favorite": true,
     "image": "https://i.discogs.com/d2qNb43Z2ID1VFLvu402wBKLjp-5pXcM23UAJ5N8lGU/rs:fit/g:sm/q:40/h:300/w:300/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTQ1NzAz/NjYtMTc0OTM3MjMx/Ny0xODg1LmpwZWc.jpeg"
   },
   {
@@ -97,6 +106,7 @@
     "edition": "White and Dark Edition",
     "status": "Owned",
     "personalRating": null,
+    "favorite": false,
     "image": "https://www.normanrecords.com/artwork/medium/61/199061-daniel-pemberton-spiderman-across-the-spiderverse-original.jpg"
   },
   {
@@ -107,6 +117,7 @@
     "edition": "Standard",
     "status": "Owned",
     "personalRating": null,
+    "favorite": true,
     "image": "https://i.discogs.com/pvobPqUKRLA8HteHgy2pP69JaLjc9XI46qjgc5NCz6g/rs:fit/g:sm/q:40/h:300/w:300/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTM2NTk5/NzcwLTE3NzM4MTUy/OTMtODkwMy5wbmc.jpeg"
   },
   {
@@ -117,6 +128,7 @@
     "edition": "Special Edition",
     "status": "Pre-Order",
     "personalRating": null,
+    "favorite": false,
     "image": "https://www.roughtrade.com/_next/image?url=https%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F0867%2F1120%2F6219%2Ffiles%2FScreenshot2026-07-28at23.16.59.png%3Fv%3D1785277034&w=3840&q=75"
   },
   {
@@ -127,6 +139,7 @@
     "edition": null,
     "status": "Wanted",
     "personalRating": null,
+    "favorite": false,
     "image": null
   },
   {
@@ -137,6 +150,7 @@
     "edition": "Standard",
     "status": "Owned",
     "personalRating": null,
+    "favorite": false,
     "image": "https://upload.wikimedia.org/wikipedia/en/d/d1/Imagine_Dragons_-_Mercury_Act_1.png?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original"
   },
   {
@@ -147,6 +161,7 @@
     "edition": "Standard",
     "status": "Owned",
     "personalRating": null,
+    "favorite": false,
     "image": "https://upload.wikimedia.org/wikipedia/en/d/d9/Imagine_Dragons_Mercury_album_cover_2022.webp?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original"
   },
   {
@@ -157,6 +172,7 @@
     "edition": null,
     "status": "Wanted",
     "personalRating": null,
+    "favorite": false,
     "image": null
   },
   {
@@ -167,6 +183,7 @@
     "edition": null,
     "status": "Wanted",
     "personalRating": null,
+    "favorite": false,
     "image": null
   },
   {
@@ -177,6 +194,7 @@
     "edition": "Petrol Blue Edition",
     "status": "Owned",
     "personalRating": null,
+    "favorite": false,
     "image": "https://www.emp-online.ch/dw/image/v2/BBQV_PRD/on/demandware.static/-/Sites-master-emp/default/dwb2528493/images/5/7/6/9/576918.jpg?sfrm=png"
   },
   {
@@ -187,6 +205,7 @@
     "edition": "Standard",
     "status": "Owned",
     "personalRating": null,
+    "favorite": true,
     "image": "https://i.discogs.com/86PhjuXq-lOQZSYK-kcrnJijShiOiVv98cDGb_FZhQ8/rs:fit/g:sm/q:40/h:300/w:300/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTQ2Mjk0/MjQtMTM3MDQzMzg4/OS00MTY4LmpwZWc.jpeg"
   },
   {
@@ -197,6 +216,7 @@
     "edition": "Translucent Light Blue Limited Edition",
     "status": "Owned",
     "personalRating": null,
+    "favorite": false,
     "image": "https://upload.wikimedia.org/wikipedia/en/f/fa/Linkin_Park%2C_The_Hunting_Party%2C_album_art_final.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original"
   },
   {
@@ -207,6 +227,7 @@
     "edition": "Color Edition",
     "status": "Pre-Order",
     "personalRating": null,
+    "favorite": false,
     "image": "https://blob.cede.ch/catalog/19123000/19123609_1_92.jpg?v=1"
   },
   {
@@ -217,6 +238,7 @@
     "edition": "White Vinyl Silver Foil Edition",
     "status": "Owned",
     "personalRating": null,
+    "favorite": false,
     "image": "https://media.pitchfork.com/photos/63bc6f61f0f99d529cd0e8b8/master/w_1280%2Cc_limit/Ma%25CC%258Aneskin-%2520Rush!%2520.jpeg"
   },
   {
@@ -227,6 +249,7 @@
     "edition": "Standard",
     "status": "Owned",
     "personalRating": null,
+    "favorite": false,
     "image": "https://upload.wikimedia.org/wikipedia/en/7/74/MikaCartoonMotion.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original"
   },
   {
@@ -237,6 +260,7 @@
     "edition": null,
     "status": "Wanted",
     "personalRating": null,
+    "favorite": false,
     "image": null
   },
   {
@@ -247,6 +271,7 @@
     "edition": null,
     "status": "Wanted",
     "personalRating": null,
+    "favorite": false,
     "image": null
   },
   {
@@ -257,6 +282,7 @@
     "edition": null,
     "status": "Wanted",
     "personalRating": null,
+    "favorite": false,
     "image": null
   },
   {
@@ -267,6 +293,7 @@
     "edition": null,
     "status": "Wanted",
     "personalRating": null,
+    "favorite": false,
     "image": null
   },
   {
@@ -277,6 +304,7 @@
     "edition": "Standard",
     "status": "Owned",
     "personalRating": null,
+    "favorite": false,
     "image": "https://static.fnac-static.com/multimedia/Images/FR/NR/a2/1e/1d/1908386/1540-1/tsp20210802144219/Absolution.jpg"
   },
   {
@@ -287,6 +315,7 @@
     "edition": "Standard",
     "status": "Owned",
     "personalRating": null,
+    "favorite": false,
     "image": "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F1.bp.blogspot.com%2F_ReWuEqRBpBE%2FTOPEy3GDCQI%2FAAAAAAAACp8%2FW0eNG8B9J8k%2Fs1600%2FMuse%2B-%2BBlack%2BHoles%2Band%2BRevelations.jpg&f=1&nofb=1&ipt=918dc7cb6c54ac213e4b24145535954e49492fe86177e7472975985ae52037a5&ipo=images"
   },
   {
@@ -297,6 +326,7 @@
     "edition": null,
     "status": "Wanted",
     "personalRating": null,
+    "favorite": false,
     "image": null
   },
   {
@@ -307,6 +337,7 @@
     "edition": "Standard",
     "status": "Owned",
     "personalRating": null,
+    "favorite": true,
     "image": "https://upload.wikimedia.org/wikipedia/en/3/35/Muse_-_Origin_of_Symmetry_cover_art.png?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original"
   },
   {
@@ -317,6 +348,7 @@
     "edition": null,
     "status": "Wanted",
     "personalRating": null,
+    "favorite": false,
     "image": null
   },
   {
@@ -327,6 +359,7 @@
     "edition": "Translucent Rosette Nebula",
     "status": "Owned",
     "personalRating": null,
+    "favorite": true,
     "image": "https://preview.redd.it/the-high-res-cover-image-of-the-wow-signal-v0-ljaqx57ne1qg1.jpeg?width=1080&crop=smart&auto=webp&s=320cfee8de4234b66336ae4a92dfaf76b836f656"
   },
   {
@@ -337,6 +370,7 @@
     "edition": null,
     "status": "Wanted",
     "personalRating": null,
+    "favorite": false,
     "image": null
   },
   {
@@ -347,6 +381,7 @@
     "edition": null,
     "status": "Wanted",
     "personalRating": null,
+    "favorite": false,
     "image": null
   },
   {
@@ -357,6 +392,7 @@
     "edition": null,
     "status": "Wanted",
     "personalRating": null,
+    "favorite": false,
     "image": null
   },
   {
@@ -367,6 +403,7 @@
     "edition": null,
     "status": "Wanted",
     "personalRating": null,
+    "favorite": false,
     "image": null
   },
   {
@@ -377,6 +414,7 @@
     "edition": "Standard",
     "status": "Owned",
     "personalRating": null,
+    "favorite": false,
     "image": "https://images.thalia.media/07/-/b37af6fb3de04598a0dd556db18efb7c/artifact-cd-parov-stelar.jpeg"
   },
   {
@@ -387,6 +425,7 @@
     "edition": null,
     "status": "Wanted",
     "personalRating": null,
+    "favorite": false,
     "image": null
   },
   {
@@ -397,6 +436,7 @@
     "edition": null,
     "status": "Wanted",
     "personalRating": null,
+    "favorite": false,
     "image": null
   },
   {
@@ -407,6 +447,7 @@
     "edition": "Standard",
     "status": "Pre-Order",
     "personalRating": null,
+    "favorite": false,
     "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fvinyla.com%2Ffiles%2Fproducts%2F55%2F57%2F57401%2Fvinilovi-plativki-shaka-ponk-the-black-pixel-ape.1280x1280.png%3F0076897dffe998e195582160a71bf235&f=1&nofb=1&ipt=46c175e9f26ba0defb7aa5a203024be1e768284840614de7acc3c845503262a2&ipo=images"
   },
   {
@@ -417,6 +458,7 @@
     "edition": "Standard",
     "status": "Pre-Order",
     "personalRating": null,
+    "favorite": false,
     "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.sortiraparis.com%2Fimages%2F80%2F1665%2F105133-sortie-du-nouvel-album-de-shaka-ponk-the-white-pixel-ape.jpg&f=1&nofb=1&ipt=f0bb73115ee4e7aa16eb25eb64d621211e451e0bc7180eeaada3b84f507f4cdc&ipo=images"
   },
   {
@@ -427,6 +469,7 @@
     "edition": null,
     "status": "Wanted",
     "personalRating": null,
+    "favorite": false,
     "image": null
   },
   {
@@ -437,6 +480,7 @@
     "edition": null,
     "status": "Wanted",
     "personalRating": null,
+    "favorite": false,
     "image": null
   },
   {
@@ -447,6 +491,7 @@
     "edition": "Standard",
     "status": "Owned",
     "personalRating": null,
+    "favorite": false,
     "image": "https://i.scdn.co/image/ab67616d0000b2736af3a93773dcb59a67ab2953"
   },
   {
@@ -457,6 +502,7 @@
     "edition": "Standard",
     "status": "Owned",
     "personalRating": null,
+    "favorite": true,
     "image": "https://static.fnac-static.com/multimedia/Images/FR/NR/72/20/51/5316722/1507-1/tsp20171106114246/Racine-carree.jpg"
   },
   {
@@ -467,6 +513,7 @@
     "edition": null,
     "status": "Wanted",
     "personalRating": null,
+    "favorite": false,
     "image": null
   },
   {
@@ -477,6 +524,7 @@
     "edition": "Alien Green Blob",
     "status": "Pre-Order",
     "personalRating": null,
+    "favorite": false,
     "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.genius.com%2Ff52ad93534e100ef948890526ee27876.1000x1000x1.png&f=1&nofb=1&ipt=7fb42bb75c59aa8cf30af049387125749a685cd30ae21f41464e658d2c702081&ipo=images"
   },
   {
@@ -487,6 +535,7 @@
     "edition": "Alien Green Blob",
     "status": "Owned",
     "personalRating": null,
+    "favorite": false,
     "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fis5-ssl.mzstatic.com%2Fimage%2Fthumb%2FMusic112%2Fv4%2Ff4%2F6b%2Fa9%2Ff46ba9f4-0bbf-0571-2dbe-6e2ce4e36556%2F75292.jpg%2F1200x1200bf-60.jpg&f=1&nofb=1&ipt=13d936e911bb7fd1ac09c61c4b6b27a9b88898470ddec4850c0888db12021cd4&ipo=images"
   },
   {
@@ -497,6 +546,7 @@
     "edition": "Alien Green Blob",
     "status": "Owned",
     "personalRating": null,
+    "favorite": false,
     "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.genius.com%2Ff7cfaebdb02ef5765fe34a34f993eb33.1000x1000x1.png&f=1&nofb=1&ipt=e0c58472c832a5eab6555dfb38b81c3615968c8ad3ec7a3ec4fdde6371f62a54&ipo=images"
   },
   {
@@ -507,6 +557,7 @@
     "edition": null,
     "status": "Wanted",
     "personalRating": null,
+    "favorite": false,
     "image": null
   },
   {
@@ -517,6 +568,7 @@
     "edition": "Red Edition",
     "status": "Owned",
     "personalRating": null,
+    "favorite": false,
     "image": "https://upload.wikimedia.org/wikipedia/en/5/5a/Twenty_One_Pilots_-_Breach.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
   },
   {
@@ -527,6 +579,7 @@
     "edition": null,
     "status": "Wanted",
     "personalRating": null,
+    "favorite": false,
     "image": null
   },
   {
@@ -537,6 +590,7 @@
     "edition": "Silver Edition",
     "status": "Owned",
     "personalRating": null,
+    "favorite": false,
     "image": "https://i.discogs.com/ea-jT01_8JygIrjh0zZrEShLeweZIusmzdWFQVh9UPQ/rs:fit/g:sm/q:40/h:300/w:300/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTQyNDk1/NzItMTQ4MDUzNjc1/OC04MTIxLmpwZWc.jpeg"
   },
   {
@@ -547,6 +601,7 @@
     "edition": null,
     "status": "Wanted",
     "personalRating": null,
+    "favorite": false,
     "image": null
   },
   {
@@ -557,6 +612,7 @@
     "edition": null,
     "status": "Wanted",
     "personalRating": null,
+    "favorite": false,
     "image": null
   },
   {
@@ -567,6 +623,7 @@
     "edition": "Standard",
     "status": "Owned",
     "personalRating": null,
+    "favorite": false,
     "image": "https://i.discogs.com/F1jS_sM7yiohix6WgktYMvhiK7qrBuDkI4owMlaQyKk/rs:fit/g:sm/q:40/h:300/w:300/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTQ0NjY2/MzktMTQ0NDAyNzAw/NS04NDYzLnBuZw.jpeg"
   }
 ]

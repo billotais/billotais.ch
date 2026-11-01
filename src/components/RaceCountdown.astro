@@ -1,5 +1,6 @@
 ---
 import { nextRace, fmtDate, fmtKm } from '../lib/races';
+import Icon from './Icon.astro';
 ---
 
 {nextRace && (
@@ -12,7 +13,7 @@ import { nextRace, fmtDate, fmtKm } from '../lib/races';
       <div class="countdown-label">Next race</div>
       <div class="countdown-name">{nextRace.name}</div>
       <div class="countdown-meta">
-        📅 {fmtDate(nextRace.date)} · 📏 {fmtKm(nextRace.distance)}{nextRace.goalTime && ` · 🎯 ${nextRace.goalTime}`}
+        <span class="cm"><Icon name="calendar" /> {fmtDate(nextRace.date)}</span><span class="cm"><Icon name="ruler" /> {fmtKm(nextRace.distance)}</span>{nextRace.goalTime && <span class="cm"><Icon name="target" /> {nextRace.goalTime}</span>}
       </div>
     </div>
   </div>
@@ -27,7 +28,7 @@ import { nextRace, fmtDate, fmtKm } from '../lib/races';
     const num = el.querySelector('[data-days]')!;
     const unit = el.querySelector('[data-unit]')!;
     if (days <= 0) {
-      num.textContent = days === 0 ? '🏁' : '0';
+      num.textContent = '0';
       unit.textContent = days === 0 ? 'today!' : 'days';
     } else {
       num.textContent = String(days);
@@ -37,6 +38,8 @@ import { nextRace, fmtDate, fmtKm } from '../lib/races';
 </script>
 
 <style>
+  .cm { display: inline-flex; align-items: center; gap: 4px; }
+  .cm + .cm::before { content: '·'; margin: 0 8px 0 4px; }
   .countdown {
     display: flex;
     align-items: center;

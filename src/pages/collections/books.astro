@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Icon from '../../components/Icon.astro';
 import books from '../../data/books.json';
 
 const read = books.filter(b => b.read);
@@ -25,7 +26,7 @@ const subtitle = `${read.length} read${unread.length > 0 ? ` · ${unread.length}
         >
           {b.image
             ? <img class="media-card-img" src={b.image} alt={b.title} loading="lazy" />
-            : <div class="media-card-img media-card-img-placeholder">📚</div>
+            : <div class="media-card-img media-card-img-placeholder"><Icon name="book" size="36" /></div>
           }
           <div class="media-card-body">
             <div class="media-card-title">{b.title}</div>
@@ -56,7 +57,7 @@ const subtitle = `${read.length} read${unread.length > 0 ? ` · ${unread.length}
             >
               {b.image
                 ? <img class="media-card-img" src={b.image} alt={b.title} loading="lazy" />
-                : <div class="media-card-img media-card-img-placeholder">📚</div>
+                : <div class="media-card-img media-card-img-placeholder"><Icon name="book" size="36" /></div>
               }
               <div class="media-card-body">
                 <div class="media-card-title">{b.title}</div>

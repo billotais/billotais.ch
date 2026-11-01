@@ -88,6 +88,7 @@ const boardgames = boardgameFiles
     year: d.year ?? null,
     onlineRating: asNumber(d.onlineRating),
     personalRating: asNumber(d.personalRating),
+    complexity: asNumber(d.complexityRating),
     minPlayers: asNumber(d.minPlayers),
     maxPlayers: asNumber(d.maxPlayers),
     playtime: d.playtime ?? null,
@@ -177,6 +178,7 @@ const vinyls = vinylFiles
     edition: d.edition ?? null,
     status: titleCaseStatus(d.status),
     personalRating: asNumber(d.personalRating),
+    favorite: d.favorite === true || d.favorite === "true",
     image: d.image ?? null,
   }))
   .sort((a, b) => (b.personalRating ?? -1) - (a.personalRating ?? -1));

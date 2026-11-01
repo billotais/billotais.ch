@@ -1,40 +1,222 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Icon from "../components/Icon.astro";
+import boardgames from "../data/boardgames.json";
+import videogames from "../data/videogames.json";
+import teas from "../data/teas.json";
+import tvshows from "../data/tvshows.json";
+import races from "../data/races.json";
+import routes from "../data/routes.json";
+import vinyls from "../data/vinyls.json";
+import featured from "../data/featured.json";
+
+type Item = { slug: string; image?: string; [key: string]: any };
+
+// TV shows: the latest ones I watched and rated 8 or more
+const showPicks = (tvshows as Item[])
+    .filter((t) => t.image && t.lastWatchedAt && (t.personalRating ?? 0) >= 9)
+    .sort((a, b) => b.lastWatchedAt.localeCompare(a.lastWatchedAt))
+    .slice(0, 5);
+
+// Board games (two rows of five): hand-picked in src/data/featured.json (slugs, in order);
+// vinyls: the ones marked `favorite` in the vault. An empty selection falls back to a default one
+const pick = (list: Item[], slugs: string[] | undefined, fallback: Item[], max = 5) => {
+    const chosen = (slugs ?? []).map((s) => list.find((i) => i.slug === s && i.image)).filter((i): i is Item => !!i);
+    return (chosen.length ? chosen : fallback.filter((i) => i.image)).slice(0, max);
+};
+
+const ownedVinyls = (vinyls as Item[]).filter((v) => v.status === "Owned");
+const vinylPicks = pick(
+    vinyls as Item[],
+    ownedVinyls.filter((v) => v.favorite).map((v) => v.slug),
+    ownedVinyls,
+    10,
+);
+// Base games only: expansions are never shown
+const baseGames = (boardgames as Item[]).filter(
+    (g) => !g.isExpansion && !g.categories?.includes("Expansion for Base-game"),
+);
+const boardPicks = pick(
+    baseGames,
+    featured["board-games"],
+    [...baseGames].sort((a, b) => (b.personalRating ?? 0) - (a.personalRating ?? 0)),
+    10,
+);
+
+// Races: the latest finished one, plus a teaser for the next one
+const doneRaces = races.filter((r) => !r.upcoming).sort((a, b) => b.date.localeCompare(a.date));
+const lastRace = doneRaces[0];
+const nextRace = races.filter((r) => r.upcoming).sort((a, b) => a.date.localeCompare(b.date))[0];
+const lastRoute = (routes as Record<string, { w: number; h: number; d: string }>)[lastRace.slug];
+const cleanName = (n: string) => n.replace(/ - \d{4}$/, "");
+const fmtDate = (d: string) => new Date(d).toLocaleDateString("en-GB", { dateStyle: "long", timeZone: "UTC" });
+
+const more = [
+    { href: "/collections/video-games", title: "Video Games", icon: "gamepad", count: videogames.length },
+    { href: "/collections/teas", title: "Teas", icon: "tea", count: teas.length },
+];
 ---
 
-<Layout title="Loïs Bilat" pageSubtitle="Senior Data & AI Engineer" activeNav="home">
+<Layout title="Loïs Bilat" activeNav="home">
     <main class="container">
         <section class="hero">
+            <p class="hero-role">Senior Data &amp; AI Engineer</p>
+            <p class="hero-lead">I build intelligent systems at the intersection of AI, data and cloud.</p>
             <p class="hero-bio">
-                I build intelligent systems at the intersection of AI, data engineering, and cloud platforms. With a
-                Master's in Computer Science from EPFL and several years of production experience, I specialize in
-                generative AI applications, NLP pipelines, IoT data platforms, and intelligent search engines.
-                <br /><br />
-                Outside of work I enjoy board games, running, and watching TV shows.
+                Master's in Computer Science from EPFL, 6+ years of professional experience. I specialize in generative
+                AI platforms, NLP pipelines, IoT data platforms, and intelligent search engines.
             </p>
             <div class="hero-links">
-                <a href="/cv" class="btn btn-primary">View CV</a>
-                <a href="https://linkedin.com/in/lois-bilat" target="_blank" rel="noopener" class="btn btn-outline"
-                    >LinkedIn</a
-                >
-                <a href="https://github.com/Billotais" target="_blank" rel="noopener" class="btn btn-outline">GitHub</a>
+                <a href="/cv" class="btn btn-primary">
+                    View CV
+                </a>
+                <a href="https://linkedin.com/in/lois-bilat" target="_blank" rel="noopener" class="btn btn-outline">
+                    LinkedIn
+                </a>
+                <a href="https://github.com/Billotais" target="_blank" rel="noopener" class="btn btn-outline">
+                    GitHub
+                </a>
+            </div>
+        </section>
+
+        <section class="home-section">
+            <h2 class="home-heading">Beyond work</h2>
+            <p class="home-sub">I enjoy board games, running, and watching TV shows. Here's what I keep track of.</p>
+
+            <div class="home-featured">
+                <a href="/collections/tv-shows" class="home-card">
+                    <span class="home-card-head">
+                        <span class="home-card-title"><Icon name="tv" /> TV Shows</span>
+                        <span class="home-card-more">View all {tvshows.length} →</span>
+                    </span>
+                    <span class="home-card-label">Recently watched &amp; loved</span>
+                    <span class="home-thumbs thumbs-poster">
+                        {showPicks.map((t) => (
+                            <img src={t.image} alt={t.title} title={t.title} loading="lazy" />
+                        ))}
+                    </span>
+                </a>
+
+                <a href="/collections/races" class="home-card">
+                    <span class="home-card-head">
+                        <span class="home-card-title"><Icon name="flag" /> Races</span>
+                        <span class="home-card-more">View all {doneRaces.length} →</span>
+                    </span>
+                    <span class="home-card-label">Latest race</span>
+                    <span class="home-race">
+                        {lastRoute && (
+                            <svg viewBox={`-6 -6 ${lastRoute.w + 12} ${lastRoute.h + 12}`} aria-hidden="true">
+                                <path d={lastRoute.d} />
+                            </svg>
+                        )}
+                        <span class="home-race-info">
+                            <b>{cleanName(lastRace.name)}</b>
+                            <span>{fmtDate(lastRace.date)}</span>
+                            <span class="home-race-stats">
+                                <span>
+                                    <small>Time</small>
+                                    {lastRace.finalTime}
+                                </span>
+                                <span>
+                                    <small>Pace</small>
+                                    {lastRace.pace}
+                                </span>
+                                <span>
+                                    <small>Distance</small>
+                                    {lastRace.distance} km
+                                </span>
+                            </span>
+                        </span>
+                    </span>
+                    {nextRace && (
+                        <span class="home-next">
+                            <small>Next</small>
+                            <b>{cleanName(nextRace.name)}</b>
+                            <span>
+                                {fmtDate(nextRace.date)} · {nextRace.distance} km
+                            </span>
+                        </span>
+                    )}
+                </a>
+
+                <a href="/collections/board-games" class="home-card">
+                    <span class="home-card-head">
+                        <span class="home-card-title"><Icon name="dices" /> Board Games</span>
+                        <span class="home-card-more">View all {baseGames.length} →</span>
+                    </span>
+                    <span class="home-card-label">Favourites</span>
+                    <span class="home-thumbs thumbs-square thumbs-rows">
+                        {boardPicks.map((g) => (
+                            <img src={g.image} alt={g.title} title={g.title} loading="lazy" />
+                        ))}
+                    </span>
+                </a>
+
+                <a href="/collections/vinyls" class="home-card">
+                    <span class="home-card-head">
+                        <span class="home-card-title"><Icon name="disc" /> Vinyls</span>
+                        <span class="home-card-more">View all {ownedVinyls.length} →</span>
+                    </span>
+                    <span class="home-card-label">From the shelf</span>
+                    <span class="home-thumbs thumbs-square thumbs-rows">
+                        {vinylPicks.map((v) => (
+                            <img src={v.image} alt={v.name} title={v.name} loading="lazy" />
+                        ))}
+                    </span>
+                </a>
+            </div>
+
+            <div class="home-more">
+                {more.map((m) => (
+                    <a href={m.href} class="home-pill">
+                        <Icon name={m.icon} />
+                        <span class="home-pill-title">{m.title}</span>
+                        <span class="home-pill-count">{m.count}</span>
+                        <span class="home-pill-arrow">→</span>
+                    </a>
+                ))}
             </div>
         </section>
     </main>
 </Layout>
 
 <style>
-    .home-explore {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 16px;
-        padding: 0 0 96px;
+    .hero-lead {
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        line-height: 1.2;
+        color: var(--color-text);
+        max-width: 720px;
+        margin-bottom: 16px;
     }
 
-    @media (max-width: 480px) {
-        .home-explore {
-            grid-template-columns: 1fr;
-        }
+    .hero .hero-bio {
+        max-width: 620px;
+        margin-bottom: 28px;
+    }
+
+    .home-section {
+        padding-bottom: 96px;
+    }
+
+    .home-heading {
+        font-size: 1.25rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        margin-bottom: 4px;
+    }
+
+    .home-sub {
+        font-size: 0.9375rem;
+        color: var(--color-text-muted);
+        margin-bottom: 20px;
+    }
+
+    .home-featured {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
     }
 
     .home-card {
@@ -43,7 +225,7 @@ import Layout from "../layouts/Layout.astro";
         gap: 6px;
         border: 1px solid var(--color-border);
         border-radius: 12px;
-        padding: 24px 20px;
+        padding: 18px;
         text-decoration: none;
         color: inherit;
         transition:
@@ -59,22 +241,183 @@ import Layout from "../layouts/Layout.astro";
         text-decoration: none;
     }
 
-    .home-card-icon {
-        font-size: 1.75rem;
-        line-height: 1;
-        margin-bottom: 4px;
+    .home-card-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 8px;
     }
 
     .home-card-title {
-        font-size: 0.9375rem;
-        font-weight: 600;
+        font-size: 1rem;
+        font-weight: 700;
         color: var(--color-text);
     }
 
-    .home-card-desc {
+    .home-card-more {
+        font-size: 0.75rem;
+        color: var(--color-accent);
+        white-space: nowrap;
+    }
+
+    .home-card:hover .home-card-more {
+        text-decoration: underline;
+    }
+
+    .home-card-label {
+        font-size: 0.6875rem;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--color-text-muted);
+        margin-bottom: 6px;
+    }
+
+    .home-thumbs {
+        display: flex;
+        gap: 8px;
+    }
+
+    .home-thumbs img {
+        flex: 1 1 0;
+        min-width: 0;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 6px;
+        background: var(--color-bg-subtle);
+    }
+
+    .thumbs-rows {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+    .thumbs-poster img {
+        aspect-ratio: 2 / 3;
+    }
+    .thumbs-square img {
+        aspect-ratio: 1;
+    }
+
+    .home-race {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+    }
+
+    .home-race svg {
+        flex: none;
+        width: 84px;
+        height: 84px;
+    }
+
+    .home-race path {
+        fill: none;
+        stroke: var(--color-accent);
+        stroke-width: 3.5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        vector-effect: non-scaling-stroke;
+    }
+
+    .home-race-info {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        min-width: 0;
         font-size: 0.8125rem;
         color: var(--color-text-muted);
-        line-height: 1.5;
-        margin: 0;
+    }
+
+    .home-race-info b {
+        color: var(--color-text);
+        font-size: 0.9375rem;
+    }
+
+    .home-race-stats {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2px 12px;
+        margin-top: 4px;
+        color: var(--color-text);
+        font-weight: 600;
+    }
+
+    .home-race-stats small {
+        display: block;
+        font-weight: 400;
+        font-size: 0.625rem;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--color-text-muted);
+    }
+
+    .home-next {
+        display: flex;
+        flex-direction: column;
+        gap: 1px;
+        margin-top: auto;
+        padding: 8px 10px;
+        border-radius: 8px;
+        background: var(--color-bg-subtle);
+        font-size: 0.75rem;
+        color: var(--color-text-muted);
+    }
+
+    .home-next small {
+        font-size: 0.625rem;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--color-accent);
+    }
+
+    .home-next b {
+        font-size: 0.8125rem;
+        color: var(--color-text);
+    }
+
+    .home-more {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 16px;
+    }
+
+    .home-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 14px;
+        border: 1px solid var(--color-border);
+        border-radius: 999px;
+        font-size: 0.875rem;
+        text-decoration: none;
+        color: var(--color-text);
+        transition: border-color 0.15s;
+    }
+
+    .home-pill:hover {
+        border-color: var(--color-accent);
+        text-decoration: none;
+    }
+
+    .home-pill-title {
+        font-weight: 600;
+    }
+
+    .home-pill-count {
+        font-size: 0.75rem;
+        color: var(--color-text-muted);
+    }
+
+    .home-pill-arrow {
+        color: var(--color-accent);
+    }
+
+    @media (max-width: 640px) {
+        .home-featured {
+            grid-template-columns: 1fr;
+        }
+        .hero-lead {
+            font-size: 1.6rem;
+        }
     }
 </style>

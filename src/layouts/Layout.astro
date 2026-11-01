@@ -6,9 +6,18 @@ interface Props {
     description?: string;
     activeNav?: string;
     pageSubtitle?: string;
+    navTitle?: string;
 }
 
-const { title, description = "Loïs Bilat – Senior Data & AI Engineer", activeNav, pageSubtitle } = Astro.props;
+const { title, description = "Loïs Bilat – Senior Data & AI Engineer", activeNav, pageSubtitle, navTitle } = Astro.props;
+const collections = [
+    { href: "/collections/tv-shows", title: "TV Shows" },
+    { href: "/collections/races", title: "Races" },
+    { href: "/collections/vinyls", title: "Vinyls" },
+    { href: "/collections/board-games", title: "Board Games" },
+    { href: "/collections/video-games", title: "Video Games" },
+    { href: "/collections/teas", title: "Teas" },
+];
 const fullTitle = title === "Loïs Bilat" ? title : `${title} – Loïs Bilat`;
 ---
 
@@ -33,7 +42,10 @@ const fullTitle = title === "Loïs Bilat" ? title : `${title} – Loïs Bilat`;
     <body>
         <nav class="nav">
             <div class="container nav-inner">
-                <a href="/" class="nav-logo">Loïs Bilat</a>
+                <div class="nav-brand">
+                    <a href="/" class="nav-logo">Loïs Bilat</a>
+                    {activeNav !== "home" && pageSubtitle !== undefined && <span class="nav-crumb">{navTitle ?? title}</span>}
+                </div>
 
                 <ul class="nav-links" id="nav-links">
                     <li>
@@ -43,7 +55,28 @@ const fullTitle = title === "Loïs Bilat" ? title : `${title} – Loïs Bilat`;
                     </li>
                     <li><a href="/cv" class={activeNav === "cv" ? "active" : ""}>CV</a></li>
                     <li><a href="/projects" class={activeNav === "projects" ? "active" : ""}>Projects</a></li>
-                    <li><a href="/collections" class={activeNav === "collections" ? "active" : ""}>Collections</a></li>
+                    <li class="nav-dropdown" id="nav-dropdown">
+                        <button
+                            type="button"
+                            class={`nav-drop-toggle${activeNav === "collections" ? " active" : ""}`}
+                            id="nav-drop-toggle"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                        >
+                            Collections <span class="nav-caret" aria-hidden="true">▾</span>
+                        </button>
+                        <ul class="nav-submenu">
+                            {
+                                collections.map((c) => (
+                                    <li>
+                                        <a href={c.href} class={Astro.url.pathname.replace(/\/$/, "") === c.href ? "active" : ""}>
+                                            {c.title}
+                                        </a>
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    </li>
                     <li><a href="/blog" class={activeNav === "blog" ? "active" : ""}>Blog</a></li>
                 </ul>
 
@@ -135,8 +168,8 @@ const fullTitle = title === "Loïs Bilat" ? title : `${title} – Loïs Bilat`;
             pageSubtitle !== undefined && (
                 <div class="page-band">
                     <div class="container">
-                        <h1 class="page-title">{title}</h1>
-                        <p class="page-subtitle">{pageSubtitle}</p>
+                        <h1 class={`page-title${navTitle ? "" : " page-title--hidden"}`}>{title}</h1>
+                        {pageSubtitle && <p class="page-subtitle">{pageSubtitle}</p>}
                     </div>
                 </div>
             )
@@ -152,6 +185,7 @@ const fullTitle = title === "Loïs Bilat" ? title : `${title} – Loïs Bilat`;
                 <a href="https://github.com/Billotais" target="_blank" rel="noopener">GitHub</a>
             </div>
         </footer>
+
 
         <script is:inline>
             (function () {
@@ -172,6 +206,22 @@ const fullTitle = title === "Loïs Bilat" ? title : `${title} – Loïs Bilat`;
                     syncIcon();
                 });
                 syncIcon();
+
+                var dropdown = document.getElementById("nav-dropdown");
+                var dropToggle = document.getElementById("nav-drop-toggle");
+                function setDrop(open) {
+                    dropdown.classList.toggle("open", open);
+                    dropToggle.setAttribute("aria-expanded", open ? "true" : "false");
+                }
+                dropToggle.addEventListener("click", function () {
+                    setDrop(!dropdown.classList.contains("open"));
+                });
+                document.addEventListener("click", function (e) {
+                    if (!dropdown.contains(e.target)) setDrop(false);
+                });
+                document.addEventListener("keydown", function (e) {
+                    if (e.key === "Escape") setDrop(false);
+                });
 
                 var hamburger = document.getElementById("nav-hamburger");
                 var navLinks = document.getElementById("nav-links");

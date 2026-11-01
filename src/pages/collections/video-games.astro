@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import Icon from '../../components/Icon.astro';
 import videogames from "../../data/videogames.json";
 
 const subtitle = `${videogames.length} games tracked`;
@@ -31,7 +32,7 @@ const subtitle = `${videogames.length} games tracked`;
                                     loading="lazy"
                                 />
                             ) : (
-                                <div class="media-card-img media-card-img-placeholder">🎮</div>
+                                <div class="media-card-img media-card-img-placeholder"><Icon name="gamepad" size="36" /></div>
                             )}
                             <div class="media-card-body">
                                 <div class="media-card-title">{g.title}</div>

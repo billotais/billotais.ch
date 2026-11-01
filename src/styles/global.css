@@ -13,7 +13,7 @@
     --color-hero-from: #360033;
     --color-hero-to: #0b8793;
     --font-sans: "Inter", system-ui, -apple-system, sans-serif;
-    --max-width: 780px;
+    --max-width: 1080px;
     --nav-height: 60px;
 }
 
@@ -71,9 +71,7 @@ a:hover {
     position: sticky;
     top: 0;
     z-index: 100;
-    background: var(--color-nav-bg);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--color-border);
+    background: linear-gradient(135deg, var(--color-hero-from) 0%, var(--color-hero-to) 100%);
     height: var(--nav-height);
     display: flex;
     align-items: center;
@@ -96,31 +94,51 @@ a:hover {
     width: 32px;
     height: 32px;
     border-radius: 6px;
-    border: 1px solid var(--color-border);
+    border: 1px solid rgba(255, 255, 255, 0.35);
     background: transparent;
-    color: var(--color-text-muted);
+    color: #fff;
     cursor: pointer;
     flex-shrink: 0;
-    transition:
-        border-color 0.15s,
-        color 0.15s;
+    transition: background 0.15s;
 }
 
 .theme-toggle:hover {
-    border-color: var(--color-accent);
-    color: var(--color-accent);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.nav-brand {
+    display: flex;
+    align-items: baseline;
+    min-width: 0;
 }
 
 .nav-logo {
     font-weight: 600;
     font-size: 1rem;
-    color: var(--color-text);
+    color: #fff;
     letter-spacing: -0.01em;
+    white-space: nowrap;
 }
 
 .nav-logo:hover {
-    color: var(--color-accent);
+    color: #fff;
+    opacity: 0.85;
     text-decoration: none;
+}
+
+.nav-crumb {
+    font-size: 1rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.75);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.nav-crumb::before {
+    content: "/";
+    margin: 0 6px;
+    color: rgba(255, 255, 255, 0.4);
 }
 
 .nav-actions {
@@ -136,18 +154,15 @@ a:hover {
     width: 36px;
     height: 36px;
     border-radius: 6px;
-    border: 1px solid var(--color-border);
+    border: 1px solid rgba(255, 255, 255, 0.35);
     background: transparent;
-    color: var(--color-text-muted);
+    color: #fff;
     cursor: pointer;
-    transition:
-        border-color 0.15s,
-        color 0.15s;
+    transition: background 0.15s;
 }
 
 .nav-hamburger:hover {
-    border-color: var(--color-accent);
-    color: var(--color-accent);
+    background: rgba(255, 255, 255, 0.15);
 }
 
 .nav-links {
@@ -160,13 +175,13 @@ a:hover {
 .nav-links a {
     font-size: 0.9rem;
     font-weight: 500;
-    color: var(--color-text-muted);
+    color: rgba(255, 255, 255, 0.8);
     transition: color 0.15s;
 }
 
 .nav-links a:hover,
 .nav-links a.active {
-    color: var(--color-accent);
+    color: #fff;
     text-decoration: none;
 }
 
@@ -175,35 +190,123 @@ a:hover {
     align-items: center;
 }
 
+/* Collections dropdown */
+.nav-dropdown {
+    position: relative;
+}
+
+.nav-drop-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0;
+    border: none;
+    background: none;
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    transition: color 0.15s;
+}
+
+.nav-drop-toggle:hover,
+.nav-drop-toggle.active,
+.nav-dropdown.open .nav-drop-toggle {
+    color: #fff;
+}
+
+.nav-caret {
+    font-size: 0.7rem;
+    transition: transform 0.15s;
+}
+
+.nav-dropdown.open .nav-caret {
+    transform: rotate(180deg);
+}
+
+.nav-submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: -12px;
+    min-width: 170px;
+    padding: 6px;
+    margin-top: 12px;
+    list-style: none;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* bridges the gap so the menu stays open while moving the pointer down to it */
+.nav-submenu::before {
+    content: "";
+    position: absolute;
+    top: -14px;
+    left: 0;
+    right: 0;
+    height: 14px;
+}
+
+.nav-dropdown.open .nav-submenu {
+    display: block;
+}
+
+@media (hover: hover) {
+    .nav-dropdown:hover .nav-submenu {
+        display: block;
+    }
+}
+
+.nav-links .nav-submenu a {
+    display: block;
+    color: var(--color-text-muted);
+    padding: 7px 12px;
+    border-radius: 6px;
+    white-space: nowrap;
+}
+
+.nav-links .nav-submenu a:hover,
+.nav-links .nav-submenu a.active {
+    background: var(--color-bg-subtle);
+    color: var(--color-accent);
+}
+
+.icon { vertical-align: -0.125em; flex-shrink: 0; }
+
 /* Page */
 .page {
     /*padding-top: 48px;*/
     padding-bottom: 96px;
 }
 
-/* Full-bleed gradient band — a real block element in the layout, no tricks */
-.page-band {
-    background: linear-gradient(135deg, var(--color-hero-from) 0%, var(--color-hero-to) 100%);
-    padding: 56px 0 48px;
-    margin-bottom: 48px;
+/* Page header: the title lives in the nav bar; only the subtitle is shown here */
+.page-band { padding: 20px 0 0; margin-bottom: 20px; }
+.page-title { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.03em; color: var(--color-text); }
+.page-title--hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
 }
-
-.page-title {
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    color: #fff;
-    margin-bottom: 8px;
-}
-
-.page-subtitle {
-    font-size: 1rem;
-    color: rgba(255, 255, 255, 0.75);
-}
+.page-subtitle { font-size: 0.95rem; color: var(--color-text-muted); }
 
 /* Hero (home page intro below the band) */
 .hero {
     padding: 48px 0 40px;
+}
+
+.hero-role {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 12px;
 }
 
 .hero-name {
@@ -224,7 +327,7 @@ a:hover {
 .hero-bio {
     font-size: 1rem;
     color: var(--color-text-muted);
-    max-width: 620px;
+    max-width: 1000px;
     line-height: 1.75;
     margin-bottom: 32px;
 }
@@ -1106,10 +1209,46 @@ a:hover {
         display: flex;
     }
 
+    .nav-links li a,
+    .nav-drop-toggle {
+        color: var(--color-text-muted);
+    }
+
+    .nav-links li a:hover,
+    .nav-links li a.active,
+    .nav-drop-toggle:hover,
+    .nav-drop-toggle.active,
+    .nav-dropdown.open .nav-drop-toggle {
+        color: var(--color-accent);
+    }
+
     .nav-links li a {
         display: block;
         padding: 10px 0;
         font-size: 1rem;
+    }
+
+    .nav-drop-toggle {
+        padding: 10px 0;
+        font-size: 1rem;
+    }
+
+    .nav-submenu {
+        position: static;
+        margin: 0 0 4px;
+        padding: 0 0 0 14px;
+        min-width: 0;
+        border: none;
+        box-shadow: none;
+        background: none;
+    }
+
+    .nav-submenu::before {
+        display: none;
+    }
+
+    .nav-links .nav-submenu a {
+        padding: 8px 0;
     }
 
     /* Content */
@@ -1152,7 +1291,4 @@ a:hover {
         grid-template-columns: 1fr;
     }
 
-    .page-title {
-        font-size: 1.6rem;
-    }
 }

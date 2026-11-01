@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Icon from '../../components/Icon.astro';
 import teas from '../../data/teas.json';
 
 const byType = teas.reduce((acc: Record<string, typeof teas>, tea) => {
@@ -15,13 +16,9 @@ const sortedTypes = Object.keys(byType).sort();
   title="Teas"
   description="My Tea collection, with brewing notes and personal ratings."
   activeNav="collections"
+  pageSubtitle={`${teas.length} teas tasted`}
 >
   <main class="container page">
-    <div class="page-header">
-      <h1 class="page-title">Teas</h1>
-      <p class="page-subtitle">{teas.length} teas tasted</p>
-    </div>
-
     {sortedTypes.map(type => (
       <section class="cv-section">
         <h2 class="cv-section-title">{type}</h2>
@@ -38,9 +35,9 @@ const sortedTypes = Object.keys(byType).sort();
                 )}
               </div>
               <div class="tea-card-details">
-                {tea.temperature && <span>🌡 {tea.temperature}</span>}
+                {tea.temperature && <span><Icon name="thermometer" /> {tea.temperature}</span>}
                 {tea.infusionTime && <span>⏱ {tea.infusionTime}</span>}
-                {tea.purchasePlace && <span>📍 {tea.purchasePlace}</span>}
+                {tea.purchasePlace && <span><Icon name="pin" /> {tea.purchasePlace}</span>}
               </div>
               {tea.ingredients.length > 0 && (
                 <div class="timeline-tags" style="margin-top: 10px;">

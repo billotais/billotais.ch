@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Icon from '../../components/Icon.astro';
 import boardgames from '../../data/boardgames.json';
 
 const played = (g: typeof boardgames[0]) => g.personalRating !== null && g.personalRating > 0;
@@ -11,6 +12,24 @@ function stars(n: number | null) {
   if (!n) return null;
   return '★'.repeat(Math.round(n / 2)) + '☆'.repeat(5 - Math.round(n / 2));
 }
+
+// "30 - 45 minutes" -> 30 (shortest session), used for the "I have X minutes" filter
+const minutes = (g: typeof boardgames[0]) => parseInt(g.playtime ?? '') || 0;
+
+const timeOptions = [
+  { value: '0', label: 'Any time' },
+  { value: '20', label: '≤ 20 min' },
+  { value: '45', label: '≤ 45 min' },
+  { value: '90', label: '≤ 1h30' },
+];
+// BGG "weight" (1–5). Thresholds roughly split my collection into thirds.
+const complexityOptions = [
+  { value: 'any', label: 'Any' },
+  { value: 'light', label: 'Light' },
+  { value: 'medium', label: 'Medium' },
+  { value: 'heavy', label: 'Heavy' },
+];
+const playerOptions = [1, 2, 3, 4, 5, 6];
 ---
 
 <Layout
@@ -21,7 +40,33 @@ function stars(n: number | null) {
 >
   <main class="container page">
 
-    <div class="media-grid">
+    <div class="picker" id="picker">
+      <div class="picker-group">
+        <span class="picker-label">Players</span>
+        <div class="chips" data-filter="players">
+          <button class="chip active" data-value="0">Any</button>
+          {playerOptions.map(n => <button class="chip" data-value={n}>{n === 6 ? '6+' : n}</button>)}
+        </div>
+      </div>
+      <div class="picker-group">
+        <span class="picker-label">I have</span>
+        <div class="chips" data-filter="time">
+          {timeOptions.map((t, i) => <button class={`chip${i === 0 ? ' active' : ''}`} data-value={t.value}>{t.label}</button>)}
+        </div>
+      </div>
+      <div class="picker-group">
+        <span class="picker-label">Complexity</span>
+        <div class="chips" data-filter="complexity">
+          {complexityOptions.map((c, i) => <button class={`chip${i === 0 ? ' active' : ''}`} data-value={c.value} title={c.value === 'light' ? 'weight ≤ 1.8' : c.value === 'medium' ? 'weight 1.8 – 2.5' : c.value === 'heavy' ? 'weight > 2.5' : undefined}>{c.label}</button>)}
+        </div>
+      </div>
+      <div class="picker-actions">
+        <span class="picker-count" id="picker-count"></span>
+        <button class="pick-btn" id="pick-btn" type="button"><Icon name="dices" /> Pick a game</button>
+      </div>
+    </div>
+
+    <div class="media-grid" id="games-grid">
       {baseGames.map(g => (
         <a
           href={g.bggLink ?? '#'}
@@ -29,10 +74,14 @@ function stars(n: number | null) {
           rel="noopener"
           class="media-card"
           title={g.title}
+          data-min={g.minPlayers ?? 1}
+          data-max={g.maxPlayers ?? 99}
+          data-time={minutes(g)}
+          data-complexity={g.complexity ?? ''}
         >
           {g.image
             ? <img class="media-card-img" src={g.image} alt={g.title} loading="lazy" />
-            : <div class="media-card-img media-card-img-placeholder">🎲</div>
+            : <div class="media-card-img media-card-img-placeholder"><Icon name="dices" size="36" /></div>
           }
           <div class="media-card-body">
             <div class="media-card-title">{g.title}</div>
@@ -42,6 +91,7 @@ function stars(n: number | null) {
                 <span>{g.minPlayers}–{g.maxPlayers} players</span>
               )}
               {g.playtime && <span>{g.playtime}</span>}
+              {g.complexity && <span title="BGG complexity (1–5)">⚙ {g.complexity.toFixed(1)}</span>}
             </div>
             <div class="media-card-ratings">
               {g.personalRating !== null && (
@@ -71,7 +121,7 @@ function stars(n: number | null) {
             >
               {g.image
                 ? <img class="media-card-img" src={g.image} alt={g.title} loading="lazy" />
-                : <div class="media-card-img media-card-img-placeholder">🎲</div>
+                : <div class="media-card-img media-card-img-placeholder"><Icon name="dices" size="36" /></div>
               }
               <div class="media-card-body">
                 <div class="media-card-title">{g.title}</div>
@@ -86,3 +136,174 @@ function stars(n: number | null) {
     )}
   </main>
 </Layout>
+
+<style>
+  .picker {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px 28px;
+    padding: 14px 18px;
+    margin-bottom: 28px;
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+  }
+  .picker-group { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .picker-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-text-muted);
+  }
+  .chips { display: flex; gap: 6px; flex-wrap: wrap; }
+  .chip {
+    padding: 4px 12px;
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    cursor: pointer;
+    transition: color 0.15s, border-color 0.15s, background 0.15s;
+  }
+  .chip:hover { border-color: var(--color-accent); color: var(--color-accent); }
+  .chip.active { background: var(--color-accent); border-color: var(--color-accent); color: #fff; }
+
+  .picker-actions { margin-left: auto; display: flex; align-items: center; gap: 14px; }
+  .picker-count { font-size: 0.85rem; color: var(--color-text-muted); }
+  .pick-btn {
+    padding: 8px 18px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #fff;
+    background: var(--color-accent);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.1s;
+  }
+  .pick-btn:hover { background: var(--color-accent-hover); }
+  .pick-btn:active { transform: scale(0.96); }
+  .pick-btn:disabled { opacity: 0.5; cursor: default; }
+
+  .media-card[hidden] { display: none; }
+
+  /* Shuffle highlight while the picker "rolls", then the winner stays lit */
+  .media-grid.rolling-mode .media-card { opacity: 0.25; filter: grayscale(0.8); transition: opacity 0.15s, filter 0.15s, transform 0.1s; }
+  .media-grid.rolling-mode .media-card.rolling {
+    opacity: 1;
+    filter: none;
+    border-color: var(--color-accent);
+    transform: scale(1.08);
+    box-shadow: 0 0 0 4px var(--color-accent), 0 10px 30px rgba(11, 135, 147, 0.5);
+    z-index: 2;
+  }
+  .media-grid.has-winner .media-card:not(.winner) { opacity: 0.3; filter: grayscale(0.8); }
+  .media-card.winner { opacity: 1; filter: none; }
+  .media-card.winner {
+    border-color: var(--color-accent);
+    transform: translateY(-4px) scale(1.06);
+    box-shadow: 0 0 0 4px var(--color-accent), 0 0 40px 8px rgba(11, 135, 147, 0.6);
+    z-index: 1;
+    animation: winner-pop 0.5s ease-out;
+  }
+  @keyframes winner-pop {
+    0% { transform: scale(0.95); }
+    60% { transform: translateY(-4px) scale(1.12); }
+    100% { transform: translateY(-4px) scale(1.06); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .media-card.winner { animation: none; }
+  }
+</style>
+
+<script>
+  const grid = document.getElementById('games-grid')!;
+  const cards = [...grid.querySelectorAll<HTMLElement>('.media-card')];
+  const count = document.getElementById('picker-count')!;
+  const pickBtn = document.getElementById('pick-btn') as HTMLButtonElement;
+  const state = { players: 0, time: 0, complexity: 'any' };
+
+  function visible() {
+    return cards.filter(c => !c.hidden);
+  }
+
+  function clearHighlight() {
+    cards.forEach(c => c.classList.remove('rolling', 'winner'));
+    grid.classList.remove('rolling-mode', 'has-winner');
+  }
+
+  function apply() {
+    clearHighlight();
+    cards.forEach(c => {
+      const min = Number(c.dataset.min);
+      const max = Number(c.dataset.max);
+      const time = Number(c.dataset.time);
+      const okPlayers = state.players === 0 || (state.players >= min && (state.players >= 6 ? max >= 6 : state.players <= max));
+      const okTime = state.time === 0 || time <= state.time;
+      const w = parseFloat(c.dataset.complexity ?? '');
+      const okComplexity = state.complexity === 'any'
+        || (!isNaN(w) && (state.complexity === 'light' ? w <= 1.8 : state.complexity === 'medium' ? w > 1.8 && w <= 2.5 : w > 2.5));
+      c.hidden = !(okPlayers && okTime && okComplexity);
+    });
+    const n = visible().length;
+    count.textContent = `${n} game${n === 1 ? '' : 's'}`;
+    pickBtn.disabled = n === 0;
+  }
+
+  document.querySelectorAll<HTMLElement>('.chips').forEach(group => {
+    group.addEventListener('click', e => {
+      const btn = (e.target as HTMLElement).closest<HTMLButtonElement>('.chip');
+      if (!btn) return;
+      group.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      const key = group.dataset.filter as 'players' | 'time' | 'complexity';
+      if (key === 'complexity') state.complexity = btn.dataset.value!;
+      else state[key] = Number(btn.dataset.value);
+      apply();
+    });
+  });
+
+  pickBtn.addEventListener('click', () => {
+    const pool = visible();
+    if (pool.length === 0) return;
+    clearHighlight();
+    pickBtn.disabled = true;
+
+    const winner = pool[Math.floor(Math.random() * pool.length)];
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const steps = reduce || pool.length === 1 ? 0 : 26;
+    if (!reduce) {
+      grid.classList.add('rolling-mode');
+      // Make sure the candidates are on screen while they flicker
+      grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    let i = 0;
+    let last: HTMLElement | null = null;
+
+    const finish = () => {
+      last?.classList.remove('rolling');
+      grid.classList.remove('rolling-mode');
+      grid.classList.add('has-winner');
+      winner.classList.add('winner');
+      count.textContent = `Tonight: ${winner.title}`;
+      winner.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
+      pickBtn.disabled = false;
+    };
+
+    // Flicker through random cards, slowing down before landing on the winner
+    const tick = () => {
+      if (i >= steps) return finish();
+      last?.classList.remove('rolling');
+      last = i === steps - 1 ? winner : pool[Math.floor(Math.random() * pool.length)];
+      last.classList.add('rolling');
+      i++;
+      setTimeout(tick, 70 + i * i * 1.6);
+    };
+    tick();
+  });
+
+  apply();
+</script>
