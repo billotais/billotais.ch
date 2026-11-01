@@ -71,7 +71,7 @@ a:hover {
     position: sticky;
     top: 0;
     z-index: 100;
-    background: linear-gradient(135deg, var(--color-hero-from) 0%, var(--color-hero-to) 100%);
+    background: linear-gradient(90deg, var(--color-hero-from) 0%, var(--color-hero-to) 100%);
     height: var(--nav-height);
     display: flex;
     align-items: center;
@@ -100,6 +100,27 @@ a:hover {
     cursor: pointer;
     flex-shrink: 0;
     transition: background 0.15s;
+}
+
+/* Borderless header icons (LinkedIn, GitHub, theme toggle) */
+.nav-icon,
+.nav-actions .theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.nav-icon:hover,
+.nav-actions .theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.18);
 }
 
 .theme-toggle:hover {

@@ -51,6 +51,26 @@ const lastRoute = (routes as Record<string, { w: number; h: number; d: string }>
 const cleanName = (n: string) => n.replace(/ - \d{4}$/, "");
 const fmtDate = (d: string) => new Date(d).toLocaleDateString("en-GB", { dateStyle: "long", timeZone: "UTC" });
 
+// Career summary shown next to the intro (full details on /cv)
+const stats = [
+    { value: "6+", label: "years in industry" },
+    { value: "20+", label: "client projects" },
+];
+const career = [
+    {
+        date: "Since 2020",
+        title: "ELCA",
+        place: "Pully",
+        role: "Senior AI Engineer",
+    },
+    {
+        date: "2015 – 2020",
+        title: "EPFL",
+        place: "Lausanne",
+        role: "BSc & MSc in Computer Science",
+    },
+];
+
 const more = [
     { href: "/collections/video-games", title: "Video Games", icon: "gamepad", count: videogames.length },
     { href: "/collections/teas", title: "Teas", icon: "tea", count: teas.length },
@@ -59,34 +79,73 @@ const more = [
 
 <Layout title="Loïs Bilat" activeNav="home">
     <main class="container">
-        <section class="hero">
-            <p class="hero-role">Senior Data &amp; AI Engineer</p>
-            <p class="hero-lead">I build intelligent systems at the intersection of AI, data and cloud.</p>
-            <p class="hero-bio">
-                Master's in Computer Science from EPFL, 6+ years of professional experience. I specialize in generative
-                AI platforms, NLP pipelines, IoT data platforms, and intelligent search engines.
-            </p>
-            <div class="hero-links">
-                <a href="/cv" class="btn btn-primary">
-                    View CV
+        <div class="intro">
+            <section class="hero">
+                <p class="hero-role">Senior Data &amp; AI Engineer</p>
+                <p class="hero-lead">I build intelligent systems at the intersection of AI, data and cloud.</p>
+                <p class="hero-bio">
+                    I like the part of AI that comes after the demo: making agentic systems, search and data platforms
+                    secure, maintainable and genuinely useful to real teams. I care about using AI responsibly, and I
+                    enjoy mentoring junior colleagues along the way.
+                </p>
+                <dl class="hero-stats">
+                    {stats.map((s) => (
+                        <div>
+                            <dt data-count={parseInt(s.value)} data-suffix={s.value.replace(/^\d+/, "")}>
+                                {s.value}
+                            </dt>
+                            <dd>{s.label}</dd>
+                        </div>
+                    ))}
+                </dl>
+            </section>
+            <aside class="career" aria-label="Career">
+                <h2 class="career-heading">Career</h2>
+                <ol class="work-career">
+                    {career.map((c) => (
+                        <li>
+                            <span class="work-career-date">{c.date}</span>
+                            <span class="work-career-body">
+                                <span class="work-career-org">
+                                    <b>{c.title}</b>
+                                    <small>{c.place}</small>
+                                </span>
+                                <span class="work-career-role">{c.role}</span>
+                            </span>
+                        </li>
+                    ))}
+                </ol>
+
+                <a href="/cv" class="work-career-link">
+                    Full CV →
                 </a>
-                <a href="https://linkedin.com/in/lois-bilat" target="_blank" rel="noopener" class="btn btn-outline">
-                    LinkedIn
-                </a>
-                <a href="https://github.com/Billotais" target="_blank" rel="noopener" class="btn btn-outline">
-                    GitHub
-                </a>
-            </div>
-        </section>
+            </aside>
+        </div>
 
         <section class="home-section">
-            <h2 class="home-heading">Beyond work</h2>
-            <p class="home-sub">I enjoy board games, running, and watching TV shows. Here's what I keep track of.</p>
+            <div class="home-head">
+                <div>
+                    <h2 class="home-heading">Beyond work</h2>
+                    <p class="home-sub">I enjoy board games, running, and watching TV shows. Here's what I keep track of.</p>
+                </div>
+                <div class="home-more" aria-label="More collections">
+                    {more.map((m) => (
+                        <a href={m.href} class="home-pill">
+                            <Icon name={m.icon} />
+                            <span class="home-pill-title">{m.title}</span>
+                            <span class="home-pill-count">{m.count}</span>
+                            <span class="home-pill-arrow">→</span>
+                        </a>
+                    ))}
+                </div>
+            </div>
 
             <div class="home-featured">
                 <a href="/collections/tv-shows" class="home-card">
                     <span class="home-card-head">
-                        <span class="home-card-title"><Icon name="tv" /> TV Shows</span>
+                        <span class="home-card-title">
+                            <Icon name="tv" /> TV Shows
+                        </span>
                         <span class="home-card-more">View all {tvshows.length} →</span>
                     </span>
                     <span class="home-card-label">Recently watched &amp; loved</span>
@@ -99,7 +158,9 @@ const more = [
 
                 <a href="/collections/races" class="home-card">
                     <span class="home-card-head">
-                        <span class="home-card-title"><Icon name="flag" /> Races</span>
+                        <span class="home-card-title">
+                            <Icon name="flag" /> Races
+                        </span>
                         <span class="home-card-more">View all {doneRaces.length} →</span>
                     </span>
                     <span class="home-card-label">Latest race</span>
@@ -141,7 +202,9 @@ const more = [
 
                 <a href="/collections/board-games" class="home-card">
                     <span class="home-card-head">
-                        <span class="home-card-title"><Icon name="dices" /> Board Games</span>
+                        <span class="home-card-title">
+                            <Icon name="dices" /> Board Games
+                        </span>
                         <span class="home-card-more">View all {baseGames.length} →</span>
                     </span>
                     <span class="home-card-label">Favourites</span>
@@ -154,7 +217,9 @@ const more = [
 
                 <a href="/collections/vinyls" class="home-card">
                     <span class="home-card-head">
-                        <span class="home-card-title"><Icon name="disc" /> Vinyls</span>
+                        <span class="home-card-title">
+                            <Icon name="disc" /> Vinyls
+                        </span>
                         <span class="home-card-more">View all {ownedVinyls.length} →</span>
                     </span>
                     <span class="home-card-label">From the shelf</span>
@@ -165,20 +230,31 @@ const more = [
                     </span>
                 </a>
             </div>
-
-            <div class="home-more">
-                {more.map((m) => (
-                    <a href={m.href} class="home-pill">
-                        <Icon name={m.icon} />
-                        <span class="home-pill-title">{m.title}</span>
-                        <span class="home-pill-count">{m.count}</span>
-                        <span class="home-pill-arrow">→</span>
-                    </a>
-                ))}
-            </div>
         </section>
     </main>
 </Layout>
+
+
+
+<script>
+    // Count the hero numbers up from 0 on load (the final value is in the HTML for no-JS and reduced motion)
+    if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        document.querySelectorAll<HTMLElement>("[data-count]").forEach((el) => {
+            const target = Number(el.dataset.count);
+            const suffix = el.dataset.suffix ?? "";
+            const duration = 1200;
+            const start = performance.now();
+            const tick = (now: number) => {
+                const t = Math.min((now - start) / duration, 1);
+                const eased = 1 - Math.pow(1 - t, 3);
+                el.textContent = Math.round(target * eased) + suffix;
+                if (t < 1) requestAnimationFrame(tick);
+            };
+            el.textContent = "0" + suffix;
+            requestAnimationFrame(tick);
+        });
+    }
+</script>
 
 <style>
     .hero-lead {
@@ -196,8 +272,209 @@ const more = [
         margin-bottom: 28px;
     }
 
+    /* Intro band: continues the nav gradient (same colours, same direction) so the two read as one block */
+    .intro {
+        position: relative;
+        isolation: isolate;
+        margin-bottom: 8px;
+    }
+
+    .intro::before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 100vw;
+        margin-left: -50vw;
+        background: linear-gradient(90deg, var(--color-hero-from) 0%, var(--color-hero-to) 100%);
+    }
+
+    .intro .hero-role {
+        color: rgba(255, 255, 255, 0.88);
+    }
+
+    .intro .hero-lead {
+        color: #fff;
+    }
+
+    .intro .hero-bio {
+        color: rgba(255, 255, 255, 0.85);
+    }
+
+    .intro .hero-stats dt {
+        color: #fff;
+    }
+
+    .intro .hero-stats dd,
+    .intro .career-heading {
+        color: rgba(255, 255, 255, 0.88);
+    }
+
+    .hero-stats {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 32px;
+        margin: 0;
+    }
+
+    .hero-stats dt {
+        font-variant-numeric: tabular-nums;
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        color: var(--color-accent);
+    }
+
+    .hero-stats dd {
+        margin: 0;
+        font-size: 0.75rem;
+        color: var(--color-text-muted);
+    }
+
     .home-section {
+        padding-top: 64px;
         padding-bottom: 96px;
+    }
+
+    .intro {
+        display: grid;
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+        gap: 56px;
+        align-items: start;
+    }
+
+    .career {
+        display: flex;
+        flex-direction: column;
+        align-self: stretch;
+        padding: 48px 0 40px;
+    }
+
+    .career-heading {
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--color-text-muted);
+    }
+
+    /* Timeline: date | line | content. The line is drawn in pieces (lead-in above the first dot, a connector
+       to each next dot, a short tail below the last) so it overhangs slightly at both ends. */
+    .work-career {
+        position: relative;
+        list-style: none;
+        margin: 36px 0 0;
+        padding: 0 0 0 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        color: rgba(255, 255, 255, 0.88);
+    }
+
+    .work-career li {
+        position: relative;
+        display: grid;
+        grid-template-columns: 112px 1fr;
+        gap: 12px;
+        align-items: baseline;
+    }
+
+    .work-career::before,
+    .work-career li::after {
+        content: "";
+        position: absolute;
+        width: 2px;
+        background: rgba(255, 255, 255, 0.3);
+    }
+
+    .work-career::before {
+        left: -2px;
+        top: -12px;
+        height: 26px;
+    }
+
+    .work-career li::after {
+        left: -20px;
+        top: 19px;
+        bottom: -23px;
+    }
+
+    .work-career li:last-child::after {
+        bottom: auto;
+        height: 14px;
+    }
+
+    /* Hollow dots; the current entry (first) is filled and pulses */
+    .work-career li::before {
+        content: "";
+        position: absolute;
+        left: -24px;
+        top: 9px;
+        width: 10px;
+        height: 10px;
+        border: 2px solid #fff;
+        border-radius: 50%;
+    }
+
+    .work-career li:first-child::before {
+        background: #fff;
+        animation: live-pulse 2s ease-out infinite;
+    }
+
+    @keyframes live-pulse {
+        0% {
+            box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.55);
+        }
+        70%,
+        100% {
+            box-shadow: 0 0 0 9px rgba(255, 255, 255, 0);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .work-career li:first-child::before {
+            animation: none;
+        }
+    }
+
+    .work-career-date {
+        font-size: 0.875rem;
+    }
+
+    .work-career-body {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        font-size: 1rem;
+    }
+
+    .work-career-body b {
+        color: #fff;
+        font-size: 1.0625rem;
+    }
+
+    .work-career-org small {
+        margin-left: 6px;
+        font-size: 0.875rem;
+        color: #fff;
+        opacity: 0.65;
+    }
+
+    .work-career-role {
+        font-weight: 500;
+    }
+
+    .work-career-link {
+        align-self: flex-start;
+        color: #fff;
+        margin: 28px 0 0 18px;
+        font-size: 0.9375rem;
+        font-weight: 500;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+        text-decoration-color: rgba(255, 255, 255, 0.5);
     }
 
     .home-heading {
@@ -210,22 +487,30 @@ const more = [
     .home-sub {
         font-size: 0.9375rem;
         color: var(--color-text-muted);
-        margin-bottom: 20px;
+    }
+
+    .home-head {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 12px 24px;
+        margin-bottom: 28px;
     }
 
     .home-featured {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 16px;
+        gap: 24px;
     }
 
     .home-card {
         display: flex;
         flex-direction: column;
-        gap: 6px;
+        gap: 8px;
         border: 1px solid var(--color-border);
-        border-radius: 12px;
-        padding: 18px;
+        border-radius: 14px;
+        padding: 28px;
         text-decoration: none;
         color: inherit;
         transition:
@@ -274,7 +559,7 @@ const more = [
 
     .home-thumbs {
         display: flex;
-        gap: 8px;
+        gap: 16px;
     }
 
     .home-thumbs img {
@@ -378,7 +663,6 @@ const more = [
         display: flex;
         flex-wrap: wrap;
         gap: 10px;
-        margin-top: 16px;
     }
 
     .home-pill {
@@ -410,6 +694,16 @@ const more = [
 
     .home-pill-arrow {
         color: var(--color-accent);
+    }
+
+    @media (max-width: 860px) {
+        .intro {
+            grid-template-columns: 1fr;
+            gap: 0;
+        }
+        .career {
+            padding-top: 0;
+        }
     }
 
     @media (max-width: 640px) {

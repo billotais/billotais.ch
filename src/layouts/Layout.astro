@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import Icon from "../components/Icon.astro";
 
 interface Props {
     title: string;
@@ -81,6 +82,22 @@ const fullTitle = title === "Loïs Bilat" ? title : `${title} – Loïs Bilat`;
                 </ul>
 
                 <div class="nav-actions">
+                    <a
+                        href="https://linkedin.com/in/lois-bilat"
+                        target="_blank"
+                        rel="noopener"
+                        class="nav-icon"
+                        aria-label="LinkedIn"
+                        title="LinkedIn"><Icon name="linkedin-fill" size={20} /></a
+                    >
+                    <a
+                        href="https://github.com/Billotais"
+                        target="_blank"
+                        rel="noopener"
+                        class="nav-icon"
+                        aria-label="GitHub"
+                        title="GitHub"><Icon name="github-fill" size={20} /></a
+                    >
                     <button
                         id="theme-toggle"
                         class="theme-toggle"
