@@ -17,7 +17,7 @@
 			copy_headers X-Auth-Request-User X-Auth-Request-Email X-Auth-Request-Groups
 			@unauthenticated status 401
 			handle_response @unauthenticated {
-				redir * /oauth2/start?rd={http.request.uri} 302
+				redir * /login/?rd={http.request.uri.path} 302
 			}
 		}
 		@denied not header_regexp X-Auth-Request-Groups (^|,)({args[0]})(,|$)
