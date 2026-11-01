@@ -52,7 +52,7 @@ handle /family/* {
 Not signed in -> redirected to Pocket ID; signed in but wrong group -> 403. Add the page under `src/pages/`, add a
 `handle` block, push, deploy. The dev server (`npm run dev`) does not enforce this; only the Caddy image does.
 
-Setup in Pocket ID: on the existing OIDC client add the callback URLs `https://www.billotais.ch/oauth2/callback` and `https://www.loisbilat.ch/oauth2/callback` (one per domain),
+Setup in Pocket ID: on the existing OIDC client add the callback URLs `https://billotais.ch/oauth2/callback` and `https://loisbilat.ch/oauth2/callback` (one per domain; `www.` hosts are redirected to the bare domain by the Caddyfile),
 generate a client secret, and make sure the `groups` scope is allowed. Then on the VPS:
 
 ```sh

@@ -29,6 +29,10 @@
 	root * /srv
 	encode gzip
 
+	# www hosts go to the bare domain, so the login cookie and OIDC callback always live on one host per domain.
+	@www host www.billotais.ch www.loisbilat.ch
+	redir @www https://{http.request.host.labels.1}.{http.request.host.labels.0}{http.request.uri} 301
+
 	handle /oauth2/* {
 		reverse_proxy oauth2-proxy:4180
 	}
