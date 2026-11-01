@@ -20,7 +20,8 @@ services:
       OAUTH2_PROXY_CLIENT_ID: db39ed6a-c0f2-4362-9418-1f1982b5fa68
       OAUTH2_PROXY_CLIENT_SECRET: ${OIDC_CLIENT_SECRET:?set in .env}
       OAUTH2_PROXY_COOKIE_SECRET: ${COOKIE_SECRET:?set in .env}
-      OAUTH2_PROXY_REDIRECT_URL: https://www.billotais.ch/oauth2/callback
+      # No fixed redirect URL: with REVERSE_PROXY on, it follows the host of the request (www.billotais.ch or
+      # www.loisbilat.ch). Each domain gets its own session cookie, and both callbacks must exist in Pocket ID.
       OAUTH2_PROXY_SCOPE: openid profile email groups
       OAUTH2_PROXY_OIDC_GROUPS_CLAIM: groups
       # Report the Pocket ID user id (sub) as `user` so the site can build the profile picture URL.
