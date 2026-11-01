@@ -1,14 +1,50 @@
 [
   {
-    "slug": "vortex-race-2026",
-    "name": "Vortex Race - 2026",
-    "date": "2026-10-17",
+    "slug": "swiss-city-semi-marathon-2027",
+    "name": "Swiss City Semi Marathon - 2027",
+    "date": "2027-10-31",
     "upcoming": true,
-    "distance": 7,
+    "distance": 21.2,
     "goalTime": null,
     "finalTime": null,
     "paceSec": null,
     "pace": null,
+    "dnf": false
+  },
+  {
+    "slug": "20km-de-lausanne",
+    "name": "20km de Lausanne",
+    "date": "2027-04-25",
+    "upcoming": true,
+    "distance": 20,
+    "goalTime": "1h 50m",
+    "finalTime": null,
+    "paceSec": null,
+    "pace": null,
+    "dnf": false
+  },
+  {
+    "slug": "christmas-run-2026",
+    "name": "Christmas Run - 2026",
+    "date": "2026-12-12",
+    "upcoming": true,
+    "distance": 4.8,
+    "goalTime": null,
+    "finalTime": null,
+    "paceSec": null,
+    "pace": null,
+    "dnf": false
+  },
+  {
+    "slug": "vortex-race-2026",
+    "name": "Vortex Race - 2026",
+    "date": "2026-10-17",
+    "upcoming": false,
+    "distance": 7,
+    "goalTime": "35m",
+    "finalTime": "33m 12s",
+    "paceSec": 285,
+    "pace": "4:45 /km",
     "dnf": false
   },
   {
@@ -22,18 +58,6 @@
     "paceSec": 350,
     "pace": "5:50 /km",
     "dnf": false
-  },
-  {
-    "slug": "catp-2026",
-    "name": "CATP - 2026",
-    "date": "2026-05-29",
-    "upcoming": false,
-    "distance": 4,
-    "goalTime": null,
-    "finalTime": "DNF",
-    "paceSec": null,
-    "pace": null,
-    "dnf": true
   },
   {
     "slug": "grand-prix-de-berne-2026",

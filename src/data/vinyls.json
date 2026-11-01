@@ -40,6 +40,16 @@
     "image": "https://images.squarespace-cdn.com/content/v1/66d08e0f3174ae1c60294d6c/95dfc9c6-1149-4892-bf49-e8c57c3c5d30/AA_UNFURL_Album+Cover+-+3000X3000+%281%29.jpg"
   },
   {
+    "slug": "barns-courtney-supernatural",
+    "name": "Barns Courtney - Supernatural",
+    "artist": "Barns Courtney",
+    "album": "Supernatural",
+    "edition": null,
+    "status": "Wanted",
+    "personalRating": null,
+    "image": null
+  },
+  {
     "slug": "c2c-tetra",
     "name": "C2C - Tetra",
     "artist": "C2C",
@@ -100,6 +110,26 @@
     "image": "https://i.discogs.com/pvobPqUKRLA8HteHgy2pP69JaLjc9XI46qjgc5NCz6g/rs:fit/g:sm/q:40/h:300/w:300/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTM2NTk5/NzcwLTE3NzM4MTUy/OTMtODkwMy5wbmc.jpeg"
   },
   {
+    "slug": "hazbin-hotel-season-1-2-ost",
+    "name": "Hazbin Hotel - Season 1 & 2 OST",
+    "artist": "Hazbin Hotel",
+    "album": "Season 1 & 2 OST",
+    "edition": "Special Edition",
+    "status": "Pre-Order",
+    "personalRating": null,
+    "image": "https://www.roughtrade.com/_next/image?url=https%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F0867%2F1120%2F6219%2Ffiles%2FScreenshot2026-07-28at23.16.59.png%3Fv%3D1785277034&w=3840&q=75"
+  },
+  {
+    "slug": "hollywood-undead-hotel-kalifornia",
+    "name": "Hollywood Undead - Hotel Kalifornia",
+    "artist": "Hollywood Undead",
+    "album": "Hotel Kalifornia",
+    "edition": null,
+    "status": "Wanted",
+    "personalRating": null,
+    "image": null
+  },
+  {
     "slug": "imagine-dragons-mercury-act-1",
     "name": "Imagine Dragons - Mercury Act 1",
     "artist": "Imagine Dragons",
@@ -118,6 +148,26 @@
     "status": "Owned",
     "personalRating": null,
     "image": "https://upload.wikimedia.org/wikipedia/en/d/d9/Imagine_Dragons_Mercury_album_cover_2022.webp?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original"
+  },
+  {
+    "slug": "larian-studio-baldur-s-gate-3",
+    "name": "Larian Studio - Baldur's Gate 3",
+    "artist": "Larian Studio",
+    "album": "Baldur's Gate 3",
+    "edition": null,
+    "status": "Wanted",
+    "personalRating": null,
+    "image": null
+  },
+  {
+    "slug": "linkin-park-a-thousand-suns",
+    "name": "Linkin Park - A Thousand Suns",
+    "artist": "Linkin Park",
+    "album": "A Thousand Suns",
+    "edition": null,
+    "status": "Wanted",
+    "personalRating": null,
+    "image": null
   },
   {
     "slug": "linkin-park-from-zero",
@@ -200,11 +250,31 @@
     "image": null
   },
   {
+    "slug": "mike-shinoda-post-traumatic",
+    "name": "Mike Shinoda - Post Traumatic",
+    "artist": "Mike Shinoda",
+    "album": "Post Traumatic",
+    "edition": null,
+    "status": "Wanted",
+    "personalRating": null,
+    "image": null
+  },
+  {
+    "slug": "minecraft-volume-alpha",
+    "name": "Minecraft - Volume Alpha",
+    "artist": "Minecraft",
+    "album": "Volume Alpha",
+    "edition": null,
+    "status": "Wanted",
+    "personalRating": null,
+    "image": null
+  },
+  {
     "slug": "muse-absolution",
     "name": "Muse - Absolution",
     "artist": "Muse",
     "album": "Absolution",
-    "edition": null,
+    "edition": "Standard",
     "status": "Owned",
     "personalRating": null,
     "image": "https://static.fnac-static.com/multimedia/Images/FR/NR/a2/1e/1d/1908386/1540-1/tsp20210802144219/Absolution.jpg"
@@ -214,10 +284,10 @@
     "name": "Muse - Black Holes and Revelations",
     "artist": "Muse",
     "album": "Black Holes and Revelations",
-    "edition": null,
-    "status": "Wanted",
+    "edition": "Standard",
+    "status": "Owned",
     "personalRating": null,
-    "image": null
+    "image": "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F1.bp.blogspot.com%2F_ReWuEqRBpBE%2FTOPEy3GDCQI%2FAAAAAAAACp8%2FW0eNG8B9J8k%2Fs1600%2FMuse%2B-%2BBlack%2BHoles%2Band%2BRevelations.jpg&f=1&nofb=1&ipt=918dc7cb6c54ac213e4b24145535954e49492fe86177e7472975985ae52037a5&ipo=images"
   },
   {
     "slug": "muse-drones",
@@ -270,6 +340,16 @@
     "image": null
   },
   {
+    "slug": "old-gods-of-asgard-rebirth",
+    "name": "Old Gods of Asgard - Rebirth",
+    "artist": "Old Gods of Asgard",
+    "album": "Rebirth - Greatest Hits",
+    "edition": null,
+    "status": "Wanted",
+    "personalRating": null,
+    "image": null
+  },
+  {
     "slug": "panic-at-the-disco-death-of-a-bachelor",
     "name": "Panic at the Disco - Death of a Bachelor",
     "artist": "Panic at the Disco",
@@ -310,24 +390,34 @@
     "image": null
   },
   {
-    "slug": "shaka-ponk-the-white-pixel-ape",
-    "name": "Shaka Ponk - The White Pixel Ape",
-    "artist": "Shaka Ponk",
-    "album": "The White Pixel Ape",
-    "edition": null,
-    "status": "Wanted",
-    "personalRating": null,
-    "image": null
-  },
-  {
     "slug": "shaka-ponk-shaka-ponk",
-    "name": "Shaka Ponk - shaka Ponk",
+    "name": "Shaka Ponk - Shaka Ponk",
     "artist": "Shaka Ponk",
     "album": "Shaka Ponk",
     "edition": null,
     "status": "Wanted",
     "personalRating": null,
     "image": null
+  },
+  {
+    "slug": "shaka-ponk-the-black-pixel-ape",
+    "name": "Shaka Ponk - The Black Pixel Ape",
+    "artist": "Shaka Ponk",
+    "album": "The Black Pixel Ape",
+    "edition": "Standard",
+    "status": "Pre-Order",
+    "personalRating": null,
+    "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fvinyla.com%2Ffiles%2Fproducts%2F55%2F57%2F57401%2Fvinilovi-plativki-shaka-ponk-the-black-pixel-ape.1280x1280.png%3F0076897dffe998e195582160a71bf235&f=1&nofb=1&ipt=46c175e9f26ba0defb7aa5a203024be1e768284840614de7acc3c845503262a2&ipo=images"
+  },
+  {
+    "slug": "shaka-ponk-the-white-pixel-ape",
+    "name": "Shaka Ponk - The White Pixel Ape",
+    "artist": "Shaka Ponk",
+    "album": "The White Pixel Ape",
+    "edition": "Standard",
+    "status": "Pre-Order",
+    "personalRating": null,
+    "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.sortiraparis.com%2Fimages%2F80%2F1665%2F105133-sortie-du-nouvel-album-de-shaka-ponk-the-white-pixel-ape.jpg&f=1&nofb=1&ipt=f0bb73115ee4e7aa16eb25eb64d621211e451e0bc7180eeaada3b84f507f4cdc&ipo=images"
   },
   {
     "slug": "sia-reasonable-woman",
@@ -364,10 +454,50 @@
     "name": "Stromae - Racine Carrée",
     "artist": "Stromae",
     "album": "Racine Carrée",
-    "edition": null,
+    "edition": "Standard",
     "status": "Owned",
     "personalRating": null,
     "image": "https://static.fnac-static.com/multimedia/Images/FR/NR/72/20/51/5316722/1507-1/tsp20171106114246/Racine-carree.jpg"
+  },
+  {
+    "slug": "supertramp-the-very-best-of-supertramp",
+    "name": "Supertramp - The very best of Supertramp",
+    "artist": "Supertramp",
+    "album": "The very best of Supertramp",
+    "edition": null,
+    "status": "Wanted",
+    "personalRating": null,
+    "image": null
+  },
+  {
+    "slug": "tom-cardy-artificial-intelligence",
+    "name": "Tom Cardy - Artificial Intelligence",
+    "artist": "Tom Cardy",
+    "album": "Artificial Intelligence",
+    "edition": "Alien Green Blob",
+    "status": "Pre-Order",
+    "personalRating": null,
+    "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.genius.com%2Ff52ad93534e100ef948890526ee27876.1000x1000x1.png&f=1&nofb=1&ipt=7fb42bb75c59aa8cf30af049387125749a685cd30ae21f41464e658d2c702081&ipo=images"
+  },
+  {
+    "slug": "tom-cardy-big-dumb-idiot",
+    "name": "Tom Cardy - Big Dumb Idiot",
+    "artist": "Tom Cardy",
+    "album": "Big Dumb Idiot",
+    "edition": "Alien Green Blob",
+    "status": "Owned",
+    "personalRating": null,
+    "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fis5-ssl.mzstatic.com%2Fimage%2Fthumb%2FMusic112%2Fv4%2Ff4%2F6b%2Fa9%2Ff46ba9f4-0bbf-0571-2dbe-6e2ce4e36556%2F75292.jpg%2F1200x1200bf-60.jpg&f=1&nofb=1&ipt=13d936e911bb7fd1ac09c61c4b6b27a9b88898470ddec4850c0888db12021cd4&ipo=images"
+  },
+  {
+    "slug": "tom-cardy-the-dancefloor-at-the-end-of-the-universe",
+    "name": "Tom Cardy - The Dancefloor at the End of the Universe",
+    "artist": "Tom Cardy",
+    "album": "The Dancefloor at the End of the Universe",
+    "edition": "Alien Green Blob",
+    "status": "Owned",
+    "personalRating": null,
+    "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.genius.com%2Ff7cfaebdb02ef5765fe34a34f993eb33.1000x1000x1.png&f=1&nofb=1&ipt=e0c58472c832a5eab6555dfb38b81c3615968c8ad3ec7a3ec4fdde6371f62a54&ipo=images"
   },
   {
     "slug": "twenty-one-pilots-blurryface",
@@ -388,6 +518,16 @@
     "status": "Owned",
     "personalRating": null,
     "image": "https://upload.wikimedia.org/wikipedia/en/5/5a/Twenty_One_Pilots_-_Breach.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+  },
+  {
+    "slug": "twenty-one-pilots-trench",
+    "name": "Twenty One Pilots - Trench",
+    "artist": "Twenty One Pilots",
+    "album": "Trench",
+    "edition": null,
+    "status": "Wanted",
+    "personalRating": null,
+    "image": null
   },
   {
     "slug": "twenty-one-pilots-vessel",
