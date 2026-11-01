@@ -35,11 +35,16 @@
 
 	# Protected pages. Add one block per page or folder; the argument is the allowed group(s).
 	handle /secret* {
-		import gate admins
+		import gate admin
 		file_server
 	}
     handle /profile* {
 		import gate users
+		file_server
+	}
+
+	handle /gaming* {
+		import gate elca
 		file_server
 	}
 

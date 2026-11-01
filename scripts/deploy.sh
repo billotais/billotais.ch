@@ -5,7 +5,7 @@
 set -euo pipefail
 
 HOST="${DEPLOY_HOST:-billotais@lab.billotais.local}"
-DIR="${DEPLOY_DIR:-billotais-ch}"
+DIR="${DEPLOY_DIR:-billotais.ch/deploy}"
 
 ssh "$HOST" "cd $DIR && docker compose pull && docker compose up -d && docker image prune -f"
 echo "Deployed on $HOST"
