@@ -1,71 +1,177 @@
 ---
+// Vertical timeline grouped by year, alternating sides on desktop
 import Layout from '../../layouts/Layout.astro';
-import races from '../../data/races.json';
+import RaceCountdown from '../../components/RaceCountdown.astro';
+import routes from '../../data/routes.json';
+import { chrono, statusOf, statusLabel, fmtDate, fmtKm } from '../../lib/races';
 
-const upcoming = races.filter(r => r.upcoming);
-const past = races.filter(r => !r.upcoming);
-const subtitle = `${past.length} races run${upcoming.length > 0 ? ` · ${upcoming.length} upcoming` : ''}`;
+const desc = [...chrono].reverse();
+const years = [...new Set(desc.map((r) => r.date.slice(0, 4)))];
+const firstPast = desc.findIndex((r) => !r.upcoming);
+const past = chrono.filter((r) => !r.upcoming).length;
 
-function fmtDate(iso: string) {
-  return new Date(iso).toLocaleDateString('en-CH', { day: 'numeric', month: 'short', year: 'numeric' });
+// Per-year summary, revealed on hover. Years with nothing run yet show the planned races.
+const yearStats = Object.fromEntries(years.map((y) => {
+  const rs = chrono.filter((r) => r.date.startsWith(y));
+  const done = rs.filter((r) => !r.upcoming);
+  const planned = done.length === 0;
+  const counted = planned ? rs : done.filter((r) => !r.dnf);
+  return [y, {
+    races: planned ? rs.length : done.length,
+    km: counted.reduce((s, r) => s + r.distance, 0),
+    max: Math.max(...counted.map((r) => r.distance)),
+    planned,
+  }];
+}));
+
+// First and last point of a route path, for the start/finish markers
+function endpoints(d: string) {
+  const n = [...d.matchAll(/[ML]([\d.]+) ([\d.]+)/g)];
+  return { start: [+n[0][1], +n[0][2]], end: [+n.at(-1)![1], +n.at(-1)![2]] };
 }
+const routeOf = (slug: string) => (routes as Record<string, { w: number; h: number; d: string; gain: number }>)[slug];
 ---
 
-<Layout
-  title="Races"
-  description="Running races I have participated in, with times and pace."
-  activeNav="collections"
-  pageSubtitle={subtitle}
->
+<Layout title="Races" description="Running races I have participated in, with times and pace." activeNav="collections" pageSubtitle={`${past} races run`}>
   <main class="container page">
+    <RaceCountdown />
 
-    {upcoming.length > 0 && (
-      <section class="cv-section">
-        <h2 class="cv-section-title">Upcoming</h2>
-        <div class="race-list">
-          {upcoming.map(r => (
-            <div class="race-card race-card--upcoming">
-              <div class="race-card-main">
-                <div class="race-card-name">{r.name}</div>
-                <div class="race-card-meta">
-                  <span>📅 {fmtDate(r.date)}</span>
-                  <span>📏 {r.distance} km</span>
-                  {r.goalTime && <span>🎯 {r.goalTime}</span>}
-                </div>
-              </div>
-              <span class="race-badge race-badge--upcoming">Upcoming</span>
-            </div>
-          ))}
-        </div>
-      </section>
-    )}
 
-    <section class="cv-section">
-      {upcoming.length > 0 && <h2 class="cv-section-title">Past races</h2>}
-      <div class="race-list">
-        {past.map(r => (
-          <div class={`race-card${r.dnf ? ' race-card--dnf' : ''}`}>
-            <div class="race-card-main">
-              <div class="race-card-name">{r.name}</div>
-              <div class="race-card-meta">
-                <span>📅 {fmtDate(r.date)}</span>
-                <span>📏 {r.distance} km</span>
-                {r.goalTime && <span>🎯 {r.goalTime}</span>}
+    <div class="vt">
+      {years.map((y) => (
+        <section>
+          <div class="vt-year-wrap" tabindex="0">
+            <div class="vt-year-slide">
+              <h2 class="vt-year">{y}</h2>
+              <div class="vt-year-pill">
+                <span><b>{yearStats[y].races}</b> {yearStats[y].planned ? 'planned' : yearStats[y].races === 1 ? 'race' : 'races'}</span>
+                <span><b>{+yearStats[y].km.toFixed(1)}</b> km</span>
+                <span>max <b>{+yearStats[y].max.toFixed(1)}</b> km</span>
               </div>
-            </div>
-            <div class="race-card-result">
-              {r.dnf ? (
-                <span class="race-badge race-badge--dnf">DNF</span>
-              ) : r.finalTime ? (
-                <>
-                  <span class="race-time">{r.finalTime}</span>
-                  {r.pace && <span class="race-pace">{r.pace}</span>}
-                </>
-              ) : null}
             </div>
           </div>
-        ))}
-      </div>
-    </section>
+          {desc.map((r, i) => r.date.startsWith(y) && (
+            <>
+              {i === firstPast && <div class="vt-today"><span>Today</span></div>}
+              <article class={`vt-item s-${statusOf(r)} ${r.upcoming ? 'is-upcoming' : ''}`}>
+                <span class="vt-node"></span>
+                <div class="vt-card">
+                  <div class="vt-main">
+                  <div class="vt-head">
+                    <span class="vt-date">{fmtDate(r.date, false)}</span>
+                    {!r.finalTime && <span class="vt-status">{statusLabel[statusOf(r)]}</span>}
+                  </div>
+                  <h3 class="vt-name">{r.name.replace(/ - \d{4}$/, '')}</h3>
+                  </div>
+                  {routeOf(r.slug) && (() => {
+                    const rt = routeOf(r.slug);
+                    const { start, end } = endpoints(rt.d);
+                    return (
+                      <svg class="vt-route" viewBox={`-6 -6 ${rt.w + 12} ${rt.h + 12}`} role="img" aria-label={`Route of ${r.name}`}>
+                        <path d={rt.d} pathLength="1" />
+                        <circle cx={start[0]} cy={start[1]} r="3.5" class="start" />
+                        <circle cx={end[0]} cy={end[1]} r="3.5" class="end" />
+                      </svg>
+                    );
+                  })()}
+                  <div class="vt-kpis">
+                    <div><span>Distance</span><b>{fmtKm(r.distance)}</b></div>
+                    {r.finalTime && <div class="kpi-time"><div class="kpi-label"><span>Time</span><span class="vt-status">{statusLabel[statusOf(r)]}</span></div><b>{r.finalTime}</b>{r.goalTime && <small>🎯 {r.goalTime}</small>}</div>}
+                    {!r.finalTime && r.goalTime && <div><span>Goal</span><b>{r.goalTime}</b></div>}
+                    {(r.pace || routeOf(r.slug)) && (
+                      <div class="kpi-meta">
+                        {r.pace && <span>{r.pace}</span>}
+                        {routeOf(r.slug) && <span>↗ {routeOf(r.slug).gain} m</span>}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </article>
+            </>
+          ))}
+        </section>
+      ))}
+    </div>
   </main>
 </Layout>
+
+<script>
+  // The year slides left by half the stats pill's visible width so the pair ends up centred.
+  function measure() {
+    const overlap = parseFloat(getComputedStyle(document.documentElement).fontSize) * 1.25;
+    document.querySelectorAll<HTMLElement>('.vt-year-wrap').forEach((w) => {
+      const pill = w.querySelector<HTMLElement>('.vt-year-pill')!;
+      w.style.setProperty('--shift', `${(pill.offsetWidth - overlap) / 2}px`);
+    });
+  }
+  measure();
+  document.fonts?.ready.then(measure);
+  addEventListener('resize', measure);
+</script>
+
+<style is:global>
+  .s-hit { --c: #16a34a; } .s-missed { --c: #d97706; } .s-dnf { --c: #dc2626; }
+  .s-nogoal, .s-upcoming { --c: var(--color-accent); }
+
+
+  /* Hovering the year slides it left while the stats slide out to the right from behind it. Sizes never change. */
+  .vt-year-wrap { position: relative; z-index: 1; width: max-content; margin: 1.5rem auto; outline: none; --shift: 90px; }
+  .vt-year-slide { position: relative; transition: transform .4s ease-out; }
+  .vt-year-wrap .vt-year { margin: 0; cursor: default; z-index: 2; }
+  .vt-year-pill { position: absolute; z-index: 1; top: 0; bottom: 0; left: calc(100% - 1.25rem); display: flex; gap: .9rem; align-items: center; padding: 0 1rem 0 1.75rem; white-space: nowrap; font-size: .8rem; color: var(--color-text-muted); background: var(--color-bg-subtle); border: 1px solid var(--color-border); border-radius: 99px; clip-path: inset(0 100% 0 0); transform: translateX(-40px); transition: clip-path .4s ease-out, transform .4s ease-out; }
+  .vt-year-pill b { color: var(--color-text); }
+  .vt-year-wrap:hover .vt-year-slide, .vt-year-wrap:focus .vt-year-slide, .vt-year-wrap:focus-within .vt-year-slide { transform: translateX(calc(-1 * var(--shift))); }
+  .vt-year-wrap:hover .vt-year-pill, .vt-year-wrap:focus .vt-year-pill, .vt-year-wrap:focus-within .vt-year-pill { clip-path: inset(0); transform: none; }
+  @media (prefers-reduced-motion: reduce) { .vt-year-slide, .vt-year-pill { transition: none; } }
+
+  .vt-main { min-width: 0; }
+  .vt-card { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 0 .75rem; }
+  .vt-route { flex: none; width: 76px; height: 76px; }
+  .vt-route path { fill: none; stroke: var(--c); stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; stroke-dasharray: 1; stroke-dashoffset: 0; }
+  .vt-route .start { fill: #16a34a; } .vt-route .end { fill: var(--color-text); }
+  .vt-card:hover .vt-route path { animation: vt-draw 1.4s ease-out; }
+  @keyframes vt-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+  @media (prefers-reduced-motion: reduce) { .vt-card:hover .vt-route path { animation: none; } }
+
+  .vt { position: relative; max-width: 760px; margin: 0 auto; }
+  .vt::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 3px; background: var(--color-border); transform: translateX(-50%); }
+  .vt-year { text-align: center; position: relative; margin: 1.5rem 0; }
+  .vt-year::before { content: ''; }
+  .vt-year { font-size: 1rem; }
+  .vt-year { display: table; margin-inline: auto; background: var(--color-accent); color: #fff; padding: .2rem 1rem; border-radius: 99px; position: relative; z-index: 1; }
+  .vt-item { position: relative; width: 50%; padding: 0 2rem 1.5rem 0; box-sizing: border-box; }
+  .vt section > .vt-item:nth-of-type(even), .vt section > .vt-item:nth-of-type(even) { margin-left: 50%; padding: 0 0 1.5rem 2rem; }
+  .vt-node { position: absolute; top: 1.1rem; right: -9px; width: 15px; height: 15px; border-radius: 50%; background: var(--c); border: 3px solid var(--color-bg); box-shadow: 0 0 0 2px var(--c); }
+  .vt section > .vt-item:nth-of-type(even) .vt-node { right: auto; left: -9px; }
+  .is-upcoming .vt-node { background: var(--color-bg); border-style: dashed; }
+  .vt-card { background: var(--color-bg-subtle); border: 1px solid var(--color-border); border-radius: 10px; padding: .8rem 1rem; transition: transform .15s; }
+  .vt-card:hover { transform: translateY(-2px); }
+  .is-upcoming .vt-card { border-style: dashed; }
+  .vt-head { display: flex; justify-content: space-between; font-size: .72rem; color: var(--color-text-muted); }
+  .vt-status { align-self: center; padding: .1rem .6rem; border-radius: 99px; color: var(--c); font-weight: 700; text-transform: uppercase; letter-spacing: .04em; background: color-mix(in srgb, var(--c) 10%, var(--color-bg)); border: 1px solid color-mix(in srgb, var(--c) 28%, transparent); }
+  .vt-name { margin: .2rem 0 .5rem; font-size: 1.05rem; }
+
+  /* Stats: distance | time big, then pace + climb as one plain line across the full width. */
+  .vt-kpis { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; margin-top: .7rem; padding-top: .6rem; border-top: 1px solid var(--color-border); }
+  .vt-kpis > div { min-width: 0; }
+  .vt-kpis > div:nth-child(2) { padding-left: .8rem; border-left: 1px solid var(--color-border); }
+  .vt-kpis > div:nth-child(-n+2) b { font-size: 1.55rem; line-height: 1.15; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .vt-kpis .kpi-time b { color: var(--c); }
+  .vt-kpis span { display: block; font-size: .62rem; text-transform: uppercase; letter-spacing: .07em; color: var(--color-text-muted); }
+  .vt-kpis small { display: block; font-size: .7rem; color: var(--color-text-muted); white-space: nowrap; }
+  .vt-kpis .kpi-label { display: flex; align-items: center; flex-wrap: wrap; gap: .1rem .45rem; }
+  .vt-kpis .kpi-label .vt-status { display: inline-block; padding: 0 .45rem; font-size: .56rem; letter-spacing: .05em; color: var(--c); }
+  .vt-kpis .kpi-meta { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: .25rem 1rem; margin-top: .45rem; padding: .45rem 0 0; border-top: 1px dashed var(--color-border); border-left: 0; font-size: .82rem; color: var(--color-text-muted); }
+  .vt-kpis .kpi-meta span { display: inline; font-size: inherit; text-transform: none; letter-spacing: 0; color: inherit; white-space: nowrap; }
+
+  .vt-today { position: relative; text-align: center; margin: .5rem 0 1.25rem; z-index: 1; }
+  .vt-today::before { content: ''; position: absolute; left: 0; right: 0; top: 50%; border-top: 2px dashed var(--color-accent); }
+  .vt-today span { position: relative; background: var(--color-bg); color: var(--color-accent); padding: 0 .75rem; font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
+
+  @media (max-width: 700px) {
+    .vt::before { left: 12px; }
+    .vt-year { margin-left: 0; }
+    .vt-item, .vt section > .vt-item:nth-of-type(even) { width: 100%; margin-left: 0; padding: 0 0 1.25rem 2.25rem; }
+    .vt-node, .vt section > .vt-item:nth-of-type(even) .vt-node { left: 5px; right: auto; }
+    }
+</style>

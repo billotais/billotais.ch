@@ -7,3 +7,4 @@ src/env.d.ts
 .astro/
 *.docx
 vault/
+src/data/activities/

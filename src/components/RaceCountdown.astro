@@ -1,0 +1,59 @@
+---
+import { nextRace, fmtDate, fmtKm } from '../lib/races';
+---
+
+{nextRace && (
+  <div class="countdown" data-date={nextRace.date}>
+    <div class="countdown-days">
+      <span class="countdown-num" data-days>–</span>
+      <span class="countdown-unit" data-unit>days</span>
+    </div>
+    <div class="countdown-info">
+      <div class="countdown-label">Next race</div>
+      <div class="countdown-name">{nextRace.name}</div>
+      <div class="countdown-meta">
+        📅 {fmtDate(nextRace.date)} · 📏 {fmtKm(nextRace.distance)}{nextRace.goalTime && ` · 🎯 ${nextRace.goalTime}`}
+      </div>
+    </div>
+  </div>
+)}
+
+<script>
+  document.querySelectorAll<HTMLElement>('.countdown').forEach((el) => {
+    const target = new Date(el.dataset.date + 'T00:00:00');
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const days = Math.round((target.getTime() - today.getTime()) / 86400000);
+    const num = el.querySelector('[data-days]')!;
+    const unit = el.querySelector('[data-unit]')!;
+    if (days <= 0) {
+      num.textContent = days === 0 ? '🏁' : '0';
+      unit.textContent = days === 0 ? 'today!' : 'days';
+    } else {
+      num.textContent = String(days);
+      unit.textContent = days === 1 ? 'day to go' : 'days to go';
+    }
+  });
+</script>
+
+<style>
+  .countdown {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 14px;
+    color: #fff;
+    background: linear-gradient(135deg, var(--color-hero-from), var(--color-hero-to));
+  }
+  .countdown-days { text-align: center; min-width: 5.5rem; }
+  .countdown-num { display: block; font-size: 3rem; font-weight: 800; line-height: 1; }
+  .countdown-unit { font-size: 0.75rem; opacity: 0.85; text-transform: uppercase; letter-spacing: 0.05em; }
+  .countdown-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.8; }
+  .countdown-name { font-size: 1.35rem; font-weight: 700; margin: 0.15rem 0; }
+  .countdown-meta { font-size: 0.875rem; opacity: 0.9; }
+  @media (max-width: 560px) {
+    .countdown { flex-direction: column; text-align: center; gap: 0.75rem; }
+  }
+</style>
