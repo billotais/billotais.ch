@@ -1219,6 +1219,33 @@ a:hover {
 
 /* Responsive */
 @media (max-width: 640px) {
+    /* Nav: one row only. The breadcrumb shrinks with an ellipsis, the logo and the icons never wrap. */
+    .nav-inner {
+        flex-wrap: nowrap;
+        gap: 8px;
+    }
+
+    .nav-brand {
+        flex: 1 1 auto;
+        min-width: 0;
+    }
+
+    .nav-logo {
+        flex: none;
+    }
+
+    .nav-actions {
+        flex: none;
+        gap: 2px;
+    }
+
+    .nav-icon,
+    .nav-actions .theme-toggle,
+    .nav-hamburger {
+        width: 32px;
+        height: 32px;
+    }
+
     /* Nav: show hamburger, hide links by default */
     .nav-hamburger {
         display: flex;
@@ -1226,6 +1253,7 @@ a:hover {
 
     .nav-links {
         display: none;
+        align-items: stretch;
         position: absolute;
         top: var(--nav-height);
         left: 0;
@@ -1269,10 +1297,12 @@ a:hover {
 
     .nav-submenu {
         position: static;
-        margin: 0 0 4px;
+        margin: 0 0 4px 4px;
         padding: 0 0 0 14px;
         min-width: 0;
         border: none;
+        border-left: 2px solid var(--color-border);
+        border-radius: 0;
         box-shadow: none;
         background: none;
     }
@@ -1283,6 +1313,11 @@ a:hover {
 
     .nav-links .nav-submenu a {
         padding: 8px 0;
+    }
+
+    .nav-links .nav-submenu a:hover,
+    .nav-links .nav-submenu a.active {
+        background: none;
     }
 
     /* Content */
