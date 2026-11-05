@@ -1,0 +1,327 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Icon from "../components/Icon.astro";
+import { getLang } from "../i18n";
+
+const lang = getLang(Astro.url);
+
+const en = {
+    description: "CV of Loïs Bilat – Senior AI Engineer with expertise in GenAI, NLP, and cloud data platforms.",
+    subtitle: "Senior AI Engineer",
+    experience: "Experience",
+    education: "Education",
+    skills: "Skills",
+    certsTitle: "Certifications & Speaking",
+    languages: "Languages",
+    jobs: [
+        {
+            date: "2024 – present",
+            role: "Senior AI Engineer — Data, Analytics & AI",
+            org: "ELCA Informatique SA · Pully, Switzerland",
+            bullets: [
+                {
+                    label: "AI Platforms & Agentic AI:",
+                    text: "Designed and deployed solutions using Agentic architectures, integrating multiple data sources, MCP tools and enterprise-grade security monitoring. Microsoft Foundry, AWS AgentCore, Databricks and Open-Source solutions.",
+                },
+                {
+                    label: "NLP & Search:",
+                    text: "Built intelligent search and knowledge management systems using Azure AI Search — taxonomy enrichment, multi-language support, synonym handling",
+                },
+                {
+                    label: "Data Engineering & Cloud:",
+                    text: "Architected an IoT data platform for regulated manufacturing (real-time ingestion, Digital Twin, GAMP 5 DevOps); developed device telemetry monitoring and KPI algorithms; data replication between SQL Server and Dataverse via Azure Synapse; established CI/CD pipelines and cloud infrastructure on Azure",
+                },
+                {
+                    label: "Architecture & Pre-sales:",
+                    text: "Contributed to AI solutions architecture, offers and client workshops across pharma, manufacturing, international organizations, and public sector",
+                },
+                {
+                    label: "Mentoring:",
+                    text: "Supervised internships and coached junior engineers on technical practices, code quality, and project delivery",
+                },
+            ],
+            tags: ["Azure / Microsoft Foundry", "Agentic AI / AI Platforms", "Databricks", "AWS AgentCore", "IoT", "Python"],
+        },
+        {
+            date: "2020 – 2023",
+            role: "Data Scientist",
+            org: "ELCA Informatique SA · Lausanne, Switzerland",
+            bullets: [
+                {
+                    label: "NLP & Search:",
+                    text: "Built pipelines for large-scale analysis of scientific literature and public websites (NER, similarity scoring); implemented an Elasticsearch search engine with advanced relevance tuning; contributed to a document analytics framework for automated classification and extraction",
+                },
+                {
+                    label: "Forecasting & Analytics:",
+                    text: "Developed energy consumption clustering (K-means + DTW) and forecasting (LSTM, ARIMA, Croston) models on large utility datasets",
+                },
+                {
+                    label: "Research:",
+                    text: "Completed MSc thesis on cross-lingual hate speech detection using transformer models (BERT), achieving state-of-the-art performance on zero-shot multilingual benchmarks",
+                },
+            ],
+            tags: ["NLP", "Transformers / BERT", "Elasticsearch", "Time Series", "Python", "Azure"],
+        },
+    ],
+    edu: [
+        { date: "2018 – 2020", degree: "MSc in Computer Science", school: "EPFL – Lausanne, Switzerland · Specialization: Data Analytics" },
+        { date: "2017 – 2018", degree: "Exchange Semester", school: "Linköpings Universitet – Linköping, Sweden" },
+        { date: "2015 – 2018", degree: "BSc in Computer Science", school: "EPFL – Lausanne, Switzerland" },
+    ],
+    skillCards: [
+        {
+            title: "AI & ML",
+            items: "Machine Learning, Deep Learning, NLP, GenAI/LLMs/Agentic AI, RAG, Computer Vision, Time Series, LiteLLM, Open WebUI, mlflow",
+        },
+        {
+            title: "Data Engineering",
+            items: "Spark / PySpark, Databricks, Azure Synapse, Delta Lake, Polars, Airflow, Dagster, dbt, Elasticsearch",
+        },
+        {
+            title: "Cloud & Infrastructure",
+            items: "Azure (OpenAI, AI Search, IoT Hub, Functions, Container Apps, Synapse, DevOps), AWS AgentCore, Docker, Terraform, Kubernetes/Openshift, , Bicep",
+        },
+        { title: "Programming", items: "Python, SQL, Java, Scala, JavaScript, C#" },
+        { title: "Databases", items: "MongoDB, Cosmos DB, SQL Server, PostgreSQL, Dataverse, Neo4j, Azure AI Search" },
+        { title: "Tools & Visualization", items: "Git, Azure DevOps, Grafana, Power BI, Streamlit, FastAPI, D3.js" },
+    ],
+    certs: [
+        { label: "Mar 2026", text: "Databricks: Generative AI Associate" },
+        { label: "Apr 2022", text: "Microsoft Certified: Azure AI Fundamentals" },
+        {
+            label: "Mar 2024",
+            html: 'Speaker at <strong>Microsoft Ignite Switzerland 2024</strong> — "Building Data and AI applications with Cosmos DB"',
+        },
+    ],
+    langs: [
+        { label: "French", text: "Native" },
+        { label: "English", text: "Fluent (C1–C2)" },
+        { label: "German", text: "Beginner (A1–A2)" },
+    ],
+};
+
+const fr = {
+    description: "CV de Loïs Bilat – Ingénieur IA senior, spécialiste de l'IA générative, du NLP et des plateformes de données cloud.",
+    subtitle: "Ingénieur IA senior",
+    experience: "Expérience",
+    education: "Formation",
+    skills: "Compétences",
+    certsTitle: "Certifications et interventions",
+    languages: "Langues",
+    jobs: [
+        {
+            date: "2024 – aujourd'hui",
+            role: "Ingénieur IA senior — Data, Analytics & IA",
+            org: "ELCA Informatique SA · Pully, Suisse",
+            bullets: [
+                {
+                    label: "Plateformes d'IA et IA agentique :",
+                    text: "Conception et déploiement de solutions basées sur des architectures agentiques, intégrant plusieurs sources de données, des outils MCP et une supervision de la sécurité de niveau entreprise. Microsoft Foundry, AWS AgentCore, Databricks et solutions open source.",
+                },
+                {
+                    label: "NLP et recherche :",
+                    text: "Développement de systèmes de recherche intelligente et de gestion des connaissances avec Azure AI Search — enrichissement de taxonomies, support multilingue, gestion des synonymes",
+                },
+                {
+                    label: "Ingénierie des données et cloud :",
+                    text: "Architecture d'une plateforme de données IoT pour l'industrie réglementée (ingestion en temps réel, jumeau numérique, DevOps GAMP 5) ; développement de la supervision de la télémétrie des appareils et d'algorithmes de KPI ; réplication de données entre SQL Server et Dataverse via Azure Synapse ; mise en place de pipelines CI/CD et d'infrastructures cloud sur Azure",
+                },
+                {
+                    label: "Architecture et avant-vente :",
+                    text: "Contribution à l'architecture de solutions d'IA, aux offres et aux ateliers clients dans la pharma, l'industrie, les organisations internationales et le secteur public",
+                },
+                {
+                    label: "Mentorat :",
+                    text: "Encadrement de stagiaires et accompagnement d'ingénieurs juniors sur les pratiques techniques, la qualité du code et la livraison de projets",
+                },
+            ],
+            tags: ["Azure / Microsoft Foundry", "Agentic AI / AI Platforms", "Databricks", "AWS AgentCore", "IoT", "Python"],
+        },
+        {
+            date: "2020 – 2023",
+            role: "Data Scientist",
+            org: "ELCA Informatique SA · Lausanne, Suisse",
+            bullets: [
+                {
+                    label: "NLP et recherche :",
+                    text: "Création de pipelines d'analyse à grande échelle de la littérature scientifique et de sites web publics (reconnaissance d'entités, scores de similarité) ; mise en place d'un moteur de recherche Elasticsearch avec réglage avancé de la pertinence ; contribution à un framework d'analyse de documents pour la classification et l'extraction automatiques",
+                },
+                {
+                    label: "Prévision et analytique :",
+                    text: "Développement de modèles de clustering (K-means + DTW) et de prévision (LSTM, ARIMA, Croston) de la consommation d'énergie sur de grands jeux de données de fournisseurs d'énergie",
+                },
+                {
+                    label: "Recherche :",
+                    text: "Mémoire de master sur la détection interlingue de discours haineux avec des modèles transformers (BERT), atteignant l'état de l'art sur des benchmarks multilingues zero-shot",
+                },
+            ],
+            tags: ["NLP", "Transformers / BERT", "Elasticsearch", "Time Series", "Python", "Azure"],
+        },
+    ],
+    edu: [
+        { date: "2018 – 2020", degree: "Master en informatique", school: "EPFL – Lausanne, Suisse · Spécialisation : Data Analytics" },
+        { date: "2017 – 2018", degree: "Semestre d'échange", school: "Linköpings Universitet – Linköping, Suède" },
+        { date: "2015 – 2018", degree: "Bachelor en informatique", school: "EPFL – Lausanne, Suisse" },
+    ],
+    skillCards: [
+        {
+            title: "IA et ML",
+            items: "Machine Learning, Deep Learning, NLP, GenAI/LLMs/IA agentique, RAG, vision par ordinateur, séries temporelles, LiteLLM, Open WebUI, mlflow",
+        },
+        {
+            title: "Ingénierie des données",
+            items: "Spark / PySpark, Databricks, Azure Synapse, Delta Lake, Polars, Airflow, Dagster, dbt, Elasticsearch",
+        },
+        {
+            title: "Cloud et infrastructure",
+            items: "Azure (OpenAI, AI Search, IoT Hub, Functions, Container Apps, Synapse, DevOps), AWS AgentCore, Docker, Terraform, Kubernetes/Openshift, Bicep",
+        },
+        { title: "Programmation", items: "Python, SQL, Java, Scala, JavaScript, C#" },
+        { title: "Bases de données", items: "MongoDB, Cosmos DB, SQL Server, PostgreSQL, Dataverse, Neo4j, Azure AI Search" },
+        { title: "Outils et visualisation", items: "Git, Azure DevOps, Grafana, Power BI, Streamlit, FastAPI, D3.js" },
+    ],
+    certs: [
+        { label: "Mars 2026", text: "Databricks : Generative AI Associate" },
+        { label: "Avr. 2022", text: "Microsoft Certified : Azure AI Fundamentals" },
+        {
+            label: "Mars 2024",
+            html: "Intervenant à <strong>Microsoft Ignite Suisse 2024</strong> — « Building Data and AI applications with Cosmos DB »",
+        },
+    ],
+    langs: [
+        { label: "Français", text: "Langue maternelle" },
+        { label: "Anglais", text: "Courant (C1–C2)" },
+        { label: "Allemand", text: "Débutant (A1–A2)" },
+    ],
+};
+
+const c = lang === "fr" ? fr : en;
+---
+
+<Layout title="CV" description={c.description} activeNav="cv" pageSubtitle={c.subtitle}>
+    <main class="container page">
+        <p class="cv-links">
+            <a href="https://linkedin.com/in/lois-bilat" target="_blank" rel="noopener">
+                <Icon name="linkedin-fill" size={16} /> LinkedIn
+            </a>
+            <a href="https://github.com/Billotais" target="_blank" rel="noopener">
+                <Icon name="github-fill" size={16} /> GitHub
+            </a>
+        </p>
+
+        <section class="cv-section">
+            <h2 class="cv-section-title">{c.experience}</h2>
+            <div class="timeline">
+                {c.jobs.map((job) => (
+                    <div class="timeline-entry">
+                        <div class="timeline-meta">
+                            <div class="timeline-date">{job.date}</div>
+                        </div>
+                        <span class="timeline-dot" />
+                        <div class="timeline-body">
+                            <div class="timeline-role">{job.role}</div>
+                            <div class="timeline-org">{job.org}</div>
+                            <ul class="timeline-bullets">
+                                {job.bullets.map((b) => (
+                                    <li>
+                                        <strong>{b.label}</strong> {b.text}
+                                    </li>
+                                ))}
+                            </ul>
+                            <div class="timeline-tags">
+                                {job.tags.map((tag) => (
+                                    <span class="tag">{tag}</span>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <section class="cv-section">
+            <h2 class="cv-section-title">{c.education}</h2>
+            {c.edu.map((e) => (
+                <div class="edu-entry">
+                    <div class="edu-meta">
+                        <div class="edu-date">{e.date}</div>
+                    </div>
+                    <div class="edu-body">
+                        <div class="edu-degree">{e.degree}</div>
+                        <div class="edu-school">{e.school}</div>
+                    </div>
+                </div>
+            ))}
+        </section>
+
+        <section class="cv-section">
+            <h2 class="cv-section-title">{c.skills}</h2>
+            <div class="skills-two-col">
+                {c.skillCards.map((card) => (
+                    <div class="skill-card">
+                        <div class="skill-card-title">{card.title}</div>
+                        <div class="skill-card-items">{card.items}</div>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <section class="cv-section">
+            <h2 class="cv-section-title">{c.certsTitle}</h2>
+            <div class="inline-list">
+                {c.certs.map((item) => (
+                    <div class="inline-item">
+                        <span class="inline-item-label">{item.label}</span>
+                        {item.html ? <span set:html={item.html} /> : <span>{item.text}</span>}
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <section class="cv-section">
+            <h2 class="cv-section-title">{c.languages}</h2>
+            <div class="inline-list">
+                {c.langs.map((item) => (
+                    <div class="inline-item">
+                        <span class="inline-item-label">{item.label}</span>
+                        <span>{item.text}</span>
+                    </div>
+                ))}
+            </div>
+        </section>
+    </main>
+</Layout>
+
+<style>
+    /* Job title under the nav: accent colour, larger and bolder than other pages' subtitles */
+    :global(.page-subtitle) {
+        font-size: 1.25rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: var(--color-accent);
+    }
+
+    .cv-links {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 32px;
+    }
+
+    .cv-links a {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 14px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: var(--color-text);
+        border: 1px solid var(--color-border);
+        border-radius: 999px;
+        transition: border-color 0.15s, color 0.15s;
+    }
+
+    .cv-links a:hover {
+        border-color: var(--color-accent);
+        color: var(--color-accent);
+    }
+</style>

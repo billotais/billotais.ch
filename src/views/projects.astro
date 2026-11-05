@@ -1,0 +1,249 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getLang, localePath } from "../i18n";
+
+const lang = getLang(Astro.url);
+
+const projectsEn = [
+    {
+        title: "3D Mapping and Object Change Detection with VGGT-SLAM",
+        subtitle: "Article · ELCA IT Blog",
+        description:
+            "Co-authored technical article demonstrating a system for detecting environmental changes across multiple drone flights using monocular VGGT-SLAM and semantic segmentation. The approach reconstructs 3D scenes from single-camera video, identifies objects with ML, and aligns separate reconstructions to highlight what persists, appears, or disappears between flights.",
+        tags: ["Computer Vision", "3D Reconstruction", "SLAM", "Object Detection", "Python", "ELCA"],
+        links: [
+            {
+                href: "https://medium.com/elca-it/3d-mapping-and-object-change-detection-with-vggt-slam-2028ee3508ad",
+                label: "Read",
+            },
+        ],
+    },
+    {
+        title: "Obsidian Template",
+        subtitle: "Productivity / Knowledge Management",
+        description:
+            "A daily-use Obsidian vault template centred on Templater for note creation and Bases views surfaced in the sidebar. Keeps the plugin footprint small, with Excalidraw as the main optional addition.",
+        tags: ["Obsidian", "Knowledge Management", "Productivity", "Templater", "Bases"],
+        links: [{ href: "https://github.com/billotais/obsidian-template", label: "GitHub" }],
+    },
+    {
+        title: "Human-Robot Communication for Embedded Systems",
+        subtitle: "Article · ELCA IT Blog · Project supervision",
+        description:
+            "Project I supervised exploring a lightweight, offline voice command system for a Mars rover. The system converts natural speech into executable commands by chaining hotword detection, speech-to-text, and a local LLM — enabling hands-free rover control without network access or a traditional gamepad. Written by Pierre Hellich.",
+        tags: ["LLM", "Speech-to-Text", "Embedded Systems", "Robotics", "ELCA"],
+        links: [
+            {
+                href: "https://medium.com/elca-it/human-robot-communication-for-embedded-systems-2a6d040daadc",
+                label: "Read",
+            },
+        ],
+    },
+
+    {
+        title: "Cross-Lingual Toxicity Detection",
+        subtitle: "MSc Thesis",
+        description:
+            "Transformer-based classifiers for detecting hateful and offensive content in short texts. Tackled cross-lingual classification using joint-learning and data translation approaches, outperforming existing multilingual models on zero-shot benchmarks.",
+        tags: ["NLP", "BERT", "Transformers", "Python"],
+        links: [
+            { href: "/pdf/cltd.pdf", label: "Thesis PDF" },
+            {
+                href: "https://medium.com/elca-it/zero-shot-multilingual-classification-models-13c3c0f44ad7",
+                label: "Article",
+            },
+        ],
+    },
+    {
+        title: "Denoising with Generative Models",
+        subtitle: "Research Project",
+        description:
+            "Evaluated state-of-the-art techniques for audio denoising and super-resolution, then applied generative adversarial network methods from image processing to the audio domain.",
+        tags: ["GANs", "Deep Learning", "Audio Processing", "Python"],
+        links: [{ href: "/blog/denoising-generative-models", label: "Post" }],
+    },
+    {
+        title: "Detecting Bias in Amazon Reviews",
+        subtitle: "Data Analysis",
+        description:
+            "Data story exploring potential bias in Amazon user reviews and methods to correct it, working on 20 GB of comments using Pandas, PySpark, and Matplotlib.",
+        tags: ["Data Analysis", "PySpark", "Python"],
+        links: [{ href: "https://ada-lyn.github.io/", label: "Data Story" }],
+    },
+    {
+        title: "The Quest for The Holy Grail",
+        subtitle: "3D Game",
+        description:
+            "3D maze game built in C with OpenGL, featuring world physics, lighting effects, rendering optimizations, a user interface, and sound effects.",
+        tags: ["C", "OpenGL", "Graphics"],
+        links: [{ href: "https://github.com/Billotais/TSBK07_project", label: "GitHub" }],
+    },
+    {
+        title: "Part-of-Speech Tagger &amp; Dependency Parser",
+        subtitle: "NLP / ML",
+        description:
+            "Multi-class perceptron POS tagger (93%+ accuracy) and sentence dependency parser (76%+ accuracy) implemented from scratch in Python.",
+        tags: ["NLP", "Python", "Machine Learning"],
+        links: [{ href: "https://github.com/Billotais/TDDE09_project", label: "GitHub" }],
+    },
+    {
+        title: "Calcul Mental",
+        subtitle: "Android App",
+        description:
+            "Android app for mental arithmetic practice with multiple modes including test mode, timed mode, and rush mode.",
+        tags: ["Android", "Java"],
+    },
+    {
+        title: "La Pipopipette",
+        subtitle: "iOS Game · Maturity Project",
+        description:
+            "Multiplayer iOS implementation of Dots and Boxes supporting up to 4 local players, with an AI opponent. Written in Objective-C.",
+        tags: ["iOS", "Objective-C", "Game AI"],
+        links: [{ href: "/pdf/tm.pdf", label: "PDF" }],
+    },
+];
+
+// French text, in the same order as the English list (tags and URLs are shared)
+const projectsFr = [
+    {
+        title: "Cartographie 3D et détection de changements d'objets avec VGGT-SLAM",
+        subtitle: "Article · Blog ELCA IT",
+        description:
+            "Article technique co-écrit présentant un système de détection de changements dans l'environnement entre plusieurs vols de drone, à l'aide de VGGT-SLAM monoculaire et de la segmentation sémantique. L'approche reconstruit des scènes 3D à partir d'une vidéo mono-caméra, identifie les objets par ML et aligne des reconstructions distinctes pour faire ressortir ce qui reste, apparaît ou disparaît d'un vol à l'autre.",
+        links: ["Lire"],
+    },
+    {
+        title: "Template Obsidian",
+        subtitle: "Productivité / Gestion des connaissances",
+        description:
+            "Un template de vault Obsidian pour un usage quotidien, centré sur Templater pour la création de notes et sur des vues Bases affichées dans la barre latérale. Il limite le nombre de plugins, Excalidraw étant le principal ajout facultatif.",
+        links: ["GitHub"],
+    },
+    {
+        title: "Communication homme-robot pour systèmes embarqués",
+        subtitle: "Article · Blog ELCA IT · Supervision de projet",
+        description:
+            "Projet que j'ai supervisé, explorant un système de commande vocale léger et hors ligne pour un rover martien. Le système transforme la parole naturelle en commandes exécutables en enchaînant détection de mot-clé, reconnaissance vocale et LLM local, pour piloter le rover sans les mains, sans réseau et sans manette. Écrit par Pierre Hellich.",
+        links: ["Lire"],
+    },
+    {
+        title: "Détection interlingue de toxicité",
+        subtitle: "Mémoire de master",
+        description:
+            "Classifieurs basés sur des transformers pour détecter les contenus haineux et offensants dans des textes courts. Classification interlingue par apprentissage conjoint et traduction des données, surpassant les modèles multilingues existants sur des benchmarks zero-shot.",
+        links: ["Mémoire (PDF)", "Article"],
+    },
+    {
+        title: "Débruitage avec des modèles génératifs",
+        subtitle: "Projet de recherche",
+        description:
+            "Évaluation des techniques de pointe pour le débruitage et la super-résolution audio, puis application au domaine audio de méthodes de réseaux antagonistes génératifs issues du traitement d'images.",
+        links: ["Article"],
+    },
+    {
+        title: "Détecter les biais dans les avis Amazon",
+        subtitle: "Analyse de données",
+        description:
+            "Data story explorant les biais potentiels dans les avis d'utilisateurs Amazon et les moyens de les corriger, sur 20 Go de commentaires avec Pandas, PySpark et Matplotlib.",
+        links: ["Data story"],
+    },
+    {
+        title: "La quête du Saint Graal",
+        subtitle: "Jeu 3D",
+        description:
+            "Jeu de labyrinthe 3D en C avec OpenGL : physique du monde, effets de lumière, optimisations de rendu, interface utilisateur et effets sonores.",
+        links: ["GitHub"],
+    },
+    {
+        title: "Étiqueteur morpho-syntaxique et analyseur en dépendances",
+        subtitle: "NLP / ML",
+        description:
+            "Étiqueteur morpho-syntaxique par perceptron multi-classes (plus de 93 % de précision) et analyseur en dépendances de phrases (plus de 76 % de précision), implémentés de zéro en Python.",
+        links: ["GitHub"],
+    },
+    {
+        title: "Calcul Mental",
+        subtitle: "Application Android",
+        description:
+            "Application Android d'entraînement au calcul mental avec plusieurs modes, dont un mode test, un mode chronométré et un mode rush.",
+        links: [],
+    },
+    {
+        title: "La Pipopipette",
+        subtitle: "Jeu iOS · Travail de maturité",
+        description:
+            "Implémentation iOS multijoueur du jeu des petits carrés, jusqu'à 4 joueurs en local, avec un adversaire IA. Écrit en Objective-C.",
+        links: ["PDF"],
+    },
+];
+
+const projects =
+    lang === "fr"
+        ? projectsEn.map((p, i) => ({
+              ...p,
+              title: projectsFr[i].title,
+              subtitle: projectsFr[i].subtitle,
+              description: projectsFr[i].description,
+              links: p.links?.map((l, j) => ({ ...l, label: projectsFr[i].links[j] ?? l.label })),
+          }))
+        : projectsEn;
+const links = (href: string) => (href.startsWith("/blog") ? localePath(lang, href) : href);
+
+const text = {
+    en: {
+        description: "Academic, professional and personal projects by Loïs Bilat — NLP, ML, data analysis, game development.",
+        subtitle: "Various projects I have worked on, from academic research to personal experiments and published professional work.",
+    },
+    fr: {
+        description: "Projets académiques, professionnels et personnels de Loïs Bilat — NLP, ML, analyse de données, développement de jeux.",
+        subtitle: "Différents projets sur lesquels j'ai travaillé, de la recherche académique aux expériences personnelles et aux travaux professionnels publiés.",
+    },
+}[lang];
+---
+
+<Layout
+    title={lang === "fr" ? "Projets" : "Projects"}
+    description={text.description}
+    activeNav="projects"
+    pageSubtitle={text.subtitle}
+>
+    <main class="container page">
+        <div class="project-list">
+            {
+                projects.map((p) => (
+                    <div class="project-card">
+                        <div class="project-card-header">
+                            <div>
+                                <div class="project-card-title" set:html={p.title} />
+                                <div style="font-size:0.8rem;color:var(--color-text-muted);margin-top:2px;">
+                                    {p.subtitle}
+                                </div>
+                            </div>
+                            {p.links && p.links.length > 0 && (
+                                <div class="project-card-links">
+                                    {p.links.map((l) => (
+                                        <a
+                                            href={links(l.href)}
+                                            target={l.href.startsWith("http") ? "_blank" : undefined}
+                                            rel="noopener"
+                                            class="btn btn-outline"
+                                            style="padding:5px 12px;font-size:0.8rem;"
+                                        >
+                                            {l.label} {l.href.startsWith("http") ? "↗" : ""}
+                                        </a>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
+                        <p class="project-card-desc" set:html={p.description} />
+                        <div class="timeline-tags" style="margin-top:14px;">
+                            {p.tags.map((t) => (
+                                <span class="tag">{t}</span>
+                            ))}
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </main>
+</Layout>

@@ -46,7 +46,13 @@
 	}
 
 	# title: ELCA Gaming
-	handle /gaming* {
+	handle /elca-gaming* {
+		import gate elca
+		file_server
+	}
+
+	# The French copy of the page above (no title: /profile lists it once)
+	handle /fr/elca-gaming* {
 		import gate elca
 		file_server
 	}

@@ -1,0 +1,818 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Icon from "../components/Icon.astro";
+import boardgames from "../data/boardgames.json";
+import videogames from "../data/videogames.json";
+import teas from "../data/teas.json";
+import tvshows from "../data/tvshows.json";
+import races from "../data/races.json";
+import routes from "../data/routes.json";
+import vinyls from "../data/vinyls.json";
+import featured from "../data/featured.json";
+import { getLang, localePath, dateLocale, ui } from "../i18n";
+
+const lang = getLang(Astro.url);
+const t = ui[lang];
+const L = (path: string) => localePath(lang, path);
+
+type Item = { slug: string; image?: string; [key: string]: any };
+
+// TV shows: the latest ones I watched and rated 8 or more
+const showPicks = (tvshows as Item[])
+    .filter((t) => t.image && t.lastWatchedAt && (t.personalRating ?? 0) >= 9)
+    .sort((a, b) => b.lastWatchedAt.localeCompare(a.lastWatchedAt))
+    .slice(0, 5);
+
+// Board games (two rows of five): hand-picked in src/data/featured.json (slugs, in order);
+// vinyls: the ones marked `favorite` in the vault. An empty selection falls back to a default one
+const pick = (list: Item[], slugs: string[] | undefined, fallback: Item[], max = 5) => {
+    const chosen = (slugs ?? []).map((s) => list.find((i) => i.slug === s && i.image)).filter((i): i is Item => !!i);
+    return (chosen.length ? chosen : fallback.filter((i) => i.image)).slice(0, max);
+};
+
+const ownedVinyls = (vinyls as Item[]).filter((v) => v.status === "Owned");
+const vinylPicks = pick(
+    vinyls as Item[],
+    ownedVinyls.filter((v) => v.favorite).map((v) => v.slug),
+    ownedVinyls,
+    10,
+);
+// Base games only: expansions are never shown
+const baseGames = (boardgames as Item[]).filter(
+    (g) => !g.isExpansion && !g.categories?.includes("Expansion for Base-game"),
+);
+const boardPicks = pick(
+    baseGames,
+    featured["board-games"],
+    [...baseGames].sort((a, b) => (b.personalRating ?? 0) - (a.personalRating ?? 0)),
+    10,
+);
+
+// Races: the latest finished one, plus a teaser for the next one
+const doneRaces = races.filter((r) => !r.upcoming).sort((a, b) => b.date.localeCompare(a.date));
+const lastRace = doneRaces[0];
+const nextRace = races.filter((r) => r.upcoming).sort((a, b) => a.date.localeCompare(b.date))[0];
+const lastRoute = (routes as Record<string, { w: number; h: number; d: string }>)[lastRace.slug];
+const cleanName = (n: string) => n.replace(/ - \d{4}$/, "");
+const fmtDate = (d: string) =>
+    new Date(d).toLocaleDateString(lang === "fr" ? "fr-CH" : "en-GB", { dateStyle: "long", timeZone: "UTC" });
+
+// Career summary shown next to the intro (full details on /cv)
+const text = {
+    en: {
+        lead: "I build intelligent systems at the intersection of AI, data and cloud.",
+        bio: "I like the part of AI that comes after the demo: making agentic systems, search and data platforms secure, maintainable and genuinely useful to real teams. I care about using AI responsibly, and I enjoy mentoring junior colleagues along the way.",
+        stats: [
+            { value: "6+", label: "years in industry" },
+            { value: "20+", label: "client projects" },
+        ],
+        career: [
+            { date: "Since 2020", title: "ELCA", place: "Pully", role: "Senior AI Engineer" },
+            { date: "2015 – 2020", title: "EPFL", place: "Lausanne", role: "BSc & MSc in Computer Science" },
+        ],
+        careerHeading: "Career",
+        fullCv: "Full CV →",
+        beyond: "Beyond work",
+        beyondSub: "I enjoy board games, running, and watching TV shows. Here's what I keep track of.",
+        more: "More collections",
+        tvLabel: "Recently watched & loved",
+        raceLabel: "Latest race",
+        time: "Time",
+        pace: "Pace",
+        distance: "Distance",
+        next: "Next",
+        boardLabel: "Favourites",
+        vinylLabel: "From the shelf",
+    },
+    fr: {
+        lead: "Je conçois des systèmes intelligents à la croisée de l'IA, de la donnée et du cloud.",
+        bio: "J'aime la partie de l'IA qui vient après la démo : rendre les systèmes agentiques, la recherche et les plateformes de données sûrs, maintenables et réellement utiles à de vraies équipes. Je tiens à utiliser l'IA de manière responsable, et j'aime accompagner des collègues juniors au passage.",
+        stats: [
+            { value: "6+", label: "ans en entreprise" },
+            { value: "20+", label: "projets clients" },
+        ],
+        career: [
+            { date: "Depuis 2020", title: "ELCA", place: "Pully", role: "Ingénieur IA senior" },
+            { date: "2015 – 2020", title: "EPFL", place: "Lausanne", role: "Bachelor et Master en informatique" },
+        ],
+        careerHeading: "Parcours",
+        fullCv: "CV complet →",
+        beyond: "En dehors du travail",
+        beyondSub: "J'aime les jeux de société, la course à pied et les séries. Voici ce que je suis de près.",
+        more: "Autres collections",
+        tvLabel: "Vues récemment et adorées",
+        raceLabel: "Dernière course",
+        time: "Temps",
+        pace: "Allure",
+        distance: "Distance",
+        next: "Prochaine",
+        boardLabel: "Coups de cœur",
+        vinylLabel: "Du rayonnage",
+    },
+}[lang];
+const { stats, career } = text;
+
+const socials = [
+    { href: "https://linkedin.com/in/lois-bilat", label: "LinkedIn", icon: "linkedin-fill" },
+    { href: "https://github.com/Billotais", label: "GitHub", icon: "github-fill" },
+];
+
+const more = [
+    { href: L("/collections/video-games"), title: t.videoGames, icon: "gamepad", count: videogames.length },
+    { href: L("/collections/teas"), title: t.teas, icon: "tea", count: teas.length },
+];
+---
+
+<Layout title="Loïs Bilat" description={t.description} activeNav="home">
+    <main class="container">
+        <div class="intro">
+            <section class="hero">
+                <p class="hero-role">{lang === "fr" ? "Ingénieur Data & IA senior" : "Senior Data & AI Engineer"}</p>
+                <p class="hero-lead">{text.lead}</p>
+                <p class="hero-bio">
+                    {text.bio}
+                </p>
+                <div class="hero-stats-row">
+                <dl class="hero-stats">
+                    {stats.map((s) => (
+                        <div>
+                            <dt data-count={parseInt(s.value)} data-suffix={s.value.replace(/^\d+/, "")}>
+                                {s.value}
+                            </dt>
+                            <dd>{s.label}</dd>
+                        </div>
+                    ))}
+                </dl>
+                <span class="social social-beside">
+                    {socials.map((l) => (
+                        <a href={l.href} target="_blank" rel="noopener" aria-label={l.label} title={l.label}>
+                            <Icon name={l.icon} size={26} />
+                        </a>
+                    ))}
+                </span>
+                </div>
+            </section>
+            <aside class="career" aria-label={text.careerHeading}>
+                <h2 class="career-heading">{text.careerHeading}</h2>
+                <ol class="work-career">
+                    {career.map((c) => (
+                        <li>
+                            <span class="work-career-date">{c.date}</span>
+                            <span class="work-career-body">
+                                <span class="work-career-org">
+                                    <b>{c.title}</b>
+                                    <small>{c.place}</small>
+                                </span>
+                                <span class="work-career-role">{c.role}</span>
+                            </span>
+                        </li>
+                    ))}
+                </ol>
+
+                <a href={L("/cv")} class="work-career-link">
+                    {text.fullCv}
+                </a>
+            </aside>
+        </div>
+
+        <section class="home-section">
+            <div class="home-head">
+                <div>
+                    <h2 class="home-heading">{text.beyond}</h2>
+                    <p class="home-sub">{text.beyondSub}</p>
+                </div>
+                <div class="home-more" aria-label={text.more}>
+                    {more.map((m) => (
+                        <a href={m.href} class="home-pill">
+                            <Icon name={m.icon} />
+                            <span class="home-pill-title">{m.title}</span>
+                            <span class="home-pill-count">{m.count}</span>
+                            <span class="home-pill-arrow">→</span>
+                        </a>
+                    ))}
+                </div>
+            </div>
+
+            <div class="home-featured">
+                <a href={L("/collections/tv-shows")} class="home-card">
+                    <span class="home-card-head">
+                        <span class="home-card-title">
+                            <Icon name="tv" /> {t.tvShows}
+                        </span>
+                        <span class="home-card-more">{t.viewAll} {tvshows.length} →</span>
+                    </span>
+                    <span class="home-card-label">{text.tvLabel}</span>
+                    <span class="home-thumbs thumbs-poster">
+                        {showPicks.map((t) => (
+                            <img src={t.image} alt={t.title} title={t.title} loading="lazy" />
+                        ))}
+                    </span>
+                </a>
+
+                <a href={L("/collections/races")} class="home-card">
+                    <span class="home-card-head">
+                        <span class="home-card-title">
+                            <Icon name="flag" /> {t.races}
+                        </span>
+                        <span class="home-card-more">{t.viewAll} {doneRaces.length} →</span>
+                    </span>
+                    <span class="home-card-label">{text.raceLabel}</span>
+                    <span class="home-race">
+                        {lastRoute && (
+                            <svg viewBox={`-6 -6 ${lastRoute.w + 12} ${lastRoute.h + 12}`} aria-hidden="true">
+                                <path d={lastRoute.d} />
+                            </svg>
+                        )}
+                        <span class="home-race-info">
+                            <b>{cleanName(lastRace.name)}</b>
+                            <span>{fmtDate(lastRace.date)}</span>
+                            <span class="home-race-stats">
+                                <span>
+                                    <small>{text.time}</small>
+                                    {lastRace.finalTime}
+                                </span>
+                                <span>
+                                    <small>{text.pace}</small>
+                                    {lastRace.pace}
+                                </span>
+                                <span>
+                                    <small>{text.distance}</small>
+                                    {lastRace.distance} km
+                                </span>
+                            </span>
+                        </span>
+                    </span>
+                    {nextRace && (
+                        <span class="home-next">
+                            <small>{text.next}</small>
+                            <b>{cleanName(nextRace.name)}</b>
+                            <span>
+                                {fmtDate(nextRace.date)} · {nextRace.distance} km
+                            </span>
+                        </span>
+                    )}
+                </a>
+
+                <a href={L("/collections/board-games")} class="home-card">
+                    <span class="home-card-head">
+                        <span class="home-card-title">
+                            <Icon name="dices" /> {t.boardGames}
+                        </span>
+                        <span class="home-card-more">{t.viewAll} {baseGames.length} →</span>
+                    </span>
+                    <span class="home-card-label">{text.boardLabel}</span>
+                    <span class="home-thumbs thumbs-square thumbs-rows">
+                        {boardPicks.map((g) => (
+                            <img src={g.image} alt={g.title} title={g.title} loading="lazy" />
+                        ))}
+                    </span>
+                </a>
+
+                <a href={L("/collections/vinyls")} class="home-card">
+                    <span class="home-card-head">
+                        <span class="home-card-title">
+                            <Icon name="disc" /> {t.vinyls}
+                        </span>
+                        <span class="home-card-more">{t.viewAll} {ownedVinyls.length} →</span>
+                    </span>
+                    <span class="home-card-label">{text.vinylLabel}</span>
+                    <span class="home-thumbs thumbs-square thumbs-rows">
+                        {vinylPicks.map((v) => (
+                            <img src={v.image} alt={v.name} title={v.name} loading="lazy" />
+                        ))}
+                    </span>
+                </a>
+            </div>
+        </section>
+    </main>
+</Layout>
+
+
+
+<script>
+    // Count the hero numbers up from 0 on load (the final value is in the HTML for no-JS and reduced motion)
+    if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        document.querySelectorAll<HTMLElement>("[data-count]").forEach((el) => {
+            const target = Number(el.dataset.count);
+            const suffix = el.dataset.suffix ?? "";
+            const duration = 1200;
+            const start = performance.now();
+            const tick = (now: number) => {
+                const t = Math.min((now - start) / duration, 1);
+                const eased = 1 - Math.pow(1 - t, 3);
+                el.textContent = Math.round(target * eased) + suffix;
+                if (t < 1) requestAnimationFrame(tick);
+            };
+            el.textContent = "0" + suffix;
+            requestAnimationFrame(tick);
+        });
+    }
+</script>
+
+<style>
+    .social {
+        display: flex;
+        gap: 4px;
+    }
+
+    .social a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 34px;
+        height: 34px;
+        border-radius: 8px;
+        color: #fff;
+        transition: background 0.15s;
+    }
+
+    .social a:hover {
+        background: rgba(255, 255, 255, 0.18);
+    }
+
+    .hero-stats-row {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 16px 40px;
+    }
+
+    .social-beside {
+        padding-left: 40px;
+        border-left: 1px solid rgba(255, 255, 255, 0.3);
+        gap: 8px;
+    }
+
+    @media (max-width: 640px) {
+        .social-beside {
+            padding-left: 0;
+            border-left: 0;
+        }
+    }
+
+    .social-beside a {
+        width: 44px;
+        height: 44px;
+    }
+
+    .hero-lead {
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        line-height: 1.2;
+        color: var(--color-text);
+        max-width: 720px;
+        margin-bottom: 16px;
+    }
+
+    .hero .hero-bio {
+        max-width: 620px;
+        margin-bottom: 28px;
+    }
+
+    /* Intro band: continues the nav gradient (same colours, same direction) so the two read as one block */
+    .intro {
+        position: relative;
+        isolation: isolate;
+        margin-bottom: 8px;
+    }
+
+    .intro::before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 100vw;
+        margin-left: -50vw;
+        background: linear-gradient(90deg, var(--color-hero-from) 0%, var(--color-hero-to) 100%);
+    }
+
+    .intro .hero-role {
+        color: rgba(255, 255, 255, 0.88);
+    }
+
+    .intro .hero-lead {
+        color: #fff;
+    }
+
+    .intro .hero-bio {
+        color: rgba(255, 255, 255, 0.85);
+    }
+
+    .intro .hero-stats dt {
+        color: #fff;
+    }
+
+    .intro .hero-stats dd,
+    .intro .career-heading {
+        color: rgba(255, 255, 255, 0.88);
+    }
+
+    .hero-stats {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 32px;
+        margin: 0;
+    }
+
+    .hero-stats dt {
+        font-variant-numeric: tabular-nums;
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        color: var(--color-accent);
+    }
+
+    .hero-stats dd {
+        margin: 0;
+        font-size: 0.75rem;
+        color: var(--color-text-muted);
+    }
+
+    .home-section {
+        padding-top: 64px;
+        padding-bottom: 96px;
+    }
+
+    .intro {
+        display: grid;
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+        gap: 56px;
+        align-items: start;
+    }
+
+    .career {
+        display: flex;
+        flex-direction: column;
+        align-self: stretch;
+        padding: 48px 0 40px;
+    }
+
+    .career-heading {
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--color-text-muted);
+    }
+
+    /* Timeline: date | line | content. The line is drawn in pieces (lead-in above the first dot, a connector
+       to each next dot, a short tail below the last) so it overhangs slightly at both ends. */
+    .work-career {
+        position: relative;
+        list-style: none;
+        margin: 36px 0 0;
+        padding: 0 0 0 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        color: rgba(255, 255, 255, 0.88);
+    }
+
+    .work-career li {
+        position: relative;
+        display: grid;
+        grid-template-columns: 112px 1fr;
+        gap: 12px;
+        align-items: baseline;
+    }
+
+    .work-career::before,
+    .work-career li::after {
+        content: "";
+        position: absolute;
+        width: 2px;
+        background: rgba(255, 255, 255, 0.3);
+    }
+
+    .work-career::before {
+        left: 4px;
+        top: -12px;
+        height: 26px;
+    }
+
+    .work-career li::after {
+        left: -20px;
+        top: 19px;
+        bottom: -23px;
+    }
+
+    .work-career li:last-child::after {
+        bottom: auto;
+        height: 14px;
+    }
+
+    /* Hollow dots; the current entry (first) is filled and pulses */
+    .work-career li::before {
+        content: "";
+        position: absolute;
+        left: -24px;
+        top: 9px;
+        width: 10px;
+        height: 10px;
+        border: 2px solid #fff;
+        border-radius: 50%;
+    }
+
+    .work-career li:first-child::before {
+        background: #fff;
+        animation: live-pulse 2s ease-out infinite;
+    }
+
+    @keyframes live-pulse {
+        0% {
+            box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.55);
+        }
+        70%,
+        100% {
+            box-shadow: 0 0 0 9px rgba(255, 255, 255, 0);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .work-career li:first-child::before {
+            animation: none;
+        }
+    }
+
+    .work-career-date {
+        font-size: 0.875rem;
+    }
+
+    .work-career-body {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        font-size: 1rem;
+    }
+
+    .work-career-body b {
+        color: #fff;
+        font-size: 1.0625rem;
+    }
+
+    .work-career-org small {
+        margin-left: 6px;
+        font-size: 0.875rem;
+        color: #fff;
+        opacity: 0.65;
+    }
+
+    .work-career-role {
+        font-weight: 500;
+    }
+
+    .work-career-link {
+        align-self: flex-start;
+        color: #fff;
+        margin: 28px 0 0;
+        font-size: 0.9375rem;
+        font-weight: 500;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+        text-decoration-color: rgba(255, 255, 255, 0.5);
+    }
+
+    .home-heading {
+        font-size: 1.25rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        margin-bottom: 4px;
+    }
+
+    .home-sub {
+        font-size: 0.9375rem;
+        color: var(--color-text-muted);
+    }
+
+    .home-head {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 12px 24px;
+        margin-bottom: 28px;
+    }
+
+    .home-featured {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px;
+    }
+
+    .home-card {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        border: 1px solid var(--color-border);
+        border-radius: 14px;
+        padding: 28px;
+        text-decoration: none;
+        color: inherit;
+        transition:
+            border-color 0.15s,
+            transform 0.15s,
+            box-shadow 0.15s;
+    }
+
+    .home-card:hover {
+        border-color: var(--color-accent);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+        text-decoration: none;
+    }
+
+    .home-card-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 8px;
+    }
+
+    .home-card-title {
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--color-text);
+    }
+
+    .home-card-more {
+        font-size: 0.75rem;
+        color: var(--color-accent);
+        white-space: nowrap;
+    }
+
+    .home-card:hover .home-card-more {
+        text-decoration: underline;
+    }
+
+    .home-card-label {
+        font-size: 0.6875rem;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--color-text-muted);
+        margin-bottom: 6px;
+    }
+
+    .home-thumbs {
+        display: flex;
+        gap: 16px;
+    }
+
+    .home-thumbs img {
+        flex: 1 1 0;
+        min-width: 0;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 6px;
+        background: var(--color-bg-subtle);
+    }
+
+    .thumbs-rows {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+    .thumbs-poster img {
+        aspect-ratio: 2 / 3;
+    }
+    .thumbs-square img {
+        aspect-ratio: 1;
+    }
+
+    .home-race {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+    }
+
+    .home-race svg {
+        flex: none;
+        width: 84px;
+        height: 84px;
+    }
+
+    .home-race path {
+        fill: none;
+        stroke: var(--color-accent);
+        stroke-width: 3.5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        vector-effect: non-scaling-stroke;
+    }
+
+    .home-race-info {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        min-width: 0;
+        font-size: 0.8125rem;
+        color: var(--color-text-muted);
+    }
+
+    .home-race-info b {
+        color: var(--color-text);
+        font-size: 0.9375rem;
+    }
+
+    .home-race-stats {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2px 12px;
+        margin-top: 4px;
+        color: var(--color-text);
+        font-weight: 600;
+    }
+
+    .home-race-stats small {
+        display: block;
+        font-weight: 400;
+        font-size: 0.625rem;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--color-text-muted);
+    }
+
+    .home-next {
+        display: flex;
+        flex-direction: column;
+        gap: 1px;
+        margin-top: auto;
+        padding: 8px 10px;
+        border-radius: 8px;
+        background: var(--color-bg-subtle);
+        font-size: 0.75rem;
+        color: var(--color-text-muted);
+    }
+
+    .home-next small {
+        font-size: 0.625rem;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--color-accent);
+    }
+
+    .home-next b {
+        font-size: 0.8125rem;
+        color: var(--color-text);
+    }
+
+    .home-more {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .home-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 14px;
+        border: 1px solid var(--color-border);
+        border-radius: 999px;
+        font-size: 0.875rem;
+        text-decoration: none;
+        color: var(--color-text);
+        transition: border-color 0.15s;
+    }
+
+    .home-pill:hover {
+        border-color: var(--color-accent);
+        text-decoration: none;
+    }
+
+    .home-pill-title {
+        font-weight: 600;
+    }
+
+    .home-pill-count {
+        font-size: 0.75rem;
+        color: var(--color-text-muted);
+    }
+
+    .home-pill-arrow {
+        color: var(--color-accent);
+    }
+
+    @media (max-width: 860px) {
+        .intro {
+            grid-template-columns: 1fr;
+            gap: 0;
+        }
+        .career {
+            padding-top: 0;
+        }
+    }
+
+    @media (max-width: 640px) {
+        .work-career li {
+            grid-template-columns: 92px 1fr;
+        }
+        .home-featured {
+            grid-template-columns: 1fr;
+        }
+        .hero-lead {
+            font-size: 1.6rem;
+        }
+    }
+</style>

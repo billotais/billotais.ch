@@ -1,0 +1,9 @@
+---
+import View from "../../../views/blog/[...slug].astro";
+import { getPostPaths } from "../../../views/blog/paths";
+
+export const getStaticPaths = getPostPaths;
+const { post } = Astro.props;
+---
+
+<View post={post} />

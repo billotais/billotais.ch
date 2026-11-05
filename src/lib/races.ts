@@ -1,4 +1,5 @@
 import races from '../data/races.json';
+import { dateLocale, type Lang } from '../i18n';
 
 export type Race = (typeof races)[number];
 export type Status = 'upcoming' | 'dnf' | 'hit' | 'missed' | 'nogoal';
@@ -30,19 +31,28 @@ export function statusOf(r: Race): Status {
   return final <= goal ? 'hit' : 'missed';
 }
 
-export const statusLabel: Record<Status, string> = {
-  upcoming: 'Upcoming',
-  dnf: 'DNF',
-  hit: 'Goal reached',
-  missed: 'Goal missed',
-  nogoal: 'Finished',
+export const statusLabels: Record<Lang, Record<Status, string>> = {
+  en: {
+    upcoming: 'Upcoming',
+    dnf: 'DNF',
+    hit: 'Goal reached',
+    missed: 'Goal missed',
+    nogoal: 'Finished',
+  },
+  fr: {
+    upcoming: 'À venir',
+    dnf: 'Abandon',
+    hit: 'Objectif atteint',
+    missed: 'Objectif manqué',
+    nogoal: 'Terminée',
+  },
 };
 
 export const chrono = [...races].sort((a, b) => a.date.localeCompare(b.date));
 export const nextRace = chrono.find((r) => r.upcoming) ?? null;
 
-export function fmtDate(iso: string, withYear = true) {
-  return new Date(iso).toLocaleDateString('en-CH', {
+export function fmtDate(iso: string, withYear = true, lang: Lang = 'en') {
+  return new Date(iso).toLocaleDateString(dateLocale(lang), {
     day: 'numeric',
     month: 'short',
     ...(withYear ? { year: 'numeric' } : {}),

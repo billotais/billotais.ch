@@ -1,0 +1,53 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getLang, localePath, dateLocale, ui } from '../../i18n';
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const lang = getLang(Astro.url);
+const t = ui[lang];
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString(dateLocale(lang), { year: 'numeric', month: 'long', day: 'numeric' });
+}
+---
+
+<Layout title={post.data.title} description={post.data.description} activeNav="blog" navTitle={t.blog} pageSubtitle={post.data.description}>
+  <main class="container page">
+    <div class="post-header">
+      <div class="post-meta">
+        <div class="post-meta-left">
+          <a href={localePath(lang, "/blog")} class="post-back">← {t.back}</a>
+          {post.data.tags.length > 0 && (
+            <>
+              <span class="post-meta-sep">·</span>
+              <div class="timeline-tags" style="display:inline-flex;margin-top:0;gap:4px;">
+                {post.data.tags.map((t: string) => <span class="tag">{t}</span>)}
+              </div>
+            </>
+          )}
+        </div>
+        <span>{formatDate(post.data.date)}</span>
+      </div>
+    </div>
+
+    {lang === "fr" && <p class="post-note">{t.englishOnly}</p>}
+
+    <article class="prose">
+      <Content />
+    </article>
+  </main>
+</Layout>
+
+<style>
+  .post-note {
+    margin-bottom: 24px;
+    padding: 10px 14px;
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+  }
+</style>

@@ -1,19 +1,33 @@
 ---
 import { nextRace, fmtDate, fmtKm } from '../lib/races';
 import Icon from './Icon.astro';
+import { getLang } from '../i18n';
+
+const lang = getLang(Astro.url);
+const text = {
+  en: { days: 'days', today: 'today!', day1: 'day to go', days2: 'days to go', next: 'Next race' },
+  fr: { days: 'jours', today: "aujourd'hui !", day1: 'jour restant', days2: 'jours restants', next: 'Prochaine course' },
+}[lang];
 ---
 
 {nextRace && (
-  <div class="countdown" data-date={nextRace.date}>
+  <div
+    class="countdown"
+    data-date={nextRace.date}
+    data-days={text.days}
+    data-today={text.today}
+    data-day1={text.day1}
+    data-days2={text.days2}
+  >
     <div class="countdown-days">
       <span class="countdown-num" data-days>–</span>
-      <span class="countdown-unit" data-unit>days</span>
+      <span class="countdown-unit" data-unit>{text.days}</span>
     </div>
     <div class="countdown-info">
-      <div class="countdown-label">Next race</div>
+      <div class="countdown-label">{text.next}</div>
       <div class="countdown-name">{nextRace.name}</div>
       <div class="countdown-meta">
-        <span class="cm"><Icon name="calendar" /> {fmtDate(nextRace.date)}</span><span class="cm"><Icon name="ruler" /> {fmtKm(nextRace.distance)}</span>{nextRace.goalTime && <span class="cm"><Icon name="target" /> {nextRace.goalTime}</span>}
+        <span class="cm"><Icon name="calendar" /> {fmtDate(nextRace.date, true, lang)}</span><span class="cm"><Icon name="ruler" /> {fmtKm(nextRace.distance)}</span>{nextRace.goalTime && <span class="cm"><Icon name="target" /> {nextRace.goalTime}</span>}
       </div>
     </div>
   </div>
@@ -29,10 +43,10 @@ import Icon from './Icon.astro';
     const unit = el.querySelector('[data-unit]')!;
     if (days <= 0) {
       num.textContent = '0';
-      unit.textContent = days === 0 ? 'today!' : 'days';
+      unit.textContent = days === 0 ? el.dataset.today! : el.dataset.days!;
     } else {
       num.textContent = String(days);
-      unit.textContent = days === 1 ? 'day to go' : 'days to go';
+      unit.textContent = days === 1 ? el.dataset.day1! : el.dataset.days2!;
     }
   });
 </script>

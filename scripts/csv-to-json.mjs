@@ -1,4 +1,4 @@
-// Converts /public/gaming/*.csv to /public/gaming/*.json
+// Converts /public/elca-gaming/*.csv to /public/elca-gaming/*.json
 // Run with: node scripts/csv-to-json.mjs
 
 import { readFileSync, writeFileSync } from 'fs';
@@ -43,8 +43,8 @@ function convertCSV(text) {
 }
 
 for (const year of ['2024', '2025', '2026']) {
-  const csvPath = join(root, 'public', 'gaming', `${year}.csv`);
-  const jsonPath = join(root, 'public', 'gaming', `${year}.json`);
+  const csvPath = join(root, 'public', 'elca-gaming', `${year}.csv`);
+  const jsonPath = join(root, 'public', 'elca-gaming', `${year}.json`);
   const text = readFileSync(csvPath, 'utf-8');
   const sessions = convertCSV(text);
   writeFileSync(jsonPath, JSON.stringify(sessions, null, 2), 'utf-8');

@@ -1,18 +1,71 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { getLang } from '../i18n';
 
 const years = ['2026', '2025', '2024'];
+
+// Texts used by the script below travel in data-text (JSON) on <main>
+const text = {
+  en: {
+    description: 'ELCA board game ranking',
+    subtitle: 'Board game ranking',
+    loading: 'Loading…',
+    leaderboard: 'Leaderboard',
+    recent: 'Recent games',
+    games: 'Games',
+    activePlayers: 'Active players',
+    mostWins: 'Most wins',
+    gamesN: 'games',
+    complexity: 'Complexity',
+    players: 'players',
+    loadError: 'Could not load the {year} data: {error}',
+    win: 'win',
+    wins: 'wins',
+    tie: 'tie',
+    ties: 'ties',
+    presentBonus: 'Present 25% bonus',
+    winTotal: 'Win total (WT)',
+    gamesPlayed: 'Games played',
+    ratio: 'Ratio (WT ÷ games)',
+    attendanceBonus: 'Attendance bonus',
+    total: 'Total',
+  },
+  fr: {
+    description: 'Classement des jeux de société ELCA',
+    subtitle: 'Classement des jeux de société',
+    loading: 'Chargement…',
+    leaderboard: 'Classement',
+    recent: 'Parties récentes',
+    games: 'Parties',
+    activePlayers: 'Joueurs actifs',
+    mostWins: 'Max victoires',
+    gamesN: 'parties',
+    complexity: 'Complexité',
+    players: 'joueurs',
+    loadError: 'Impossible de charger les données {year} : {error}',
+    win: 'victoire',
+    wins: 'victoires',
+    tie: 'égalité',
+    ties: 'égalités',
+    presentBonus: 'Bonus présent 25 %',
+    winTotal: 'Total victoires (TV)',
+    gamesPlayed: 'Parties jouées',
+    ratio: 'Ratio (TV ÷ parties)',
+    attendanceBonus: 'Bonus de présence',
+    total: 'Total',
+  },
+}[getLang(Astro.url)];
 ---
 
-<Layout title="🎲 ELCA Gaming" description="Classement des jeux de société ELCA" pageSubtitle="Classement des jeux de société" activeNav="hidden">
-  <main class="container page">
+<Layout title="🎲 ELCA Gaming" description={text.description} pageSubtitle={text.subtitle} activeNav="hidden">
+  <main class="container page" data-text={JSON.stringify(text)}>
     <div class="g-year-tabs" id="yearTabs">
       {years.map((y, i) => (
         <button class={`g-year-tab${i === 0 ? ' active' : ''}`} data-year={y}>{y}</button>
       ))}
     </div>
 
-    <div id="loadingState" class="g-loading">Chargement…</div>
+    <div id="loadingState" class="g-loading">{text.loading}</div>
     <div id="errorState" class="g-error" style="display:none"></div>
 
     <div id="appContent" style="display:none">
@@ -20,12 +73,12 @@ const years = ['2026', '2025', '2024'];
 
       <div class="g-two-col">
         <section>
-          <p class="section-label">Classement</p>
+          <p class="section-label">{text.leaderboard}</p>
           <div id="leaderboard" class="g-leaderboard"></div>
         </section>
 
         <section>
-          <p class="section-label">Parties récentes</p>
+          <p class="section-label">{text.recent}</p>
           <div id="sessionList" class="g-sessions"></div>
         </section>
       </div>
@@ -254,22 +307,6 @@ const years = ['2026', '2025', '2024'];
     border-color: rgba(11,135,147,0.25);
   }
 
-  /* dark / stone theme: adjust badge colors */
-  [data-theme="dark"] .g-badge-winner,
-  [data-theme="stone"] .g-badge-winner {
-    background: rgba(255,215,0,0.1);
-    color: #ffd700;
-    border-color: rgba(255,215,0,0.25);
-  }
-  [data-theme="dark"] .g-badge-tie,
-  [data-theme="stone"] .g-badge-tie {
-    background: rgba(192,192,192,0.1);
-    color: #c0c0c0;
-    border-color: rgba(192,192,192,0.25);
-  }
-  [data-theme="dark"] .g-session-game a,
-  [data-theme="stone"] .g-session-game a { color: var(--color-text); }
-
   /* Score tooltip */
   .g-player-row { cursor: default; }
   .g-tooltip {
@@ -319,6 +356,7 @@ const years = ['2026', '2025', '2024'];
 </style>
 
 <script>
+const T = JSON.parse(document.querySelector<HTMLElement>('main[data-text]')!.dataset.text!);
 const YEARS = ['2026', '2025', '2024'];
 let currentYear = YEARS[0];
 let cache = {};
@@ -350,8 +388,8 @@ function parseJSON(data) {
 
 // ─── Scoring ─────────────────────────────────────────────────────────────────
 // Formulas differ by year:
-//   2024/2025 : total = ratio_victoire + presence × 0.1          (no cap, no p25%)
-//   2026+     : total = ratio_victoire + min(presence × 0.1, 1) + present_25%
+//   2024/2025 : total = win ratio + attendance × 0.1          (no cap, no p25%)
+//   2026+     : total = win ratio + min(attendance × 0.1, 1) + present_25%
 function computeScores({ players, sessions }, year) {
   const stats = Object.fromEntries(players.map(p => [p, { tv: 0, tp: 0, wins: 0, ties: 0 }]));
 
@@ -395,9 +433,9 @@ function renderStats(yearData, scores) {
   const active = scores.filter(s => s.tp > 0).length;
   const topWinner = scores.reduce((a, b) => a.wins > b.wins ? a : b, { wins: 0, name: '–' });
   document.getElementById('statsRow').innerHTML = `
-    <div class="g-stat"><div class="g-stat-val">${sessions.length}</div><div class="g-stat-lbl">Parties</div></div>
-    <div class="g-stat"><div class="g-stat-val">${active}</div><div class="g-stat-lbl">Joueurs actifs</div></div>
-    <div class="g-stat"><div class="g-stat-val">${topWinner.wins}</div><div class="g-stat-lbl">Max victoires — ${topWinner.name}</div></div>
+    <div class="g-stat"><div class="g-stat-val">${sessions.length}</div><div class="g-stat-lbl">${T.games}</div></div>
+    <div class="g-stat"><div class="g-stat-val">${active}</div><div class="g-stat-lbl">${T.activePlayers}</div></div>
+    <div class="g-stat"><div class="g-stat-val">${topWinner.wins}</div><div class="g-stat-lbl">${T.mostWins} — ${topWinner.name}</div></div>
   `;
 }
 
@@ -428,7 +466,7 @@ function renderLeaderboard(scores) {
       </div>
       <div class="g-score">
         <div class="g-score-val">${s.total.toFixed(3)}</div>
-        <div class="g-score-sub">${s.tp} parties</div>
+        <div class="g-score-sub">${s.tp} ${T.gamesN}</div>
       </div>
     </div>`;
   }).join('');
@@ -463,7 +501,7 @@ function renderSessions({ sessions }) {
         <div class="g-session-game">${gameEl}</div>
         <div class="g-session-date">${fmtDate(s.date)}</div>
       </div>
-      <div class="g-session-meta">Complexité ${s.complexity.toFixed(2)} · ${present.length} joueurs</div>
+      <div class="g-session-meta">${T.complexity} ${s.complexity.toFixed(2)} · ${present.length} ${T.players}</div>
       <div class="g-badges">${badges}</div>
     </div>`;
   }).join('');
@@ -487,7 +525,7 @@ async function loadYear(year) {
   document.getElementById('errorState').style.display = 'none';
 
   try {
-    const resp = await fetch(`/gaming/${year}.json`);
+    const resp = await fetch(`/elca-gaming/${year}.json`);
     if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
     const data = await resp.json();
     cache[year] = parseJSON(data);
@@ -495,7 +533,7 @@ async function loadYear(year) {
   } catch (e) {
     document.getElementById('loadingState').style.display = 'none';
     const err = document.getElementById('errorState');
-    err.textContent = `Impossible de charger les données ${year}: ${e.message}`;
+    err.textContent = T.loadError.replace('{year}', year).replace('{error}', e.message);
     err.style.display = '';
   }
 }
@@ -509,10 +547,10 @@ document.getElementById('leaderboard').addEventListener('mouseover', e => {
 
   const d = row.dataset;
   const hasP25 = d.p25 !== undefined;
-  const winsLabel = `${d.wins} victoire${d.wins != 1 ? 's' : ''}, ${d.ties} égalité${d.ties != 1 ? 's' : ''}`;
+  const winsLabel = `${d.wins} ${d.wins != 1 ? T.wins : T.win}, ${d.ties} ${d.ties != 1 ? T.ties : T.tie}`;
   const p25Row = hasP25
     ? `<div class="g-tooltip-row">
-         <span>Bonus présent 25%</span>
+         <span>${T.presentBonus}</span>
          <span class="g-tooltip-val">+${d.p25}</span>
        </div>`
     : '';
@@ -521,7 +559,7 @@ document.getElementById('leaderboard').addEventListener('mouseover', e => {
   tooltip.innerHTML = `
     <div class="g-tooltip-name">${name}</div>
     <div class="g-tooltip-row">
-      <span>Total victoire (TV)</span>
+      <span>${T.winTotal}</span>
       <span class="g-tooltip-val">${parseFloat(d.tv).toFixed(3)}</span>
     </div>
     <div class="g-tooltip-row">
@@ -529,20 +567,20 @@ document.getElementById('leaderboard').addEventListener('mouseover', e => {
       <span></span>
     </div>
     <div class="g-tooltip-row">
-      <span>Parties jouées</span>
+      <span>${T.gamesPlayed}</span>
       <span class="g-tooltip-val">${d.tp}</span>
     </div>
     <div class="g-tooltip-row">
-      <span>Ratio (TV ÷ parties)</span>
+      <span>${T.ratio}</span>
       <span class="g-tooltip-val">${parseFloat(d.ratio).toFixed(4)}</span>
     </div>
     <div class="g-tooltip-row">
-      <span>Bonus présence</span>
+      <span>${T.attendanceBonus}</span>
       <span class="g-tooltip-val">+${parseFloat(d.bonus).toFixed(3)}</span>
     </div>
     ${p25Row}
     <div class="g-tooltip-row total">
-      <span>Total</span>
+      <span>${T.total}</span>
       <span class="g-tooltip-val">${parseFloat(d.total).toFixed(4)}</span>
     </div>`;
 

@@ -8,14 +8,16 @@ import { readFileSync } from "node:fs";
 const caddyfile = readFileSync("Caddyfile", "utf8");
 const pages = [
     ...caddyfile.matchAll(/(?:#\s*title:\s*(.+)\n\s*)?handle\s+(\S+)\s*\{[^}]*?import\s+gate\s+(?:"([^"]+)"|(\S+))/g),
-].map(([, title, path, quoted, bare]) => {
+]
+    .filter(([, , path]) => !path.startsWith("/fr/")) // French copies of a page share the English entry
+    .map(([, title, path, quoted, bare]) => {
     const base = path.replace(/\/?\*$/, "");
     const name = base.split("/").filter(Boolean).pop() ?? "";
     return { href: `${base}/`, title: title?.trim() ?? name.charAt(0).toUpperCase() + name.slice(1), groups: quoted ?? bare };
 });
 ---
 
-<Layout title="Profile" description="Your account" activeNav="hidden" pageSubtitle="Signed in with SSO">
+<Layout noLang title="Profile" description="Your account" activeNav="hidden" pageSubtitle="Signed in with SSO">
     <main class="container page">
         <div id="state-loading" class="profile-card">Loading…</div>
 

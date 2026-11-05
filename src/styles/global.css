@@ -17,16 +17,6 @@
     --nav-height: 60px;
 }
 
-[data-theme="dark"] {
-    --color-bg: #0f1117;
-    --color-bg-subtle: #161b25;
-    --color-border: #1e2533;
-    --color-text: #e2e8f0;
-    --color-text-muted: #94a3b8;
-    --color-accent-light: #0a2e35;
-    --color-nav-bg: rgba(15, 17, 23, 0.92);
-}
-
 *,
 *::before,
 *::after {
@@ -99,25 +89,8 @@ a:hover {
     }
 }
 
-/* Theme toggle */
-.theme-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-    border-radius: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.35);
-    background: transparent;
-    color: #fff;
-    cursor: pointer;
-    flex-shrink: 0;
-    transition: background 0.15s;
-}
-
-/* Borderless header icons (LinkedIn, GitHub, theme toggle) */
-.nav-icon,
-.nav-actions .theme-toggle {
+/* Borderless header icons */
+.nav-icon {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -143,13 +116,8 @@ a:hover {
     display: none;
 }
 
-.nav-icon:hover,
-.nav-actions .theme-toggle:hover {
+.nav-icon:hover {
     background: rgba(255, 255, 255, 0.18);
-}
-
-.theme-toggle:hover {
-    background: rgba(255, 255, 255, 0.15);
 }
 
 .nav-brand {
@@ -307,7 +275,9 @@ a:hover {
 }
 
 .nav-links .nav-submenu a {
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: 10px;
     color: var(--color-text-muted);
     padding: 7px 12px;
     border-radius: 6px;
@@ -1224,12 +1194,59 @@ a:hover {
 .footer {
     border-top: 1px solid var(--color-border);
     padding: 32px 0;
-    text-align: center;
     font-size: 0.8rem;
     color: var(--color-text-muted);
 }
 
-/* Responsive */
+.footer .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+}
+
+.footer-lang {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+
+.footer-lang a {
+    color: var(--color-text-muted);
+}
+
+.footer-lang a + a::before {
+    content: "·";
+    margin-right: 6px;
+    color: var(--color-text-muted);
+}
+
+.footer-lang a[aria-current] {
+    color: var(--color-text);
+    pointer-events: none;
+}
+
+.footer-links {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.footer-links a {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--color-text-muted);
+    transition: color 0.15s;
+}
+
+.footer-links a:hover {
+    color: var(--color-text);
+}
+
+/* Responsive *//* Responsive */
 @media (max-width: 640px) {
     /* Nav: one row only. The breadcrumb shrinks with an ellipsis, the logo and the icons never wrap. */
     .nav-inner {
@@ -1252,7 +1269,6 @@ a:hover {
     }
 
     .nav-icon,
-    .nav-actions .theme-toggle,
     .nav-hamburger {
         width: 32px;
         height: 32px;

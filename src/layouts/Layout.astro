@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import Icon from "../components/Icon.astro";
 import oidc from "../config/oidc.json";
+import { getLang, localePath, altPath, ui } from "../i18n";
 
 interface Props {
     title: string;
@@ -9,22 +10,30 @@ interface Props {
     activeNav?: string;
     pageSubtitle?: string;
     navTitle?: string;
+    /** Pages with no French version (login, profile…): no language switch, no redirect. */
+    noLang?: boolean;
 }
 
-const { title, description = "Loïs Bilat – Senior Data & AI Engineer", activeNav, pageSubtitle, navTitle } = Astro.props;
+const lang = getLang(Astro.url);
+const t = ui[lang];
+const { title, description = t.description, activeNav, pageSubtitle, navTitle, noLang = false } = Astro.props;
+const L = (path: string) => localePath(lang, path);
 const collections = [
-    { href: "/collections/tv-shows", title: "TV Shows" },
-    { href: "/collections/races", title: "Races" },
-    { href: "/collections/vinyls", title: "Vinyls" },
-    { href: "/collections/board-games", title: "Board Games" },
-    { href: "/collections/video-games", title: "Video Games" },
-    { href: "/collections/teas", title: "Teas" },
+    { href: "/collections/tv-shows", title: t.tvShows, icon: "tv" },
+    { href: "/collections/races", title: t.races, icon: "flag" },
+    { href: "/collections/vinyls", title: t.vinyls, icon: "disc" },
+    { href: "/collections/board-games", title: t.boardGames, icon: "dices" },
+    { href: "/collections/video-games", title: t.videoGames, icon: "gamepad" },
+    { href: "/collections/teas", title: t.teas, icon: "tea" },
 ];
+const enPath = lang === "fr" ? altPath(lang, Astro.url.pathname) : Astro.url.pathname;
+const frPath = lang === "fr" ? Astro.url.pathname : altPath(lang, Astro.url.pathname);
+const site = Astro.site?.origin ?? "";
 const fullTitle = title === "Loïs Bilat" ? title : `${title} – Loïs Bilat`;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -32,31 +41,68 @@ const fullTitle = title === "Loïs Bilat" ? title : `${title} – Loïs Bilat`;
         <meta property="og:title" content={fullTitle} />
         <meta property="og:description" content={description} />
         <meta property="og:type" content="website" />
+        <meta property="og:locale" content={lang === "fr" ? "fr_CH" : "en_CH"} />
+        {!noLang && <link rel="alternate" hreflang="en" href={site + enPath} />}
+        {!noLang && <link rel="alternate" hreflang="fr" href={site + frPath} />}
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <title>{fullTitle}</title>
-        <script is:inline>
-            (function () {
-                var saved = localStorage.getItem("theme");
-                if (saved === "dark") document.documentElement.setAttribute("data-theme", "dark");
-            })();
-        </script>
+        {
+            !noLang && lang === "en" && (
+                <script is:inline define:vars={{ frPath }}>
+                    // Remembered choice: visitors who picked French are sent to the French version of this page
+                    try {
+                        if (localStorage.getItem("lang") === "fr") location.replace(frPath + location.search + location.hash);
+                    } catch (e) {}
+                </script>
+            )
+        }
     </head>
     <body>
         <nav class="nav">
             <div class="container nav-inner">
                 <div class="nav-brand">
-                    <a href="/" class="nav-logo">Loïs Bilat</a>
-                    {activeNav !== "home" && pageSubtitle !== undefined && <span class="nav-crumb">{navTitle ?? title}</span>}
+                    <a href={L("/")} class="nav-logo">
+                        Loïs Bilat
+                    </a>
+                    {activeNav !== "home" && pageSubtitle !== undefined && (
+                        <span class="nav-crumb">{navTitle ?? title}</span>
+                    )}
                 </div>
 
                 <ul class="nav-links" id="nav-links">
                     <li>
-                        <a href="/" class={`nav-home${activeNav === "home" ? " active" : ""}`} aria-label="Home" title="Home">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/><polyline points="9 21 9 12 15 12 15 21"/></svg>
+                        <a
+                            href={L("/")}
+                            class={`nav-home${activeNav === "home" ? " active" : ""}`}
+                            aria-label={t.home}
+                            title={t.home}
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="16"
+                                height="16"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z" />
+                                <polyline points="9 21 9 12 15 12 15 21" />
+                            </svg>
                         </a>
                     </li>
-                    <li><a href="/cv" class={activeNav === "cv" ? "active" : ""}>CV</a></li>
-                    <li><a href="/projects" class={activeNav === "projects" ? "active" : ""}>Projects</a></li>
+                    <li>
+                        <a href={L("/cv")} class={activeNav === "cv" ? "active" : ""}>
+                            {t.cv}
+                        </a>
+                    </li>
+                    <li>
+                        <a href={L("/projects")} class={activeNav === "projects" ? "active" : ""}>
+                            {t.projects}
+                        </a>
+                    </li>
                     <li class="nav-dropdown" id="nav-dropdown">
                         <button
                             type="button"
@@ -65,105 +111,47 @@ const fullTitle = title === "Loïs Bilat" ? title : `${title} – Loïs Bilat`;
                             aria-haspopup="true"
                             aria-expanded="false"
                         >
-                            Collections <span class="nav-caret" aria-hidden="true">▾</span>
+                            {t.collections}{" "}
+                            <span class="nav-caret" aria-hidden="true">
+                                ▾
+                            </span>
                         </button>
                         <ul class="nav-submenu">
-                            {
-                                collections.map((c) => (
-                                    <li>
-                                        <a href={c.href} class={Astro.url.pathname.replace(/\/$/, "") === c.href ? "active" : ""}>
-                                            {c.title}
-                                        </a>
-                                    </li>
-                                ))
-                            }
+                            {collections.map((c) => (
+                                <li>
+                                    <a
+                                        href={L(c.href)}
+                                        class={Astro.url.pathname.replace(/\/$/, "") === L(c.href) ? "active" : ""}
+                                    >
+                                        <Icon name={c.icon} size={16} />
+                                        {c.title}
+                                    </a>
+                                </li>
+                            ))}
                         </ul>
                     </li>
-                    <li><a href="/blog" class={activeNav === "blog" ? "active" : ""}>Blog</a></li>
+                    <li>
+                        <a href={L("/blog")} class={activeNav === "blog" ? "active" : ""}>
+                            {t.blog}
+                        </a>
+                    </li>
                 </ul>
 
                 <div class="nav-actions">
                     <a
-                        href="https://linkedin.com/in/lois-bilat"
-                        target="_blank"
-                        rel="noopener"
-                        class="nav-icon"
-                        aria-label="LinkedIn"
-                        title="LinkedIn"><Icon name="linkedin-fill" size={20} /></a
-                    >
-                    <a
-                        href="https://github.com/Billotais"
-                        target="_blank"
-                        rel="noopener"
-                        class="nav-icon"
-                        aria-label="GitHub"
-                        title="GitHub"><Icon name="github-fill" size={20} /></a
-                    >
-                    <a
                         href="/profile/"
                         id="profile-link"
                         class="nav-icon"
-                        aria-label="Profile"
-                        title="Profile"
+                        aria-label={t.profile}
+                        title={t.profile}
                         data-avatar-base={oidc.issuer}
-                        ><span id="profile-icon"><Icon name="user" size={20} /></span><img
-                            id="profile-avatar"
-                            class="nav-avatar"
-                            alt=""
-                            hidden
-                        /></a
                     >
-                    <button
-                        id="theme-toggle"
-                        class="theme-toggle"
-                        aria-label="Toggle dark mode"
-                        title="Toggle dark mode"
-                    >
-                        <svg
-                            id="theme-icon-moon"
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            ><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg
-                        >
-                        <svg
-                            id="theme-icon-sun"
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            style="display:none"
-                            ><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line
-                                x1="12"
-                                y1="21"
-                                x2="12"
-                                y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line
-                                x1="18.36"
-                                y1="18.36"
-                                x2="19.78"
-                                y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line
-                                x1="21"
-                                y1="12"
-                                x2="23"
-                                y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line
-                                x1="18.36"
-                                y1="5.64"
-                                x2="19.78"
-                                y2="4.22"></line></svg
-                        >
-                    </button>
-                    <button id="nav-hamburger" class="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
+                        <span id="profile-icon">
+                            <Icon name="user" size={20} />
+                        </span>
+                        <img id="profile-avatar" class="nav-avatar" alt="" hidden />
+                    </a>
+                    <button id="nav-hamburger" class="nav-hamburger" aria-label={t.menu} aria-expanded="false">
                         <svg
                             id="hamburger-icon-open"
                             width="20"
@@ -173,12 +161,11 @@ const fullTitle = title === "Loïs Bilat" ? title : `${title} – Loïs Bilat`;
                             stroke="currentColor"
                             stroke-width="2"
                             stroke-linecap="round"
-                            ><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line
-                                x1="3"
-                                y1="18"
-                                x2="21"
-                                y2="18"></line></svg
                         >
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
                         <svg
                             id="hamburger-icon-close"
                             width="20"
@@ -189,55 +176,91 @@ const fullTitle = title === "Loïs Bilat" ? title : `${title} – Loïs Bilat`;
                             stroke-width="2"
                             stroke-linecap="round"
                             style="display:none"
-                            ><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg
                         >
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
                     </button>
                 </div>
             </div>
         </nav>
 
-        {
-            pageSubtitle !== undefined && (
-                <div class="page-band">
-                    <div class="container">
-                        <h1 class={`page-title${navTitle ? "" : " page-title--hidden"}`}>{title}</h1>
-                        {pageSubtitle && <p class="page-subtitle">{pageSubtitle}</p>}
-                    </div>
+        {pageSubtitle !== undefined && (
+            <div class="page-band">
+                <div class="container">
+                    <h1 class={`page-title${navTitle ? "" : " page-title--hidden"}`}>{title}</h1>
+                    {pageSubtitle && <p class="page-subtitle">{pageSubtitle}</p>}
                 </div>
-            )
-        }
+            </div>
+        )}
 
         <slot />
 
         <footer class="footer">
             <div class="container">
-                © {new Date().getFullYear()} Loïs Bilat &nbsp;·&nbsp;
-                <a href="https://linkedin.com/in/lois-bilat" target="_blank" rel="noopener">LinkedIn</a>
-                &nbsp;·&nbsp;
-                <a href="https://github.com/Billotais" target="_blank" rel="noopener">GitHub</a>
+                <span class="footer-copy">© {new Date().getFullYear()} Loïs Bilat</span>
+                {
+                    !noLang && (
+                        <span class="footer-lang" role="group" aria-label={t.language}>
+                            <a
+                                href={enPath}
+                                data-lang="en"
+                                hreflang="en"
+                                lang="en"
+                                aria-current={lang === "en" ? "true" : undefined}
+                            >
+                                EN
+                            </a>
+                            <a
+                                href={frPath}
+                                data-lang="fr"
+                                hreflang="fr"
+                                lang="fr"
+                                aria-current={lang === "fr" ? "true" : undefined}
+                            >
+                                FR
+                            </a>
+                        </span>
+                    )
+                }
+                <span class="footer-links">
+                    <a
+                        href="https://linkedin.com/in/lois-bilat"
+                        target="_blank"
+                        rel="noopener"
+                        aria-label="LinkedIn"
+                        title="LinkedIn"
+                    >
+                        <Icon name="linkedin-fill" size={18} />
+                    </a>
+                    <a
+                        href="https://github.com/Billotais"
+                        target="_blank"
+                        rel="noopener"
+                        aria-label="GitHub"
+                        title="GitHub"
+                    >
+                        <Icon name="github-fill" size={18} />
+                    </a>
+                </span>
             </div>
         </footer>
 
-
-        <script is:inline>
+        <script is:inline define:vars={{ lang, noLang }}>
             (function () {
-                function syncIcon() {
-                    var isDark = document.documentElement.getAttribute("data-theme") === "dark";
-                    document.getElementById("theme-icon-moon").style.display = isDark ? "none" : "";
-                    document.getElementById("theme-icon-sun").style.display = isDark ? "" : "none";
+                // Remember the language: a click on the switch wins over the saved one, and a French page saves itself
+                if (!noLang) {
+                    try {
+                        if (lang === "fr") localStorage.setItem("lang", "fr");
+                    } catch (e) {}
+                    document.querySelectorAll(".footer-lang a").forEach(function (a) {
+                        a.addEventListener("click", function () {
+                            try {
+                                localStorage.setItem("lang", a.dataset.lang);
+                            } catch (e) {}
+                        });
+                    });
                 }
-                document.getElementById("theme-toggle").addEventListener("click", function () {
-                    var isDark = document.documentElement.getAttribute("data-theme") === "dark";
-                    if (isDark) {
-                        document.documentElement.removeAttribute("data-theme");
-                        localStorage.removeItem("theme");
-                    } else {
-                        document.documentElement.setAttribute("data-theme", "dark");
-                        localStorage.setItem("theme", "dark");
-                    }
-                    syncIcon();
-                });
-                syncIcon();
 
                 // Profile picture from Pocket ID when signed in (the user id oauth2-proxy reports is the Pocket ID
                 // user id); falls back to the plain icon. The URL is cached to avoid a flash on each page.
