@@ -1,4 +1,5 @@
 import { defineConfig } from 'astro/config';
+import svelte from '@astrojs/svelte';
 import devOauthMock from './scripts/dev-oauth-mock.mjs';
 
 export default defineConfig({
@@ -9,5 +10,7 @@ export default defineConfig({
     '/fr/collections': '/fr/',
     '/fr/gaming': '/fr/elca-gaming',
   },
+  integrations: [svelte()],
+  devToolbar: { enabled: false },
   vite: { plugins: [devOauthMock()] },
 });

@@ -29,11 +29,6 @@ const baseGames = boardgames.filter(g => !g.isExpansion && played(g));
 const expansions = boardgames.filter(g => g.isExpansion && played(g));
 const subtitle = `${baseGames.length} ${text.played} · ${expansions.length} ${text.expansions}`;
 
-function stars(n: number | null) {
-  if (!n) return null;
-  return '★'.repeat(Math.round(n / 2)) + '☆'.repeat(5 - Math.round(n / 2));
-}
-
 // "30 - 45 minutes" -> 30 (shortest session), used for the "I have X minutes" filter
 const minutes = (g: typeof boardgames[0]) => parseInt(g.playtime ?? '') || 0;
 

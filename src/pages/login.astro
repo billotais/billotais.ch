@@ -1,50 +1,27 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Icon from "../components/Icon.astro";
 import oidc from "../config/oidc.json";
 ---
 
-<Layout noLang title="Sign in" description="Sign in to continue" activeNav="hidden" pageSubtitle="This page needs an account">
-    <main class="container page">
-        <div class="login-card">
-            <h2>Sign in to continue</h2>
-            <p class="muted">This page is only available to signed-in users.</p>
-            <a id="login-btn" class="login-btn" href="/oauth2/start?rd=/profile/">Sign in with SSO</a>
-            <p class="muted login-signup">
+<Layout noLang title="Sign in" description="Sign in to continue" activeNav="hidden">
+    <main class="container auth">
+        <div class="auth-card">
+            <span class="auth-icon"><Icon name="lock" size={26} /></span>
+            <h1>Sign in to continue</h1>
+            <p class="auth-muted">This page is only available to signed-in users.</p>
+            <a id="login-btn" class="auth-btn" href="/oauth2/start?rd=/profile/">Sign in with SSO</a>
+            <p class="auth-muted auth-foot">
                 No account yet? <a href={`${oidc.issuer}/signup`}>Create one</a>, then come back here and sign in.
             </p>
         </div>
     </main>
 </Layout>
 
-<style>
-    .login-card {
-        max-width: 480px;
-        padding: 24px;
-        background: var(--color-bg-subtle);
-        border: 1px solid var(--color-border);
-        border-radius: 12px;
-    }
-    h2 { font-size: 1.2rem; margin-bottom: 4px; }
-    .muted { color: var(--color-text-muted); font-size: 0.9rem; }
-    .login-btn {
-        display: inline-block;
-        margin-top: 16px;
-        padding: 9px 18px;
-        border-radius: 8px;
-        background: var(--color-accent);
-        color: #fff;
-        font-weight: 600;
-        text-decoration: none;
-        transition: background 0.15s;
-    }
-    .login-btn:hover { background: var(--color-accent-hover); color: #fff; }
-    .login-signup { margin-top: 16px; }
-</style>
-
 <script>
     // Send the user back to the page they asked for (the Caddy gate passes it as ?rd=). Only local paths.
     var rd = new URLSearchParams(location.search).get("rd");
     if (rd && rd.charAt(0) === "/" && rd.charAt(1) !== "/") {
-        document.getElementById("login-btn").href = "/oauth2/start?rd=" + encodeURIComponent(rd);
+        (document.getElementById("login-btn") as HTMLAnchorElement).href = "/oauth2/start?rd=" + encodeURIComponent(rd);
     }
 </script>

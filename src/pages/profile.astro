@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Icon from "../components/Icon.astro";
 import oidc from "../config/oidc.json";
 import { readFileSync } from "node:fs";
 
@@ -17,74 +18,93 @@ const pages = [
 });
 ---
 
-<Layout noLang title="Profile" description="Your account" activeNav="hidden" pageSubtitle="Signed in with SSO">
-    <main class="container page">
-        <div id="state-loading" class="profile-card">Loading…</div>
-
-        <div id="state-signed-out" class="profile-card" hidden>
-            <h2>Sign in</h2>
-            <p class="muted">This page is only available to signed-in users.</p>
-            <a class="profile-btn" href="/oauth2/start?rd=/profile/">Sign in with SSO</a>
-            <p class="muted signup">No account yet? <a href={`${oidc.issuer}/signup`}>Create one</a>, then come back and sign in.</p>
+<Layout noLang title="Profile" description="Your account" activeNav="hidden">
+    <main class="container auth">
+        <div id="state-loading" class="auth-card">
+            <p class="auth-muted">Loading…</p>
         </div>
 
-        <div id="state-signed-in" class="profile-card" hidden>
-            <div class="profile-head">
-                <img id="p-picture" class="profile-picture" alt="" hidden />
-                <div>
-                    <h2 id="p-name"></h2>
-                    
-                </div>
-            </div>
+        <div id="state-signed-out" class="auth-card" hidden>
+            <span class="auth-icon"><Icon name="lock" size={26} /></span>
+            <h1>Sign in</h1>
+            <p class="auth-muted">This page is only available to signed-in users.</p>
+            <a class="auth-btn" href="/oauth2/start?rd=/profile/">Sign in with SSO</a>
+            <p class="auth-muted auth-foot">
+                No account yet? <a href={`${oidc.issuer}/signup`}>Create one</a>, then come back and sign in.
+            </p>
+        </div>
+
+        <div id="state-signed-in" class="auth-card" hidden>
+            <span class="auth-icon auth-icon--lg">
+                <span id="p-fallback"><Icon name="user" size={34} /></span>
+                <img id="p-picture" alt="" hidden />
+            </span>
+            <h1 id="p-name"></h1>
+            <p class="auth-muted" id="p-email"></p>
             <dl class="profile-list" id="p-list"></dl>
             <div id="p-pages" hidden>
-                <h3>Your pages</h3>
+                <h2>Your pages</h2>
                 <ul id="p-pages-list" class="profile-pages"></ul>
             </div>
-            <a class="profile-btn profile-btn--ghost" href="/oauth2/sign_out?rd=/profile/">Sign out</a>
+            <a class="auth-btn auth-btn--ghost" href="/oauth2/sign_out?rd=/profile/">Sign out</a>
         </div>
 
-        <noscript><p class="muted">JavaScript is required to sign in.</p></noscript>
+        <noscript><p class="auth-muted">JavaScript is required to sign in.</p></noscript>
     </main>
 </Layout>
 
 <style>
-    .profile-card {
-        max-width: 480px;
-        padding: 24px;
-        background: var(--color-bg-subtle);
-        border: 1px solid var(--color-border);
-        border-radius: 12px;
+    .profile-list {
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        gap: 8px 16px;
+        margin: 20px 0;
+        padding-top: 18px;
+        border-top: 1px solid var(--color-border);
+        text-align: left;
+        font-size: 0.875rem;
     }
-    .profile-card[hidden] { display: none; }
-    h2 { font-size: 1.2rem; margin-bottom: 4px; }
-    .muted { color: var(--color-text-muted); font-size: 0.9rem; }
-    .profile-head { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
-    .profile-picture { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; }
-    .profile-list { display: grid; grid-template-columns: max-content 1fr; gap: 8px 16px; margin-bottom: 24px; }
-    .profile-list dt { color: var(--color-text-muted); font-size: 0.85rem; }
-    .profile-list dd { margin: 0; overflow-wrap: anywhere; }
-    h3 { font-size: 0.85rem; color: var(--color-text-muted); font-weight: 600; margin-bottom: 8px; }
-    #p-pages { margin-bottom: 24px; }
-    .profile-pages { list-style: none; padding: 0; margin: 0; display: grid; gap: 4px; }
-    .profile-btn {
-        display: inline-block;
-        margin-top: 16px;
-        text-decoration: none;
-        padding: 9px 18px;
-        border: 1px solid var(--color-accent);
-        border-radius: 8px;
-        background: var(--color-accent);
-        color: #fff;
-        font: inherit;
+    .profile-list:empty {
+        display: none;
+    }
+    .profile-list dt {
+        color: var(--color-text-muted);
+    }
+    .profile-list dd {
+        margin: 0;
+        overflow-wrap: anywhere;
+    }
+    #p-pages {
+        margin-bottom: 4px;
+        padding-top: 18px;
+        border-top: 1px solid var(--color-border);
+        text-align: left;
+    }
+    #p-pages h2 {
+        font-size: 0.75rem;
         font-weight: 600;
-        cursor: pointer;
-        transition: background 0.15s;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--color-text-muted);
+        margin-bottom: 8px;
     }
-    .profile-btn:hover { background: var(--color-accent-hover); color: #fff; }
-    .profile-btn--ghost { margin-top: 0; background: none; color: var(--color-accent); }
-    .profile-btn--ghost:hover { background: var(--color-accent-light); color: var(--color-accent); }
-    .signup { margin-top: 16px; }
+    .profile-pages {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 4px;
+    }
+    .profile-pages a {
+        display: block;
+        padding: 8px 12px;
+        border-radius: 8px;
+        font-weight: 500;
+    }
+    .profile-pages a:hover {
+        background: var(--color-accent-light);
+        text-decoration: none;
+    }
 </style>
 
 <script define:vars={{ issuer: oidc.issuer, pages }}>
@@ -99,10 +119,9 @@ const pages = [
     function render(user) {
         var name = user.preferredUsername || user.user || user.email || "Signed in";
         document.getElementById("p-name").textContent = name;
+        document.getElementById("p-email").textContent = user.email || "";
         var rows = [
-            ["Email", user.email],
             ["Groups", Array.isArray(user.groups) ? user.groups.join(", ") : null],
-            ["User ID", user.user],
         ];
         var list = document.getElementById("p-list");
         list.textContent = "";
@@ -135,6 +154,9 @@ const pages = [
         document.getElementById("p-pages").hidden = allowed.length === 0;
         if (/^[0-9a-f]{8}-([0-9a-f]{4}-){3}[0-9a-f]{12}$/i.test(user.user || "")) {
             var img = document.getElementById("p-picture");
+            img.addEventListener("load", function () {
+                document.getElementById("p-fallback").hidden = true;
+            });
             img.addEventListener("error", function () {
                 img.hidden = true;
             });

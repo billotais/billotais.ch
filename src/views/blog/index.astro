@@ -34,7 +34,7 @@ function formatDate(date: Date) {
 
     <div class="post-list">
       {posts.map(post => (
-        <a href={localePath(lang, `/blog/${post.slug}`)} class="post-card">
+        <a href={localePath(lang, `/blog/${post.id}`)} class="post-card">
           <div class="post-card-date">{formatDate(post.data.date)}</div>
           <div class="post-card-title">{post.data.title}</div>
           <div class="post-card-desc">{post.data.description}</div>

@@ -1,12 +1,14 @@
 # billotais.ch
 
-Personal site of Loïs Bilat (Senior AI Engineer). Astro 4 static site, deployed to GitHub Pages
+Personal site of Loïs Bilat (Senior AI Engineer). Astro 7 static site (Node 22+), deployed to GitHub Pages
 (`.github/workflows/deploy.yml` on push to `main`, custom domain via `public/CNAME`).
 
 ## Commands
 
 - `npm run dev` – dev server on http://localhost:4321
-- `npm run build` – static build into `dist/` (use it to check changes; there is no `astro check` set up)
+- `npm run build` – static build into `dist/` (use it to check changes)
+- `npm run check` – `astro check` + `svelte-check` (types in `.astro`/`.ts`/`.svelte`)
+- `npm test` – vitest (currently the gaming scoring)
 - `npm run sync` – regenerate `src/data/*.json` from the Obsidian vault (`scripts/sync-vault.mjs`)
 - `npm run build:all` – sync then build
 - `npm run trakt-auth`, `npm run import-gpx` – helpers for TV shows (Trakt/TMDB) and race routes (GPX)
@@ -28,7 +30,7 @@ Personal site of Loïs Bilat (Senior AI Engineer). Astro 4 static site, deployed
 - `src/data/*.json` – generated collection data (don't hand-edit; edit the vault and run `npm run sync`),
   except `featured.json` (hand-picked board game slugs for the home page) and `routes.json` (race SVG routes
   made from `src/data/activities/*.gpx`).
-- `src/content/posts/` – blog posts (markdown).
+- `src/content/posts/` – blog posts (markdown); collection defined in `src/content.config.ts` (glob loader, `post.id` is the slug).
 
 ## Conventions
 
@@ -36,6 +38,22 @@ Personal site of Loïs Bilat (Senior AI Engineer). Astro 4 static site, deployed
 - Page-specific CSS lives in the page's scoped `<style>`; shared things go in `global.css`.
 - Keep the site working without JS and honour `prefers-reduced-motion` for animations.
 - Wrap `localStorage` access in try/catch.
+
+## Login / profile
+
+- `login.astro` and `profile.astro` share the centered card styles `.auth*` in `global.css` (lock icon, full-width
+  button, avatar with a user-icon fallback on the profile). English only (`<Layout noLang>`).
+
+## Gaming page (`/elca-gaming`)
+
+- A Svelte island (`src/components/gaming/`: `Gaming` = tabs/loading/error, `Stats`, `Leaderboard` with the score
+  tooltip, `SessionList`) rendered by `src/views/elca-gaming.astro`, which only holds the EN/FR texts (`GamingText`).
+- Logic is plain TypeScript in `src/gaming/`: `types.ts`, `scoring.ts` (the formulas, covered by `scoring.test.ts`),
+  `format.ts`, and `store.ts`. The page only talks to the `GamingStore` interface; today `jsonStore` reads
+  `public/elca-gaming/<year>.json` (made from the CSVs by `node scripts/csv-to-json.mjs`).
+- Foundation for adding games from the page: write another `GamingStore` (e.g. calling a small API behind the same
+  Caddy gate), add `add()`/`remove()` to the interface (`Session.id` is the key) and a form component. Scoring is
+  year-dependent (2026+ formula differs), keep that in `scoring.ts` and extend its tests.
 
 ## Languages (English + French)
 
