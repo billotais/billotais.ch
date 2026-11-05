@@ -12,9 +12,18 @@
     --color-nav-bg: rgba(255, 255, 255, 0.92);
     --color-hero-from: #360033;
     --color-hero-to: #0b8793;
+    --color-secondary: #b0308f;
+    --color-tertiary: #e08a00;
+    --color-secondary-light: color-mix(in srgb, var(--color-secondary) 12%, white);
+    --color-tertiary-light: color-mix(in srgb, var(--color-tertiary) 14%, white);
     --font-sans: "Inter", system-ui, -apple-system, sans-serif;
     --max-width: 1080px;
     --nav-height: 60px;
+    --font-heading: var(--font-sans);
+    --radius: 10px;
+    --radius-sm: 6px;
+    --shadow-card: none;
+    --color-on-accent: #fff;
 }
 
 *,
@@ -61,7 +70,11 @@ a:hover {
     position: sticky;
     top: 0;
     z-index: 100;
-    background: linear-gradient(90deg, var(--color-hero-from) 0%, var(--color-hero-to) 100%);
+    background: linear-gradient(
+        90deg,
+        var(--color-hero-from) 0%,
+        var(--color-hero-to) 100%
+    );
     height: var(--nav-height);
     display: flex;
     align-items: center;
@@ -97,7 +110,7 @@ a:hover {
     width: 34px;
     height: 34px;
     border: 0;
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     background: transparent;
     color: #fff;
     cursor: pointer;
@@ -117,6 +130,8 @@ a:hover {
 }
 
 .nav-icon:hover {
+    color: #fff;
+    text-decoration: none;
     background: rgba(255, 255, 255, 0.18);
 }
 
@@ -167,7 +182,7 @@ a:hover {
     justify-content: center;
     width: 36px;
     height: 36px;
-    border-radius: 6px;
+    border-radius: var(--radius-sm);
     border: 1px solid rgba(255, 255, 255, 0.35);
     background: transparent;
     color: #fff;
@@ -250,7 +265,7 @@ a:hover {
     list-style: none;
     background: var(--color-bg);
     border: 1px solid var(--color-border);
-    border-radius: 10px;
+    border-radius: var(--radius);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
@@ -280,7 +295,7 @@ a:hover {
     gap: 10px;
     color: var(--color-text-muted);
     padding: 7px 12px;
-    border-radius: 6px;
+    border-radius: var(--radius-sm);
     white-space: nowrap;
 }
 
@@ -290,7 +305,10 @@ a:hover {
     color: var(--color-accent);
 }
 
-.icon { vertical-align: -0.125em; flex-shrink: 0; }
+.icon {
+    vertical-align: -0.125em;
+    flex-shrink: 0;
+}
 
 /* Page */
 .page {
@@ -299,8 +317,25 @@ a:hover {
 }
 
 /* Page header: the title lives in the nav bar; only the subtitle is shown here */
-.page-band { padding: 20px 0 0; margin-bottom: 20px; }
-.page-title { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.03em; color: var(--color-text); }
+.page-band {
+    padding: 20px 0 0;
+    margin-bottom: 20px;
+}
+.page-band .container::after {
+    content: "";
+    display: block;
+    width: 56px;
+    height: 3px;
+    margin-top: 12px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--color-accent), var(--color-secondary), var(--color-tertiary));
+}
+.page-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--color-text);
+}
 .page-title--hidden {
     position: absolute;
     width: 1px;
@@ -309,7 +344,10 @@ a:hover {
     clip: rect(0 0 0 0);
     white-space: nowrap;
 }
-.page-subtitle { font-size: 0.95rem; color: var(--color-text-muted); }
+.page-subtitle {
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+}
 
 /* Hero (home page intro below the band) */
 .hero {
@@ -359,7 +397,7 @@ a:hover {
     align-items: center;
     gap: 6px;
     padding: 9px 18px;
-    border-radius: 6px;
+    border-radius: var(--radius-sm);
     font-size: 0.875rem;
     font-weight: 500;
     transition: all 0.15s;
@@ -370,12 +408,12 @@ a:hover {
 
 .btn-primary {
     background: var(--color-accent);
-    color: #fff;
+    color: var(--color-on-accent);
 }
 
 .btn-primary:hover {
     background: var(--color-accent-hover);
-    color: #fff;
+    color: var(--color-on-accent);
     text-decoration: none;
 }
 
@@ -415,7 +453,7 @@ a:hover {
 .skill-card {
     background: var(--color-bg-subtle);
     border: 1px solid var(--color-border);
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     padding: 16px 18px;
 }
 
@@ -556,6 +594,16 @@ a:hover {
     font-weight: 500;
 }
 
+.tag:nth-child(3n + 2) {
+    background: var(--color-secondary-light);
+    color: var(--color-secondary);
+}
+
+.tag:nth-child(3n) {
+    background: var(--color-tertiary-light);
+    color: color-mix(in srgb, var(--color-tertiary) 80%, black);
+}
+
 /* Education entries (simpler) */
 .edu-entry {
     display: grid;
@@ -634,7 +682,7 @@ a:hover {
 
 .project-card {
     border: 1px solid var(--color-border);
-    border-radius: 10px;
+    border-radius: var(--radius);
     padding: 24px;
     transition: border-color 0.15s;
 }
@@ -690,7 +738,7 @@ a:hover {
     align-items: center;
     gap: 20px;
     border: 1px solid var(--color-border);
-    border-radius: 10px;
+    border-radius: var(--radius);
     padding: 20px 24px;
     text-decoration: none;
     color: inherit;
@@ -741,7 +789,7 @@ a:hover {
     display: flex;
     flex-direction: column;
     border: 1px solid var(--color-border);
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     overflow: hidden;
     text-decoration: none;
     color: inherit;
@@ -838,7 +886,7 @@ a:hover {
 
 .tea-card {
     border: 1px solid var(--color-border);
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     padding: 16px 20px;
 }
 
@@ -894,7 +942,7 @@ a:hover {
     justify-content: space-between;
     gap: 16px;
     border: 1px solid var(--color-border);
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     padding: 14px 18px;
 }
 
@@ -999,7 +1047,7 @@ a:hover {
 .empty-state {
     padding: 40px 24px;
     border: 1px dashed var(--color-border);
-    border-radius: 10px;
+    border-radius: var(--radius);
     color: var(--color-text-muted);
     font-size: 0.9rem;
     line-height: 1.7;
@@ -1024,7 +1072,7 @@ a:hover {
 .post-card {
     display: block;
     border: 1px solid var(--color-border);
-    border-radius: 10px;
+    border-radius: var(--radius);
     padding: 22px 24px;
     transition: border-color 0.15s;
     text-decoration: none;
@@ -1102,7 +1150,7 @@ a:hover {
     max-width: 100%;
     height: auto;
     display: block;
-    border-radius: 6px;
+    border-radius: var(--radius-sm);
     margin: 24px 0 8px;
 }
 
@@ -1163,7 +1211,7 @@ a:hover {
 .prose pre {
     background: var(--color-bg-subtle);
     border: 1px solid var(--color-border);
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     padding: 16px 20px;
     overflow-x: auto;
     margin-bottom: 20px;
@@ -1263,7 +1311,7 @@ a:hover {
     text-align: center;
     background: var(--color-bg);
     border: 1px solid var(--color-border);
-    border-radius: 16px;
+    border-radius: var(--radius);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
 }
 
@@ -1312,7 +1360,7 @@ a:hover {
     margin-top: 24px;
     padding: 11px 18px;
     border: 1px solid var(--color-accent);
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     background: var(--color-accent);
     color: #fff;
     font: inherit;
@@ -1345,7 +1393,7 @@ a:hover {
     font-size: 0.82rem;
 }
 
-/* Responsive *//* Responsive */
+/* Responsive */ /* Responsive */
 @media (max-width: 640px) {
     /* Nav: one row only. The breadcrumb shrinks with an ellipsis, the logo and the icons never wrap. */
     .nav-inner {
@@ -1486,5 +1534,4 @@ a:hover {
     .skills-two-col {
         grid-template-columns: 1fr;
     }
-
 }

@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import "../styles/themes.css";
 import Icon from "../components/Icon.astro";
 import oidc from "../config/oidc.json";
 import { getLang, localePath, altPath, ui } from "../i18n";
@@ -46,6 +47,12 @@ const fullTitle = title === "Loïs Bilat" ? title : `${title} – Loïs Bilat`;
         {!noLang && <link rel="alternate" hreflang="fr" href={site + frPath} />}
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <title>{fullTitle}</title>
+        <script is:inline>
+            try {
+                var th = localStorage.getItem("theme");
+                if (th) document.documentElement.dataset.theme = th;
+            } catch (e) {}
+        </script>
         {
             !noLang && lang === "en" && (
                 <script is:inline define:vars={{ frPath }}>

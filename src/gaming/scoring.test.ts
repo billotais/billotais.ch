@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { computeStandings, normalizeSessions } from './scoring';
+import { computeProgress, computeStandings, normalizeSessions } from './scoring';
 
 const sessions = normalizeSessions([
   { date: '2026-02-01', game: 'B', complexity: 3, players: { Ann: 'winner', Bob: 'present', Cy: 'present' } },
@@ -44,5 +44,16 @@ describe('computeStandings', () => {
       { date: '2025-01-02', game: 'B', complexity: 1, players: { X: 'present' } },
     ]);
     expect(computeStandings(s, '2025').map((p) => p.name)).toEqual(['X', 'Y']);
+  });
+});
+
+describe('computeProgress', () => {
+  it('gives each player a total and rank after every session', () => {
+    const [ann, bob, cy] = computeProgress(sessions, '2026');
+    expect(ann.name).toBe('Ann');
+    expect(ann.points.map((p) => p?.rank)).toEqual([1, 1]);
+    expect(bob.points.map((p) => p?.rank)).toEqual([2, 2]);
+    expect(cy.points[0]).toBeNull(); // Cy only appears in the second session
+    expect(ann.points[1]!.total).toBeCloseTo(3.2);
   });
 });

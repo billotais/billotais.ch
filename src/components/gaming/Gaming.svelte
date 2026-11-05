@@ -5,6 +5,7 @@
   import Stats from './Stats.svelte';
   import Leaderboard from './Leaderboard.svelte';
   import SessionList from './SessionList.svelte';
+  import Progress from './Progress.svelte';
 
   interface Props {
     years: string[];
@@ -18,6 +19,7 @@
   let sessions = $state<Session[]>([]);
   let status = $state<'loading' | 'ready' | 'error'>('loading');
   let error = $state('');
+  let showProgress = $state(false); // the chart is collapsed until asked for
 
   const cache = new Map<string, Session[]>();
   const standings = $derived(computeStandings(sessions, year));
@@ -65,6 +67,16 @@
   <div class="error">{error}</div>
 {:else}
   <Stats {sessions} {standings} {t} />
+  {#if sessions.length > 1}
+    <section class="progress">
+      <button class="progress-toggle" aria-expanded={showProgress} aria-controls="progress-panel" onclick={() => (showProgress = !showProgress)}>
+        <span class="chevron" aria-hidden="true">▸</span>{t.progress}
+      </button>
+      {#if showProgress}
+        <div id="progress-panel"><Progress {sessions} {year} {t} /></div>
+      {/if}
+    </section>
+  {/if}
   <div class="two-col">
     <section>
       <p class="section-label">{t.leaderboard}</p>
@@ -120,6 +132,38 @@
     margin-bottom: 24px;
   }
 
+  .progress {
+    margin-bottom: 32px;
+  }
+  .progress-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    padding: 6px 12px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-bg);
+    color: var(--color-text);
+    font: 600 0.8rem var(--font-sans);
+    cursor: pointer;
+  }
+  .progress-toggle:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+  .chevron {
+    display: inline-block;
+    transition: transform 0.15s;
+  }
+  .progress-toggle[aria-expanded='true'] .chevron {
+    transform: rotate(90deg);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .chevron {
+      transition: none;
+    }
+  }
   .two-col {
     display: grid;
     grid-template-columns: 300px 1fr;

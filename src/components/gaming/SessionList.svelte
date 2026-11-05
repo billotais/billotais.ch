@@ -106,6 +106,6 @@
   .present {
     background: var(--color-accent-light);
     color: var(--color-accent);
-    border-color: rgba(11, 135, 147, 0.25);
+    border-color: color-mix(in srgb, var(--color-accent) 25%, transparent);
   }
 </style>

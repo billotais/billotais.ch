@@ -1,0 +1,161 @@
+/*
+ * Colour themes. Chosen on /profile, stored in localStorage and set as data-theme on <html> (default = teal, no
+ * attribute). Each one sets a palette: primary (--color-accent + the gradient), secondary and tertiary (icons, tags,
+ * pills, the nav stripe).
+ */
+:root[data-theme="lagoon"] {
+    --color-secondary: #2563eb;
+    --color-tertiary: #f59e0b;
+    --color-accent: #0a8575;
+    --color-accent-hover: #087465;
+    --color-accent-light: #e3f5f1;
+    --color-hero-from: #0e7490;
+    --color-hero-to: #14b88a;
+}
+
+:root[data-theme="aurora"] {
+    --color-secondary: #7c3aed;
+    --color-tertiary: #ec4899;
+    --color-accent: #0f8b8d;
+    --color-accent-hover: #0c7a7c;
+    --color-accent-light: #e5f4f4;
+    --color-hero-from: #5b21b6;
+    --color-hero-to: #14a8a0;
+}
+
+:root[data-theme="ocean"] {
+    --color-secondary: #1d4ed8;
+    --color-tertiary: #f97316;
+    --color-accent: #0a7ea4;
+    --color-accent-hover: #086b8b;
+    --color-accent-light: #e3f2f8;
+    --color-hero-from: #1e40af;
+    --color-hero-to: #0ab4cc;
+}
+
+:root[data-theme="coral"] {
+    --color-secondary: #0b8793;
+    --color-tertiary: #f59e0b;
+    --color-accent: #d9472f;
+    --color-accent-hover: #c13c26;
+    --color-accent-light: #fdece8;
+    --color-hero-from: #0b8793;
+    --color-hero-to: #f2694a;
+}
+
+:root[data-theme="sunset"] {
+    --color-secondary: #db2777;
+    --color-tertiary: #d97706;
+    --color-accent: #c2410c;
+    --color-accent-hover: #a8380a;
+    --color-accent-light: #fff0e6;
+    --color-hero-from: #db2777;
+    --color-hero-to: #f59e0b;
+}
+
+:root[data-theme="berry"] {
+    --color-secondary: #7c3aed;
+    --color-tertiary: #e11d48;
+    --color-accent: #a21caf;
+    --color-accent-hover: #8b179a;
+    --color-accent-light: #fae8ff;
+    --color-hero-from: #9d174d;
+    --color-hero-to: #7c3aed;
+}
+
+:root[data-theme="forest"] {
+    --color-secondary: #0d9488;
+    --color-tertiary: #ca8a04;
+    --color-accent: #15803d;
+    --color-accent-hover: #126b33;
+    --color-accent-light: #e6f6ea;
+    --color-hero-from: #14532d;
+    --color-hero-to: #22a559;
+}
+
+:root[data-theme="indigo"] {
+    --color-secondary: #0ea5e9;
+    --color-tertiary: #ec4899;
+    --color-accent: #4f46e5;
+    --color-accent-hover: #4338ca;
+    --color-accent-light: #eceefe;
+    --color-hero-from: #312e81;
+    --color-hero-to: #6366f1;
+}
+
+:root[data-theme="citrus"] {
+    --color-secondary: #0f766e;
+    --color-tertiary: #ea580c;
+    --color-accent: #4d7c0f;
+    --color-accent-hover: #416a0c;
+    --color-accent-light: #f0f7e0;
+    --color-hero-from: #0f766e;
+    --color-hero-to: #84cc16;
+}
+
+:root[data-theme="graphite"] {
+    --color-secondary: #6366f1;
+    --color-tertiary: #f59e0b;
+    --color-hero-from: #0f172a;
+    --color-hero-to: #3b4a5f;
+}
+
+:root[data-theme="slate"] {
+    --color-accent: #0b78b0;
+    --color-accent-hover: #096596;
+    --color-accent-light: #e3f3fb;
+    --color-hero-from: #1e293b;
+    --color-hero-to: #475569;
+    --color-secondary: #6366f1;
+    --color-tertiary: #f59e0b;
+}
+
+:root[data-theme="charcoal"] {
+    --color-accent: #0b7f64;
+    --color-accent-hover: #096b53;
+    --color-accent-light: #e2f5ef;
+    --color-hero-from: #111111;
+    --color-hero-to: #3f3f46;
+    --color-secondary: #06b6d4;
+    --color-tertiary: #f59e0b;
+}
+
+:root[data-theme="midnight"] {
+    --color-accent: #2563eb;
+    --color-accent-hover: #1d4fcf;
+    --color-accent-light: #e6eefd;
+    --color-hero-from: #0b1730;
+    --color-hero-to: #1f4a78;
+    --color-secondary: #14b8a6;
+    --color-tertiary: #f59e0b;
+}
+
+:root[data-theme="plum"] {
+    --color-accent: #7c3aed;
+    --color-accent-hover: #6a2fd0;
+    --color-accent-light: #efe9fd;
+    --color-hero-from: #1f1630;
+    --color-hero-to: #4c3a6e;
+    --color-secondary: #ec4899;
+    --color-tertiary: #f59e0b;
+}
+
+:root[data-theme="stone"] {
+    --color-accent: #b45309;
+    --color-accent-hover: #9a4707;
+    --color-accent-light: #fdf0e1;
+    --color-hero-from: #1c1917;
+    --color-hero-to: #57534e;
+    --color-secondary: #0d9488;
+    --color-tertiary: #e11d48;
+}
+
+:root[data-theme="pine"] {
+    --color-accent: #0f766e;
+    --color-accent-hover: #0c6560;
+    --color-accent-light: #e1f3f0;
+    --color-hero-from: #0f1f1a;
+    --color-hero-to: #365a4e;
+    --color-secondary: #84a800;
+    --color-tertiary: #f59e0b;
+}

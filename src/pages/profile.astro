@@ -16,6 +16,26 @@ const pages = [
     const name = base.split("/").filter(Boolean).pop() ?? "";
     return { href: `${base}/`, title: title?.trim() ?? name.charAt(0).toUpperCase() + name.slice(1), groups: quoted ?? bare };
 });
+
+const themes = [
+    { id: "teal", name: "Teal", desc: "The original", from: "#360033", to: "#0b8793", bg: "#ffffff", sec: "#b0308f", ter: "#e08a00" },
+    { id: "lagoon", name: "Lagoon", desc: "Cyan to mint", from: "#0e7490", to: "#14b88a", bg: "#ffffff", sec: "#2563eb", ter: "#f59e0b" },
+    { id: "aurora", name: "Aurora", desc: "Violet to teal", from: "#5b21b6", to: "#14a8a0", bg: "#ffffff", sec: "#7c3aed", ter: "#ec4899" },
+    { id: "ocean", name: "Ocean", desc: "Deep blue to cyan", from: "#1e40af", to: "#0ab4cc", bg: "#ffffff", sec: "#1d4ed8", ter: "#f97316" },
+    { id: "coral", name: "Coral", desc: "Teal to coral", from: "#0b8793", to: "#f2694a", bg: "#ffffff", sec: "#0b8793", ter: "#f59e0b" },
+    { id: "sunset", name: "Sunset", desc: "Pink to amber", from: "#db2777", to: "#f59e0b", bg: "#ffffff", sec: "#db2777", ter: "#d97706" },
+    { id: "berry", name: "Berry", desc: "Magenta to violet", from: "#9d174d", to: "#7c3aed", bg: "#ffffff", sec: "#7c3aed", ter: "#e11d48" },
+    { id: "forest", name: "Forest", desc: "Deep to bright green", from: "#14532d", to: "#22a559", bg: "#ffffff", sec: "#0d9488", ter: "#ca8a04" },
+    { id: "indigo", name: "Indigo", desc: "Navy to periwinkle", from: "#312e81", to: "#6366f1", bg: "#ffffff", sec: "#0ea5e9", ter: "#ec4899" },
+    { id: "citrus", name: "Citrus", desc: "Teal to lime", from: "#0f766e", to: "#84cc16", bg: "#ffffff", sec: "#0f766e", ter: "#ea580c" },
+    { id: "graphite", name: "Graphite", desc: "Slate, teal accent", from: "#0f172a", to: "#3b4a5f", bg: "#ffffff", sec: "#6366f1", ter: "#f59e0b" },
+    { id: "slate", name: "Slate", desc: "Cool steel", from: "#1e293b", to: "#475569", bg: "#ffffff", sec: "#6366f1", ter: "#f59e0b" },
+    { id: "charcoal", name: "Charcoal", desc: "Black to grey, mint", from: "#111111", to: "#3f3f46", bg: "#ffffff", sec: "#06b6d4", ter: "#f59e0b" },
+    { id: "midnight", name: "Midnight", desc: "Navy to steel blue", from: "#0b1730", to: "#1f4a78", bg: "#ffffff", sec: "#14b8a6", ter: "#f59e0b" },
+    { id: "plum", name: "Plum", desc: "Ink purple", from: "#1f1630", to: "#4c3a6e", bg: "#ffffff", sec: "#ec4899", ter: "#f59e0b" },
+    { id: "stone", name: "Stone", desc: "Warm grey, amber", from: "#1c1917", to: "#57534e", bg: "#ffffff", sec: "#0d9488", ter: "#e11d48" },
+    { id: "pine", name: "Pine", desc: "Dark green-grey", from: "#0f1f1a", to: "#365a4e", bg: "#ffffff", sec: "#84a800", ter: "#f59e0b" },
+];
 ---
 
 <Layout noLang title="Profile" description="Your account" activeNav="hidden">
@@ -46,6 +66,18 @@ const pages = [
                 <h2>Your pages</h2>
                 <ul id="p-pages-list" class="profile-pages"></ul>
             </div>
+            <div id="p-theme">
+                <h2>Appearance</h2>
+                <div class="theme-grid" role="group" aria-label="Theme">
+                    {themes.map((th) => (
+                        <button type="button" class="theme-opt" data-theme-set={th.id} aria-pressed="false">
+                            <span class="theme-swatch" style={`--from:${th.from};--to:${th.to};--bg:${th.bg};--sec:${th.sec};--ter:${th.ter}`}></span>
+                            <span class="theme-name">{th.name}</span>
+                            <span class="theme-desc">{th.desc}</span>
+                        </button>
+                    ))}
+                </div>
+            </div>
             <a class="auth-btn auth-btn--ghost" href="/oauth2/sign_out?rd=/profile/">Sign out</a>
         </div>
 
@@ -73,6 +105,74 @@ const pages = [
     .profile-list dd {
         margin: 0;
         overflow-wrap: anywhere;
+    }
+    #p-theme {
+        margin-bottom: 20px;
+        padding-top: 18px;
+        border-top: 1px solid var(--color-border);
+        text-align: left;
+    }
+    #p-theme h2 {
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--color-text-muted);
+        margin-bottom: 8px;
+    }
+    .theme-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+    .theme-opt {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        padding: 8px;
+        text-align: left;
+        font: inherit;
+        color: var(--color-text);
+        background: var(--color-bg);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+    }
+    .theme-opt:hover {
+        border-color: var(--color-accent);
+    }
+    .theme-opt[aria-pressed="true"] {
+        border-color: var(--color-accent);
+        box-shadow: 0 0 0 2px var(--color-accent);
+    }
+    .theme-swatch {
+        height: 34px;
+        margin-bottom: 4px;
+        border-radius: 4px;
+        border: 1px solid rgba(128, 128, 128, 0.3);
+        background:
+            linear-gradient(90deg, var(--from), var(--to)) top / 100% 45% no-repeat,
+            var(--bg);
+        position: relative;
+    }
+    .theme-swatch::after {
+        content: "";
+        position: absolute;
+        left: 6px;
+        bottom: 5px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--sec);
+        box-shadow: 12px 0 0 var(--ter);
+    }
+    .theme-name {
+        font-size: 0.85rem;
+        font-weight: 600;
+    }
+    .theme-desc {
+        font-size: 0.75rem;
+        color: var(--color-text-muted);
     }
     #p-pages {
         margin-bottom: 4px;
@@ -165,6 +265,27 @@ const pages = [
         }
         show("state-signed-in");
     }
+
+    // Theme picker: stored in localStorage, applied via data-theme (see Layout.astro / themes.css)
+    var current = document.documentElement.dataset.theme || "teal";
+    var opts = document.querySelectorAll("[data-theme-set]");
+    function markTheme() {
+        opts.forEach(function (b) {
+            b.setAttribute("aria-pressed", String(b.dataset.themeSet === current));
+        });
+    }
+    opts.forEach(function (b) {
+        b.addEventListener("click", function () {
+            current = b.dataset.themeSet;
+            if (current === "teal") delete document.documentElement.dataset.theme;
+            else document.documentElement.dataset.theme = current;
+            try {
+                localStorage.setItem("theme", current);
+            } catch (e) {}
+            markTheme();
+        });
+    });
+    markTheme();
 
     fetch("/oauth2/userinfo", { headers: { Accept: "application/json" } })
         .then(function (r) {

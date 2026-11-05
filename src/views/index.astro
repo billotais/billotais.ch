@@ -321,7 +321,7 @@ const more = [
         justify-content: center;
         width: 34px;
         height: 34px;
-        border-radius: 8px;
+        border-radius: var(--radius-sm);
         color: #fff;
         transition: background 0.15s;
     }
@@ -617,8 +617,20 @@ const more = [
             box-shadow 0.15s;
     }
 
+    .home-card:nth-child(2) {
+        --card-color: var(--color-secondary);
+    }
+
+    .home-card:nth-child(3) {
+        --card-color: var(--color-tertiary);
+    }
+
+    .home-card-title svg {
+        color: var(--card-color, var(--color-accent));
+    }
+
     .home-card:hover {
-        border-color: var(--color-accent);
+        border-color: var(--card-color, var(--color-accent));
         transform: translateY(-2px);
         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
         text-decoration: none;
@@ -665,7 +677,7 @@ const more = [
         min-width: 0;
         width: 100%;
         object-fit: cover;
-        border-radius: 6px;
+        border-radius: var(--radius-sm);
         background: var(--color-bg-subtle);
     }
 
@@ -739,7 +751,7 @@ const more = [
         gap: 1px;
         margin-top: auto;
         padding: 8px 10px;
-        border-radius: 8px;
+        border-radius: var(--radius-sm);
         background: var(--color-bg-subtle);
         font-size: 0.75rem;
         color: var(--color-text-muted);
@@ -774,6 +786,14 @@ const more = [
         text-decoration: none;
         color: var(--color-text);
         transition: border-color 0.15s;
+    }
+
+    .home-pill:nth-child(odd) svg {
+        color: var(--color-secondary);
+    }
+
+    .home-pill:nth-child(even) svg {
+        color: var(--color-tertiary);
     }
 
     .home-pill:hover {

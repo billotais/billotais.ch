@@ -30,6 +30,9 @@ const texts: Record<'en' | 'fr', GamingText & { description: string; subtitle: s
     ratio: 'Ratio (WT ÷ games)',
     attendanceBonus: 'Attendance bonus',
     total: 'Total',
+    progress: 'Season progress',
+    points: 'Points',
+    rank: 'Rank',
   },
   fr: {
     description: 'Classement des jeux de société ELCA',
@@ -54,6 +57,9 @@ const texts: Record<'en' | 'fr', GamingText & { description: string; subtitle: s
     ratio: 'Ratio (TV ÷ parties)',
     attendanceBonus: 'Bonus de présence',
     total: 'Total',
+    progress: 'Évolution de la saison',
+    points: 'Points',
+    rank: 'Rang',
   },
 };
 const text = texts[getLang(Astro.url)];

@@ -62,3 +62,25 @@ export function computeStandings(sessions: Session[], year: string): Standing[] 
     })
     .sort((a, b) => b.total - a.total || b.tp - a.tp);
 }
+
+export interface ProgressPoint {
+  total: number;
+  rank: number; // 1 = leader; players with equal totals keep the leaderboard order
+}
+
+export interface ProgressSeries {
+  name: string;
+  /** One entry per session; null until the player has appeared in a session. */
+  points: (ProgressPoint | null)[];
+}
+
+/** Leaderboard after each session (oldest first): every player's total and rank over time. */
+export function computeProgress(sessions: Session[], year: string): ProgressSeries[] {
+  const series = new Map<string, ProgressSeries>(playersOf(sessions).map((name) => [name, { name, points: [] }]));
+  for (let i = 0; i < sessions.length; i++) {
+    const seen = new Map(computeStandings(sessions.slice(0, i + 1), year).map((s, r) => [s.name, { total: s.total, rank: r + 1 }]));
+    for (const s of series.values()) s.points.push(seen.get(s.name) ?? null);
+  }
+  // final leaderboard order, so the legend and colours follow the ranking
+  return [...series.values()].sort((a, b) => (a.points.at(-1)?.rank ?? 99) - (b.points.at(-1)?.rank ?? 99));
+}

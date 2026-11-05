@@ -54,4 +54,7 @@ export interface GamingText {
   ratio: string;
   attendanceBonus: string;
   total: string;
+  progress: string;
+  points: string;
+  rank: string;
 }
