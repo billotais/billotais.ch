@@ -152,5 +152,16 @@
       "Olga": "present",
       "André": "winner"
     }
+  },
+  {
+    "date": "2026-11-05",
+    "game": "Root",
+    "complexity": 3.81,
+    "url": "https://boardgamegeek.com/boardgame/237182/root",
+    "players": {
+      "Loïs": "winner",
+      "Sophia": "present",
+      "André": "present"
+    }
   }
 ]
