@@ -98,6 +98,17 @@ Decisions taken while redesigning it, so they aren't re-litigated:
 Ideas that were discussed but not done: moving "Full CV →" directly under the timeline, a softer fade at the
 bottom edge of the band, enlarging the TV poster thumbnails so the TV card has no empty space.
 
+## Collections notes
+
+- **Vinyls:** `year` (original release year) and `genre` (one broad genre: Rock, Alternative, Pop, Soundtrack…) come
+  from the vault notes. The sort chips (artist / year by decade / genre) are client-side, hidden without JS, and the
+  choice is saved in `localStorage` (`vinyl-sort`). The `.chips .chip` styles are shared in `global.css`.
+- **Races:** `npm run import-gpx` writes per race the SVG thumbnail, `ll` (lat/lon for the map) and `prof`
+  (`[km, m, lat, lon]` every 100 m, smoothed). `gain`/`loss` come from the smoothed profile, not the raw GPS
+  elevation (raw summing counted noise as climbing). Cards that have a route open a `<dialog>` (Leaflet map +
+  elevation profile) in the race's status colour. An overview map of all routes was tried and removed. Tiles: Esri World Light Gray Base (no key), tinted with a
+  CSS filter. CARTO now requires a key, and swisstopo's grey map looked too busy at these zooms.
+
 ## Content notes
 
 - `src/pages/cv.astro` opens with LinkedIn / GitHub pill links; the job title ("Senior AI Engineer") under the nav is

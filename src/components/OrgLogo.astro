@@ -1,0 +1,49 @@
+---
+import elca from "../assets/logos/elca.svg?raw";
+import epfl from "../assets/logos/epfl.svg?raw";
+
+interface Props {
+    name: string;
+}
+
+const { name } = Astro.props;
+const logos: Record<string, string> = { elca, epfl };
+
+// Inline the logo in the current text colour: keep only the viewBox and the shapes,
+// drop the XML header, metadata, styles and any hard-coded fill.
+const raw = logos[name.toLowerCase()];
+const svg = raw
+    ?.replace(/<\?xml[\s\S]*?\?>/, "")
+    .replace(/<metadata[\s\S]*?<\/metadata>/, "")
+    .replace(/<defs[\s\S]*?<\/defs>/, "")
+    .replace(/<title[\s\S]*?<\/title>/, "")
+    .replace(/\sstyle="[^"]*"/g, "")
+    .replace(/\sclass="[^"]*"/g, "")
+    .replace(/<svg[^>]*?viewBox="([^"]+)"[^>]*>/, `<svg viewBox="$1" fill="currentColor" aria-hidden="true" focusable="false">`);
+---
+
+{
+    svg ? (
+        <span class="org-logo" role="img" aria-label={name} data-org={name.toLowerCase()} set:html={svg} />
+    ) : (
+        <b>{name}</b>
+    )
+}
+
+<style is:global>
+    .org-logo {
+        display: inline-flex;
+        height: 1.0625rem;
+        color: #fff;
+    }
+
+    /* Match the letter height of both logos (ELCA's artwork is a bit shorter) */
+    .org-logo[data-org="elca"] {
+        height: 1rem;
+    }
+
+    .org-logo svg {
+        height: 100%;
+        width: auto;
+    }
+</style>

@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Icon from "../components/Icon.astro";
+import OrgLogo from "../components/OrgLogo.astro";
 import boardgames from "../data/boardgames.json";
 import videogames from "../data/videogames.json";
 import teas from "../data/teas.json";
@@ -60,18 +61,17 @@ const fmtDate = (d: string) =>
 // Career summary shown next to the intro (full details on /cv)
 const text = {
     en: {
-        lead: "I build intelligent systems at the intersection of AI, data and cloud.",
-        bio: "I like the part of AI that comes after the demo: making agentic systems, search and data platforms secure, maintainable and genuinely useful to real teams. I care about using AI responsibly, and I enjoy mentoring junior colleagues along the way.",
+        keys: ["Agentic AI", "Data platforms", "Sovereign cloud"],
+        bio: "I like the part of AI that comes after the demo: making agentic systems, search and data platforms secure, maintainable and genuinely useful to real teams.",
         stats: [
             { value: "6+", label: "years in industry" },
             { value: "20+", label: "client projects" },
         ],
         career: [
-            { date: "Since 2020", title: "ELCA", place: "Pully", role: "Senior AI Engineer" },
-            { date: "2015 – 2020", title: "EPFL", place: "Lausanne", role: "BSc & MSc in Computer Science" },
+            { date: "Since 2020", title: "ELCA", role: "Senior AI Engineer" },
+            { date: "2015 – 2020", title: "EPFL", role: "BSc & MSc in Computer Science" },
         ],
         careerHeading: "Career",
-        fullCv: "Full CV →",
         beyond: "Beyond work",
         beyondSub: "I enjoy board games, running, and watching TV shows. Here's what I keep track of.",
         more: "More collections",
@@ -85,18 +85,17 @@ const text = {
         vinylLabel: "From the shelf",
     },
     fr: {
-        lead: "Je conçois des systèmes intelligents à la croisée de l'IA, de la donnée et du cloud.",
-        bio: "J'aime la partie de l'IA qui vient après la démo : rendre les systèmes agentiques, la recherche et les plateformes de données sûrs, maintenables et réellement utiles à de vraies équipes. Je tiens à utiliser l'IA de manière responsable, et j'aime accompagner des collègues juniors au passage.",
+        keys: ["IA agentique", "Plateformes de données", "Cloud souverain"],
+        bio: "J'aime la partie de l'IA qui vient après la démo : rendre les systèmes agentiques, la recherche et les plateformes de données sûrs, maintenables et réellement utiles à de vraies équipes.",
         stats: [
             { value: "6+", label: "ans en entreprise" },
             { value: "20+", label: "projets clients" },
         ],
         career: [
-            { date: "Depuis 2020", title: "ELCA", place: "Pully", role: "Ingénieur IA senior" },
-            { date: "2015 – 2020", title: "EPFL", place: "Lausanne", role: "Bachelor et Master en informatique" },
+            { date: "Depuis 2020", title: "ELCA", role: "Ingénieur IA senior" },
+            { date: "2015 – 2020", title: "EPFL", role: "Bachelor et Master en informatique" },
         ],
         careerHeading: "Parcours",
-        fullCv: "CV complet →",
         beyond: "En dehors du travail",
         beyondSub: "J'aime les jeux de société, la course à pied et les séries. Voici ce que je suis de près.",
         more: "Autres collections",
@@ -126,13 +125,24 @@ const more = [
 <Layout title="Loïs Bilat" description={t.description} activeNav="home">
     <main class="container">
         <div class="intro">
-            <section class="hero">
-                <p class="hero-role">{lang === "fr" ? "Ingénieur Data & IA senior" : "Senior Data & AI Engineer"}</p>
-                <p class="hero-lead">{text.lead}</p>
+            <div class="hero-id">
+                <h1 class="hero-heading" id="hero-heading">Loïs Bilat</h1>
+                <p class="hero-role">
+                    {lang === "fr" ? "Ingénieur Data & IA senior" : "Senior Data & AI Engineer"}
+                    <span class="hero-place">{lang === "fr" ? "Lausanne, Suisse" : "Lausanne, Switzerland"}</span>
+                </p>
+            </div>
+            <div class="hero-text">
+                <ul class="hero-keys">
+                    {text.keys.map((k) => (
+                        <li>{k}</li>
+                    ))}
+                </ul>
                 <p class="hero-bio">
                     {text.bio}
                 </p>
-                <div class="hero-stats-row">
+            </div>
+            <div class="hero-facts">
                 <dl class="hero-stats">
                     {stats.map((s) => (
                         <div>
@@ -150,30 +160,30 @@ const more = [
                         </a>
                     ))}
                 </span>
-                </div>
-            </section>
+            </div>
             <aside class="career" aria-label={text.careerHeading}>
-                <h2 class="career-heading">{text.careerHeading}</h2>
+                <h2 class="career-heading">
+                    <a href={L("/cv")} class="career-link">
+                        {text.careerHeading} <span aria-hidden="true">→</span>
+                    </a>
+                </h2>
                 <ol class="work-career">
                     {career.map((c) => (
                         <li>
                             <span class="work-career-date">{c.date}</span>
                             <span class="work-career-body">
                                 <span class="work-career-org">
-                                    <b>{c.title}</b>
-                                    <small>{c.place}</small>
+                                    <OrgLogo name={c.title} />
                                 </span>
                                 <span class="work-career-role">{c.role}</span>
                             </span>
                         </li>
                     ))}
                 </ol>
-
-                <a href={L("/cv")} class="work-career-link">
-                    {text.fullCv}
-                </a>
             </aside>
         </div>
+
+
 
         <section class="home-section">
             <div class="home-head">
@@ -330,7 +340,7 @@ const more = [
         background: rgba(255, 255, 255, 0.18);
     }
 
-    .hero-stats-row {
+    .hero-facts {
         display: flex;
         align-items: center;
         flex-wrap: wrap;
@@ -355,19 +365,26 @@ const more = [
         height: 44px;
     }
 
-    .hero-lead {
-        font-size: 2rem;
-        font-weight: 700;
-        letter-spacing: -0.03em;
-        line-height: 1.2;
-        color: var(--color-text);
-        max-width: 720px;
-        margin-bottom: 16px;
+    .hero-bio {
+        max-width: 620px;
     }
 
-    .hero .hero-bio {
-        max-width: 620px;
-        margin-bottom: 28px;
+    .hero-keys {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        list-style: none;
+        margin: 0 0 20px;
+        padding: 0;
+    }
+
+    .hero-keys li {
+        padding: 6px 14px;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        border-radius: 999px;
+        font-size: 0.9375rem;
+        font-weight: 500;
+        color: #fff;
     }
 
     /* Intro band: continues the nav gradient (same colours, same direction) so the two read as one block */
@@ -389,12 +406,33 @@ const more = [
         background: linear-gradient(90deg, var(--color-hero-from) 0%, var(--color-hero-to) 100%);
     }
 
+    .intro .hero-heading {
+        margin: 0 0 4px;
+        font-size: 2.75rem;
+        font-weight: 700;
+        letter-spacing: -0.04em;
+        line-height: 1.1;
+        color: #fff;
+    }
+
     .intro .hero-role {
+        margin-bottom: 36px;
+        font-size: 1.25rem;
+        font-weight: 600;
+        letter-spacing: 0;
+        text-transform: none;
         color: rgba(255, 255, 255, 0.88);
     }
 
-    .intro .hero-lead {
-        color: #fff;
+    .hero-place {
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.65);
+        white-space: nowrap;
+    }
+
+    .hero-place::before {
+        content: "·";
+        margin: 0 8px;
     }
 
     .intro .hero-bio {
@@ -439,15 +477,40 @@ const more = [
     .intro {
         display: grid;
         grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-        gap: 56px;
+        grid-template-areas:
+            "id career"
+            "text career"
+            "text facts";
+        grid-template-rows: auto auto 1fr;
+        column-gap: 56px;
         align-items: start;
+        padding: 48px 0 40px;
+    }
+
+    .hero-id {
+        grid-area: id;
+    }
+
+    .hero-text {
+        grid-area: text;
+    }
+
+    .hero-facts {
+        grid-area: facts;
     }
 
     .career {
+        grid-area: career;
         display: flex;
         flex-direction: column;
-        align-self: stretch;
-        padding: 48px 0 40px;
+    }
+
+    .hero-bio {
+        margin-bottom: 0;
+    }
+
+    .hero-facts {
+        margin-top: 32px;
     }
 
     .career-heading {
@@ -553,28 +616,44 @@ const more = [
         font-size: 1.0625rem;
     }
 
-    .work-career-org small {
-        margin-left: 6px;
-        font-size: 0.875rem;
-        color: #fff;
-        opacity: 0.65;
-    }
-
     .work-career-role {
         font-weight: 500;
     }
 
-    .work-career-link {
-        align-self: flex-start;
-        color: #fff;
-        margin: 28px 0 0;
-        font-size: 0.9375rem;
-        font-weight: 500;
-        text-decoration: underline;
-        text-underline-offset: 4px;
-        text-decoration-color: rgba(255, 255, 255, 0.5);
+    /* The whole career block is the link to the CV (stretched over the aside) */
+    .career {
+        position: relative;
     }
 
+    .career-link {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    .career-link::after {
+        content: "";
+        position: absolute;
+        inset: -12px -16px;
+        border-radius: var(--radius-sm);
+    }
+
+    .career-link span {
+        display: inline-block;
+        transition: transform 0.15s;
+    }
+
+    .career:hover .career-link span,
+    .career-link:focus-visible span {
+        transform: translateX(4px);
+    }
+
+    .career-link:focus-visible::after {
+        outline: 2px solid #fff;
+    }
+
+    .career:hover .work-career {
+        color: #fff;
+    }
     .home-heading {
         font-size: 1.25rem;
         font-weight: 700;
@@ -817,10 +896,21 @@ const more = [
     @media (max-width: 860px) {
         .intro {
             grid-template-columns: 1fr;
-            gap: 0;
+            grid-template-areas:
+                "id"
+                "text"
+                "facts"
+                "career";
+            grid-template-rows: none;
+        }
+        .hero-bio {
+            margin-bottom: 28px;
+        }
+        .hero-facts {
+            margin-top: 0;
         }
         .career {
-            padding-top: 0;
+            padding-top: 32px;
         }
     }
 
@@ -830,9 +920,6 @@ const more = [
         }
         .home-featured {
             grid-template-columns: 1fr;
-        }
-        .hero-lead {
-            font-size: 1.6rem;
         }
     }
 </style>

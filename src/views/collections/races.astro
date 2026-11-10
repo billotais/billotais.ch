@@ -9,8 +9,8 @@ import { getLang } from '../../i18n';
 const lang = getLang(Astro.url);
 const statusLabel = statusLabels[lang];
 const text = {
-  en: { title: 'Races', description: 'Running races I have participated in, with times and pace.', run: 'races run', planned: 'planned', race: 'race', races: 'races', max: 'max', today: 'Today', route: 'Route of', distance: 'Distance', time: 'Time', goal: 'Goal' },
-  fr: { title: 'Courses', description: 'Les courses à pied auxquelles j\'ai participé, avec temps et allure.', run: 'courses courues', planned: 'prévues', race: 'course', races: 'courses', max: 'max', today: "Aujourd'hui", route: 'Parcours de', distance: 'Distance', time: 'Temps', goal: 'Objectif' },
+  en: { title: 'Races', description: 'Running races I have participated in, with times and pace.', run: 'races run', planned: 'planned', race: 'race', races: 'races', max: 'max', today: 'Today', route: 'Route of', distance: 'Distance', time: 'Time', goal: 'Goal', open: 'Map and elevation', close: 'Close', climb: 'Climb', descent: 'Descent', lowest: 'Lowest', highest: 'Highest' },
+  fr: { title: 'Courses', description: 'Les courses à pied auxquelles j\'ai participé, avec temps et allure.', run: 'courses courues', planned: 'prévues', race: 'course', races: 'courses', max: 'max', today: "Aujourd'hui", route: 'Parcours de', distance: 'Distance', time: 'Temps', goal: 'Objectif', open: 'Carte et dénivelé', close: 'Fermer', climb: 'Montée', descent: 'Descente', lowest: 'Point bas', highest: 'Point haut' },
 }[lang];
 
 const desc = [...chrono].reverse();
@@ -44,6 +44,38 @@ const routeOf = (slug: string) => (routes as Record<string, { w: number; h: numb
   <main class="container page">
     <RaceCountdown />
 
+    <dialog
+      class="race-dialog"
+      id="race-dialog"
+      data-climb={text.climb}
+      data-descent={text.descent}
+      data-lowest={text.lowest}
+      data-highest={text.highest}
+    >
+      <header class="rd-head">
+        <div>
+          <span class="rd-date"></span>
+          <h2 class="rd-name"></h2>
+          <span class="rd-meta"></span>
+        </div>
+        <button class="rd-close" type="button" aria-label={text.close}>
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12" /></svg>
+        </button>
+      </header>
+      <div class="rd-map"></div>
+      <div class="rd-stats"></div>
+      <div class="rd-profile">
+        <svg class="rd-chart" viewBox="0 0 1000 100" preserveAspectRatio="none" aria-hidden="true">
+          <path class="rd-area" />
+          <path class="rd-line" />
+        </svg>
+        <span class="rd-ymax"></span>
+        <span class="rd-ymin"></span>
+        <span class="rd-x0">0 km</span>
+        <span class="rd-x1"></span>
+        <div class="rd-cursor" hidden><span class="rd-dot"></span><span class="rd-read"></span></div>
+      </div>
+    </dialog>
 
     <div class="vt">
       {years.map((y) => (
@@ -61,7 +93,13 @@ const routeOf = (slug: string) => (routes as Record<string, { w: number; h: numb
           {desc.map((r, i) => r.date.startsWith(y) && (
             <>
               {i === firstPast && <div class="vt-today"><span>{text.today}</span></div>}
-              <article class={`vt-item s-${statusOf(r)} ${r.upcoming ? 'is-upcoming' : ''}`}>
+              <article
+                class={`vt-item s-${statusOf(r)} ${r.upcoming ? 'is-upcoming' : ''}`}
+                data-route={routeOf(r.slug) ? r.slug : undefined}
+                data-status={statusOf(r)}
+                data-meta={[fmtKm(r.distance), r.finalTime, r.pace].filter(Boolean).join(' · ')}
+                data-open={text.open}
+              >
                 <span class="vt-node"></span>
                 <div class="vt-card">
                   <div class="vt-main">
@@ -117,6 +155,135 @@ const routeOf = (slug: string) => (routes as Record<string, { w: number; h: numb
   addEventListener('resize', measure);
 </script>
 
+<script>
+  // Cards with a GPX route open a dialog with the route on a real (but toned-down) map and its
+  // elevation profile, in the race's status colour.
+  import * as L from 'leaflet';
+  import 'leaflet/dist/leaflet.css';
+  import routesJson from '../../data/routes.json';
+
+  type Point = [km: number, ele: number, lat: number, lon: number];
+  type Route = { ll: [number, number][]; prof: Point[]; gain: number; loss: number };
+  const routes = routesJson as unknown as Record<string, Route>;
+
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const cards = [...document.querySelectorAll<HTMLElement>('.vt-item[data-route]')];
+  const nameOf = (c: HTMLElement) => c.querySelector('.vt-name')?.textContent ?? '';
+
+  const mapOptions = { zoomAnimation: !reduce, fadeAnimation: !reduce, markerZoomAnimation: !reduce, attributionControl: true };
+  const tiles = () =>
+    // Esri's label-free light grey canvas (no key needed), tinted in CSS
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 16,
+      attribution: 'Tiles © <a href="https://www.esri.com/">Esri</a> — Esri, HERE, Garmin, © OpenStreetMap contributors',
+    });
+  // ── Cards ─────────────────────────────────────────────────────────────────
+  for (const card of cards) {
+    const target = card.querySelector<HTMLElement>('.vt-card')!;
+    target.classList.add('is-clickable');
+    target.tabIndex = 0;
+    target.setAttribute('role', 'button');
+    target.setAttribute('aria-label', `${card.dataset.open}: ${nameOf(card)}`);
+    target.addEventListener('click', () => open(card));
+    target.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(card); }
+    });
+  }
+
+  // ── Dialog ────────────────────────────────────────────────────────────────
+  const dialog = document.getElementById('race-dialog') as HTMLDialogElement;
+  const $ = <T extends Element = HTMLElement>(sel: string) => dialog.querySelector<T>(sel)!;
+  let detail: L.Map | undefined;
+  let layers: L.Layer[] = [];
+  let hoverDot: L.CircleMarker | undefined;
+  let prof: Point[] = [];
+  let yPct = (_m: number) => 0; // altitude -> % from the top of the chart, set per race
+
+  $('.rd-close').addEventListener('click', () => dialog.close());
+  // Clicking the backdrop (the dialog element itself, outside its content) closes it
+  dialog.addEventListener('click', (e) => { if (e.target === dialog) dialog.close(); });
+
+  function open(card: HTMLElement) {
+    const route = routes[card.dataset.route!];
+    prof = route.prof;
+    // The status class sets --c, which the map line, hover dot and profile all use
+    dialog.className = `race-dialog s-${card.dataset.status}`;
+    $('.rd-date').textContent = card.querySelector('.vt-date')?.textContent ?? '';
+    $('.rd-name').textContent = nameOf(card);
+    $('.rd-meta').textContent = card.dataset.meta ?? '';
+    dialog.showModal();
+
+    if (!detail) {
+      detail = L.map($('.rd-map'), mapOptions);
+      tiles().addTo(detail);
+    }
+    detail.invalidateSize();
+    layers.forEach((l) => l.remove());
+    // A light halo under the route keeps it readable on any background
+    const halo = L.polyline(route.ll, { className: 'race-halo', weight: 9, interactive: false }).addTo(detail);
+    const line = L.polyline(route.ll, { className: 'race-line', weight: 4, interactive: false }).addTo(detail);
+    const start = L.circleMarker(route.ll[0], { className: 'race-start', radius: 6, weight: 2 }).addTo(detail);
+    const end = L.circleMarker(route.ll.at(-1)!, { className: 'race-end', radius: 6, weight: 2 }).addTo(detail);
+    hoverDot = L.circleMarker(route.ll[0], { className: 'race-hover', radius: 7, weight: 3, interactive: false });
+    layers = [halo, line, start, end, hoverDot];
+    detail.fitBounds(line.getBounds(), { padding: [20, 20], animate: false });
+
+    renderProfile(route);
+  }
+
+  function renderProfile(route: Route) {
+    const eles = prof.map((p) => p[1]);
+    const lo = Math.min(...eles), hi = Math.max(...eles);
+    // At least 40 m of range, so a flat race doesn't look like a mountain stage
+    const span = Math.max(hi - lo, 40);
+    const yMin = lo - (span - (hi - lo)) / 2 - span * 0.08;
+    const yMax = yMin + span * 1.16;
+    const total = prof.at(-1)![0];
+    const x = (km: number) => (km / total) * 1000;
+    const y = (yPct = (m: number) => 100 - ((m - yMin) / (yMax - yMin)) * 100);
+    const d = prof.map((p, i) => `${i ? 'L' : 'M'}${x(p[0]).toFixed(1)} ${y(p[1]).toFixed(1)}`).join('');
+    $('.rd-line').setAttribute('d', d);
+    $('.rd-area').setAttribute('d', `${d}L1000 100L0 100Z`);
+    $('.rd-ymax').textContent = `${hi} m`;
+    $('.rd-ymin').textContent = `${lo} m`;
+    $('.rd-ymax').style.top = `${y(hi)}%`;
+    $('.rd-ymin').style.top = `${y(lo)}%`;
+    $('.rd-x1').textContent = `${total.toFixed(1)} km`;
+
+    const t = dialog.dataset;
+    const stat = (label: string, value: string) => `<div><span>${label}</span><b>${value}</b></div>`;
+    $('.rd-stats').innerHTML = [
+      stat(t.climb!, `↗ ${route.gain} m`),
+      stat(t.descent!, `↘ ${route.loss} m`),
+      stat(t.lowest!, `${lo} m`),
+      stat(t.highest!, `${hi} m`),
+    ].join('');
+    $('.rd-cursor').hidden = true;
+  }
+
+  // Hovering the profile moves a cursor on the chart and a dot on the map
+  const profileEl = $('.rd-profile');
+  profileEl.addEventListener('pointermove', (e) => {
+    if (!prof.length || !detail || !hoverDot) return;
+    const r = profileEl.getBoundingClientRect();
+    const km = Math.min(Math.max((e.clientX - r.left) / r.width, 0), 1) * prof.at(-1)![0];
+    const p = prof.reduce((best, q) => (Math.abs(q[0] - km) < Math.abs(best[0] - km) ? q : best));
+    const cursor = $('.rd-cursor');
+    cursor.hidden = false;
+    const frac = p[0] / prof.at(-1)![0];
+    cursor.style.left = `${frac * 100}%`;
+    // Slide the label from left-aligned to right-aligned so it never leaves the chart
+    $('.rd-read').style.transform = `translateX(-${frac * 100}%)`;
+    $('.rd-dot').style.top = `${yPct(p[1])}%`;
+    $('.rd-read').textContent = `${p[0].toFixed(1)} km · ${p[1]} m`;
+    hoverDot.setLatLng([p[2], p[3]]).addTo(detail);
+  });
+  profileEl.addEventListener('pointerleave', () => {
+    $('.rd-cursor').hidden = true;
+    hoverDot?.remove();
+  });
+</script>
+
 <style is:global>
   .s-hit { --c: #16a34a; } .s-missed { --c: #d97706; } .s-dnf { --c: #dc2626; }
   .s-nogoal, .s-upcoming { --c: var(--color-accent); }
@@ -152,8 +319,7 @@ const routeOf = (slug: string) => (routes as Record<string, { w: number; h: numb
   .vt-node { position: absolute; top: 1.1rem; right: -9px; width: 15px; height: 15px; border-radius: 50%; background: var(--c); border: 3px solid var(--color-bg); box-shadow: 0 0 0 2px var(--c); }
   .vt section > .vt-item:nth-of-type(even) .vt-node { right: auto; left: -9px; }
   .is-upcoming .vt-node { background: var(--color-bg); border-style: dashed; }
-  .vt-card { background: var(--color-bg-subtle); border: 1px solid var(--color-border); border-radius: 10px; padding: .8rem 1rem; transition: transform .15s; }
-  .vt-card:hover { transform: translateY(-2px); }
+  .vt-card { background: var(--color-bg-subtle); border: 1px solid var(--color-border); border-radius: 10px; padding: .8rem 1rem; }
   .is-upcoming .vt-card { border-style: dashed; }
   .vt-head { display: flex; justify-content: space-between; font-size: .72rem; color: var(--color-text-muted); }
   .vt-status { align-self: center; padding: .1rem .6rem; border-radius: 99px; color: var(--c); font-weight: 700; text-transform: uppercase; letter-spacing: .04em; background: color-mix(in srgb, var(--c) 10%, var(--color-bg)); border: 1px solid color-mix(in srgb, var(--c) 28%, transparent); }
@@ -176,7 +342,51 @@ const routeOf = (slug: string) => (routes as Record<string, { w: number; h: numb
   .vt-today::before { content: ''; position: absolute; left: 0; right: 0; top: 50%; border-top: 2px dashed var(--color-accent); }
   .vt-today span { position: relative; background: var(--color-bg); color: var(--color-accent); padding: 0 .75rem; font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
 
+  /* ── Dialog map: real OSM geometry, but label-free tiles tinted towards the site's teal ── */
+  .rd-map { height: 320px; background: var(--color-accent-light); font: inherit; }
+  .race-dialog .leaflet-tile-pane { filter: grayscale(1) sepia(.35) hue-rotate(130deg) saturate(1.5) brightness(1.04) contrast(.9); }
+  .leaflet-container .leaflet-control-attribution { font-size: .62rem; background: rgba(255, 255, 255, .7); }
+  .race-halo { stroke: #fff; stroke-opacity: .85; }
+  .race-line { stroke: var(--c); stroke-linecap: round; stroke-linejoin: round; }
+  .race-start, .race-end, .race-hover { stroke: #fff; fill-opacity: 1; }
+  .race-start { fill: #16a34a; } .race-end { fill: var(--color-text); }
+  .race-hover { stroke: var(--c); fill: #fff; }
+
+  /* Cards that open the dialog lift onto a shadow; the others stay still */
+  .vt-card.is-clickable { cursor: pointer; transition: transform .2s ease-out, box-shadow .2s ease-out, border-color .2s; }
+  .vt-card.is-clickable:hover, .vt-card.is-clickable:focus-visible { transform: translateY(-3px); border-color: color-mix(in srgb, var(--c) 35%, var(--color-border)); box-shadow: 0 10px 24px -8px rgba(17, 24, 39, .22), 0 2px 6px rgba(17, 24, 39, .06); }
+  .vt-card.is-clickable:active { transform: translateY(-1px); box-shadow: 0 4px 12px -4px rgba(17, 24, 39, .2); }
+  .vt-card.is-clickable:focus-visible { outline: 2px solid var(--c); outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) { .vt-card.is-clickable, .vt-card.is-clickable:hover { transition: none; transform: none; } }
+
+  /* ── Race dialog: map + elevation profile ── */
+  .race-dialog { width: min(720px, calc(100% - 32px)); max-height: calc(100dvh - 32px); margin: auto; padding: 0; color: var(--color-text); background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 14px; box-shadow: 0 20px 60px rgba(0, 0, 0, .25); overflow: auto; }
+  .race-dialog::backdrop { background: rgba(17, 24, 39, .45); }
+  .rd-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; padding: 1rem 1rem .85rem 1.25rem; }
+  .rd-date, .rd-meta { font-size: .78rem; color: var(--color-text-muted); }
+  .rd-name { margin: .1rem 0 .15rem; font-size: 1.25rem; }
+  .rd-close { flex: none; display: grid; place-items: center; width: 2.1rem; height: 2.1rem; padding: 0; color: var(--color-text-muted); background: none; border: 0; border-radius: 8px; cursor: pointer; transition: background .15s, color .15s; }
+  .rd-close svg { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+  .rd-close:hover { color: var(--color-text); background: var(--color-bg-subtle); }
+  .rd-close:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 1px; }
+  .rd-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: .5rem; padding: .7rem 1.25rem; border-block: 1px solid var(--color-border); }
+  .rd-stats span { display: block; font-size: .62rem; text-transform: uppercase; letter-spacing: .07em; color: var(--color-text-muted); }
+  .rd-stats b { font-size: 1.05rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .rd-profile { position: relative; height: 130px; margin: 1.6rem 1.25rem 1.8rem 3.6rem; touch-action: pan-y; cursor: crosshair; }
+  .rd-chart { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+  .rd-area { fill: color-mix(in srgb, var(--c) 16%, transparent); }
+  .rd-line { fill: none; stroke: var(--c); stroke-width: 2; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+  .rd-ymax, .rd-ymin { position: absolute; right: calc(100% + .5rem); transform: translateY(-50%); font-size: .7rem; color: var(--color-text-muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .rd-x0, .rd-x1 { position: absolute; top: calc(100% + .3rem); font-size: .7rem; color: var(--color-text-muted); }
+  .rd-x0 { left: 0; } .rd-x1 { right: 0; }
+  .rd-profile::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; border-bottom: 1px solid var(--color-border); }
+  .rd-cursor { position: absolute; top: 0; bottom: 0; width: 0; border-left: 1px dashed var(--color-text-muted); pointer-events: none; }
+  .rd-dot { position: absolute; left: -6px; width: 12px; height: 12px; margin-top: -6px; border-radius: 50%; background: #fff; border: 3px solid var(--c); box-sizing: border-box; }
+  .rd-read { position: absolute; bottom: calc(100% + .35rem); padding: .1rem .45rem; font-size: .72rem; font-variant-numeric: tabular-nums; white-space: nowrap; color: #fff; background: var(--color-text); border-radius: 4px; }
+
   @media (max-width: 700px) {
+    .rd-map { height: 220px; }
+    .rd-stats { grid-template-columns: repeat(2, 1fr); }
     .vt::before { left: 12px; }
     .vt-year { margin-left: 0; }
     .vt-item, .vt section > .vt-item:nth-of-type(even) { width: 100%; margin-left: 0; padding: 0 0 1.25rem 2.25rem; }

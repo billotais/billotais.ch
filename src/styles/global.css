@@ -149,6 +149,26 @@ a:hover {
     white-space: nowrap;
 }
 
+.nav-brand[data-reveal-ready] .nav-logo {
+    opacity: 0;
+    transform: translateY(6px);
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.nav-brand[data-reveal-ready][data-shown] .nav-logo {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .nav-brand[data-reveal-ready] .nav-logo {
+        transition: none;
+        transform: none;
+    }
+}
+
 .nav-logo:hover {
     color: #fff;
     opacity: 0.85;
@@ -772,6 +792,32 @@ a:hover {
 .collection-hub-desc {
     font-size: 0.875rem;
     color: var(--color-text-muted);
+}
+
+/* Toggle chips (board-games picker, vinyl sort) */
+.chips {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+.chips .chip {
+    padding: 4px 12px;
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    cursor: pointer;
+    transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+.chips .chip:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+}
+.chips .chip.active {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: #fff;
 }
 
 /* Media grid (board games, video games) */

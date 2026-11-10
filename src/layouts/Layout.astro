@@ -67,7 +67,7 @@ const fullTitle = title === "Loïs Bilat" ? title : `${title} – Loïs Bilat`;
     <body>
         <nav class="nav">
             <div class="container nav-inner">
-                <div class="nav-brand">
+                <div class="nav-brand" id="nav-brand" data-reveal={activeNav === "home" ? "" : undefined}>
                     <a href={L("/")} class="nav-logo">
                         Loïs Bilat
                     </a>
@@ -307,6 +307,19 @@ const fullTitle = title === "Loïs Bilat" ? title : `${title} – Loïs Bilat`;
                             localStorage.removeItem(AVATAR_KEY);
                         } catch (e) {}
                     });
+
+                // Home: the name in the nav fades in once the big one in the hero has scrolled away
+                var brand = document.getElementById("nav-brand");
+                var heading = document.getElementById("hero-heading");
+                if (brand && heading && "IntersectionObserver" in window) {
+                    brand.setAttribute("data-reveal-ready", "");
+                    new IntersectionObserver(
+                        function (entries) {
+                            brand.toggleAttribute("data-shown", !entries[0].isIntersecting);
+                        },
+                        { rootMargin: "-60px 0px 0px 0px" },
+                    ).observe(heading);
+                }
 
                 var dropdown = document.getElementById("nav-dropdown");
                 var dropToggle = document.getElementById("nav-drop-toggle");

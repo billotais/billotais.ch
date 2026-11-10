@@ -53,7 +53,7 @@ const text = {
 
 <style>
   .cm { display: inline-flex; align-items: center; gap: 4px; }
-  .cm + .cm::before { content: '·'; margin: 0 8px 0 4px; }
+  .cm + .cm::before { content: '·'; margin: 0 4px 0 8px; } /* + the 4px gap after it = 8px each side */
   .countdown {
     display: flex;
     align-items: center;
@@ -69,7 +69,8 @@ const text = {
   .countdown-unit { font-size: 0.75rem; opacity: 0.85; text-transform: uppercase; letter-spacing: 0.05em; }
   .countdown-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.8; }
   .countdown-name { font-size: 1.35rem; font-weight: 700; margin: 0.15rem 0; }
-  .countdown-meta { font-size: 0.875rem; opacity: 0.9; }
+  /* Flex row, not inline baselines: each .cm starts with an icon or the "·", whose baselines differ */
+  .countdown-meta { display: flex; flex-wrap: wrap; align-items: center; row-gap: 2px; font-size: 0.875rem; opacity: 0.9; }
   @media (max-width: 560px) {
     .countdown { flex-direction: column; text-align: center; gap: 0.75rem; }
   }

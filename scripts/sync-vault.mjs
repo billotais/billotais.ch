@@ -175,6 +175,8 @@ const vinyls = vinylFiles
     name: basename(d._filename, ".md"),
     artist: d.artist ?? null,
     album: d.album ?? null,
+    year: asNumber(d.year),
+    genre: d.genre ?? null,
     edition: d.edition ?? null,
     status: titleCaseStatus(d.status),
     personalRating: asNumber(d.personalRating),

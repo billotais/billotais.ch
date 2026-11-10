@@ -57,6 +57,30 @@ function simplify(pts, tol) {
   return pts.filter((_, i) => keep[i]);
 }
 
+// Elevation profile: [km, metres, lat, lon] every PROFILE_STEP_KM, with the GPS
+// elevation smoothed over a ±SMOOTH-point window so the chart isn't jagged.
+const PROFILE_STEP_KM = 0.1;
+const SMOOTH = 6;
+function profile(pts) {
+  const ele = pts.map((_, i) => {
+    let s = 0, n = 0;
+    for (let j = Math.max(0, i - SMOOTH); j <= Math.min(pts.length - 1, i + SMOOTH); j++) {
+      if (!isNaN(pts[j].ele)) { s += pts[j].ele; n++; }
+    }
+    return n ? s / n : NaN;
+  });
+  const out = [];
+  let dist = 0, next = 0;
+  for (let i = 0; i < pts.length; i++) {
+    if (i) dist += haversine(pts[i - 1], pts[i]) / 1000;
+    if ((dist >= next || i === pts.length - 1) && !isNaN(ele[i])) {
+      out.push([+dist.toFixed(2), Math.round(ele[i]), +pts[i].lat.toFixed(5), +pts[i].lon.toFixed(5)]);
+      next = dist + PROFILE_STEP_KM;
+    }
+  }
+  return out;
+}
+
 const byDate = new Map(races.filter((r) => !r.upcoming).map((r) => [r.date, r]));
 const routes = {};
 const matchedSlugs = new Set();
@@ -66,12 +90,8 @@ for (const file of readdirSync(dir).filter((f) => f.toLowerCase().endsWith('.gpx
   const pts = parseGpx(readFileSync(join(dir, file), 'utf8'));
   if (pts.length < 2) { rows.push([file, 'no track points', '', '']); continue; }
 
-  let km = 0, gain = 0;
-  for (let i = 1; i < pts.length; i++) {
-    km += haversine(pts[i - 1], pts[i]) / 1000;
-    const dEle = pts[i].ele - pts[i - 1].ele;
-    if (dEle > 0) gain += dEle;
-  }
+  let km = 0;
+  for (let i = 1; i < pts.length; i++) km += haversine(pts[i - 1], pts[i]) / 1000;
 
   const date = localDate(pts[0].time);
   let race = byDate.get(date);
@@ -90,7 +110,7 @@ for (const file of readdirSync(dir).filter((f) => f.toLowerCase().endsWith('.gpx
 
   // Equirectangular projection to metres
   const lat0 = pts.reduce((s, p) => s + p.lat, 0) / pts.length;
-  const proj = pts.map((p) => ({ x: rad(p.lon) * R * Math.cos(rad(lat0)), y: -rad(p.lat) * R }));
+  const proj = pts.map((p) => ({ x: rad(p.lon) * R * Math.cos(rad(lat0)), y: -rad(p.lat) * R, lat: p.lat, lon: p.lon }));
   const simple = simplify(proj, TOLERANCE_M);
 
   const xs = simple.map((p) => p.x), ys = simple.map((p) => p.y);
@@ -102,7 +122,18 @@ for (const file of readdirSync(dir).filter((f) => f.toLowerCase().endsWith('.gpx
     .map((p, i) => `${i ? 'L' : 'M'}${f((p.x - minX) * scale)} ${f((p.y - minY) * scale)}`)
     .join('');
 
-  routes[race.slug] = { w: f(w * scale), h: f(h * scale), d, km: +km.toFixed(2), gain: Math.round(gain) };
+  // Real coordinates for the map (same simplified points as the SVG)
+  const ll = simple.map((p) => [+(p.lat).toFixed(5), +(p.lon).toFixed(5)]);
+
+  // Climb/descent from the smoothed profile: summing raw GPS elevation counts its noise as climbing
+  const prof = profile(pts);
+  let up = 0, down = 0;
+  for (let i = 1; i < prof.length; i++) {
+    const dEle = prof[i][1] - prof[i - 1][1];
+    if (dEle > 0) up += dEle; else down -= dEle;
+  }
+
+  routes[race.slug] = { w: f(w * scale), h: f(h * scale), d, km: +km.toFixed(2), gain: up, loss: down, ll, prof };
   rows.push([file, race.slug + note, `${km.toFixed(1)} km (race: ${race.distance})`, `${simple.length} pts`]);
 }
 

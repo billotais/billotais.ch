@@ -6,9 +6,10 @@ import { getLang, ui } from '../../i18n';
 
 const lang = getLang(Astro.url);
 const text = {
-  en: { description: 'Vinyl records I own, and the ones I am waiting for.', owned: 'owned', preOrdered: 'pre-ordered', wishlist: 'on the wishlist', preOrderedTitle: 'Pre-ordered', wishlistTitle: 'Wishlist' },
-  fr: { description: 'Les vinyles que je possède, et ceux que j\'attends.', owned: 'possédés', preOrdered: 'précommandés', wishlist: 'sur la liste de souhaits', preOrderedTitle: 'Précommandés', wishlistTitle: 'Liste de souhaits' },
+  en: { description: 'Vinyl records I own, and the ones I am waiting for.', owned: 'owned', preOrdered: 'pre-ordered', wishlist: 'on the wishlist', preOrderedTitle: 'Pre-ordered', wishlistTitle: 'Wishlist', sortBy: 'Sort by', artist: 'Artist', year: 'Year', genre: 'Genre' },
+  fr: { description: 'Les vinyles que je possède, et ceux que j\'attends.', owned: 'possédés', preOrdered: 'précommandés', wishlist: 'sur la liste de souhaits', preOrderedTitle: 'Précommandés', wishlistTitle: 'Liste de souhaits', sortBy: 'Trier par', artist: 'Artiste', year: 'Année', genre: 'Genre' },
 }[lang];
+const sorts = [['artist', text.artist], ['year', text.year], ['genre', text.genre]];
 
 type Vinyl = typeof vinyls[0];
 
@@ -34,6 +35,9 @@ function hue(name: string) {
   for (const ch of name) h = (h * 31 + ch.charCodeAt(0)) % 360;
   return h;
 }
+
+// What the client-side sort reads (see the script below)
+const sortData = (v: Vinyl) => ({ 'data-artist': v.artist, 'data-album': v.album, 'data-year': v.year, 'data-genre': v.genre });
 ---
 
 <Layout
@@ -43,26 +47,29 @@ function hue(name: string) {
   pageSubtitle={subtitle}
 >
   <main class="container page">
-
+    <div class="sort-bar" id="vinyl-sort" hidden>
+      <span class="sort-label">{text.sortBy}</span>
+      <div class="chips" role="group" aria-label={text.sortBy}>
+        {sorts.map(([value, label], i) => (
+          <button class:list={['chip', { active: i === 0 }]} type="button" data-sort={value} aria-pressed={i === 0 ? 'true' : 'false'}>{label}</button>
+        ))}
+      </div>
+    </div>
 
     <div>
-      <div class="media-grid">
+      <div class="media-grid" data-sortable>
         {owned.map(v => (
-          <div class:list={['media-card', { special: isSpecial(v) }]}>
+          <div class:list={['media-card', { special: isSpecial(v) }]} {...sortData(v)}>
             <div class="vinyl-art">
               {v.image
                 ? <img class="media-card-img vinyl-card-img" src={v.image} alt={`${v.artist} – ${v.album}`} loading="lazy" />
                 : <div class="media-card-img vinyl-card-img media-card-img-placeholder"><Icon name="disc" size="36" /></div>
               }
-              {isSpecial(v) && (
-                <>
-                  <span class="foil" aria-hidden="true"></span>
-                </>
-              )}
+              {isSpecial(v) && <span class="foil" aria-hidden="true"></span>}
             </div>
             <div class="media-card-body">
               <div class="media-card-title">{v.album}</div>
-              <div class="media-card-summary">{v.artist}</div>
+              <div class="media-card-summary">{v.artist}{v.year && ` · ${v.year}`}</div>
               {isSpecial(v) && (
                 <div class="media-card-meta"><span class="edition-pill">✦ {v.edition}</span></div>
               )}
@@ -74,23 +81,19 @@ function hue(name: string) {
       {preOrdered.length > 0 && (
         <section class="vinyl-section">
           <h2 class="cv-section-title">{text.preOrderedTitle}</h2>
-          <div class="media-grid media-grid-small">
+          <div class="media-grid media-grid-small" data-sortable>
             {preOrdered.map(v => (
-              <div class:list={['media-card', { special: isSpecial(v) }]}>
+              <div class:list={['media-card', { special: isSpecial(v) }]} {...sortData(v)}>
                 <div class="vinyl-art">
                   {v.image
                     ? <img class="media-card-img vinyl-card-img" src={v.image} alt={`${v.artist} – ${v.album}`} loading="lazy" />
                     : <div class="media-card-img vinyl-card-img media-card-img-placeholder"><Icon name="disc" size="36" /></div>
                   }
-                  {isSpecial(v) && (
-                <>
-                  <span class="foil" aria-hidden="true"></span>
-                </>
-              )}
+                  {isSpecial(v) && <span class="foil" aria-hidden="true"></span>}
                 </div>
                 <div class="media-card-body">
                   <div class="media-card-title">{v.album}</div>
-                  <div class="media-card-summary">{v.artist}</div>
+                  <div class="media-card-summary">{v.artist}{v.year && ` · ${v.year}`}</div>
                   {isSpecial(v) && (
                     <div class="media-card-meta"><span class="edition-pill">✦ {v.edition}</span></div>
                   )}
@@ -105,9 +108,9 @@ function hue(name: string) {
     {wanted.length > 0 && (
       <section class="vinyl-section">
         <h2 class="cv-section-title">{text.wishlistTitle}</h2>
-        <div class="media-grid media-grid-small">
+        <div class="media-grid media-grid-small" data-sortable>
           {wanted.map(v => (
-            <div class="sleeve-card" style={`--h:${hue(v.name)}`}>
+            <div class="sleeve-card" style={`--h:${hue(v.name)}`} {...sortData(v)}>
               <div class="sleeve">
                 <div class="sleeve-disc"></div>
                 <div class="sleeve-cover">
@@ -136,6 +139,32 @@ function hue(name: string) {
   }
 
   .vinyl-section { margin-top: 56px; }
+
+  /* ── Sort bar (shown by the script, so it never appears without JS) ───── */
+  .sort-bar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 24px; }
+  .sort-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-text-muted);
+  }
+
+  /* Group headers inserted by the sort script (decades or genres) */
+  .media-grid :global(.sort-head) {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-top: 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--color-border);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-text);
+  }
+  .media-grid :global(.sort-head:first-child) { margin-top: 0; }
+  .media-grid :global(.sort-head small) { font-weight: 500; color: var(--color-text-muted); }
 
   /* ── Special editions: holographic foil that follows the pointer ──────── */
   .vinyl-art { position: relative; overflow: hidden; }
@@ -247,4 +276,69 @@ function hue(name: string) {
       foil.style.setProperty('--my', `${((e.clientY - r.top) / r.height) * 100}%`);
     });
   });
+
+  // Sort: artist (the server order), year (newest first, grouped by decade) or genre (grouped).
+  // Every grid on the page is sorted the same way; the choice is remembered.
+  type Mode = 'artist' | 'year' | 'genre';
+  const bar = document.getElementById('vinyl-sort');
+  const grids = [...document.querySelectorAll<HTMLElement>('[data-sortable]')];
+  const cards = grids.map(g => [...g.querySelectorAll<HTMLElement>(':scope > [data-artist]')]);
+  const UNKNOWN = '—';
+
+  const byArtist = (a: HTMLElement, b: HTMLElement) =>
+    (a.dataset.artist ?? '').localeCompare(b.dataset.artist ?? '') ||
+    (a.dataset.album ?? '').localeCompare(b.dataset.album ?? '');
+  const year = (el: HTMLElement) => Number(el.dataset.year) || 0;
+  const groupOf: Record<Mode, (el: HTMLElement) => string | null> = {
+    artist: () => null,
+    year: el => (year(el) ? `${Math.floor(year(el) / 10) * 10}s` : UNKNOWN),
+    genre: el => el.dataset.genre || UNKNOWN,
+  };
+  const compare: Record<Mode, (a: HTMLElement, b: HTMLElement) => number> = {
+    artist: byArtist,
+    year: (a, b) => year(b) - year(a) || byArtist(a, b),
+    genre: (a, b) =>
+      (a.dataset.genre || '~').localeCompare(b.dataset.genre || '~') || byArtist(a, b),
+  };
+
+  function sortBy(mode: Mode) {
+    grids.forEach((grid, i) => {
+      grid.querySelectorAll(':scope > .sort-head').forEach(h => h.remove());
+      const sorted = [...cards[i]].sort(compare[mode]);
+      const counts = new Map<string, number>();
+      sorted.forEach(c => { const g = groupOf[mode](c); if (g) counts.set(g, (counts.get(g) ?? 0) + 1); });
+      let last: string | null = null;
+      for (const card of sorted) {
+        const g = groupOf[mode](card);
+        if (g && g !== last) {
+          const head = document.createElement('div');
+          head.className = 'sort-head';
+          head.textContent = g;
+          head.append(Object.assign(document.createElement('small'), { textContent: String(counts.get(g)) }));
+          grid.append(head);
+          last = g;
+        }
+        grid.append(card);
+      }
+    });
+    bar?.querySelectorAll<HTMLButtonElement>('[data-sort]').forEach(b => {
+      const on = b.dataset.sort === mode;
+      b.classList.toggle('active', on);
+      b.setAttribute('aria-pressed', String(on));
+    });
+  }
+
+  if (bar) {
+    bar.hidden = false;
+    bar.addEventListener('click', e => {
+      const btn = (e.target as HTMLElement).closest<HTMLButtonElement>('[data-sort]');
+      if (!btn) return;
+      const mode = btn.dataset.sort as Mode;
+      sortBy(mode);
+      try { localStorage.setItem('vinyl-sort', mode); } catch {}
+    });
+    let saved: string | null = null;
+    try { saved = localStorage.getItem('vinyl-sort'); } catch {}
+    if (saved === 'year' || saved === 'genre') sortBy(saved);
+  }
 </script>
