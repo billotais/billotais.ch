@@ -253,7 +253,7 @@ const races = raceFiles
 
 writeFileSync("src/data/races.json", JSON.stringify(races, null, 2));
 console.log(`  Races: ${races.length} entries`);
-exit()
+// exit()
 // ── TV Shows (Trakt + TMDB) ───────────────────────────────────────────────────
 const TRAKT_CLIENT_ID = process.env.TRAKT_CLIENT_ID;
 const TRAKT_ACCESS_TOKEN = process.env.TRAKT_ACCESS_TOKEN;

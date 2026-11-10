@@ -163,5 +163,16 @@
       "Sophia": "present",
       "André": "present"
     }
+  },
+  {
+    "date": "2026-11-10",
+    "game": "Azul + Far away",
+    "complexity": 1.86,
+    "url": "https://boardgamegeek.com/boardgame/385761/faraway",
+    "players": {
+      "Loïs": "winner",
+      "Sophia": "present",
+      "Annie": "present"
+    }
   }
 ]
